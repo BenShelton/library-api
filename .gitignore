@@ -28,6 +28,7 @@ node_modules/
 # Output
 coverage
 dist
+downloads
 
 # System Files
 .DS_Store

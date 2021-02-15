@@ -1,0 +1,8 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "jest.pathToJest": "yarn test",
+  "jest.pathToConfig": "jest.config.js",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

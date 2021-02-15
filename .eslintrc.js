@@ -13,5 +13,8 @@ module.exports = {
   },
   plugins: [
     '@typescript-eslint'
-  ]
+  ],
+  rules: {
+    'no-undef': 'off' // redundant in TS
+  }
 }

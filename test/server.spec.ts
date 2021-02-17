@@ -1,16 +1,25 @@
 import fs from 'fs'
 import express from 'express'
-import { mocked } from 'ts-jest'
+import { mocked } from 'ts-jest/utils'
 
 import 'src/server'
 import { DOWNLOAD_DIR } from 'src/constants'
 
-jest.mock('fs')
+jest.mock('fs', () => {
+  return {
+    ...jest.requireActual<typeof import('fs')>('fs'),
+    mkdirSync: jest.fn()
+  }
+})
 jest.mock('express', () => {
-  return jest.fn().mockReturnValue({
-    post: jest.fn(),
-    listen: jest.fn()
-  })
+  return {
+    ...jest.requireActual<typeof import('express')>('express'),
+    __esModule: true,
+    default: jest.fn().mockReturnValue({
+      use: jest.fn(),
+      listen: jest.fn()
+    })
+  }
 })
 
 const mockedFs = mocked(fs, true)

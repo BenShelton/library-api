@@ -1,8 +1,13 @@
-import fs from 'fs'
-import path from 'path'
+import { createWriteStream } from 'fs'
+import { join } from 'path'
+import { pipeline } from 'stream'
+import { promisify } from 'util'
+import { createGunzip } from 'zlib'
 import fetch, { Response } from 'node-fetch'
 
 import { DOWNLOAD_DIR } from './constants'
+
+const streamPipeline = promisify(pipeline)
 
 function checkStatus (res: Response): Response {
   if (res.ok) {
@@ -12,17 +17,12 @@ function checkStatus (res: Response): Response {
   }
 }
 
-function pipeToFile (stream: NodeJS.ReadableStream, fileName: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const dest = fs.createWriteStream(path.join(DOWNLOAD_DIR, fileName))
-    const pipe = stream.pipe(dest)
-    pipe.on('error', reject)
-    pipe.on('finish', resolve)
-  })
-}
-
 export async function downloadFile (url: string, fileName: string): Promise<void> {
   const res = await fetch(url)
   checkStatus(res)
-  await pipeToFile(res.body, fileName)
+  await streamPipeline(
+    res.body,
+    createGunzip(),
+    createWriteStream(join(DOWNLOAD_DIR, fileName))
+  )
 }

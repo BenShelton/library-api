@@ -1,7 +1,7 @@
 {
-  "name": "jw-media-api",
+  "name": "library-api",
   "version": "0.1.0",
-  "description": "An API for easily accessing information related to JW meetings and publications",
+  "description": "An API for easily accessing information related to meetings and publications of Jehovah's Witnesses.",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
@@ -13,9 +13,11 @@
   "keywords": [
     "jw",
     "media",
+    "library",
+    "meetings",
+    "publications",
     "api"
   ],
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",

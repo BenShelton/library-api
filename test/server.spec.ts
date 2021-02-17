@@ -1,16 +1,11 @@
-import fs from 'fs'
 import express from 'express'
 import { mocked } from 'ts-jest/utils'
 
 import 'src/server'
+import * as utils from 'src/utils'
 import { DOWNLOAD_DIR } from 'src/constants'
 
-jest.mock('fs', () => {
-  return {
-    ...jest.requireActual<typeof import('fs')>('fs'),
-    mkdirSync: jest.fn()
-  }
-})
+jest.mock('src/utils')
 jest.mock('express', () => {
   return {
     ...jest.requireActual<typeof import('express')>('express'),
@@ -22,12 +17,12 @@ jest.mock('express', () => {
   }
 })
 
-const mockedFs = mocked(fs, true)
+const mockedUtils = mocked(utils, true)
 const mockedExpress = mocked(express, true)
 
 describe('Server', () => {
   test('should setup system files', () => {
-    expect(mockedFs.mkdirSync).lastCalledWith(DOWNLOAD_DIR, { recursive: true })
+    expect(mockedUtils.createDir).lastCalledWith(DOWNLOAD_DIR)
   })
 
   test('should start express', () => {

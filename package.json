@@ -4,7 +4,7 @@
   "description": "An API for easily accessing information related to meetings and publications of Jehovah's Witnesses.",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "ts-node-dev --respawn -T -P ./tsconfig.json -r tsconfig-paths/register src/server.ts",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "start": "node dist/server.js",
     "test": "jest --coverage -t",
@@ -44,6 +44,7 @@
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.1",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.1.3"
   }
 }

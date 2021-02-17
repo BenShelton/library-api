@@ -4,6 +4,7 @@ import { pipeline } from 'stream'
 import { promisify } from 'util'
 import { createGunzip } from 'zlib'
 import fetch, { Response } from 'node-fetch'
+import { Extract } from 'unzipper'
 
 import { DOWNLOAD_DIR } from './constants'
 
@@ -17,12 +18,20 @@ function checkStatus (res: Response): Response {
   }
 }
 
-export async function downloadFile (url: string, fileName: string): Promise<void> {
+export async function downloadFile (url: string, path: string): Promise<void> {
   const res = await fetch(url)
   checkStatus(res)
-  await streamPipeline(
-    res.body,
-    createGunzip(),
-    createWriteStream(join(DOWNLOAD_DIR, fileName))
-  )
+  const ext = url.split('.').pop()!
+  if (ext === 'gz') {
+    await streamPipeline(
+      res.body,
+      createGunzip(),
+      createWriteStream(join(DOWNLOAD_DIR, path))
+    )
+  } else {
+    await streamPipeline(
+      res.body,
+      Extract({ path })
+    )
+  }
 }

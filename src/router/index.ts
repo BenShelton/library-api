@@ -1,13 +1,15 @@
 import { Router } from 'express'
 
+import { media } from './media'
 import { getRows, updateDatabase } from 'src/database'
+
 import { Publication } from 'types/database'
 
 const router = Router()
 
 router.post('/update-db', async (req, res) => {
   await updateDatabase()
-  res.json({ status: 'Updated' })
+  res.json({ message: 'Updated' })
 })
 
 router.get('/monthly-publications', async (req, res) => {
@@ -19,9 +21,11 @@ router.get('/monthly-publications', async (req, res) => {
   res.json(results)
 })
 
+router.use('/media', media)
+
 // handle 404
 router.use((req, res) => {
-  res.status(404).json({ error: 'Not found' })
+  res.status(404).json({ message: 'Not found' })
 })
 
 export { router }

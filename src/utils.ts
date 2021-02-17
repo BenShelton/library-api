@@ -1,17 +1,17 @@
-import { mkdir, access } from 'fs'
+import { mkdir, access, constants } from 'fs'
 import { promisify } from 'util'
 
-const mkDirAsync = promisify(mkdir)
+const mkdirAsync = promisify(mkdir)
 const accessAsync = promisify(access)
 
 export async function createDir (dir: string): Promise<string> {
-  return mkDirAsync(dir, { recursive: true })
+  return mkdirAsync(dir, { recursive: true })
 }
 
 export async function checkExists (path: string): Promise<boolean> {
   try {
-    accessAsync(path)
-  } catch {
+    await accessAsync(path, constants.F_OK)
+  } catch (err) {
     return false
   }
   return true

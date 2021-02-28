@@ -13,3 +13,10 @@ export async function checkExists (path: string): Promise<boolean> {
     return false
   }
 }
+
+export function isValidDate (date: unknown): date is string {
+  if (!date) return false
+  if (typeof date !== 'string') return false
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false
+  return true
+}

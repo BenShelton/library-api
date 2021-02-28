@@ -6,7 +6,7 @@ import { createGunzip } from 'zlib'
 import fetch, { Response } from 'node-fetch'
 import { Extract } from 'unzipper'
 
-import { DOWNLOAD_DIR } from './constants'
+import { CATALOG_URL, DOWNLOAD_DIR, PUBLICATION_URL } from './constants'
 
 const streamPipeline = promisify(pipeline)
 
@@ -18,20 +18,21 @@ function checkStatus (res: Response): Response {
   }
 }
 
-export async function downloadFile (url: string, path: string): Promise<void> {
-  const res = await fetch(url)
+export async function downloadCatalog (): Promise<void> {
+  const res = await fetch(CATALOG_URL)
   checkStatus(res)
-  const ext = url.split('.').pop()!
-  if (ext === 'gz') {
-    await streamPipeline(
-      res.body,
-      createGunzip(),
-      createWriteStream(join(DOWNLOAD_DIR, path))
-    )
-  } else {
-    await streamPipeline(
-      res.body,
-      Extract({ path })
-    )
-  }
+  await streamPipeline(
+    res.body,
+    createGunzip(),
+    createWriteStream(join(DOWNLOAD_DIR, 'catalog.db'))
+  )
+}
+
+export async function downloadPublication (url: string, path: string): Promise<void> {
+  const res = await fetch(PUBLICATION_URL + url)
+  checkStatus(res)
+  await streamPipeline(
+    res.body,
+    Extract({ path })
+  )
 }

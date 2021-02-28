@@ -1,4 +1,5 @@
-import { createWriteStream } from 'fs'
+import { createWriteStream, createReadStream } from 'fs'
+import { rename, unlink } from 'fs/promises'
 import { join } from 'path'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
@@ -33,6 +34,22 @@ export async function downloadPublication (url: string, path: string): Promise<v
   checkStatus(res)
   await streamPipeline(
     res.body,
+    Extract({ path })
+  )
+  // extract contents too (which is also a zip) that contains all the images and the internal db
+  const contentsPath = join(path, 'contents')
+  const zipPath = contentsPath + '.zip'
+  await rename(contentsPath, zipPath)
+  await streamPipeline(
+    createReadStream(zipPath),
+    Extract({ path: contentsPath })
+  )
+  await unlink(zipPath)
+}
+
+export async function extractZip (path: string): Promise<void> {
+  await streamPipeline(
+    createReadStream(path),
     Extract({ path })
   )
 }

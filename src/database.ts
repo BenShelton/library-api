@@ -5,7 +5,7 @@ import { CATALOG_PATH } from './constants'
 
 import { QueryParams } from 'types/database'
 
-function openDatabase (filename: string): ReturnType<typeof open> {
+export function openDatabase (filename: string): ReturnType<typeof open> {
   return open({
     filename,
     mode: sqlite3.OPEN_READONLY,

@@ -5,3 +5,15 @@ export interface PublicationRow {
   PublicationTypeId: number
   PubMepsLanguageId: number
 }
+
+export interface MediaRow {
+  ContextTitle: string
+  Caption: string
+  FilePath: string
+}
+
+export interface ArticleRow {
+  DocumentId: number
+  ContextTitle: string
+  Title: string
+}

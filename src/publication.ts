@@ -8,10 +8,11 @@ import { Publication } from './lib/Publication'
 import { PublicationRow } from 'types/database'
 
 export async function getPublication (row: PublicationRow): Promise<Publication> {
-  const filename = join(DOWNLOAD_DIR, row.NameFragment.split('/').pop()!)
-  const exists = await checkExists(filename)
+  const filename = row.NameFragment.split('/').pop()!.replace('.jwpub', '')
+  const path = join(DOWNLOAD_DIR, filename)
+  const exists = await checkExists(path)
   if (!exists) {
-    await downloadPublication(row.NameFragment, filename)
+    await downloadPublication(row.NameFragment, path)
   }
   return new Publication({ filename })
 }

@@ -13,3 +13,7 @@ export const PUBLICATION_TYPES = {
   WATCHTOWER: 14,
   OCLM: 30
 }
+
+export const PUBLICATION_CLASSES = {
+  WATCHTOWER_ARTICLE: 40
+}

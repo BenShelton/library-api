@@ -16,7 +16,9 @@ router.get('/watchtower', async (req, res) => {
 
   const pubQuery = `
     SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
-    FROM Publication AS p INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
+    FROM Publication AS p
+    INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
+    INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
     WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = 0 AND PublicationTypeId = ${PUBLICATION_TYPES.WATCHTOWER}`
   const result = await getCatalogRow<PublicationRow>(pubQuery)
   if (!result) return res.status(404).json({ message: 'No Watchtower Found' })

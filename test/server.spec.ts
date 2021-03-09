@@ -6,6 +6,7 @@ import * as utils from 'src/utils'
 import { DOWNLOAD_DIR } from 'src/constants'
 
 jest.mock('src/utils')
+jest.mock('src/catalog')
 jest.mock('express', () => {
   return {
     ...jest.requireActual<typeof import('express')>('express'),

@@ -1,18 +1,12 @@
 import { Router } from 'express'
 
+import { catalog } from './catalog'
 import { media } from './media'
 import { getCatalogRows } from 'src/database'
-import { downloadCatalog } from 'src/download'
 
 import { PublicationRow } from 'types/database'
 
 const router = Router()
-
-router.post('/update-catalog', async (req, res) => {
-  // TODO: Check version of catalog & update only if necessary
-  await downloadCatalog()
-  res.json({ message: 'Updated' })
-})
 
 router.get('/monthly-publications', async (req, res) => {
   const query = `
@@ -23,6 +17,7 @@ router.get('/monthly-publications', async (req, res) => {
   res.json(results)
 })
 
+router.use('/catalog', catalog)
 router.use('/media', media)
 
 // handle 404

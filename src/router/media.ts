@@ -7,11 +7,12 @@ import { getPublication } from 'src/publication'
 import { isValidDate } from 'src/utils'
 
 import { PublicationRow } from 'types/database'
+import { Media } from 'types/api'
 
 const router = Router()
 
 router.get('/watchtower', async (req, res) => {
-  const { date } = req.query
+  const { date } = req.query as Media.Watchtower.QueryParams
   if (!isValidDate(date)) return res.status(401).json({ message: 'Invalid Date' })
 
   const pubQuery = `
@@ -26,7 +27,7 @@ router.get('/watchtower', async (req, res) => {
   const publication = await getPublication(result)
   const media = await publication.getMedia(date)
 
-  return res.json({ message: media })
+  return res.json({ message: media } as Media.Watchtower.Response)
 })
 
 export const media = router

@@ -3,7 +3,7 @@ import { join } from 'path'
 import { openDatabase } from 'src/database'
 import { DOWNLOAD_DIR, PUBLICATION_CLASSES } from 'src/constants'
 
-import { ArticleRow, MediaRow } from 'types/database'
+import { ArticleRow, ImageRow, VideoRow } from 'types/database'
 
 interface PublicationCtor {
   filename: string
@@ -26,19 +26,32 @@ export class Publication {
     return openDatabase(dbPath)
   }
 
-  async getMedia (date: string): Promise<MediaRow[]> {
+  async getImages (date: string): Promise<ImageRow[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT D.ContextTitle, M.Caption, M.FilePath
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN Document D ON DM.DocumentId = D.DocumentId
-      INNER JOIN  InternalLink IL ON IL.MepsDocumentId = D.MepsDocumentId
+      INNER JOIN InternalLink IL ON IL.MepsDocumentId = D.MepsDocumentId
       INNER JOIN DocumentInternalLink AS DIL ON DIL.InternalLinkId = IL.InternalLinkId
       INNER JOIN DatedText AS DT ON DT.EndParagraphOrdinal = DIL.EndParagraphOrdinal
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const db = await this.getDatabase()
-    const rows = await db.all<MediaRow[]>(query)
+    const rows = await db.all<ImageRow[]>(query)
+    return rows
+  }
+
+  async getVideos (date: string): Promise<VideoRow[]> {
+    const offsetDate = date.replace(/-/g, '')
+    const query = `
+      SELECT M.KeySymbol, M.Track, M.IssueTagNumber
+      FROM Multimedia M
+      JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
+      INNER JOIN DatedText AS DT ON DT.BeginParagraphOrdinal = DM.BeginParagraphOrdinal
+      WHERE DM.DocumentId = 1 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
+    const db = await this.getDatabase()
+    const rows = await db.all<VideoRow[]>(query)
     return rows
   }
 

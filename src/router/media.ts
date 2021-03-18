@@ -25,9 +25,17 @@ router.get('/watchtower', async (req, res) => {
   if (!result) return res.status(404).json({ message: 'No Watchtower Found' })
 
   const publication = await getPublication(result)
-  const media = await publication.getMedia(date)
+  const images = await publication.getImages(date)
+  const videos = await publication.getVideos(date)
 
-  return res.json({ message: media } as Media.Watchtower.Response)
+  const response: Media.Watchtower.Response = {
+    message: {
+      images,
+      videos
+    }
+  }
+
+  return res.json(response)
 })
 
 export const media = router

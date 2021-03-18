@@ -1,4 +1,4 @@
-import { MediaRow } from './database'
+import { ImageRow, VideoRow } from './database'
 
 export namespace Catalog {
   export namespace Update {
@@ -14,7 +14,10 @@ export namespace Media {
       date?: string
     }
     export interface Response {
-      message: MediaRow[]
+      message: {
+        images: ImageRow[]
+        videos: VideoRow[]
+      }
     }
   }
 }

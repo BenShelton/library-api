@@ -6,10 +6,16 @@ export interface PublicationRow {
   PubMepsLanguageId: number
 }
 
-export interface MediaRow {
+export interface ImageRow {
   ContextTitle: string
   Caption: string
   FilePath: string
+}
+
+export interface VideoRow {
+  KeySymbol: string
+  Track: number
+  IssueTagNumber: number
 }
 
 export interface ArticleRow {

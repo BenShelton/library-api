@@ -1,9 +1,11 @@
 import { join } from 'path'
 
+import { Mapper } from './Mapper'
 import { openDatabase } from 'src/database'
 import { DOWNLOAD_DIR, PUBLICATION_CLASSES } from 'src/constants'
 
 import { ArticleRow, ImageRow, VideoRow } from 'types/database'
+import { ImageDTO, VideoDTO } from 'types/dto'
 
 interface PublicationCtor {
   filename: string
@@ -26,7 +28,7 @@ export class Publication {
     return openDatabase(dbPath)
   }
 
-  async getImages (date: string): Promise<ImageRow[]> {
+  async getImages (date: string): Promise<ImageDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT D.ContextTitle, M.Caption, M.FilePath
@@ -39,10 +41,10 @@ export class Publication {
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const db = await this.getDatabase()
     const rows = await db.all<ImageRow[]>(query)
-    return rows
+    return Mapper.MapImages(rows)
   }
 
-  async getVideos (date: string): Promise<VideoRow[]> {
+  async getVideos (date: string): Promise<VideoDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT M.KeySymbol, M.Track, M.IssueTagNumber
@@ -52,7 +54,7 @@ export class Publication {
       WHERE DM.DocumentId = 1 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const db = await this.getDatabase()
     const rows = await db.all<VideoRow[]>(query)
-    return rows
+    return Mapper.MapVideos(rows)
   }
 
   async getArticles (): Promise<ArticleRow[]> {

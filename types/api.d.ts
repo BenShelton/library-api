@@ -1,4 +1,4 @@
-import { ImageRow, VideoRow } from './database'
+import { ImageDTO, VideoDTO } from './dto'
 
 export namespace Catalog {
   export namespace Update {
@@ -15,8 +15,8 @@ export namespace Media {
     }
     export interface Response {
       message: {
-        images: ImageRow[]
-        videos: VideoRow[]
+        images: ImageDTO[]
+        videos: VideoDTO[]
       }
     }
   }

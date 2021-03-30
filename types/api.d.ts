@@ -14,11 +14,12 @@ export namespace Download {
       publication: string
       file: string
     }
-    export interface Response {
-      message: {
-        images: ImageDTO[]
-        videos: VideoDTO[]
-      }
+  }
+  export namespace Video {
+    export interface QueryParams {
+      publication: string
+      track: string
+      issue: string
     }
   }
 }

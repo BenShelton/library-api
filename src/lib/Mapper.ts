@@ -25,8 +25,10 @@ export class PublicationMapper {
 
   public MapVideo (video: VideoRow): VideoDTO {
     return {
-      // TODO: Endpoint for downloading directly from website
-      url: ''
+      publication: video.KeySymbol,
+      track: video.Track,
+      issue: video.IssueTagNumber,
+      url: `/download/video?publication=${video.KeySymbol}&track=${video.Track}&issue=${video.IssueTagNumber}`
     }
   }
 

@@ -1,28 +1,36 @@
 import { ImageRow, VideoRow } from 'types/database'
 import { ImageDTO, VideoDTO } from 'types/dto'
 
-export class Mapper {
-  public static MapImage (image: ImageRow): ImageDTO {
+interface PublicationMapperCtor {
+  filename: string
+}
+
+export class PublicationMapper {
+  filename: string
+  constructor ({ filename }: PublicationMapperCtor) {
+    this.filename = filename
+  }
+
+  public MapImage (image: ImageRow): ImageDTO {
     return {
       caption: image.Caption,
       filePath: image.FilePath,
-      // TODO: Endpoint for downloading directly from downloads
-      url: ''
+      url: `/download/image?publication=${this.filename}&file=${image.FilePath}`
     }
   }
 
-  public static MapImages (images: ImageRow[]): ImageDTO[] {
+  public MapImages (images: ImageRow[]): ImageDTO[] {
     return images.map(image => this.MapImage(image))
   }
 
-  public static MapVideo (video: VideoRow): VideoDTO {
+  public MapVideo (video: VideoRow): VideoDTO {
     return {
       // TODO: Endpoint for downloading directly from website
       url: ''
     }
   }
 
-  public static MapVideos (videos: VideoRow[]): VideoDTO[] {
+  public MapVideos (videos: VideoRow[]): VideoDTO[] {
     return videos.map(video => this.MapVideo(video))
   }
 }

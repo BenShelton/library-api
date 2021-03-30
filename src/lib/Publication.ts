@@ -1,6 +1,6 @@
 import { join } from 'path'
 
-import { Mapper } from './Mapper'
+import { PublicationMapper } from './Mapper'
 import { openDatabase } from 'src/database'
 import { DOWNLOAD_DIR, PUBLICATION_CLASSES } from 'src/constants'
 
@@ -17,10 +17,12 @@ interface PublicationCtor {
 export class Publication {
   filename: string
   path: string
+  private _mapper: PublicationMapper
 
   constructor ({ filename }: PublicationCtor) {
     this.filename = filename
     this.path = join(DOWNLOAD_DIR, filename)
+    this._mapper = new PublicationMapper({ filename })
   }
 
   private async getDatabase (): ReturnType<typeof openDatabase> {
@@ -41,7 +43,7 @@ export class Publication {
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const db = await this.getDatabase()
     const rows = await db.all<ImageRow[]>(query)
-    return Mapper.MapImages(rows)
+    return this._mapper.MapImages(rows)
   }
 
   async getVideos (date: string): Promise<VideoDTO[]> {
@@ -54,7 +56,7 @@ export class Publication {
       WHERE DM.DocumentId = 1 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const db = await this.getDatabase()
     const rows = await db.all<VideoRow[]>(query)
-    return Mapper.MapVideos(rows)
+    return this._mapper.MapVideos(rows)
   }
 
   async getArticles (): Promise<ArticleRow[]> {

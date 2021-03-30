@@ -1,6 +1,6 @@
 {
   "*.{ts,js}": [
-    "eslint --fix",
-    "jest --bail --findRelatedTests"
+    "yarn workspaces run husky:lint",
+    "yarn workspaces run husky:test"
   ]
 }

@@ -15,10 +15,10 @@ interface PublicationCtor {
 /**
  * Provides methods for interacting with a downloaded publication.
  */
-export class Publication {
+class BasePublication {
   filename: string
   path: string
-  private _mapper: PublicationMapper
+  _mapper: PublicationMapper
 
   constructor ({ filename, dir }: PublicationCtor) {
     this.filename = filename
@@ -26,12 +26,20 @@ export class Publication {
     this._mapper = new PublicationMapper({ filename })
   }
 
-  private async getDatabase (): ReturnType<typeof openDatabase> {
+  async getDatabase (): ReturnType<typeof openDatabase> {
     const dbPath = join(this.path, 'contents', this.filename + '.db')
     return openDatabase(dbPath)
   }
+}
 
-  async getImages (date: string): Promise<ImageDTO[]> {
+interface Publication extends BasePublication {
+  getImages (date: string): Promise<ImageDTO[]>
+  getVideos (date: string): Promise<VideoDTO[]>
+  getArticles (): Promise<ArticleRow[]>
+}
+
+export class PublicationWT extends BasePublication implements Publication {
+  async getImages (date: string) {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT D.ContextTitle, M.Caption, M.FilePath
@@ -47,7 +55,7 @@ export class Publication {
     return this._mapper.MapImages(rows)
   }
 
-  async getVideos (date: string): Promise<VideoDTO[]> {
+  async getVideos (date: string) {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT M.KeySymbol, M.Track, M.IssueTagNumber
@@ -60,7 +68,7 @@ export class Publication {
     return this._mapper.MapVideos(rows)
   }
 
-  async getArticles (): Promise<ArticleRow[]> {
+  async getArticles () {
     const query = `
       SELECT DocumentId, ContextTitle, Title
       FROM Document

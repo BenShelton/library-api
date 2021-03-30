@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import { catalog } from './catalog'
+import { download } from './download'
 import { media } from './media'
 import { getCatalogRows } from 'src/database'
 
@@ -18,6 +19,7 @@ router.get('/monthly-publications', async (req, res) => {
 })
 
 router.use('/catalog', catalog)
+router.use('/download', download)
 router.use('/media', media)
 
 // handle 404

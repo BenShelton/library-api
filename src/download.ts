@@ -9,6 +9,8 @@ import { Extract } from 'unzipper'
 
 import { CATALOG_URL, DOWNLOAD_DIR, PUBLICATION_URL } from './constants'
 
+import { GetMediaPubLinks } from 'types/hag'
+
 const streamPipeline = promisify(pipeline)
 
 function checkStatus (res: Response): Response {
@@ -45,6 +47,18 @@ export async function downloadPublication (url: string, path: string): Promise<v
     Extract({ path: contentsPath })
   )
   await unlink(zipPath)
+}
+
+export async function downloadVideoStream ({ publication, track, issue } : { publication: string, track: number, issue: number }): Promise<NodeJS.ReadableStream | null> {
+  const url = `https://api.hag27.com/GETPUBMEDIALINKS?output=json&pub=${publication}&langwritten=E&alllangs=0&txtCMSLang=E&track=${track}&fileformat=mp4,m4v&issue=${issue}`
+  const hagRes = await fetch(url)
+  checkStatus(hagRes)
+  const options: GetMediaPubLinks = await hagRes.json()
+  const downloadFile = options.files.E.MP4.find(f => f.label === '720p')
+  if (!downloadFile) return null
+  const fileRes = await fetch(downloadFile.file.url)
+  checkStatus(fileRes)
+  return fileRes.body
 }
 
 export async function extractZip (path: string): Promise<void> {

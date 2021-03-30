@@ -8,6 +8,21 @@ export namespace Catalog {
   }
 }
 
+export namespace Download {
+  export namespace Image {
+    export interface QueryParams {
+      publication: string
+      file: string
+    }
+    export interface Response {
+      message: {
+        images: ImageDTO[]
+        videos: VideoDTO[]
+      }
+    }
+  }
+}
+
 export namespace Media {
   export namespace Watchtower {
     export interface QueryParams {

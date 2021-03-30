@@ -12,7 +12,7 @@ import { Media } from 'types/api'
 const router = Router()
 
 router.get('/watchtower', async (req, res) => {
-  const { date } = req.query as Media.Watchtower.QueryParams
+  const { date } = req.query as Partial<Media.Watchtower.QueryParams>
   if (!isValidDate(date)) return res.status(401).json({ message: 'Invalid Date' })
 
   const pubQuery = `

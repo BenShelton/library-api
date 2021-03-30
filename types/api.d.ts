@@ -11,7 +11,7 @@ export namespace Catalog {
 export namespace Media {
   export namespace Watchtower {
     export interface QueryParams {
-      date?: string
+      date: string
     }
     export interface Response {
       message: {

@@ -36,4 +36,15 @@ export namespace Media {
       }
     }
   }
+  export namespace OCLM {
+    export interface QueryParams {
+      date: string
+    }
+    export interface Response {
+      message: {
+        images: ImageDTO[]
+        videos: VideoDTO[]
+      }
+    }
+  }
 }

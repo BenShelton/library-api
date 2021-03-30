@@ -3,7 +3,7 @@ import { getCatalogRow, PUBLICATION_TYPES } from '@library-api/core'
 import { PublicationRow } from '@library-api/core/types/database'
 
 import { CATALOG_PATH } from '../constants'
-import { getPublication } from '../publication'
+import { getPublicationWT } from '../publication'
 import { isValidDate } from '../utils'
 
 import { Media } from '../../types/api'
@@ -23,7 +23,7 @@ router.get('/watchtower', async (req, res) => {
   const result = await getCatalogRow<PublicationRow>(CATALOG_PATH, pubQuery)
   if (!result) return res.status(404).json({ message: 'No Watchtower Found' })
 
-  const publication = await getPublication(result)
+  const publication = await getPublicationWT(result)
   const images = await publication.getImages(date)
   const videos = await publication.getVideos(date)
 

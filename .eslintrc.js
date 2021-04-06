@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     es2021: true,
     node: true
@@ -16,5 +17,8 @@ module.exports = {
   ],
   rules: {
     'no-undef': 'off' // redundant in TS
-  }
+  },
+  ignorePatterns: [
+    'dist/*'
+  ]
 }

@@ -17,19 +17,14 @@ Commit messages are enforced with Commitizen.
 Run the following commands to get started:
 
 ```bash
-# Install dependencies
-yarn install
+# Bootstrap project (install dependencies & build TS definitions)
+yarn bootstrap
 
-# Start server with hot reload for development
-yarn dev
+# Run a command in a certain workspace
+yarn workspace [workspace] [command]
+# For example to run `yarn dev` in the `express` workspace
+yarn workspace @library-api/express dev
 
-# Check for compilation errors & lint
-yarn lint
-
-# Run test suite
-yarn test
-
-# Compile to executable file & run
-yarn build
-yarn start
+# Shortcuts exist for the main packages
+yarn express [command]
 ```

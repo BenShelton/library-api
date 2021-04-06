@@ -1,5 +1,5 @@
-import { ImageRow, VideoRow } from 'types/database'
-import { ImageDTO, VideoDTO } from 'types/dto'
+import { ImageRow, VideoRow } from '../types/database'
+import { ImageDTO, VideoDTO } from '../types/dto'
 
 interface PublicationMapperCtor {
   filename: string

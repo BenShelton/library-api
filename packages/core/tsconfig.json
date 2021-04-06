@@ -11,10 +11,5 @@
   ],
   "exclude": [
     "**/*.spec.ts"
-  ],
-  "references": [
-    {
-      "path": "../core/tsconfig.json"
-    }
   ]
 }

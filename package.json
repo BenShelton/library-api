@@ -11,6 +11,7 @@
     "bootstrap": "yarn && yarn clean && yarn build",
     "build": "yarn workspaces run build",
     "clean": "yarn workspaces run clean",
+    "core": "yarn workspace @library-api/core",
     "express": "yarn workspace @library-api/express"
   },
   "devDependencies": {

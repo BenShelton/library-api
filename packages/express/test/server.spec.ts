@@ -1,12 +1,12 @@
 import express from 'express'
 import { mocked } from 'ts-jest/utils'
 
-import 'src/server'
-import * as utils from 'src/utils'
-import { DOWNLOAD_DIR } from 'src/constants'
+import '@/server'
+import * as utils from '@/utils'
+import { DOWNLOAD_DIR } from '@/constants'
 
-jest.mock('src/utils')
-jest.mock('src/catalog')
+jest.mock('@/utils')
+jest.mock('@/catalog')
 jest.mock('express', () => {
   return {
     ...jest.requireActual<typeof import('express')>('express'),

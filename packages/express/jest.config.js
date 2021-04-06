@@ -1,6 +1,6 @@
 const { pathsToModuleNameMapper } = require('ts-jest/utils')
 
-const { compilerOptions } = require('./tsconfig')
+const { compilerOptions } = require('./test/tsconfig.json')
 
 module.exports = {
   globals: {
@@ -14,10 +14,10 @@ module.exports = {
     'js'
   ],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.ts$': 'ts-jest'
   },
   testMatch: [
-    '**/test/**/*.spec.ts'
+    '<rootDir>/test/**/*.spec.ts'
   ],
   testEnvironment: 'node'
 }

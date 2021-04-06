@@ -2,11 +2,11 @@ import { Router } from 'express'
 import { getCatalogRow, PUBLICATION_TYPES } from '@library-api/core'
 import { PublicationRow } from '@library-api/core/types/database'
 
-import { CATALOG_PATH } from 'src/constants'
-import { getPublication } from 'src/publication'
-import { isValidDate } from 'src/utils'
+import { CATALOG_PATH } from '../constants'
+import { getPublication } from '../publication'
+import { isValidDate } from '../utils'
 
-import { Media } from 'types/api'
+import { Media } from '../../types/api'
 
 const router = Router()
 

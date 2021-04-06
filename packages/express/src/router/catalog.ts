@@ -1,9 +1,9 @@
 
 import { Router } from 'express'
 
-import { updateCatalog } from 'src/catalog'
+import { updateCatalog } from '../catalog'
 
-import { Catalog } from 'types/api'
+import { Catalog } from '../../types/api'
 
 const router = Router()
 

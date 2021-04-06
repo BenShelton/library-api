@@ -1,6 +1,6 @@
-import { CATALOG_PATH } from 'src/constants'
-import { checkExists } from 'src/utils'
-import { downloadCatalog } from 'src/download'
+import { CATALOG_PATH } from './constants'
+import { checkExists } from './utils'
+import { downloadCatalog } from './download'
 
 /**
  * Checks whether the currently downloaded catalog is the latest version & updates it if not.

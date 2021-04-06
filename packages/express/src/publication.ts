@@ -2,9 +2,9 @@ import { join } from 'path'
 import { Publication } from '@library-api/core'
 import { PublicationRow } from '@library-api/core/types/database'
 
-import { DOWNLOAD_DIR } from 'src/constants'
-import { checkExists } from 'src/utils'
-import { downloadPublication } from 'src/download'
+import { DOWNLOAD_DIR } from './constants'
+import { checkExists } from './utils'
+import { downloadPublication } from './download'
 
 export async function getPublication (row: PublicationRow): Promise<Publication> {
   const filename = row.NameFragment.split('/').pop()!.replace('.jwpub', '')

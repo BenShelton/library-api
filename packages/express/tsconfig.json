@@ -1,28 +1,15 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2019",
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "sourceMap": true,
-    "outDir": "dist",
     "baseUrl": ".",
-    "resolveJsonModule": true,
-    "strict": true,
-    "paths": {
-      "src/*": [
-        "src/*"
-      ]
-    },
-    "types": [
-      "node"
-    ]
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
   },
   "include": [
-    "types/**/*.ts",
-    "src/**/*.ts"
+    "src"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
   ]
 }

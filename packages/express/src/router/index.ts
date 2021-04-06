@@ -5,7 +5,7 @@ import { PublicationRow } from '@library-api/core/types/database'
 import { catalog } from './catalog'
 import { download } from './download'
 import { media } from './media'
-import { CATALOG_PATH } from 'src/constants'
+import { CATALOG_PATH } from '../constants'
 
 const router = Router()
 

@@ -2,11 +2,11 @@ import { Router } from 'express'
 import { join } from 'path'
 import { createReadStream } from 'fs'
 
-import { DOWNLOAD_DIR } from 'src/constants'
-import { checkExists } from 'src/utils'
-import { downloadVideoStream } from 'src/download'
+import { DOWNLOAD_DIR } from '../constants'
+import { checkExists } from '../utils'
+import { downloadVideoStream } from '../download'
 
-import { Download } from 'types/api'
+import { Download } from '../../types/api'
 
 const router = Router()
 

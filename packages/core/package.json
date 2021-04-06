@@ -1,0 +1,37 @@
+{
+  "name": "@library-api/core",
+  "version": "0.1.0",
+  "description": "Core tools for use with @library-api packages.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "tsc --build tsconfig.json",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
+    "test": "jest --coverage -t",
+    "test:watch": "jest --watch-all -t",
+    "husky:lint": "yarn lint",
+    "husky:test": "jest --bail --findRelatedTests"
+  },
+  "keywords": [
+    "jw",
+    "media",
+    "library",
+    "meetings",
+    "publications",
+    "api",
+    "core"
+  ],
+  "dependencies": {
+    "sqlite": "^4.0.19",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/sqlite3": "^3.1.7"
+  },
+  "license": "MIT"
+}

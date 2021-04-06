@@ -1,4 +1,4 @@
-import { ImageDTO, VideoDTO } from './dto'
+import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
 
 export namespace Catalog {
   export namespace Update {

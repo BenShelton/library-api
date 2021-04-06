@@ -1,14 +1,15 @@
 import { join } from 'path'
 
 import { PublicationMapper } from './Mapper'
-import { openDatabase } from 'src/database'
-import { DOWNLOAD_DIR, PUBLICATION_CLASSES } from 'src/constants'
+import { openDatabase } from './database'
+import { PUBLICATION_CLASSES } from './constants'
 
-import { ArticleRow, ImageRow, VideoRow } from 'types/database'
-import { ImageDTO, VideoDTO } from 'types/dto'
+import { ArticleRow, ImageRow, VideoRow } from '../types/database'
+import { ImageDTO, VideoDTO } from '../types/dto'
 
 interface PublicationCtor {
   filename: string
+  dir: string
 }
 
 /**
@@ -19,9 +20,9 @@ export class Publication {
   path: string
   private _mapper: PublicationMapper
 
-  constructor ({ filename }: PublicationCtor) {
+  constructor ({ filename, dir }: PublicationCtor) {
     this.filename = filename
-    this.path = join(DOWNLOAD_DIR, filename)
+    this.path = join(dir, filename)
     this._mapper = new PublicationMapper({ filename })
   }
 

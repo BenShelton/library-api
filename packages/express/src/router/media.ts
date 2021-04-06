@@ -1,12 +1,11 @@
-
 import { Router } from 'express'
+import { getCatalogRow, PUBLICATION_TYPES } from '@library-api/core'
+import { PublicationRow } from '@library-api/core/types/database'
 
-import { PUBLICATION_TYPES } from 'src/constants'
-import { getCatalogRow } from 'src/database'
+import { CATALOG_PATH } from 'src/constants'
 import { getPublication } from 'src/publication'
 import { isValidDate } from 'src/utils'
 
-import { PublicationRow } from 'types/database'
 import { Media } from 'types/api'
 
 const router = Router()
@@ -21,7 +20,7 @@ router.get('/watchtower', async (req, res) => {
     INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
     INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
     WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = 0 AND PublicationTypeId = ${PUBLICATION_TYPES.WATCHTOWER}`
-  const result = await getCatalogRow<PublicationRow>(pubQuery)
+  const result = await getCatalogRow<PublicationRow>(CATALOG_PATH, pubQuery)
   if (!result) return res.status(404).json({ message: 'No Watchtower Found' })
 
   const publication = await getPublication(result)

@@ -6,10 +6,10 @@ import { promisify } from 'util'
 import { createGunzip } from 'zlib'
 import fetch, { Response } from 'node-fetch'
 import { Extract } from 'unzipper'
+import { CATALOG_URL, PUBLICATION_URL } from '@library-api/core'
+import { GetMediaPubLinks } from '@library-api/core/types/hag'
 
-import { CATALOG_URL, DOWNLOAD_DIR, PUBLICATION_URL } from './constants'
-
-import { GetMediaPubLinks } from 'types/hag'
+import { DOWNLOAD_DIR } from './constants'
 
 const streamPipeline = promisify(pipeline)
 

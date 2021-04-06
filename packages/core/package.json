@@ -15,7 +15,8 @@
     "test": "jest --coverage -t",
     "test:watch": "jest --watch-all -t",
     "husky:lint": "yarn lint",
-    "husky:test": "jest --bail --findRelatedTests"
+    "husky:test": "jest --bail",
+    "husky:test:staged": "jest --bail --findRelatedTests"
   },
   "keywords": [
     "jw",

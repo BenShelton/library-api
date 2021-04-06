@@ -1,6 +1,6 @@
 {
   "*.{ts,js}": [
     "yarn workspaces run husky:lint",
-    "yarn workspaces run husky:test"
+    "yarn workspaces run husky:test:staged"
   ]
 }

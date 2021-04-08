@@ -99,13 +99,12 @@ export class PublicationOCLM extends BasePublication implements Publication {
 
   async getVideos (date: string) {
     const offsetDate = date.replace(/-/g, '')
-    // TODO: Update this query
     const query = `
-      SELECT M.KeySymbol, M.Track, M.IssueTagNumber
+      SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
-      INNER JOIN DatedText AS DT ON DT.BeginParagraphOrdinal = DM.BeginParagraphOrdinal
-      WHERE DM.DocumentId = 1 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
+      INNER JOIN DatedText AS DT ON DT.DocumentId = DM.DocumentId
+      WHERE M.DataType = 2 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const db = await this.getDatabase()
     const rows = await db.all<VideoRow[]>(query)
     return this._mapper.MapVideos(rows)

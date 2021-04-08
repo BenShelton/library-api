@@ -16,7 +16,9 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'no-undef': 'off' // redundant in TS
+    'no-undef': 'off', // redundant in TS
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-dupe-class-members': ['error']
   },
   ignorePatterns: [
     'dist/*'

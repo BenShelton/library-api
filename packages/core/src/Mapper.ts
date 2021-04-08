@@ -23,12 +23,29 @@ export class PublicationMapper {
     return images.map(image => this.MapImage(image))
   }
 
+  private _videoType (video: VideoRow): Pick<VideoDTO, 'type' | 'id'> {
+    if (video.KeySymbol) {
+      return { type: 'pub', id: video.KeySymbol }
+    } else if (video.MepsDocumentId) {
+      return { type: 'doc', id: video.MepsDocumentId }
+    }
+    throw new Error('Unknown video type')
+  }
+
   public MapVideo (video: VideoRow): VideoDTO {
+    const { type, id } = this._videoType(video)
+    const urlSearchParams = new URLSearchParams({
+      type,
+      id: String(id),
+      track: String(video.Track),
+      issue: String(video.IssueTagNumber)
+    })
     return {
-      publication: video.KeySymbol,
+      type,
+      id,
       track: video.Track,
       issue: video.IssueTagNumber,
-      url: `/download/video?publication=${video.KeySymbol}&track=${video.Track}&issue=${video.IssueTagNumber}`
+      url: '/download/video?' + urlSearchParams.toString()
     }
   }
 

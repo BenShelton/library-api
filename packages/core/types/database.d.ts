@@ -12,11 +12,22 @@ export interface ImageRow {
   FilePath: string
 }
 
-export interface VideoRow {
-  KeySymbol: string
+interface VideoRowBase {
   Track: number
   IssueTagNumber: number
 }
+
+export interface VideoRowPub extends VideoRowBase {
+  KeySymbol: string
+  MepsDocumentId: null
+}
+
+export interface VideoRowDoc extends VideoRowBase {
+  KeySymbol: null
+  MepsDocumentId: number
+}
+
+export type VideoRow = VideoRowPub | VideoRowDoc
 
 export interface ArticleRow {
   DocumentId: number

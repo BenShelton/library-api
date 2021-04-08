@@ -39,31 +39,50 @@ describe('Mapper', () => {
       })
 
       describe('MapVideo', () => {
-        test('should return a mapped image', () => {
+        test('should return a mapped video (pub)', () => {
           const mapper = new PublicationMapper({ filename: 'name' })
           const result = mapper.MapVideo({
             IssueTagNumber: 1,
             Track: 2,
-            KeySymbol: 'key'
+            KeySymbol: 'key',
+            MepsDocumentId: null
           })
           expect(result).toEqual<VideoDTO>({
-            publication: 'key',
+            type: 'pub',
+            id: 'key',
             track: 2,
             issue: 1,
-            url: '/download/video?publication=key&track=2&issue=1'
+            url: '/download/video?type=pub&id=key&track=2&issue=1'
+          })
+        })
+
+        test('should return a mapped video (doc)', () => {
+          const mapper = new PublicationMapper({ filename: 'name' })
+          const result = mapper.MapVideo({
+            IssueTagNumber: 1,
+            Track: 2,
+            KeySymbol: null,
+            MepsDocumentId: 3
+          })
+          expect(result).toEqual<VideoDTO>({
+            type: 'doc',
+            id: 3,
+            track: 2,
+            issue: 1,
+            url: '/download/video?type=doc&id=3&track=2&issue=1'
           })
         })
       })
 
       describe('MapVideos', () => {
-        test('should return multiple mapped images', () => {
+        test('should return multiple mapped videos', () => {
           const mapper = new PublicationMapper({ filename: 'name' })
-          const mockVideo: VideoDTO = { publication: '', track: 0, issue: 0, url: '' }
+          const mockVideo: VideoDTO = { type: 'pub', id: '', track: 0, issue: 0, url: '' }
           const spy = jest.spyOn(mapper, 'MapVideo').mockReturnValue(mockVideo)
           const mockVideoRows: VideoRow[] = [
-            { KeySymbol: 'key1', IssueTagNumber: 1, Track: 11 },
-            { KeySymbol: 'key2', IssueTagNumber: 2, Track: 12 },
-            { KeySymbol: 'key3', IssueTagNumber: 3, Track: 13 }
+            { KeySymbol: 'key1', IssueTagNumber: 1, Track: 11, MepsDocumentId: null },
+            { KeySymbol: 'key2', IssueTagNumber: 2, Track: 12, MepsDocumentId: null },
+            { KeySymbol: 'key3', IssueTagNumber: 3, Track: 13, MepsDocumentId: null }
           ]
           const result = mapper.MapVideos(mockVideoRows)
           expect(spy.mock.calls).toEqual([[mockVideoRows[0]], [mockVideoRows[1]], [mockVideoRows[2]]])

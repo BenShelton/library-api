@@ -5,7 +5,8 @@ export interface ImageDTO {
 }
 
 export interface VideoDTO {
-  publication: string
+  type: 'pub' | 'doc'
+  id: string | number
   track: number
   issue: number
   url: string

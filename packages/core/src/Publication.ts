@@ -82,15 +82,14 @@ export class PublicationWT extends BasePublication implements Publication {
 export class PublicationOCLM extends BasePublication implements Publication {
   async getImages (date: string) {
     const offsetDate = date.replace(/-/g, '')
-    // TODO: Update this query
     const query = `
-      SELECT D.ContextTitle, M.Caption, M.FilePath
+      SELECT DISTINCT D.ContextTitle, M.Caption, M.FilePath
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN Document D ON DM.DocumentId = D.DocumentId
       INNER JOIN InternalLink IL ON IL.MepsDocumentId = D.MepsDocumentId
       INNER JOIN DocumentInternalLink AS DIL ON DIL.InternalLinkId = IL.InternalLinkId
-      INNER JOIN DatedText AS DT ON DT.EndParagraphOrdinal = DIL.EndParagraphOrdinal
+      INNER JOIN DatedText AS DT ON DT.DocumentId = DIL.DocumentId
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const db = await this.getDatabase()
     const rows = await db.all<ImageRow[]>(query)

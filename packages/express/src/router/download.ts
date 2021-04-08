@@ -19,11 +19,9 @@ router.get('/image', (req, res) => {
 })
 
 router.get('/video', async (req, res) => {
-  const { publication, track, issue } = req.query as Partial<Download.Video.QueryParams>
-  const trackNum = Number(track)
-  const issueNum = Number(issue)
-  if (!publication || isNaN(trackNum) || isNaN(issueNum)) return res.status(401).json({ message: 'Publication, Track and Issue are required' })
-  const stream = await downloadVideoStream({ publication, track: trackNum, issue: issueNum })
+  const { type, id, track, issue } = req.query as Partial<Download.Video.QueryParams>
+  if (!type || !id || !track || !issue) return res.status(401).json({ message: 'Type, Id, Track and Issue are required' })
+  const stream = await downloadVideoStream({ type, id, track, issue })
   if (!stream) return res.status(404).json({ message: 'No Video Found' })
   return stream.pipe(res)
 })

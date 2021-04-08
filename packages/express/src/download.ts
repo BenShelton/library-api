@@ -8,6 +8,7 @@ import fetch, { Response } from 'node-fetch'
 import { Extract } from 'unzipper'
 import { CATALOG_URL, PUBLICATION_URL } from '@library-api/core'
 import { GetMediaPubLinks } from '@library-api/core/types/hag'
+import { VideoDTO } from '@library-api/core/types/dto'
 
 import { DOWNLOAD_DIR } from './constants'
 
@@ -49,8 +50,22 @@ export async function downloadPublication (url: string, path: string): Promise<v
   await unlink(zipPath)
 }
 
-export async function downloadVideoStream ({ publication, track, issue } : { publication: string, track: number, issue: number }): Promise<NodeJS.ReadableStream | null> {
-  const url = `https://api.hag27.com/GETPUBMEDIALINKS?output=json&pub=${publication}&langwritten=E&alllangs=0&txtCMSLang=E&track=${track}&fileformat=mp4,m4v&issue=${issue}`
+export async function downloadVideoStream ({ type, id, track, issue } : { type: VideoDTO['type'], id: string, track: string, issue: string }): Promise<NodeJS.ReadableStream | null> {
+  const url = new URL('https://api.hag27.com/GETPUBMEDIALINKS')
+  url.searchParams.append('output', 'json')
+  url.searchParams.append('langwritten', 'E')
+  url.searchParams.append('alllangs', '0')
+  url.searchParams.append('txtCMSLang', 'E')
+  url.searchParams.append('fileformat', 'mp4')
+  switch (type) {
+    case 'pub':
+      url.searchParams.append('pub', id)
+      break
+    case 'doc':
+      url.searchParams.append('docid', id)
+  }
+  url.searchParams.append('track', track)
+  url.searchParams.append('issue', issue)
   const hagRes = await fetch(url)
   checkStatus(hagRes)
   const options: GetMediaPubLinks = await hagRes.json()

@@ -58,7 +58,7 @@ export class PublicationWT extends BasePublication implements Publication {
   async getVideos (date: string) {
     const offsetDate = date.replace(/-/g, '')
     const query = `
-      SELECT M.KeySymbol, M.Track, M.IssueTagNumber
+      SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN DatedText AS DT ON DT.BeginParagraphOrdinal = DM.BeginParagraphOrdinal

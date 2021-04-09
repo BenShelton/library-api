@@ -39,7 +39,7 @@ interface Publication extends BasePublication {
 }
 
 export class PublicationWT extends BasePublication implements Publication {
-  async getImages (date: string) {
+  async getImages (date: string): Promise<ImageDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT D.ContextTitle, M.Caption, M.FilePath
@@ -55,7 +55,7 @@ export class PublicationWT extends BasePublication implements Publication {
     return this._mapper.MapImages(rows)
   }
 
-  async getVideos (date: string) {
+  async getVideos (date: string): Promise<VideoDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId
@@ -68,7 +68,7 @@ export class PublicationWT extends BasePublication implements Publication {
     return this._mapper.MapVideos(rows)
   }
 
-  async getArticles () {
+  async getArticles (): Promise<ArticleRow[]> {
     const query = `
       SELECT DocumentId, ContextTitle, Title
       FROM Document
@@ -80,7 +80,7 @@ export class PublicationWT extends BasePublication implements Publication {
 }
 
 export class PublicationOCLM extends BasePublication implements Publication {
-  async getImages (date: string) {
+  async getImages (date: string): Promise<ImageDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT DISTINCT D.ContextTitle, M.Caption, M.FilePath
@@ -96,7 +96,7 @@ export class PublicationOCLM extends BasePublication implements Publication {
     return this._mapper.MapImages(rows)
   }
 
-  async getVideos (date: string) {
+  async getVideos (date: string): Promise<VideoDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = `
       SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId
@@ -109,7 +109,7 @@ export class PublicationOCLM extends BasePublication implements Publication {
     return this._mapper.MapVideos(rows)
   }
 
-  async getArticles () {
+  async getArticles (): Promise<ArticleRow[]> {
     const query = `
       SELECT DocumentId, ContextTitle, Title
       FROM Document

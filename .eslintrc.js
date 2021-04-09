@@ -1,11 +1,16 @@
+/**
+ * @type { import('eslint').Linter.Config }
+ */
 module.exports = {
   root: true,
   env: {
     es2021: true,
-    node: true
+    node: true,
+    browser: false
   },
   extends: [
-    'standard'
+    'standard',
+    'plugin:@typescript-eslint/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -15,12 +20,15 @@ module.exports = {
   plugins: [
     '@typescript-eslint'
   ],
-  rules: {
-    'no-undef': 'off', // redundant in TS
-    'no-dupe-class-members': 'off',
-    '@typescript-eslint/no-dupe-class-members': ['error']
-  },
   ignorePatterns: [
     'dist/*'
+  ],
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off'
+      }
+    }
   ]
 }

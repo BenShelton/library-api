@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
+    "lint": "tsc --noEmit && eslint . --ext js,ts --quiet --fix",
     "test": "jest --coverage -t",
     "test:watch": "jest --watch-all -t",
     "husky:lint": "yarn lint",

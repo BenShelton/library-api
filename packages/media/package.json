@@ -1,0 +1,47 @@
+{
+  "name": "@library-api/media",
+  "version": "0.1.0",
+  "description": "A cross-platform application that simplifies showing media for meetings of Jehovah's Witnesses.",
+  "main": "app/main/dist/index.cjs",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "clean": "rm -rf dist",
+    "dev": "node scripts/watch.js",
+    "package": "electron-builder build --config electron-builder.config.js",
+    "lint": "eslint . --ext js,ts,vue --quiet --fix",
+    "start": "electron dist/index.js",
+    "test": "echo \"No tests written\"",
+    "test:watch": "yarn test",
+    "husky:lint": "yarn lint",
+    "husky:test": "yarn test",
+    "husky:test:staged": "yarn test"
+  },
+  "dependencies": {
+    "@library-api/core": "0.1.0",
+    "vue": "^3.0.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.11",
+    "chokidar": "^3.5.1",
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
+    "eslint-plugin-vue": "^7.8.0",
+    "vite": "^2.1.5"
+  },
+  "author": {
+    "name": "BenShelton",
+    "email": "bensheltonjones@gmail.com"
+  },
+  "keywords": [
+    "jw",
+    "media",
+    "library",
+    "meetings",
+    "publications",
+    "api",
+    "electron",
+    "cross-platform"
+  ],
+  "license": "MIT"
+}

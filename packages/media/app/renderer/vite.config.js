@@ -1,0 +1,26 @@
+/* eslint-env node */
+
+import { join } from 'path'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+const PACKAGE_ROOT = __dirname
+
+export default defineConfig({
+  root: PACKAGE_ROOT,
+  resolve: {
+    alias: {
+      '@/': join(PACKAGE_ROOT, 'src') + '/'
+    }
+  },
+  plugins: [vue()],
+  base: '',
+  build: {
+    sourcemap: true,
+    target: 'chrome89',
+    polyfillDynamicImport: false,
+    outDir: 'dist',
+    assetsDir: '.',
+    emptyOutDir: true
+  }
+})

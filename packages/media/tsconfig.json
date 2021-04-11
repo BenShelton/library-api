@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "types": [
+      "vite/client",
+      "node"
+    ]
+  },
+  "include": [],
+  "exclude": [],
+  "references": [
+    {
+      "path": "../core/tsconfig.json"
+    }
+  ]
+}

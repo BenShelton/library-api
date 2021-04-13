@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@library-api/core": "0.1.0",
-    "vue": "^3.0.11"
+    "vue": "^3.0.11",
+    "vue-router": "^4.0.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.1",

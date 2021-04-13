@@ -13,5 +13,9 @@ module.exports = {
   env: {
     browser: true,
     node: false
-  }
+  },
+  ignorePatterns: [
+    ...baseConfig.ignorePatterns,
+    'index.html'
+  ]
 }

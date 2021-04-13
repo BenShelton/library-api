@@ -1,41 +1,68 @@
 import { app, BrowserWindow } from 'electron'
-import { join } from 'path'
 import { URL } from 'url'
 
 if (!app.requestSingleInstanceLock()) {
   app.quit()
 }
 
-let mainWindow: BrowserWindow | null = null
+let controlWindow: BrowserWindow | null = null
+let displayWindow: BrowserWindow | null = null
 
-const createWindow = async () => {
-  mainWindow = new BrowserWindow({
-    show: true,
-    webPreferences: {
-      preload: join(__dirname, '../../preload/dist/index.cjs')
-    }
+async function createControlWindow (): Promise<void> {
+  controlWindow = new BrowserWindow({
+    title: 'Library Media - Control Panel',
+    show: true
   })
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
     new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
 
-  await mainWindow.loadURL(pageUrl)
+  await controlWindow.loadURL(pageUrl + '#control-panel')
 }
 
-app.on('second-instance', () => {
-  // Someone tried to run a second instance, we should focus our window.
-  if (mainWindow) {
-    if (mainWindow.isMinimized()) mainWindow.restore()
-    mainWindow.focus()
+async function createDisplayWindow (): Promise<void> {
+  displayWindow = new BrowserWindow({
+    title: 'Library Media - Display',
+    show: true,
+    alwaysOnTop: true
+  })
+
+  const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
+    new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
+
+  await displayWindow.loadURL(pageUrl + '#display')
+}
+
+async function refocusWindows (): Promise<void> {
+  if (controlWindow && !controlWindow.isDestroyed()) {
+    if (controlWindow.isMinimized()) controlWindow.restore()
+    controlWindow.focus()
+  } else {
+    await createControlWindow()
   }
+
+  if (displayWindow && !displayWindow.isDestroyed()) {
+    if (displayWindow.isMinimized()) displayWindow.restore()
+    displayWindow.focus()
+  } else {
+    await createDisplayWindow()
+  }
+}
+
+app.on('activate', async () => {
+  await refocusWindows()
+})
+
+app.on('second-instance', async () => {
+  await refocusWindows()
 })
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  app.quit()
 })
 
-app.whenReady()
-  .then(createWindow)
-  .catch((e) => console.error('Failed create window:', e))
+;(async () => {
+  await app.whenReady()
+  await createControlWindow()
+  await createDisplayWindow()
+})()

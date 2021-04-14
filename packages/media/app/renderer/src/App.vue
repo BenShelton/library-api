@@ -21,6 +21,12 @@ export default defineComponent({
   --background: #666666;
 }
 
+@font-face {
+  font-family: 'Quicksand';
+  src: url('@/assets/Quicksand.ttf') format('truetype-variations');
+  font-weight: 1 999;
+}
+
 html,
 body,
 #app {
@@ -30,6 +36,7 @@ body,
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  font-family: 'Quicksand';
 }
 
 * {

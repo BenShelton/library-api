@@ -11,7 +11,11 @@ let displayWindow: BrowserWindow | null = null
 async function createControlWindow (): Promise<void> {
   controlWindow = new BrowserWindow({
     title: 'Library Media - Control Panel',
-    show: true
+    show: true,
+    width: 450,
+    height: 600,
+    x: 20,
+    y: 20
   })
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
@@ -24,7 +28,9 @@ async function createDisplayWindow (): Promise<void> {
   displayWindow = new BrowserWindow({
     title: 'Library Media - Display',
     show: true,
-    alwaysOnTop: true
+    alwaysOnTop: true,
+    x: 500,
+    y: 20
   })
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||

@@ -25,7 +25,8 @@ export default defineConfig({
         'electron',
         'fs',
         'path',
-        'url'
+        'url',
+        '@library-api/core'
       ],
       output: {
         entryFileNames: '[name].cjs'

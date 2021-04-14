@@ -1,9 +1,9 @@
 import { Router } from 'express'
 import { join } from 'path'
 import { createReadStream } from 'fs'
+import { checkExists } from '@library-api/core'
 
 import { DOWNLOAD_DIR } from '../constants'
-import { checkExists } from '../utils'
 import { downloadVideoStream } from '../download'
 
 import { Download } from '../../types/api'

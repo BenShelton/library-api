@@ -2,10 +2,10 @@ import express from 'express'
 import { mocked } from 'ts-jest/utils'
 
 import '@/server'
-import * as utils from '@/utils'
+import * as core from '@library-api/core'
 import { DOWNLOAD_DIR } from '@/constants'
 
-jest.mock('@/utils')
+jest.mock('@library-api/core')
 jest.mock('@/catalog')
 jest.mock('express', () => {
   return {
@@ -18,12 +18,12 @@ jest.mock('express', () => {
   }
 })
 
-const mockedUtils = mocked(utils, true)
+const mockedCore = mocked(core, true)
 const mockedExpress = mocked(express, true)
 
 describe('Server', () => {
   test('should setup system files', () => {
-    expect(mockedUtils.createDir).lastCalledWith(DOWNLOAD_DIR)
+    expect(mockedCore.createDir).lastCalledWith(DOWNLOAD_DIR)
   })
 
   test('should start express', () => {

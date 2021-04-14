@@ -1,7 +1,7 @@
 import express from 'express'
+import { createDir } from '@library-api/core'
 
 import { updateCatalog } from './catalog'
-import { createDir } from './utils'
 import { router } from './router'
 import { DOWNLOAD_DIR } from './constants'
 

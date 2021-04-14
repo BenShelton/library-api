@@ -1,5 +1,6 @@
+import { checkExists } from '@library-api/core'
+
 import { CATALOG_PATH } from './constants'
-import { checkExists } from './utils'
 import { downloadCatalog } from './download'
 
 /**

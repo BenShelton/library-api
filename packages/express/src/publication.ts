@@ -1,9 +1,8 @@
 import { join } from 'path'
-import { PublicationWT, PublicationOCLM, PublicationCtor } from '@library-api/core'
+import { PublicationWT, PublicationOCLM, PublicationCtor, checkExists } from '@library-api/core'
 import { PublicationRow } from '@library-api/core/types/database'
 
 import { DOWNLOAD_DIR } from './constants'
-import { checkExists } from './utils'
 import { downloadPublication } from './download'
 
 async function getPublication (row: PublicationRow): Promise<PublicationCtor> {

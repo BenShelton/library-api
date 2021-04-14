@@ -1,10 +1,9 @@
 import { Router } from 'express'
-import { getCatalogRow, PUBLICATION_TYPES } from '@library-api/core'
+import { getCatalogRow, PUBLICATION_TYPES, isValidDate } from '@library-api/core'
 import { PublicationRow } from '@library-api/core/types/database'
 
 import { CATALOG_PATH } from '../constants'
 import { getPublicationWT, getPublicationOCLM } from '../publication'
-import { isValidDate } from '../utils'
 
 import { Media } from '../../types/api'
 

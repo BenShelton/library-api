@@ -1,5 +1,5 @@
 {
-  "*.{ts,js}": [
+  "*.{ts,js,vue}": [
     "yarn workspaces run husky:lint",
     "yarn workspaces run husky:test:staged"
   ]

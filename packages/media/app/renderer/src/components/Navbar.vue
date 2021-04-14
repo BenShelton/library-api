@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <span>Library Media</span>
+    <h2>Library Media</h2>
     <img
       class="icon"
       src="@/assets/icon.svg"
@@ -12,7 +12,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ControlPanel'
+  name: 'Navbar'
 })
 </script>
 
@@ -20,6 +20,7 @@ export default defineComponent({
 .navbar {
   width: 100vw;
   height: 64px;
+  flex: 0 0 64px;
   background-color: var(--primary);
   display: flex;
   align-items: center;

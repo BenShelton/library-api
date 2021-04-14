@@ -1,5 +1,8 @@
 import { app, BrowserWindow } from 'electron'
 import { URL } from 'url'
+import { checkExists } from '@library-api/core'
+
+import { CATALOG_PATH } from './constants'
 
 if (!app.requestSingleInstanceLock()) {
   app.quit()
@@ -21,7 +24,9 @@ async function createControlWindow (): Promise<void> {
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
     new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
 
-  await controlWindow.loadURL(pageUrl + '#control-panel')
+  const catalogExists = await checkExists(CATALOG_PATH)
+
+  await controlWindow.loadURL(pageUrl + '#/control-panel/' + (catalogExists ? 'media' : 'intro'))
 }
 
 async function createDisplayWindow (): Promise<void> {

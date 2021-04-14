@@ -1,11 +1,27 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-import ControlPanel from '@/pages/ControlPanel.vue'
+import ControlPanel from '@/pages/ControlPanel/Index.vue'
+import Intro from '@/pages/ControlPanel/Intro.vue'
 import Display from '@/pages/Display.vue'
 
-const routes = [
-  { path: '/control-panel', name: 'ControlPanel', component: ControlPanel },
-  { path: '/display', name: 'Display', component: Display }
+const routes: RouteRecordRaw[] = [
+  {
+    path: '/control-panel',
+    name: 'ControlPanel',
+    component: ControlPanel,
+    children: [
+      {
+        path: 'intro',
+        name: 'Intro',
+        component: Intro
+      }
+    ]
+  },
+  {
+    path: '/display',
+    name: 'Display',
+    component: Display
+  }
 ]
 
 export default createRouter({

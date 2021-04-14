@@ -43,6 +43,16 @@ body,
   box-sizing: border-box;
 }
 
+button {
+  padding: 8px 16px;
+  background-color: var(--button-active);
+  border: none;
+}
+
+button:disabled {
+  background-color: var(--button-disabled);
+}
+
 .container {
   width: 100%;
   height: 100%;

@@ -4,6 +4,14 @@ An API for easily accessing information related to meetings and publications of 
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+## Packages
+
+Click below to learn more about the individual packages Library API offers:
+
+- [Library Media](./packages/media/README.md) - A desktop app that makes sharing meeting media easy
+- [Library Express](./packages/express/README.md) - An express server for providing easy access to publication information
+- [Library Core](./packages/core/README.md) - Core tools used in other packages
+
 ## Development
 
 We recommend using VSCode for development, you should be prompted to install recommended extensions when first opening the project.

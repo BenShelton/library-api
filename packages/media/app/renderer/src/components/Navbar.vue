@@ -3,7 +3,7 @@
     <h2>Library Media</h2>
     <img
       class="icon"
-      src="@/assets/icon.svg"
+      src="@/assets/logo.svg"
     >
   </div>
 </template>

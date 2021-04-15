@@ -1,6 +1,8 @@
-# Library API Core
+# Library Core
 
-Core tools for use with @library-api packages.
+Core tools for internal use with other Library API packages.
+
+This package is brought to you by [Library API](../../README.md).
 
 ## Development
 

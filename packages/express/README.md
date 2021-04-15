@@ -1,6 +1,8 @@
-# Library API Express
+# Library Express
 
 An Express API for easily accessing information related to meetings and publications of Jehovah's Witnesses.
+
+This package is brought to you by [Library API](../../README.md).
 
 ## Development
 

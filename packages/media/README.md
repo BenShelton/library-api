@@ -1,6 +1,16 @@
-# Library API Media
+# Library Media
 
-A cross-platform application that simplifies showing media for meetings of Jehovah's Witnesses.
+![Library Media](./app/renderer/src/assets/logo-banner.png)
+
+A cross-platform desktop application that simplifies showing media for meetings of Jehovah's Witnesses.
+
+Finally, non-Windows users can now also display media in a more professional way.
+
+This package is brought to you by [Library API](../../README.md).
+
+## Download
+
+Coming soon
 
 ## Development
 

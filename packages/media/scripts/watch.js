@@ -61,11 +61,28 @@ function debounce (f, ms) {
 
   const buildMainDebounced = debounce(buildMain, TIMEOUT)
 
-  await buildMain()
+  const runPreload = debounce(() => {
+    viteDevServer.ws.send({
+      type: 'full-reload'
+    })
+  }, TIMEOUT)
+
+  const buildPreload = () => {
+    return build({ mode, configFile: 'app/preload/vite.config.js' })
+  }
+
+  const buildPreloadDebounced = debounce(buildPreload, TIMEOUT)
+
+  await Promise.all([
+    buildMain(),
+    buildPreload()
+  ])
 
   const watcher = chokidar.watch([
     'app/main/src/**',
-    'app/main/dist/**'
+    'app/main/dist/**',
+    'app/preload/src/**',
+    'app/preload/dist/**'
   ], { ignoreInitial: true })
 
   watcher
@@ -81,6 +98,10 @@ function debounce (f, ms) {
       if (normalizedPath.includes('/main/dist/')) {
         return runMain()
       }
+
+      if (spawnProcess !== undefined && normalizedPath.includes('/preload/dist/')) {
+        return runPreload(normalizedPath)
+      }
     })
     .on('change', (path) => {
       const normalizedPath = normalizePath(path)
@@ -91,6 +112,14 @@ function debounce (f, ms) {
 
       if (normalizedPath.includes('/main/dist/')) {
         return runMain()
+      }
+
+      if (normalizedPath.includes('/preload/src/')) {
+        return buildPreloadDebounced()
+      }
+
+      if (normalizedPath.includes('/preload/dist/')) {
+        return runPreload(normalizedPath)
       }
     })
 

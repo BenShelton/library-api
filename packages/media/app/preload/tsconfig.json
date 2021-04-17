@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "module": "es2020",
     "paths": {
       "@/*": [
         "src/*"
@@ -14,9 +15,7 @@
     ]
   },
   "include": [
-    "src/**/*.vue",
     "src/**/*.ts",
-    "types/**/*.d.ts",
-    "../preload/types/electron-api.d.ts"
+    "types/**/*.d.ts"
   ]
 }

@@ -7,6 +7,7 @@ const mode = process.env.MODE = process.env.MODE || 'production'
 
 const packagesConfigs = [
   'app/main/vite.config.js',
+  'app/preload/vite.config.js',
   'app/renderer/vite.config.js'
 ]
 

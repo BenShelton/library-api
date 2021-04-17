@@ -6,7 +6,6 @@ import * as core from '@library-api/core'
 import { DOWNLOAD_DIR } from '@/constants'
 
 jest.mock('@library-api/core')
-jest.mock('@/catalog')
 jest.mock('express', () => {
   return {
     ...jest.requireActual<typeof import('express')>('express'),

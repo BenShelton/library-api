@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import { URL } from 'url'
+import { join } from 'path'
 import { checkExists } from '@library-api/core'
 
 import { CATALOG_PATH } from './constants'
@@ -18,7 +19,10 @@ async function createControlWindow (): Promise<void> {
     width: 450,
     height: 600,
     x: 20,
-    y: 20
+    y: 20,
+    webPreferences: {
+      preload: join(__dirname, '../../preload/dist/index.cjs')
+    }
   })
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
@@ -35,7 +39,10 @@ async function createDisplayWindow (): Promise<void> {
     show: true,
     alwaysOnTop: true,
     x: 500,
-    y: 20
+    y: 20,
+    webPreferences: {
+      preload: join(__dirname, '../../preload/dist/index.cjs')
+    }
   })
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||

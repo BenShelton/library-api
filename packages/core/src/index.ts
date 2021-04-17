@@ -1,5 +1,6 @@
 export * from './constants'
 export * from './database'
+export * from './download'
 export * from './Mapper'
 export * from './Publication'
 export * from './utils'

@@ -1,7 +1,6 @@
-import { checkExists } from '@library-api/core'
+import { checkExists, downloadCatalog } from '@library-api/core'
 
 import { CATALOG_PATH } from './constants'
-import { downloadCatalog } from './download'
 
 /**
  * Checks whether the currently downloaded catalog is the latest version & updates it if not.
@@ -12,7 +11,7 @@ export async function updateCatalog (): Promise<boolean> {
   // TODO: Check for newer catalog & download
   const exists = await checkExists(CATALOG_PATH)
   if (!exists) {
-    await downloadCatalog()
+    await downloadCatalog(CATALOG_PATH)
     return true
   }
   return false

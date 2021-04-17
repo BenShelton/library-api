@@ -19,11 +19,15 @@
     "husky:test:staged": "jest --bail --findRelatedTests"
   },
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "sqlite": "^4.0.19",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "unzipper": "^0.10.11"
   },
   "devDependencies": {
-    "@types/sqlite3": "^3.1.7"
+    "@types/node-fetch": "^2.5.10",
+    "@types/sqlite3": "^3.1.7",
+    "@types/unzipper": "^0.10.3"
   },
   "author": {
     "name": "BenShelton",

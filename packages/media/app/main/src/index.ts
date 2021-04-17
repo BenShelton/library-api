@@ -1,6 +1,9 @@
 import { app } from 'electron'
+import { createDir } from '@library-api/core'
 
+import { initIPC } from './ipc'
 import { createWindows, refocusWindows } from './window'
+import { DOWNLOAD_DIR } from './constants'
 
 if (!app.requestSingleInstanceLock()) {
   app.quit()
@@ -19,6 +22,11 @@ app.on('window-all-closed', () => {
 })
 
 ;(async () => {
+  // setup system files
+  await createDir(DOWNLOAD_DIR)
+
+  // setup everything else
   await app.whenReady()
+  initIPC()
   await createWindows()
 })()

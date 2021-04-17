@@ -6,6 +6,7 @@ import { DOWNLOAD_DIR } from './constants'
 import { downloadPublication } from './download'
 
 async function getPublication (row: PublicationRow): Promise<PublicationCtor> {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const filename = row.NameFragment.split('/').pop()!.replace('.jwpub', '')
   const path = join(DOWNLOAD_DIR, filename)
   const exists = await checkExists(path)

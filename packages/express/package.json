@@ -12,7 +12,7 @@
     "build": "tsc --build tsconfig.json",
     "clean": "rm -rf dist",
     "dev": "tsc-watch --build --incremental --onSuccess \"yarn start\"",
-    "lint": "tsc --noEmit && eslint . --ext js,ts --quiet --fix",
+    "lint": "tsc --noEmit && eslint . --ext .js,.ts --fix",
     "start": "node dist/server.js",
     "test": "jest --coverage -t",
     "test:watch": "jest --watch-all -t",

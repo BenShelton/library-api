@@ -1,16 +1,15 @@
 import express from 'express'
-import { createDir } from '@library-api/core'
+import { createDir, updateCatalog } from '@library-api/core'
 
-import { updateCatalog } from './catalog'
 import { router } from './router'
-import { DOWNLOAD_DIR } from './constants'
+import { CATALOG_PATH, DOWNLOAD_DIR } from './constants'
 
 const PORT = 3000
 
 ;(async () => {
   // setup system files
   await createDir(DOWNLOAD_DIR)
-  await updateCatalog()
+  await updateCatalog(CATALOG_PATH)
 
   const app = express()
   app.use(router)

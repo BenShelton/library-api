@@ -2,12 +2,13 @@ import { join } from 'path'
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
-import { PublicationCtor, PublicationOCLM, PublicationWT } from './Publication'
+import { Publication } from './Publication'
 import { downloadPublication } from '../download'
 import { checkExists } from '../utils'
 import { PUBLICATION_TYPES } from '../constants'
 
 import { PublicationRow, QueryParams } from '../../types/database'
+import { PublicationType } from '../../types/publication'
 
 export class Database {
   private _database: ReturnType<typeof open>
@@ -32,17 +33,6 @@ export class Database {
 }
 
 export class CatalogDatabase extends Database {
-  private async _getPublicationCtor (row: PublicationRow, downloadDir: string): Promise<PublicationCtor> {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const filename = row.NameFragment.split('/').pop()!.replace('.jwpub', '')
-    const path = join(downloadDir, filename)
-    const exists = await checkExists(path)
-    if (!exists) {
-      await downloadPublication(row.NameFragment, path)
-    }
-    return { filename, dir: downloadDir }
-  }
-
   async getMonthlyPublications (): Promise<PublicationRow[]> {
     const query = `
       SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
@@ -51,31 +41,32 @@ export class CatalogDatabase extends Database {
     return this.getRows<PublicationRow>(query)
   }
 
-  async getWT (date: string, downloadDir: string): Promise<PublicationWT | null> {
-    const pubQuery = `
+  async getPublication (date: string, downloadDir: string, type: PublicationType): Promise<Publication | null> {
+    // TODO: Combine the queries below, they are almost identical
+    const pubQuery = type === 'wt'
+      ? `
       SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
       FROM Publication AS p
       INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
       INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
       WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = 0 AND PublicationTypeId = ${PUBLICATION_TYPES.WATCHTOWER}`
-    const result = await this.getRow<PublicationRow>(pubQuery)
-    if (!result) return null
-
-    const ctor = await this._getPublicationCtor(result, downloadDir)
-    return new PublicationWT(ctor)
-  }
-
-  async getOCLM (date: string, downloadDir: string): Promise<PublicationWT | null> {
-    const pubQuery = `
+      : `
       SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
       FROM Publication AS p
       INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
       INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
       WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = 0 AND PublicationTypeId = ${PUBLICATION_TYPES.OCLM}`
+
     const result = await this.getRow<PublicationRow>(pubQuery)
     if (!result) return null
 
-    const ctor = await this._getPublicationCtor(result, downloadDir)
-    return new PublicationOCLM(ctor)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const filename = result.NameFragment.split('/').pop()!.replace('.jwpub', '')
+    const path = join(downloadDir, filename)
+    const exists = await checkExists(path)
+    if (!exists) {
+      await downloadPublication(result.NameFragment, path)
+    }
+    return new Publication({ filename, dir: downloadDir, type })
   }
 }

@@ -13,9 +13,9 @@ export class PublicationMapper {
 
   public MapImage (image: ImageRow): ImageDTO {
     return {
+      filename: this.filename,
       caption: image.Caption,
-      filePath: image.FilePath,
-      url: `/download/image?publication=${this.filename}&file=${image.FilePath}`
+      filePath: image.FilePath
     }
   }
 
@@ -34,18 +34,12 @@ export class PublicationMapper {
 
   public MapVideo (video: VideoRow): VideoDTO {
     const { type, id } = this._videoType(video)
-    const urlSearchParams = new URLSearchParams({
-      type,
-      id: String(id),
-      track: String(video.Track),
-      issue: String(video.IssueTagNumber)
-    })
     return {
+      filename: this.filename,
       type,
       id,
       track: video.Track,
-      issue: video.IssueTagNumber,
-      url: '/download/video?' + urlSearchParams.toString()
+      issue: video.IssueTagNumber
     }
   }
 

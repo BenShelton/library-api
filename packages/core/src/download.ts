@@ -74,10 +74,3 @@ export async function downloadVideoStream ({ type, id, track, issue } : { type: 
   checkStatus(fileRes)
   return fileRes.body
 }
-
-export async function extractZip (path: string): Promise<void> {
-  await streamPipeline(
-    createReadStream(path),
-    Extract({ path })
-  )
-}

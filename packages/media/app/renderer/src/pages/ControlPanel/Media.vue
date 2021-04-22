@@ -43,14 +43,14 @@
       <h1>Videos</h1>
       <span
         v-for="video of media.videos"
-        :key="video.url"
-        v-text="video.url"
+        :key="video.filename"
+        v-text="video.filename + video.track"
       />
       <h1>Images</h1>
       <span
         v-for="image of media.images"
-        :key="image.url"
-        v-text="image.url"
+        :key="image.filename"
+        v-text="image.filename + image.filePath"
       />
     </template>
     <template v-else>

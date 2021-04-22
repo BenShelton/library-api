@@ -15,9 +15,9 @@ describe('Classes: Mapper', () => {
             ContextTitle: 'title'
           })
           expect(result).toEqual<ImageDTO>({
+            filename: 'name',
             caption: 'caption',
-            filePath: 'path',
-            url: '/download/image?publication=name&file=path'
+            filePath: 'path'
           })
         })
       })
@@ -25,7 +25,7 @@ describe('Classes: Mapper', () => {
       describe('MapImages', () => {
         test('should return multiple mapped images', () => {
           const mapper = new PublicationMapper({ filename: 'name' })
-          const mockImage: ImageDTO = { caption: '', filePath: '', url: '' }
+          const mockImage: ImageDTO = { filename: 'name', caption: '', filePath: '' }
           const spy = jest.spyOn(mapper, 'MapImage').mockReturnValue(mockImage)
           const mockImageRows: ImageRow[] = [
             { Caption: 'caption1', FilePath: 'path1', ContextTitle: 'title1' },
@@ -48,11 +48,11 @@ describe('Classes: Mapper', () => {
             MepsDocumentId: null
           })
           expect(result).toEqual<VideoDTO>({
+            filename: 'name',
             type: 'pub',
             id: 'key',
             track: 2,
-            issue: 1,
-            url: '/download/video?type=pub&id=key&track=2&issue=1'
+            issue: 1
           })
         })
 
@@ -65,11 +65,11 @@ describe('Classes: Mapper', () => {
             MepsDocumentId: 3
           })
           expect(result).toEqual<VideoDTO>({
+            filename: 'name',
             type: 'doc',
             id: 3,
             track: 2,
-            issue: 1,
-            url: '/download/video?type=doc&id=3&track=2&issue=1'
+            issue: 1
           })
         })
       })
@@ -77,7 +77,7 @@ describe('Classes: Mapper', () => {
       describe('MapVideos', () => {
         test('should return multiple mapped videos', () => {
           const mapper = new PublicationMapper({ filename: 'name' })
-          const mockVideo: VideoDTO = { type: 'pub', id: '', track: 0, issue: 0, url: '' }
+          const mockVideo: VideoDTO = { filename: 'name', type: 'pub', id: '', track: 0, issue: 0 }
           const spy = jest.spyOn(mapper, 'MapVideo').mockReturnValue(mockVideo)
           const mockVideoRows: VideoRow[] = [
             { KeySymbol: 'key1', IssueTagNumber: 1, Track: 11, MepsDocumentId: null },

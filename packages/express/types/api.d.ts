@@ -1,5 +1,13 @@
 import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
 
+export interface ImageDTOWithURL extends ImageDTO {
+  url: string
+}
+
+export interface VideoDTOWithURL extends VideoDTO {
+  url: string
+}
+
 export namespace Catalog {
   export namespace Update {
     export interface Response {
@@ -32,8 +40,8 @@ export namespace Media {
     }
     export interface Response {
       message: {
-        images: ImageDTO[]
-        videos: VideoDTO[]
+        images: ImageDTOWithURL[]
+        videos: VideoDTOWithURL[]
       }
     }
   }
@@ -43,8 +51,8 @@ export namespace Media {
     }
     export interface Response {
       message: {
-        images: ImageDTO[]
-        videos: VideoDTO[]
+        images: ImageDTOWithURL[]
+        videos: VideoDTOWithURL[]
       }
     }
   }

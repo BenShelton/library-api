@@ -12,7 +12,7 @@ router.get('/watchtower', async (req, res) => {
   if (!isValidDate(date)) return res.status(401).json({ message: 'Invalid Date' })
 
   const db = new CatalogDatabase(CATALOG_PATH)
-  const publication = await db.getWT(date, DOWNLOAD_DIR)
+  const publication = await db.getPublication(date, DOWNLOAD_DIR, 'wt')
   if (!publication) return res.status(404).json({ message: 'No Watchtower Found' })
 
   const images = await publication.getImages(date)
@@ -33,7 +33,7 @@ router.get('/oclm', async (req, res) => {
   if (!isValidDate(date)) return res.status(401).json({ message: 'Invalid Date' })
 
   const db = new CatalogDatabase(CATALOG_PATH)
-  const publication = await db.getOCLM(date, DOWNLOAD_DIR)
+  const publication = await db.getPublication(date, DOWNLOAD_DIR, 'oclm')
   if (!publication) return res.status(404).json({ message: 'No OCLM Workbook Found' })
 
   const images = await publication.getImages(date)

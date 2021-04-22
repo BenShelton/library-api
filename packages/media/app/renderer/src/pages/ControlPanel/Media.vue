@@ -40,9 +40,18 @@
     </div>
     <Loader v-if="media.loading" />
     <template v-else-if="media.found">
-      <h1>Songs</h1>
       <h1>Videos</h1>
+      <span
+        v-for="video of media.videos"
+        :key="video.url"
+        v-text="video.url"
+      />
       <h1>Images</h1>
+      <span
+        v-for="image of media.images"
+        :key="image.url"
+        v-text="image.url"
+      />
     </template>
     <template v-else>
       <p>No Media Found</p>
@@ -53,11 +62,13 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, watch, watchEffect } from 'vue'
+import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
 
 import Loader from '@/components/Loader.vue'
 import { getMondaysOfYear, formatISODate, closestPreviousMonday } from '@/utils/date'
 
 import { SelectOption } from 'types/select'
+import { PublicationMedia } from '../../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',
@@ -72,7 +83,7 @@ export default defineComponent({
 
     const year = ref(currentYear)
     const week = ref(formatISODate(monday))
-    const publication = ref('wt')
+    const publication = ref<'wt' | 'oclm'>('wt')
 
     const years: SelectOption<number>[] = [currentYear - 1, currentYear, currentYear + 1]
       .map(year => ({ text: String(year), value: year }))
@@ -87,20 +98,24 @@ export default defineComponent({
     const media = reactive({
       loading: false,
       found: false,
-      songs: [],
-      videos: [],
-      images: []
+      videos: [] as VideoDTO[],
+      images: [] as ImageDTO[]
     })
     watchEffect(async () => {
       media.loading = true
 
-      // TODO: Load the publication
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const pub = week.value + publication.value
-      setTimeout(() => {
+      const args: PublicationMedia.Args = { date: week.value, type: publication.value }
+      const pubMedia: PublicationMedia.Response = await window.electron.ipcRenderer.invoke('publication:media', args)
+
+      if (!pubMedia) {
         media.found = false
-        media.loading = false
-      }, 3000)
+      } else {
+        media.videos = pubMedia.videos
+        media.images = pubMedia.images
+        media.found = true
+      }
+
+      media.loading = false
     })
 
     return {

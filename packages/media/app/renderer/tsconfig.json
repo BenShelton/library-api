@@ -17,6 +17,7 @@
     "src/**/*.vue",
     "src/**/*.ts",
     "types/**/*.d.ts",
-    "../preload/types/electron-api.d.ts"
+    "../preload/types/electron-api.d.ts",
+    "../../types/**/*.d.ts"
   ]
 }

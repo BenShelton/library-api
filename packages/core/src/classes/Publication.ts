@@ -1,11 +1,11 @@
 import { join } from 'path'
 
 import { PublicationMapper } from './Mapper'
-import { openDatabase } from './database'
-import { PUBLICATION_CLASSES } from './constants'
+import { Database } from './Database'
+import { PUBLICATION_CLASSES } from '../constants'
 
-import { ArticleRow, ImageRow, VideoRow } from '../types/database'
-import { ImageDTO, VideoDTO } from '../types/dto'
+import { ArticleRow, ImageRow, VideoRow } from '../../types/database'
+import { ImageDTO, VideoDTO } from '../../types/dto'
 
 export interface PublicationCtor {
   filename: string
@@ -18,17 +18,15 @@ export interface PublicationCtor {
 abstract class BasePublication {
   filename: string
   path: string
+  database: Database
   _mapper: PublicationMapper
 
   constructor ({ filename, dir }: PublicationCtor) {
     this.filename = filename
     this.path = join(dir, filename)
-    this._mapper = new PublicationMapper({ filename })
-  }
-
-  async getDatabase (): ReturnType<typeof openDatabase> {
     const dbPath = join(this.path, 'contents', this.filename + '.db')
-    return openDatabase(dbPath)
+    this.database = new Database(dbPath)
+    this._mapper = new PublicationMapper({ filename })
   }
 }
 
@@ -50,8 +48,7 @@ export class PublicationWT extends BasePublication implements Publication {
       INNER JOIN DocumentInternalLink AS DIL ON DIL.InternalLinkId = IL.InternalLinkId
       INNER JOIN DatedText AS DT ON DT.EndParagraphOrdinal = DIL.EndParagraphOrdinal
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-    const db = await this.getDatabase()
-    const rows = await db.all<ImageRow[]>(query)
+    const rows = await this.database.getRows<ImageRow>(query)
     return this._mapper.MapImages(rows)
   }
 
@@ -63,8 +60,7 @@ export class PublicationWT extends BasePublication implements Publication {
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN DatedText AS DT ON DT.BeginParagraphOrdinal = DM.BeginParagraphOrdinal
       WHERE DM.DocumentId = 1 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-    const db = await this.getDatabase()
-    const rows = await db.all<VideoRow[]>(query)
+    const rows = await this.database.getRows<VideoRow>(query)
     return this._mapper.MapVideos(rows)
   }
 
@@ -73,8 +69,7 @@ export class PublicationWT extends BasePublication implements Publication {
       SELECT DocumentId, ContextTitle, Title
       FROM Document
       WHERE D.Class IS ${PUBLICATION_CLASSES.WATCHTOWER_ARTICLE}`
-    const db = await this.getDatabase()
-    const rows = await db.all<ArticleRow[]>(query)
+    const rows = await this.database.getRows<ArticleRow>(query)
     return rows
   }
 }
@@ -91,8 +86,7 @@ export class PublicationOCLM extends BasePublication implements Publication {
       INNER JOIN DocumentInternalLink AS DIL ON DIL.InternalLinkId = IL.InternalLinkId
       INNER JOIN DatedText AS DT ON DT.DocumentId = DIL.DocumentId
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-    const db = await this.getDatabase()
-    const rows = await db.all<ImageRow[]>(query)
+    const rows = await this.database.getRows<ImageRow>(query)
     return this._mapper.MapImages(rows)
   }
 
@@ -104,8 +98,7 @@ export class PublicationOCLM extends BasePublication implements Publication {
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN DatedText AS DT ON DT.DocumentId = DM.DocumentId
       WHERE M.DataType = 2 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-    const db = await this.getDatabase()
-    const rows = await db.all<VideoRow[]>(query)
+    const rows = await this.database.getRows<VideoRow>(query)
     return this._mapper.MapVideos(rows)
   }
 
@@ -114,8 +107,7 @@ export class PublicationOCLM extends BasePublication implements Publication {
       SELECT DocumentId, ContextTitle, Title
       FROM Document
       WHERE D.Class IS ${PUBLICATION_CLASSES.OCLM_WEEK}`
-    const db = await this.getDatabase()
-    const rows = await db.all<ArticleRow[]>(query)
+    const rows = await this.database.getRows<ArticleRow>(query)
     return rows
   }
 }

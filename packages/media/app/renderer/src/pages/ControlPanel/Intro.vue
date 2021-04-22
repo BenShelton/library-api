@@ -28,6 +28,8 @@ import Loader from '@/components/Loader.vue'
 
 import router from '@/router'
 
+import { CatalogUpdate } from '../../../../../types/ipc'
+
 export default defineComponent({
   name: 'Intro',
 
@@ -41,7 +43,7 @@ export default defineComponent({
     async function downloadCatalog () {
       downloading.value = true
       try {
-        const result = await window.electron.ipcRenderer.invoke('catalog:update')
+        const result: CatalogUpdate.Response = await window.electron.ipcRenderer.invoke('catalog:update')
         if (!result) throw new Error('An error occurred while downloading')
         router.push({ name: 'Media' })
       } catch (err) {

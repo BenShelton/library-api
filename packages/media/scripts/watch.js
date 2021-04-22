@@ -24,7 +24,7 @@ function debounce (f, ms) {
   // Create Vite dev server
   const viteDevServer = await createServer({
     mode,
-    configFile: 'app/renderer/vite.config.js'
+    configFile: 'app/renderer/vite.config.ts'
   })
 
   await viteDevServer.listen()
@@ -56,7 +56,7 @@ function debounce (f, ms) {
   }, TIMEOUT)
 
   const buildMain = () => {
-    return build({ mode, configFile: 'app/main/vite.config.js' })
+    return build({ mode, configFile: 'app/main/vite.config.ts' })
   }
 
   const buildMainDebounced = debounce(buildMain, TIMEOUT)
@@ -68,7 +68,7 @@ function debounce (f, ms) {
   }, TIMEOUT)
 
   const buildPreload = () => {
-    return build({ mode, configFile: 'app/preload/vite.config.js' })
+    return build({ mode, configFile: 'app/preload/vite.config.ts' })
   }
 
   const buildPreloadDebounced = debounce(buildPreload, TIMEOUT)

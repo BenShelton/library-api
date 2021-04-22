@@ -6,9 +6,9 @@ const { dirname } = require('path')
 const mode = process.env.MODE = process.env.MODE || 'production'
 
 const packagesConfigs = [
-  'app/main/vite.config.js',
-  'app/preload/vite.config.js',
-  'app/renderer/vite.config.js'
+  'app/main/vite.config.ts',
+  'app/preload/vite.config.ts',
+  'app/renderer/vite.config.ts'
 ]
 
 /**

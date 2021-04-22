@@ -20,7 +20,6 @@ export default defineConfig({
     target: 'chrome89',
     polyfillDynamicImport: false,
     outDir: 'dist',
-    assetsDir: '.',
-    emptyOutDir: true
+    assetsDir: '.'
   }
 })

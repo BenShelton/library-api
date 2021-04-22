@@ -1,9 +1,9 @@
-import { PublicationMapper } from '@/Mapper'
+import { PublicationMapper } from '@/classes/Mapper'
 
 import { ImageRow, VideoRow } from 'types/database'
 import { ImageDTO, VideoDTO } from 'types/dto'
 
-describe('Mapper', () => {
+describe('Classes: Mapper', () => {
   describe('PublicationMapper', () => {
     describe('Methods', () => {
       describe('MapImage', () => {

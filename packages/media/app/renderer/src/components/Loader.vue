@@ -59,7 +59,7 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Navbar',
+  name: 'Loader',
 
   props: {
     size: { type: Number, default: 100 }

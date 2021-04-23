@@ -41,17 +41,21 @@
     <Loader v-if="media.loading" />
     <template v-else-if="media.found">
       <h1>Videos</h1>
-      <span
-        v-for="video of media.videos"
-        :key="video.filename"
-        v-text="video.filename + video.track"
-      />
+      <div class="media-row">
+        <span
+          v-for="video of media.videos"
+          :key="video.filename"
+          v-text="video.filename + video.track"
+        />
+      </div>
       <h1>Images</h1>
-      <span
-        v-for="image of media.images"
-        :key="image.filename"
-        v-text="image.filename + image.filePath"
-      />
+      <div class="media-row">
+        <PreviewImage
+          v-for="image of media.images"
+          :key="image.filePath"
+          :image="image"
+        />
+      </div>
     </template>
     <template v-else>
       <p>No Media Found</p>
@@ -62,19 +66,22 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, watch, watchEffect } from 'vue'
-import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
+import { VideoDTO } from '@library-api/core/types/dto'
 
 import Loader from '@/components/Loader.vue'
+import PreviewImage from '@/components/PreviewImage.vue'
+
 import { getMondaysOfYear, formatISODate, closestPreviousMonday } from '@/utils/date'
 
 import { SelectOption } from 'types/select'
-import { PublicationMedia } from '../../../../../types/ipc'
+import { PublicationMedia, IPCImageDTO } from '../../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',
 
   components: {
-    Loader
+    Loader,
+    PreviewImage
   },
 
   setup () {
@@ -99,7 +106,7 @@ export default defineComponent({
       loading: false,
       found: false,
       videos: [] as VideoDTO[],
-      images: [] as ImageDTO[]
+      images: [] as IPCImageDTO[]
     })
     watchEffect(async () => {
       media.loading = true
@@ -160,5 +167,11 @@ h1 {
   font-weight: 400;
   text-transform: uppercase;
   border-bottom: 1px solid var(--secondary);
+}
+.media-row {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: scroll;
+  width: 100%;
 }
 </style>

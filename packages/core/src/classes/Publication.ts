@@ -15,6 +15,7 @@ import { PublicationCtor, PublicationType } from '../../types/publication'
 export class Publication {
   filename: string
   path: string
+  contentsPath: string
   type: PublicationType
   database: Database
   _mapper: PublicationMapper
@@ -23,7 +24,8 @@ export class Publication {
     this.filename = filename
     this.path = join(dir, filename)
     this.type = type
-    const dbPath = join(this.path, 'contents', this.filename + '.db')
+    this.contentsPath = join(this.path, 'contents')
+    const dbPath = join(this.contentsPath, this.filename + '.db')
     this.database = new Database(dbPath)
     this._mapper = new PublicationMapper({ filename })
   }

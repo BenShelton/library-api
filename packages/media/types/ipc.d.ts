@@ -1,5 +1,9 @@
 import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
 
+export interface IPCImageDTO extends ImageDTO {
+  src: string
+}
+
 export namespace CatalogUpdate {
   export type Response = boolean
 }
@@ -9,5 +13,5 @@ export namespace PublicationMedia {
     date: string
     type: 'wt' | 'oclm'
   }
-  export type Response = { videos: VideoDTO[], images: ImageDTO[] } | null
+  export type Response = { videos: VideoDTO[], images: IPCImageDTO[] } | null
 }

@@ -1,3 +1,5 @@
+import { readFile } from 'fs/promises'
+import { join } from 'path'
 import { ipcMain } from 'electron'
 import { CatalogDatabase, updateCatalog } from '@library-api/core'
 
@@ -20,9 +22,15 @@ export function initIPC (): void {
     const db = new CatalogDatabase(CATALOG_PATH)
     const publication = await db.getPublication(args.date, DOWNLOAD_DIR, args.type)
     if (!publication) return null
+    const baseImages = await publication.getImages(args.date)
+    const images = await Promise.all(baseImages.map(async (image) => {
+      const srcURL = join(publication.contentsPath, image.filePath)
+      const src = await readFile(srcURL, { encoding: 'base64' })
+      return { ...image, src: 'data:image/jpeg;base64,' + src }
+    }))
     return {
       videos: await publication.getVideos(args.date),
-      images: await publication.getImages(args.date)
+      images
     }
   })
 }

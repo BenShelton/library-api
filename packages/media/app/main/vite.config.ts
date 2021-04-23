@@ -24,6 +24,7 @@ export default defineConfig({
       external: [
         'electron',
         'fs',
+        'fs/promises',
         'path',
         'url',
         '@library-api/core'

@@ -8,11 +8,18 @@ import { CATALOG_PATH } from './constants'
 let controlWindow: BrowserWindow | null = null
 let displayWindow: BrowserWindow | null = null
 
+const devToolsWidth = import.meta.env.DEV ? 350 : 0
+
+function checkDevTools (window: BrowserWindow): void {
+  if (!import.meta.env.DEV) return
+  window.webContents.openDevTools({ mode: 'right' })
+}
+
 export async function createControlWindow (): Promise<BrowserWindow> {
   controlWindow = new BrowserWindow({
     title: 'Library Media - Control Panel',
     show: true,
-    width: import.meta.env.DEV ? 750 : 450,
+    width: 450 + devToolsWidth,
     height: 600,
     x: 20,
     y: 20,
@@ -21,7 +28,7 @@ export async function createControlWindow (): Promise<BrowserWindow> {
     }
   })
 
-  if (import.meta.env.DEV) controlWindow.webContents.openDevTools()
+  checkDevTools(controlWindow)
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
     new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
@@ -37,14 +44,14 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
     title: 'Library Media - Display',
     show: true,
     alwaysOnTop: true,
-    x: 500,
+    x: 500 + devToolsWidth,
     y: 20,
     webPreferences: {
       preload: join(__dirname, '../../preload/dist/index.cjs')
     }
   })
 
-  if (import.meta.env.DEV) displayWindow.webContents.openDevTools()
+  checkDevTools(displayWindow)
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
     new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()

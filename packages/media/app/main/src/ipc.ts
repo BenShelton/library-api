@@ -39,4 +39,9 @@ export function initIPC (): void {
     const displayWindow = await refocusDisplayWindow()
     displayWindow.webContents.send('display:image', { src: args.src } as DisplayImage['Args'])
   })
+
+  ipcMain.on('media:clear', async () => {
+    const displayWindow = await refocusDisplayWindow()
+    displayWindow.webContents.send('display:clear')
+  })
 }

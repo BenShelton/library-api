@@ -10,7 +10,7 @@ interface Invoke {
 }
 
 interface Send {
-  Args: unknown
+  Args?: unknown
 }
 
 export interface CatalogUpdate extends Invoke {
@@ -31,8 +31,16 @@ export interface MediaImage extends Send {
   }
 }
 
+export interface MediaClear extends Send {
+  Args?: never
+}
+
 export interface DisplayImage extends Send {
   Args: {
     src: string
   }
+}
+
+export interface DisplayClear extends Send {
+  Args?: never
 }

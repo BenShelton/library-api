@@ -24,3 +24,15 @@ export interface PublicationMedia extends Invoke {
   }
   Response: { videos: VideoDTO[], images: IPCImageDTO[] } | null
 }
+
+export interface MediaImage extends Send {
+  Args: {
+    src: string
+  }
+}
+
+export interface DisplayImage extends Send {
+  Args: {
+    src: string
+  }
+}

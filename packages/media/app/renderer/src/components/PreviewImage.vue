@@ -10,8 +10,9 @@
       v-if="hovering"
       class="overlay"
       @mouseleave="onMouseleave"
+      @click="onClick"
     >
-      <p>Click to play</p>
+      <p>Click to show</p>
     </div>
     <div class="text">
       <p v-text="image.caption" />
@@ -22,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue'
 
-import { IPCImageDTO } from '../../../../types/ipc'
+import { IPCImageDTO, MediaImage } from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'PreviewImage',
@@ -31,7 +32,7 @@ export default defineComponent({
     image: { type: Object as PropType<IPCImageDTO>, required: true }
   },
 
-  setup () {
+  setup (props) {
     const hovering = ref(false)
     function onMouseenter () {
       hovering.value = true
@@ -39,10 +40,14 @@ export default defineComponent({
     function onMouseleave () {
       hovering.value = false
     }
+    function onClick () {
+      window.electron.send<MediaImage>('media:image', { src: props.image.src })
+    }
     return {
       hovering,
       onMouseenter,
-      onMouseleave
+      onMouseleave,
+      onClick
     }
   }
 })
@@ -76,9 +81,10 @@ export default defineComponent({
   overflow-y: scroll;
   flex: 0 0 50px;
   border-top: 1px dashed var(--secondary);
+  padding: 2px;
 }
 p {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 12px;
 }
 .image {

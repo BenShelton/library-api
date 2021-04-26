@@ -6,7 +6,7 @@ import { CatalogDatabase, updateCatalog } from '@library-api/core'
 import { refocusDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR } from './constants'
 
-import { CatalogUpdate, PublicationMedia } from '../../../types/ipc'
+import { CatalogUpdate, DisplayImage, MediaImage, PublicationMedia } from '../../../types/ipc'
 
 export function initIPC (): void {
   ipcMain.handle('catalog:update', async (): Promise<CatalogUpdate['Response']> => {
@@ -33,5 +33,10 @@ export function initIPC (): void {
       videos: await publication.getVideos(args.date),
       images
     }
+  })
+
+  ipcMain.on('media:image', async (_event, args: MediaImage['Args']) => {
+    const displayWindow = await refocusDisplayWindow()
+    displayWindow.webContents.send('display:image', { src: args.src } as DisplayImage['Args'])
   })
 }

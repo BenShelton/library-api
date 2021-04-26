@@ -1,14 +1,32 @@
 <template>
   <div class="display-wrapper">
-    <p>Nothing Displaying</p>
+    <p v-if="!src">
+      Nothing Displaying
+    </p>
+    <img
+      v-else
+      :src="src"
+    >
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+
+import { DisplayImage } from '../../../../types/ipc'
 
 export default defineComponent({
-  name: 'Display'
+  name: 'Display',
+
+  setup () {
+    const src = ref('')
+    window.electron.on<DisplayImage>('display:image', (args) => {
+      src.value = args.src
+    })
+    return {
+      src
+    }
+  }
 })
 </script>
 
@@ -21,5 +39,8 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   color: white;
+}
+img {
+  width: 100%;
 }
 </style>

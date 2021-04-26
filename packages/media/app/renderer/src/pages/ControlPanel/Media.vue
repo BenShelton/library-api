@@ -45,7 +45,7 @@
         <div class="media-row">
           <span
             v-for="video of media.videos"
-            :key="video.filename"
+            :key="video.id"
             v-text="video.filename + video.track"
           />
         </div>
@@ -53,8 +53,10 @@
         <div class="media-row">
           <PreviewImage
             v-for="image of media.images"
-            :key="image.filePath"
+            :key="image.id"
             :image="image"
+            :selected="selected"
+            @display="onDisplay"
           />
         </div>
       </template>
@@ -78,7 +80,7 @@ import Controls from '@/components/Controls.vue'
 import { getMondaysOfYear, formatISODate, closestPreviousMonday } from '@/utils/date'
 
 import { SelectOption } from 'types/select'
-import { PublicationMedia, IPCImageDTO } from '../../../../../types/ipc'
+import { PublicationMedia, IPCImageDTO, MediaImage } from '../../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',
@@ -129,6 +131,12 @@ export default defineComponent({
       media.loading = false
     })
 
+    const selected = ref<string | null>(null)
+    function onDisplay (image: IPCImageDTO) {
+      window.electron.send<MediaImage>('media:image', { src: image.src })
+      selected.value = image.id
+    }
+
     return {
       year,
       week,
@@ -137,7 +145,10 @@ export default defineComponent({
       years,
       weeks,
 
-      media
+      media,
+
+      selected,
+      onDisplay
     }
   }
 })
@@ -163,8 +174,12 @@ export default defineComponent({
   min-width: 120px;
 }
 .media-display {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  overflow-y: scroll;
 }
 h1 {
   margin: 0 0 16px;

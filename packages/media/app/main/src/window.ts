@@ -8,7 +8,7 @@ import { CATALOG_PATH } from './constants'
 let controlWindow: BrowserWindow | null = null
 let displayWindow: BrowserWindow | null = null
 
-export async function createControlWindow (): Promise<void> {
+export async function createControlWindow (): Promise<BrowserWindow> {
   controlWindow = new BrowserWindow({
     title: 'Library Media - Control Panel',
     show: true,
@@ -29,9 +29,10 @@ export async function createControlWindow (): Promise<void> {
   const catalogExists = await checkExists(CATALOG_PATH)
 
   await controlWindow.loadURL(pageUrl + '#/control-panel/' + (catalogExists ? 'media' : 'intro'))
+  return controlWindow
 }
 
-export async function createDisplayWindow (): Promise<void> {
+export async function createDisplayWindow (): Promise<BrowserWindow> {
   displayWindow = new BrowserWindow({
     title: 'Library Media - Display',
     show: true,
@@ -49,35 +50,38 @@ export async function createDisplayWindow (): Promise<void> {
     new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
 
   await displayWindow.loadURL(pageUrl + '#display')
+  return displayWindow
 }
 
-export async function createWindows (): Promise<void> {
-  await Promise.all([
+export async function createWindows (): Promise<[BrowserWindow, BrowserWindow]> {
+  return Promise.all([
     createControlWindow(),
     createDisplayWindow()
   ])
 }
 
-export async function refocusControlWindow (): Promise<void> {
+export async function refocusControlWindow (): Promise<BrowserWindow> {
   if (controlWindow && !controlWindow.isDestroyed()) {
     if (controlWindow.isMinimized()) controlWindow.restore()
     controlWindow.focus()
+    return controlWindow
   } else {
-    await createControlWindow()
+    return createControlWindow()
   }
 }
 
-export async function refocusDisplayWindow (): Promise<void> {
+export async function refocusDisplayWindow (): Promise<BrowserWindow> {
   if (displayWindow && !displayWindow.isDestroyed()) {
     if (displayWindow.isMinimized()) displayWindow.restore()
     displayWindow.focus()
+    return displayWindow
   } else {
-    await createDisplayWindow()
+    return createDisplayWindow()
   }
 }
 
-export async function refocusWindows (): Promise<void> {
-  await Promise.all([
+export async function refocusWindows (): Promise<[BrowserWindow, BrowserWindow]> {
+  return Promise.all([
     refocusControlWindow(),
     refocusDisplayWindow()
   ])

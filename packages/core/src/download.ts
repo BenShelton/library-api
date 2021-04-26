@@ -49,7 +49,7 @@ export async function downloadPublication (url: string, path: string): Promise<v
   await unlink(zipPath)
 }
 
-export async function downloadVideoStream ({ type, id, track, issue } : { type: VideoDTO['type'], id: string, track: string, issue: string }): Promise<NodeJS.ReadableStream | null> {
+export async function downloadVideoStream ({ type, doc, track, issue } : { type: VideoDTO['type'], doc: string, track: string, issue: string }): Promise<NodeJS.ReadableStream | null> {
   const url = new URL('https://api.hag27.com/GETPUBMEDIALINKS')
   url.searchParams.append('output', 'json')
   url.searchParams.append('langwritten', 'E')
@@ -58,10 +58,10 @@ export async function downloadVideoStream ({ type, id, track, issue } : { type: 
   url.searchParams.append('fileformat', 'mp4')
   switch (type) {
     case 'pub':
-      url.searchParams.append('pub', id)
+      url.searchParams.append('pub', doc)
       break
     case 'doc':
-      url.searchParams.append('docid', id)
+      url.searchParams.append('docid', doc)
   }
   url.searchParams.append('track', track)
   url.searchParams.append('issue', issue)

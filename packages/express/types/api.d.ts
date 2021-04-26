@@ -26,7 +26,7 @@ export namespace Download {
   export namespace Video {
     export interface QueryParams {
       type: VideoDTO['type']
-      id: string
+      doc: string
       track: string
       issue: string
     }

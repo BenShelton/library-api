@@ -12,7 +12,7 @@ export async function createControlWindow (): Promise<void> {
   controlWindow = new BrowserWindow({
     title: 'Library Media - Control Panel',
     show: true,
-    width: 450,
+    width: import.meta.env.DEV ? 750 : 450,
     height: 600,
     x: 20,
     y: 20,
@@ -20,6 +20,8 @@ export async function createControlWindow (): Promise<void> {
       preload: join(__dirname, '../../preload/dist/index.cjs')
     }
   })
+
+  if (import.meta.env.DEV) controlWindow.webContents.openDevTools()
 
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
     new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
@@ -41,6 +43,8 @@ export async function createDisplayWindow (): Promise<void> {
     }
   })
 
+  if (import.meta.env.DEV) displayWindow.webContents.openDevTools()
+
   const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
     new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
 
@@ -54,18 +58,27 @@ export async function createWindows (): Promise<void> {
   ])
 }
 
-export async function refocusWindows (): Promise<void> {
+export async function refocusControlWindow (): Promise<void> {
   if (controlWindow && !controlWindow.isDestroyed()) {
     if (controlWindow.isMinimized()) controlWindow.restore()
     controlWindow.focus()
   } else {
     await createControlWindow()
   }
+}
 
+export async function refocusDisplayWindow (): Promise<void> {
   if (displayWindow && !displayWindow.isDestroyed()) {
     if (displayWindow.isMinimized()) displayWindow.restore()
     displayWindow.focus()
   } else {
     await createDisplayWindow()
   }
+}
+
+export async function refocusWindows (): Promise<void> {
+  await Promise.all([
+    refocusControlWindow(),
+    refocusDisplayWindow()
+  ])
 }

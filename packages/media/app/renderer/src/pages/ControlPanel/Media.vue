@@ -38,29 +38,32 @@
         </option>
       </select>
     </div>
-    <Loader v-if="media.loading" />
-    <template v-else-if="media.found">
-      <h1>Videos</h1>
-      <div class="media-row">
-        <span
-          v-for="video of media.videos"
-          :key="video.filename"
-          v-text="video.filename + video.track"
-        />
-      </div>
-      <h1>Images</h1>
-      <div class="media-row">
-        <PreviewImage
-          v-for="image of media.images"
-          :key="image.filePath"
-          :image="image"
-        />
-      </div>
-    </template>
-    <template v-else>
-      <p>No Media Found</p>
-      <p>It may be that it is not yet available, try a different date</p>
-    </template>
+    <div class="media-display">
+      <Loader v-if="media.loading" />
+      <template v-else-if="media.found">
+        <h1>Videos</h1>
+        <div class="media-row">
+          <span
+            v-for="video of media.videos"
+            :key="video.filename"
+            v-text="video.filename + video.track"
+          />
+        </div>
+        <h1>Images</h1>
+        <div class="media-row">
+          <PreviewImage
+            v-for="image of media.images"
+            :key="image.filePath"
+            :image="image"
+          />
+        </div>
+      </template>
+      <template v-else>
+        <p>No Media Found</p>
+        <p>It may be that it is not yet available, try a different date</p>
+      </template>
+    </div>
+    <Controls />
   </div>
 </template>
 
@@ -70,6 +73,7 @@ import { VideoDTO } from '@library-api/core/types/dto'
 
 import Loader from '@/components/Loader.vue'
 import PreviewImage from '@/components/PreviewImage.vue'
+import Controls from '@/components/Controls.vue'
 
 import { getMondaysOfYear, formatISODate, closestPreviousMonday } from '@/utils/date'
 
@@ -81,7 +85,8 @@ export default defineComponent({
 
   components: {
     Loader,
-    PreviewImage
+    PreviewImage,
+    Controls
   },
 
   setup () {
@@ -145,7 +150,7 @@ export default defineComponent({
   align-items: center;
   flex-flow: column nowrap;
   text-align: center;
-  padding: 24px;
+  padding: 24px 24px 0 24px;
 }
 .date-selection {
   width: 100%;
@@ -156,6 +161,10 @@ export default defineComponent({
 }
 .date-selection select {
   min-width: 120px;
+}
+.media-display {
+  flex: 1 0 auto;
+  width: 100%;
 }
 h1 {
   margin: 0 0 16px;

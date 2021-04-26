@@ -4,14 +4,23 @@ export interface IPCImageDTO extends ImageDTO {
   src: string
 }
 
-export namespace CatalogUpdate {
-  export type Response = boolean
+interface Invoke {
+  Args?: unknown
+  Response: unknown
 }
 
-export namespace PublicationMedia {
-  export interface Args {
+interface Send {
+  Args: unknown
+}
+
+export interface CatalogUpdate extends Invoke {
+  Response: boolean
+}
+
+export interface PublicationMedia extends Invoke {
+  Args: {
     date: string
     type: 'wt' | 'oclm'
   }
-  export type Response = { videos: VideoDTO[], images: IPCImageDTO[] } | null
+  Response: { videos: VideoDTO[], images: IPCImageDTO[] } | null
 }

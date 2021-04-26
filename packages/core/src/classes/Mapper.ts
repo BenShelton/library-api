@@ -11,8 +11,13 @@ export class PublicationMapper {
     this.filename = filename
   }
 
+  private _createId (row: ImageRow | VideoRow): string {
+    return `${this.filename}#${row.MultimediaId}`
+  }
+
   public MapImage (image: ImageRow): ImageDTO {
     return {
+      id: this._createId(image),
       filename: this.filename,
       caption: image.Caption,
       filePath: image.FilePath
@@ -23,21 +28,22 @@ export class PublicationMapper {
     return images.map(image => this.MapImage(image))
   }
 
-  private _videoType (video: VideoRow): Pick<VideoDTO, 'type' | 'id'> {
+  private _videoType (video: VideoRow): Pick<VideoDTO, 'type' | 'doc'> {
     if (video.KeySymbol) {
-      return { type: 'pub', id: video.KeySymbol }
+      return { type: 'pub', doc: video.KeySymbol }
     } else if (video.MepsDocumentId) {
-      return { type: 'doc', id: video.MepsDocumentId }
+      return { type: 'doc', doc: video.MepsDocumentId }
     }
     throw new Error('Unknown video type')
   }
 
   public MapVideo (video: VideoRow): VideoDTO {
-    const { type, id } = this._videoType(video)
+    const { type, doc } = this._videoType(video)
     return {
+      id: this._createId(video),
       filename: this.filename,
       type,
-      id,
+      doc,
       track: video.Track,
       issue: video.IssueTagNumber
     }

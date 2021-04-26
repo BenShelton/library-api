@@ -7,12 +7,14 @@ export interface PublicationRow {
 }
 
 export interface ImageRow {
+  MultimediaId: number
   ContextTitle: string
   Caption: string
   FilePath: string
 }
 
 interface VideoRowBase {
+  MultimediaId: number
   Track: number
   IssueTagNumber: number
 }

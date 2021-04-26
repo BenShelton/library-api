@@ -34,7 +34,7 @@ export class Publication {
     const offsetDate = date.replace(/-/g, '')
     const query = this.type === 'wt'
       ? `
-      SELECT D.ContextTitle, M.Caption, M.FilePath
+      SELECT D.ContextTitle, M.Caption, M.FilePath, M.MultimediaId
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN Document D ON DM.DocumentId = D.DocumentId
@@ -43,7 +43,7 @@ export class Publication {
       INNER JOIN DatedText AS DT ON DT.EndParagraphOrdinal = DIL.EndParagraphOrdinal
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
       : `
-      SELECT DISTINCT D.ContextTitle, M.Caption, M.FilePath
+      SELECT DISTINCT D.ContextTitle, M.Caption, M.FilePath, M.MultimediaId
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN Document D ON DM.DocumentId = D.DocumentId
@@ -59,13 +59,13 @@ export class Publication {
     const offsetDate = date.replace(/-/g, '')
     const query = this.type === 'wt'
       ? `
-      SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId
+      SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId, M.MultimediaId
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN DatedText AS DT ON DT.BeginParagraphOrdinal = DM.BeginParagraphOrdinal
       WHERE DM.DocumentId = 1 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
       : `
-      SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId
+      SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId, M.MultimediaId
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN DatedText AS DT ON DT.DocumentId = DM.DocumentId

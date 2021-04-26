@@ -18,7 +18,7 @@ function addImageURL (image: ImageDTO): ImageDTOWithURL {
 function addVideoURL (video: VideoDTO): VideoDTOWithURL {
   const urlSearchParams = new URLSearchParams({
     type: video.type,
-    id: String(video.id),
+    doc: String(video.doc),
     track: String(video.track),
     issue: String(video.issue)
   })

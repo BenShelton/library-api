@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+import { defineComponent, onMounted, onUnmounted, PropType, ref } from 'vue'
 
 import { IPCImageDTO, MediaImage } from '../../../../types/ipc'
 
@@ -43,6 +43,12 @@ export default defineComponent({
     function onClick () {
       window.electron.send<MediaImage>('media:image', { src: props.image.src })
     }
+    onMounted(() => {
+      window.addEventListener('blur', onMouseleave)
+    })
+    onUnmounted(() => {
+      window.removeEventListener('blur', onMouseleave)
+    })
     return {
       hovering,
       onMouseenter,

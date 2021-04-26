@@ -1,6 +1,13 @@
 <template>
   <div class="controls">
-    <p>Controls</p>
+    <p v-if="!selected">
+      Nothing Displaying
+    </p>
+    <template v-else>
+      <button @click="onClear">
+        Hide
+      </button>
+    </template>
   </div>
 </template>
 
@@ -8,7 +15,24 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Navbar'
+  name: 'Navbar',
+
+  props: {
+    selected: { type: String, required: true }
+  },
+
+  emits: [
+    'clear'
+  ],
+
+  setup (props, { emit }) {
+    function onClear () {
+      emit('clear')
+    }
+    return {
+      onClear
+    }
+  }
 })
 </script>
 
@@ -20,7 +44,7 @@ export default defineComponent({
   background-color: var(--primary);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 8px;
 }
 </style>

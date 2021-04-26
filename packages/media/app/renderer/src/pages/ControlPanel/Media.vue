@@ -65,7 +65,10 @@
         <p>It may be that it is not yet available, try a different date</p>
       </template>
     </div>
-    <Controls />
+    <Controls
+      :selected="selected"
+      @clear="onClear"
+    />
   </div>
 </template>
 
@@ -80,7 +83,7 @@ import Controls from '@/components/Controls.vue'
 import { getMondaysOfYear, formatISODate, closestPreviousMonday } from '@/utils/date'
 
 import { SelectOption } from 'types/select'
-import { PublicationMedia, IPCImageDTO, MediaImage } from '../../../../../types/ipc'
+import { PublicationMedia, IPCImageDTO, MediaImage, MediaClear } from '../../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',
@@ -132,9 +135,13 @@ export default defineComponent({
     })
 
     const selected = ref<string | null>(null)
-    function onDisplay (image: IPCImageDTO) {
+    function onDisplay (image: IPCImageDTO): void {
       window.electron.send<MediaImage>('media:image', { src: image.src })
       selected.value = image.id
+    }
+    function onClear (): void {
+      window.electron.send<MediaClear>('media:clear')
+      selected.value = null
     }
 
     return {
@@ -148,7 +155,8 @@ export default defineComponent({
       media,
 
       selected,
-      onDisplay
+      onDisplay,
+      onClear
     }
   }
 })

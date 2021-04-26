@@ -7,12 +7,17 @@
       <img :src="image.src">
     </div>
     <div
-      v-if="hovering"
+      v-if="hovering || isSelected"
       class="overlay"
       @mouseleave="onMouseleave"
       @click="onClick"
     >
-      <p>Click to show</p>
+      <p v-if="isSelected">
+        Showing
+      </p>
+      <p v-else>
+        Click to show
+      </p>
     </div>
     <div class="text">
       <p v-text="image.caption" />
@@ -21,18 +26,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, PropType, ref } from 'vue'
+import { computed, defineComponent, onMounted, onUnmounted, PropType, ref } from 'vue'
 
-import { IPCImageDTO, MediaImage } from '../../../../types/ipc'
+import { IPCImageDTO } from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'PreviewImage',
 
   props: {
-    image: { type: Object as PropType<IPCImageDTO>, required: true }
+    image: { type: Object as PropType<IPCImageDTO>, required: true },
+    selected: { type: String, default: null }
   },
 
-  setup (props) {
+  emits: [
+    'display'
+  ],
+
+  setup (props, { emit }) {
     const hovering = ref(false)
     function onMouseenter () {
       hovering.value = true
@@ -41,9 +51,13 @@ export default defineComponent({
       hovering.value = false
     }
     function onClick () {
-      window.electron.send<MediaImage>('media:image', { src: props.image.src })
+      if (isSelected.value) return
+      emit('display', props.image)
       hovering.value = false
     }
+    const isSelected = computed(() => {
+      return props.selected === props.image.id
+    })
     onMounted(() => {
       window.addEventListener('blur', onMouseleave)
     })
@@ -52,6 +66,7 @@ export default defineComponent({
     })
     return {
       hovering,
+      isSelected,
       onMouseenter,
       onMouseleave,
       onClick

@@ -43,7 +43,7 @@ export default defineComponent({
     async function downloadCatalog () {
       downloading.value = true
       try {
-        const result: CatalogUpdate.Response = await window.electron.ipcRenderer.invoke('catalog:update')
+        const result = await window.electron.invoke<CatalogUpdate>('catalog:update')
         if (!result) throw new Error('An error occurred while downloading')
         router.push({ name: 'Media' })
       } catch (err) {

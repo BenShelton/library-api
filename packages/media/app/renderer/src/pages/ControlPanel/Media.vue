@@ -111,8 +111,7 @@ export default defineComponent({
     watchEffect(async () => {
       media.loading = true
 
-      const args: PublicationMedia.Args = { date: week.value, type: publication.value }
-      const pubMedia: PublicationMedia.Response = await window.electron.ipcRenderer.invoke('publication:media', args)
+      const pubMedia = await window.electron.invoke<PublicationMedia>('publication:media', { date: week.value, type: publication.value })
 
       if (!pubMedia) {
         media.found = false

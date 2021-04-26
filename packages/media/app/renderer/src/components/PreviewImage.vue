@@ -42,6 +42,7 @@ export default defineComponent({
     }
     function onClick () {
       window.electron.send<MediaImage>('media:image', { src: props.image.src })
+      hovering.value = false
     }
     onMounted(() => {
       window.addEventListener('blur', onMouseleave)
@@ -82,6 +83,8 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   color: white;
+  cursor: pointer;
+  user-select: none;
 }
 .text {
   overflow-y: scroll;

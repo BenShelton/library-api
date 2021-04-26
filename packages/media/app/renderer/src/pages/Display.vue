@@ -13,15 +13,18 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
-import { DisplayImage } from '../../../../types/ipc'
+import { DisplayImage, DisplayClear } from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'Display',
 
   setup () {
-    const src = ref('')
+    const src = ref<string | null>(null)
     window.electron.on<DisplayImage>('display:image', (args) => {
       src.value = args.src
+    })
+    window.electron.on<DisplayClear>('display:clear', () => {
+      src.value = null
     })
     return {
       src

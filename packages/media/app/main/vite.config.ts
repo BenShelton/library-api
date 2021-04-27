@@ -8,7 +8,8 @@ export default defineConfig({
   root: PACKAGE_ROOT,
   resolve: {
     alias: {
-      '@/': join(PACKAGE_ROOT, 'src') + '/'
+      '@/': join(PACKAGE_ROOT, 'src') + '/',
+      '@library-api/core': join(PACKAGE_ROOT, '..', '..', '..', 'core', 'src', 'index.ts')
     }
   },
   build: {
@@ -24,8 +25,9 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'electron',
-        ...builtinModules,
-        '@library-api/core'
+        'sqlite',
+        'sqlite3',
+        ...builtinModules
       ],
       output: {
         entryFileNames: '[name].cjs'

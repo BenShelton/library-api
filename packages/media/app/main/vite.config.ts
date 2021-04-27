@@ -1,4 +1,5 @@
 import { join } from 'path'
+import { builtinModules } from 'module'
 import { defineConfig } from 'vite'
 
 const PACKAGE_ROOT = __dirname
@@ -23,10 +24,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'electron',
-        'fs',
-        'fs/promises',
-        'path',
-        'url',
+        ...builtinModules,
         '@library-api/core'
       ],
       output: {

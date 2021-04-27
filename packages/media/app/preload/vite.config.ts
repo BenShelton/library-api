@@ -1,4 +1,5 @@
 import { join } from 'path'
+import { builtinModules } from 'module'
 import { defineConfig } from 'vite'
 
 const PACKAGE_ROOT = __dirname
@@ -22,7 +23,8 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        'electron'
+        'electron',
+        ...builtinModules
       ],
       output: {
         entryFileNames: '[name].cjs'

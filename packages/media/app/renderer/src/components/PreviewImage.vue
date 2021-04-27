@@ -35,7 +35,7 @@ export default defineComponent({
 
   props: {
     image: { type: Object as PropType<IPCImageDTO>, required: true },
-    selected: { type: String, required: true }
+    selected: { type: String, default: null }
   },
 
   emits: [

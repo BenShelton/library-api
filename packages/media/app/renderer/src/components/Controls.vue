@@ -18,7 +18,7 @@ export default defineComponent({
   name: 'Navbar',
 
   props: {
-    selected: { type: String, required: true }
+    selected: { type: String, default: null }
   },
 
   emits: [

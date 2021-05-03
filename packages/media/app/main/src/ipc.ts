@@ -3,7 +3,7 @@ import { join } from 'path'
 import { ipcMain } from 'electron'
 import { CatalogDatabase, updateCatalog } from '@library-api/core'
 
-import { refocusDisplayWindow } from './window'
+import { getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR } from './constants'
 
 import { CatalogUpdate, DisplayImage, MediaImage, PublicationMedia } from '../../../types/ipc'
@@ -36,12 +36,12 @@ export function initIPC (): void {
   })
 
   ipcMain.on('media:image', async (_event, args: MediaImage['Args']) => {
-    const displayWindow = await refocusDisplayWindow()
+    const displayWindow = await getDisplayWindow()
     displayWindow.webContents.send('display:image', { src: args.src } as DisplayImage['Args'])
   })
 
   ipcMain.on('media:clear', async () => {
-    const displayWindow = await refocusDisplayWindow()
+    const displayWindow = await getDisplayWindow()
     displayWindow.webContents.send('display:clear')
   })
 }

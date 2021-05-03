@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 import { ipcMain } from 'electron'
-import { CatalogDatabase, updateCatalog } from '@library-api/core'
+import { CatalogDatabase, Publication, updateCatalog } from '@library-api/core'
 
 import { getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR } from './constants'
@@ -21,12 +21,18 @@ export function initIPC (): void {
 
   ipcMain.handle('publication:media', async (_event, args: PublicationMedia['Args']): Promise<PublicationMedia['Response']> => {
     const db = new CatalogDatabase(CATALOG_PATH)
-    const publication = await db.getPublication(args.date, DOWNLOAD_DIR, args.type)
+    let publication: Publication | null = null
+    try {
+      publication = await db.getPublication(args.date, DOWNLOAD_DIR, args.type)
+    } catch {
+      return null
+    }
     if (!publication) return null
 
     const baseImages = await publication.getImages(args.date)
+    const { contentsPath } = publication
     const images = await Promise.all(baseImages.map(async (image) => {
-      const srcURL = join(publication.contentsPath, image.filePath)
+      const srcURL = join(contentsPath, image.filePath)
       const src = await readFile(srcURL, { encoding: 'base64' })
       return {
         ...image,

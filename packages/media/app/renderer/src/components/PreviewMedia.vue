@@ -4,7 +4,7 @@
       class="image"
       @mouseenter="onMouseenter"
     >
-      <img :src="image.src">
+      <img :src="media.src">
     </div>
     <div
       v-if="hovering || isSelected"
@@ -20,7 +20,7 @@
       </p>
     </div>
     <div class="text">
-      <p v-text="image.caption" />
+      <p v-text="media.text" />
     </div>
   </div>
 </template>
@@ -28,13 +28,13 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, onUnmounted, PropType, ref } from 'vue'
 
-import { IPCImageDTO } from '../../../../types/ipc'
+import { IPCImageDTO, IPCVideoDTO } from '../../../../types/ipc'
 
 export default defineComponent({
-  name: 'PreviewImage',
+  name: 'PreviewMedia',
 
   props: {
-    image: { type: Object as PropType<IPCImageDTO>, required: true },
+    media: { type: Object as PropType<IPCImageDTO | IPCVideoDTO>, required: true },
     selected: { type: String, required: true }
   },
 
@@ -52,11 +52,11 @@ export default defineComponent({
     }
     function onClick () {
       if (isSelected.value) return
-      emit('display', props.image)
+      emit('display', props.media)
       hovering.value = false
     }
     const isSelected = computed(() => {
-      return props.selected === props.image.id
+      return props.selected === props.media.id
     })
     onMounted(() => {
       window.addEventListener('blur', onMouseleave)

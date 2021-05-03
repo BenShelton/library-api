@@ -43,20 +43,22 @@
       <template v-else-if="media.found">
         <h1>Videos</h1>
         <div class="media-row">
-          <span
+          <PreviewMedia
             v-for="video of media.videos"
             :key="video.id"
-            v-text="video.filename + video.track"
+            :media="video"
+            :selected="selected"
+            @display="onDisplayVideo"
           />
         </div>
         <h1>Images</h1>
         <div class="media-row">
-          <PreviewImage
+          <PreviewMedia
             v-for="image of media.images"
             :key="image.id"
-            :image="image"
+            :media="image"
             :selected="selected"
-            @display="onDisplay"
+            @display="onDisplayImage"
           />
         </div>
       </template>
@@ -74,23 +76,22 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, watch, watchEffect } from 'vue'
-import { VideoDTO } from '@library-api/core/types/dto'
 
 import Loader from '@/components/Loader.vue'
-import PreviewImage from '@/components/PreviewImage.vue'
+import PreviewMedia from '@/components/PreviewMedia.vue'
 import Controls from '@/components/Controls.vue'
 
 import { getMondaysOfYear, formatISODate, closestPreviousMonday } from '@/utils/date'
 
 import { SelectOption } from 'types/select'
-import { PublicationMedia, IPCImageDTO, MediaImage, MediaClear } from '../../../../../types/ipc'
+import { PublicationMedia, IPCImageDTO, IPCVideoDTO, MediaImage, MediaVideo, MediaClear } from '../../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',
 
   components: {
     Loader,
-    PreviewImage,
+    PreviewMedia,
     Controls
   },
 
@@ -115,7 +116,7 @@ export default defineComponent({
     const media = reactive({
       loading: false,
       found: false,
-      videos: [] as VideoDTO[],
+      videos: [] as IPCVideoDTO[],
       images: [] as IPCImageDTO[]
     })
     watchEffect(async () => {
@@ -135,7 +136,11 @@ export default defineComponent({
     })
 
     const selected = ref<string>('')
-    function onDisplay (image: IPCImageDTO): void {
+    function onDisplayVideo (video: IPCVideoDTO): void {
+      window.electron.send<MediaVideo>('media:video', { src: video.src })
+      selected.value = video.id
+    }
+    function onDisplayImage (image: IPCImageDTO): void {
       window.electron.send<MediaImage>('media:image', { src: image.src })
       selected.value = image.id
     }
@@ -155,7 +160,8 @@ export default defineComponent({
       media,
 
       selected,
-      onDisplay,
+      onDisplayVideo,
+      onDisplayImage,
       onClear
     }
   }
@@ -164,12 +170,14 @@ export default defineComponent({
 
 <style scoped>
 .media {
-  flex: 1 0 auto;
+  flex: 0 1 auto;
   display: flex;
+  overflow-y: scroll;
   align-items: center;
   flex-flow: column nowrap;
   text-align: center;
   padding: 24px 24px 0 24px;
+  margin-bottom: 48px;
 }
 .date-selection {
   width: 100%;
@@ -182,12 +190,11 @@ export default defineComponent({
   min-width: 120px;
 }
 .media-display {
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  overflow-y: scroll;
 }
 h1 {
   margin: 0 0 16px;
@@ -204,5 +211,6 @@ h1 {
   flex-flow: row nowrap;
   overflow-x: scroll;
   width: 100%;
+  margin-bottom: 24px;
 }
 </style>

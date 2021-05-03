@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Navbar',
+  name: 'Controls',
 
   props: {
     selected: { type: String, default: null }
@@ -38,9 +38,11 @@ export default defineComponent({
 
 <style scoped>
 .controls {
-  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 48px;
-  flex: 0 0 48px;
   background-color: var(--primary);
   display: flex;
   align-items: center;

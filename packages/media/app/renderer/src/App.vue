@@ -47,6 +47,7 @@ button {
   padding: 8px 16px;
   background-color: var(--button-active);
   border: none;
+  cursor: pointer;
 }
 
 button:disabled {

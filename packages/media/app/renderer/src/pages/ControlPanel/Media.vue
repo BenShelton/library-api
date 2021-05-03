@@ -134,14 +134,14 @@ export default defineComponent({
       media.loading = false
     })
 
-    const selected = ref<string | null>(null)
+    const selected = ref<string>('')
     function onDisplay (image: IPCImageDTO): void {
       window.electron.send<MediaImage>('media:image', { src: image.src })
       selected.value = image.id
     }
     function onClear (): void {
       window.electron.send<MediaClear>('media:clear')
-      selected.value = null
+      selected.value = ''
     }
 
     return {

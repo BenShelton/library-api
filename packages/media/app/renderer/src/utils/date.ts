@@ -29,7 +29,7 @@ export function getMondaysOfYear (year: number | string): SelectOption<string>[]
   while (d.getFullYear() === year) {
     const sunday = new Date(d)
     sunday.setDate(d.getDate() + 6)
-    const options = { month: 'short', day: 'numeric' }
+    const options = { month: 'short', day: 'numeric' } as const
     const text = `${d.toLocaleDateString(undefined, options)} - ${sunday.toLocaleDateString(undefined, options)}`
     mondays.push({ value: formatISODate(d), text })
     d.setDate(d.getDate() + 7)

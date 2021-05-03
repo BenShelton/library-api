@@ -8,10 +8,14 @@
     "clean": "rm -rf dist",
     "dev": "node scripts/watch.js",
     "package": "electron-builder build --config electron-builder.config.js",
-    "lint": "eslint . --ext .js,.ts,.vue --fix",
+    "lint": "yarn tsc:all && eslint . --ext .js,.ts,.vue --fix",
     "start": "electron dist/index.js",
     "test": "echo \"No tests written\"",
     "test:watch": "yarn test",
+    "tsc:all": "yarn tsc:main & yarn tsc:preload && yarn tsc:renderer",
+    "tsc:main": "tsc -p app/main/tsconfig.json",
+    "tsc:preload": "tsc -p app/preload/tsconfig.json",
+    "tsc:renderer": "vue-tsc --noEmit -p app/renderer/tsconfig.json",
     "husky:lint": "yarn lint",
     "husky:test": "yarn test",
     "husky:test:staged": "yarn test"
@@ -27,7 +31,8 @@
     "electron": "^12.0.5",
     "electron-builder": "^22.10.5",
     "eslint-plugin-vue": "^7.9.0",
-    "vite": "^2.2.3"
+    "vite": "^2.2.3",
+    "vue-tsc": "^0.1.0"
   },
   "author": {
     "name": "BenShelton",

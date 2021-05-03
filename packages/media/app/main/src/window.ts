@@ -67,24 +67,37 @@ export async function createWindows (): Promise<[BrowserWindow, BrowserWindow]> 
   ])
 }
 
-export async function refocusControlWindow (): Promise<BrowserWindow> {
-  if (controlWindow && !controlWindow.isDestroyed()) {
-    if (controlWindow.isMinimized()) controlWindow.restore()
-    controlWindow.focus()
-    return controlWindow
+async function getWindow (window: BrowserWindow | null, createFn: () => Promise<BrowserWindow>): Promise<BrowserWindow> {
+  if (window && !window.isDestroyed()) {
+    return window
   } else {
-    return createControlWindow()
+    return createFn()
   }
 }
 
+export async function getControlWindow (): Promise<BrowserWindow> {
+  return getWindow(controlWindow, createControlWindow)
+}
+
+export async function getDisplayWindow (): Promise<BrowserWindow> {
+  return getWindow(displayWindow, createDisplayWindow)
+}
+
+function refocusWindow (window: BrowserWindow): void {
+  if (window.isMinimized()) window.restore()
+  window.focus()
+}
+
+export async function refocusControlWindow (): Promise<BrowserWindow> {
+  const window = await getControlWindow()
+  refocusWindow(window)
+  return window
+}
+
 export async function refocusDisplayWindow (): Promise<BrowserWindow> {
-  if (displayWindow && !displayWindow.isDestroyed()) {
-    if (displayWindow.isMinimized()) displayWindow.restore()
-    displayWindow.focus()
-    return displayWindow
-  } else {
-    return createDisplayWindow()
-  }
+  const window = await getDisplayWindow()
+  refocusWindow(window)
+  return window
 }
 
 export async function refocusWindows (): Promise<[BrowserWindow, BrowserWindow]> {

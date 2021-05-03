@@ -170,7 +170,7 @@ export default defineComponent({
 
 <style scoped>
 .media {
-  flex: 1 0 auto;
+  flex: 0 1 100%;
   display: flex;
   overflow-y: scroll;
   align-items: center;

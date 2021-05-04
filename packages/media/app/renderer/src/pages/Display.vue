@@ -1,8 +1,11 @@
 <template>
   <div class="display-wrapper">
-    <p v-if="!src">
-      Nothing Displaying
-    </p>
+    <template v-if="!src">
+      <p>Nothing Displaying</p>
+      <br>
+      <p>Click and drag from inside this window to move it</p>
+      <p>Click and drag the corners to resize it</p>
+    </template>
     <img
       v-else
       :src="src"
@@ -42,9 +45,15 @@ export default defineComponent({
   width: 100%;
   background-color: #111111;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   color: white;
+  -webkit-app-region: drag;
+}
+p {
+  user-select: none;
+  color: #666666;
 }
 img {
   max-height: 100%;

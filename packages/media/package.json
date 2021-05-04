@@ -22,6 +22,8 @@
   },
   "dependencies": {
     "@library-api/core": "0.1.0",
+    "electron-aspect-ratio-browser-window": "^1.0.2",
+    "electron-store": "^8.0.0",
     "vue": "^3.0.11",
     "vue-router": "^4.0.6"
   },

@@ -2,33 +2,18 @@ import { BrowserWindow } from 'electron'
 import { URL } from 'url'
 import { join } from 'path'
 import { checkExists } from '@library-api/core'
-import Store from 'electron-store'
 import AspectRatioBrowserWindow from 'electron-aspect-ratio-browser-window'
+
+import { store } from './store'
 
 import { CATALOG_PATH } from './constants'
 
-import { StoreDefinition } from '../../../types/store'
-
-const devToolsWidth = import.meta.env.DEV ? 350 : 0
 let controlWindow: BrowserWindow | null = null
 let displayWindow: BrowserWindow | null = null
 
-const store = new Store<StoreDefinition>({
-  defaults: {
-    controlWindow: {
-      width: 450 + devToolsWidth,
-      height: 600,
-      x: 20,
-      y: 20
-    },
-    displayWindow: {
-      x: 500 + devToolsWidth,
-      y: 20,
-      width: 800,
-      height: 450
-    }
-  }
-})
+const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
+    new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
+const preload = join(__dirname, '../../preload/dist/index.cjs')
 
 function checkDevTools (window: BrowserWindow): void {
   if (!import.meta.env.DEV) return
@@ -43,21 +28,19 @@ function saveWindowConfig (window: BrowserWindow, key: 'controlWindow' | 'displa
 }
 
 export async function createControlWindow (): Promise<BrowserWindow> {
-  const windowSettings = store.get('controlWindow')
+  const storeKey = 'controlWindow'
+  const windowSettings = store.get(storeKey)
   controlWindow = new BrowserWindow({
     ...windowSettings,
     title: 'Library Media - Control Panel',
     show: true,
     webPreferences: {
-      preload: join(__dirname, '../../preload/dist/index.cjs')
+      preload
     }
   })
 
   checkDevTools(controlWindow)
-  saveWindowConfig(controlWindow, 'controlWindow')
-
-  const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
-    new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
+  saveWindowConfig(controlWindow, storeKey)
 
   const catalogExists = await checkExists(CATALOG_PATH)
 
@@ -66,7 +49,8 @@ export async function createControlWindow (): Promise<BrowserWindow> {
 }
 
 export async function createDisplayWindow (): Promise<BrowserWindow> {
-  const windowSettings = store.get('displayWindow')
+  const storeKey = 'displayWindow'
+  const windowSettings = store.get(storeKey)
   displayWindow = new AspectRatioBrowserWindow({
     ...windowSettings,
     title: 'Library Media - Display',
@@ -74,17 +58,14 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
     alwaysOnTop: true,
     frame: false,
     webPreferences: {
-      preload: join(__dirname, '../../preload/dist/index.cjs')
+      preload
     }
   })
 
   displayWindow.setAspectRatio(16 / 9)
 
   // checkDevTools(displayWindow)
-  saveWindowConfig(displayWindow, 'displayWindow')
-
-  const pageUrl = (import.meta.env.VITE_DEV_SERVER_URL as string | undefined) ||
-    new URL('../renderer/dist/index.html', 'file://' + __dirname).toString()
+  saveWindowConfig(displayWindow, storeKey)
 
   await displayWindow.loadURL(pageUrl + '#display')
   return displayWindow

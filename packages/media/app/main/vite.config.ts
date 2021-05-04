@@ -25,9 +25,12 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'electron',
+        ...builtinModules,
+        // core modules
         'sqlite',
         'sqlite3',
-        ...builtinModules
+        'node-fetch',
+        'unzipper'
       ],
       output: {
         entryFileNames: '[name].cjs'

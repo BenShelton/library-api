@@ -55,7 +55,8 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
     ...windowSettings,
     title: 'Library Media - Display',
     show: true,
-    alwaysOnTop: true,
+    // this prevents Zoom from showing this window as an option
+    // alwaysOnTop: true,
     frame: false,
     webPreferences: {
       preload

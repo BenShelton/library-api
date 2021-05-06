@@ -74,4 +74,26 @@ router.get('/oclm', async (req, res) => {
   return res.json(response)
 })
 
+router.get('/details', async (req, res) => {
+  const { type, doc, issue, track } = req.query as Partial<Media.Details.QueryParams>
+  if (type !== 'doc' && type !== 'pub') {
+    return res.status(401).json({ message: 'Type must be one of "doc" or "pub"' })
+  }
+  if (doc === undefined || issue === undefined || track === undefined) {
+    return res.status(401).json({ message: 'Doc, Issue & Track are required' })
+  }
+
+  const db = new CatalogDatabase(CATALOG_PATH)
+  const details = await db.getMediaDetails(type, doc, issue, track)
+  if (!details) return res.status(404).json({ message: 'No Media Details Found' })
+
+  const response: Media.Details.Response = {
+    message: {
+      details
+    }
+  }
+
+  return res.json(response)
+})
+
 export const media = router

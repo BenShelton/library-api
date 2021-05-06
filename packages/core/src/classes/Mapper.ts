@@ -63,7 +63,7 @@ export class CatalogMapper {
    * - /assets/m/jwb-080/univ/art/jwb-080_univ_lsr_03_md.jpg
    *   - From filename `jwb-080_univ_lsr_03_md.jpg`
    *   - This is the standard structure,
-   *     we can extract the first part of the filename for the fragment before `univ`
+   *     we can extract the first 2 parts of the filename for the fragments between `m` and `art`
    *
    * - /assets/m/mwbv/univ/202105/art/mwbv_univ_202105_ls_02_md.jpg
    *   - From filename `mwbv_univ_202105_ls_02_md.jpg`
@@ -72,8 +72,8 @@ export class CatalogMapper {
    */
   private _detailUrl (filename: string): string {
     let url = 'https://assetsnffrgf-a.akamaihd.net/assets/m/'
-    const [pub, , extraFragment] = filename.split('_')
-    url += `${pub}/univ/`
+    const [pubFragment, langFragment, extraFragment] = filename.split('_')
+    url += `${pubFragment}/${langFragment}/`
     if (!extraFragment.startsWith('l')) url += `${extraFragment}/`
     url += `art/${filename}`
     return url

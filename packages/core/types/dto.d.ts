@@ -13,3 +13,11 @@ export interface VideoDTO {
   track: number
   issue: number
 }
+
+export interface MediaDetailsDTO {
+  filename: string
+  caption: string
+  width: number
+  height: number
+  url: string
+}

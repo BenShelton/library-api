@@ -1,7 +1,7 @@
-import { PublicationMapper } from '@/classes/Mapper'
+import { CatalogMapper, PublicationMapper } from '@/classes/Mapper'
 
 import { ImageRow, VideoRow } from 'types/database'
-import { ImageDTO, VideoDTO } from 'types/dto'
+import { ImageDTO, MediaDetailsDTO, VideoDTO } from 'types/dto'
 
 describe('Classes: Mapper', () => {
   describe('PublicationMapper', () => {
@@ -93,6 +93,46 @@ describe('Classes: Mapper', () => {
           const result = mapper.MapVideos(mockVideoRows)
           expect(spy.mock.calls).toEqual([[mockVideoRows[0]], [mockVideoRows[1]], [mockVideoRows[2]]])
           expect(result).toEqual<VideoDTO[]>([mockVideo, mockVideo, mockVideo])
+        })
+      })
+    })
+  })
+
+  describe('CatalogMapper', () => {
+    describe('Methods', () => {
+      describe('MapMediaDetails', () => {
+        test('should return mapped media details for pub type', () => {
+          const mapper = new CatalogMapper()
+          const result = mapper.MapMediaDetails({
+            Title: '16. Praise Jah for His Son, the Anointed',
+            NameFragment: 'images/2a/sjjm_univ_lsr_016_xl.jpg',
+            Width: 1200,
+            Height: 600
+          })
+          expect(result).toEqual<MediaDetailsDTO>({
+            filename: 'sjjm_univ_lsr_016_xl.jpg',
+            caption: '16. Praise Jah for His Son, the Anointed',
+            height: 600,
+            width: 1200,
+            url: 'https://assetsnffrgf-a.akamaihd.net/assets/m/sjjm/univ/art/sjjm_univ_lsr_016_xl.jpg'
+          })
+        })
+
+        test('should return mapped media details for doc type', () => {
+          const mapper = new CatalogMapper()
+          const result = mapper.MapMediaDetails({
+            Title: "What's a Real Friend?",
+            NameFragment: 'images/21/502013393_univ_lsr_xl.jpg',
+            Width: 1200,
+            Height: 600
+          })
+          expect(result).toEqual<MediaDetailsDTO>({
+            filename: '502013393_univ_lsr_xl.jpg',
+            caption: "What's a Real Friend?",
+            height: 600,
+            width: 1200,
+            url: 'https://assetsnffrgf-a.akamaihd.net/assets/m/502013393/univ/art/502013393_univ_lsr_xl.jpg'
+          })
         })
       })
     })

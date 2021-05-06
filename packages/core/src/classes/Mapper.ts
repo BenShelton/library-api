@@ -1,5 +1,5 @@
-import { ImageRow, VideoRow } from '../../types/database'
-import { ImageDTO, VideoDTO } from '../../types/dto'
+import { ImageRow, MediaDetailsRow, VideoRow } from '../../types/database'
+import { ImageDTO, MediaDetailsDTO, VideoDTO } from '../../types/dto'
 
 interface PublicationMapperCtor {
   filename: string
@@ -51,5 +51,43 @@ export class PublicationMapper {
 
   public MapVideos (videos: VideoRow[]): VideoDTO[] {
     return videos.map(video => this.MapVideo(video))
+  }
+}
+
+export class CatalogMapper {
+  /**
+   * Figures out the asset url based on the filename
+   *
+   * There are 2 main structures:
+   *
+   * - /assets/m/jwb-080/univ/art/jwb-080_univ_lsr_03_md.jpg
+   *   - From filename `jwb-080_univ_lsr_03_md.jpg`
+   *   - This is the standard structure,
+   *     we can extract the first part of the filename for the fragment before `univ`
+   *
+   * - /assets/m/mwbv/univ/202105/art/mwbv_univ_202105_ls_02_md.jpg
+   *   - From filename `mwbv_univ_202105_ls_02_md.jpg`
+   *   - This is similar but has an extra fragment before `art`,
+   *     thankfully this fragment also appears within the name so we can extract it
+   */
+  private _detailUrl (filename: string): string {
+    let url = 'https://assetsnffrgf-a.akamaihd.net/assets/m/'
+    const [pub, , extraFragment] = filename.split('_')
+    url += `${pub}/univ/`
+    if (!extraFragment.startsWith('l')) url += `${extraFragment}/`
+    url += `art/${filename}`
+    return url
+  }
+
+  public MapMediaDetails (details: MediaDetailsRow): MediaDetailsDTO {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const filename = details.NameFragment.split('/').pop()!
+    return {
+      filename,
+      caption: details.Title,
+      height: details.Height,
+      width: details.Width,
+      url: this._detailUrl(filename)
+    }
   }
 }

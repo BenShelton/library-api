@@ -115,9 +115,11 @@ p {
   flex: 0 0 90px;
   height: 90px;
   width: 100%;
+  position: relative;
 }
 img {
   height: 100%;
-  max-width: 160px;
+  width: 100%;
+  object-fit: contain;
 }
 </style>

@@ -21,6 +21,15 @@ function checkStatus (res: Response): Response {
   }
 }
 
+export async function downloadFile (url: string, path: string): Promise<void> {
+  const res = await fetch(url)
+  checkStatus(res)
+  await streamPipeline(
+    res.body,
+    createWriteStream(path)
+  )
+}
+
 export async function downloadCatalog (path: string): Promise<void> {
   const res = await fetch(CATALOG_URL)
   checkStatus(res)

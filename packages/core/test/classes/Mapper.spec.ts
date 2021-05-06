@@ -104,8 +104,8 @@ describe('Classes: Mapper', () => {
         test('should return mapped media details for pub type', () => {
           const mapper = new CatalogMapper()
           const result = mapper.MapMediaDetails({
-            Id: 126346,
             Title: '16. Praise Jah for His Son, the Anointed',
+            Id: 126346,
             NameFragment: 'images/2a/sjjm_univ_lsr_016_xl.jpg',
             Width: 1200,
             Height: 600
@@ -123,8 +123,8 @@ describe('Classes: Mapper', () => {
         test('should return mapped media details for doc type', () => {
           const mapper = new CatalogMapper()
           const result = mapper.MapMediaDetails({
-            Id: 546,
             Title: "What's a Real Friend?",
+            Id: 546,
             NameFragment: 'images/21/502013393_univ_lsr_xl.jpg',
             Width: 1200,
             Height: 600
@@ -136,6 +136,44 @@ describe('Classes: Mapper', () => {
             height: 600,
             width: 1200,
             url: 'https://assetsnffrgf-a.akamaihd.net/assets/m/502013393/univ/art/502013393_univ_lsr_xl.jpg'
+          })
+        })
+
+        test('should return mapped media details for non-universal', () => {
+          const mapper = new CatalogMapper()
+          const result = mapper.MapMediaDetails({
+            Title: '106. Cultivating the Quality of Love',
+            Id: 186016,
+            NameFragment: 'images/34/sjjm_E_lsr_106_xl.jpg',
+            Width: 1200,
+            Height: 600
+          })
+          expect(result).toEqual<MediaDetailsDTO>({
+            id: 'media#186016',
+            filename: 'sjjm_E_lsr_106_xl.jpg',
+            caption: '106. Cultivating the Quality of Love',
+            height: 600,
+            width: 1200,
+            url: 'https://assetsnffrgf-a.akamaihd.net/assets/m/sjjm/E/art/sjjm_E_lsr_106_xl.jpg'
+          })
+        })
+
+        test('should return mapped media details with an extra url fragment', () => {
+          const mapper = new CatalogMapper()
+          const result = mapper.MapMediaDetails({
+            Title: "Initial Call: God's Purpose—Ge 1:28",
+            Id: 991355,
+            NameFragment: 'images/5f/mwbv_univ_202105_lsr_01_xl.jpg',
+            Width: 1200,
+            Height: 600
+          })
+          expect(result).toEqual<MediaDetailsDTO>({
+            id: 'media#991355',
+            filename: 'mwbv_univ_202105_lsr_01_xl.jpg',
+            caption: "Initial Call: God's Purpose—Ge 1:28",
+            height: 600,
+            width: 1200,
+            url: 'https://assetsnffrgf-a.akamaihd.net/assets/m/mwbv/univ/202105/art/mwbv_univ_202105_lsr_01_xl.jpg'
           })
         })
       })

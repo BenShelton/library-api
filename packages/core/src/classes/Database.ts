@@ -3,11 +3,13 @@ import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
 import { Publication } from './Publication'
+import { CatalogMapper } from './Mapper'
 import { downloadPublication } from '../download'
 import { checkExists } from '../utils'
 import { PUBLICATION_TYPES } from '../constants'
 
-import { PublicationRow, QueryParams } from '../../types/database'
+import { MediaDetailsRow, PublicationRow, QueryParams } from '../../types/database'
+import { MediaDetailsDTO, VideoDTO } from '../../types/dto'
 import { PublicationType } from '../../types/publication'
 
 export class Database {
@@ -33,6 +35,13 @@ export class Database {
 }
 
 export class CatalogDatabase extends Database {
+  private _mapper: CatalogMapper
+
+  constructor (filename: string) {
+    super(filename)
+    this._mapper = new CatalogMapper()
+  }
+
   async getMonthlyPublications (): Promise<PublicationRow[]> {
     const query = `
       SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
@@ -68,5 +77,32 @@ export class CatalogDatabase extends Database {
       await downloadPublication(result.NameFragment, path)
     }
     return new Publication({ filename, dir: downloadDir, type })
+  }
+
+  async getMediaDetails (type: VideoDTO['type'], doc: string | number, issue: string | number, track: string | number): Promise<MediaDetailsDTO | null> {
+    const query = type === 'doc'
+      ? `
+      SELECT DISTINCT ma.Title AS Title, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
+      FROM ImageAsset AS ia
+      INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
+      INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId
+      WHERE ma.DocumentId = '${doc}' AND ma.Track = '${track}' AND ma.MepsLanguageId = 0`
+      : `
+      SELECT DISTINCT ma.Title AS Title, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
+      FROM ImageAsset AS ia
+      INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
+      INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId
+      INNER JOIN Publication AS p ON p.Id = ma.PublicationId
+      WHERE p.KeySymbol = '${doc}' AND p.IssueTagNumber = '${issue}' AND ma.Track = '${track}' AND ma.MepsLanguageId = 0`
+
+    const results = await this.getRows<MediaDetailsRow>(query)
+    if (!results.length) return null
+
+    // there may be multiple, return the biggest
+    const biggest = results.reduce((record, current) => {
+      return current.Width > record.Width ? current : record
+    })
+
+    return this._mapper.MapMediaDetails(biggest)
   }
 }

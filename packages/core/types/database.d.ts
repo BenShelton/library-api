@@ -13,6 +13,13 @@ export interface ImageRow {
   FilePath: string
 }
 
+export interface MediaDetailsRow {
+  Title: string
+  NameFragment: string
+  Width: number
+  Height: number
+}
+
 interface VideoRowBase {
   MultimediaId: number
   Track: number

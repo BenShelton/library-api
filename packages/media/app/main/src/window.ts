@@ -58,6 +58,8 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
     // this prevents Zoom from showing this window as an option
     // alwaysOnTop: true,
     frame: false,
+    // TODO: Enable this option when available (see https://github.com/electron/electron/pull/27572)
+    // roundedCorners: false,
     webPreferences: {
       preload
     }

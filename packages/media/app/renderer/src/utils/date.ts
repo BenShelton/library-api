@@ -12,6 +12,14 @@ export function closestPreviousMonday (): Date {
 }
 
 /**
+ * Returns true if the passed in date is a Saturday or Sunday
+ */
+export function isWeekend (date: Date): boolean {
+  const day = date.getDay()
+  return day === 0 || day === 6
+}
+
+/**
  * Returns an array of select options for every week of the year, starting on Monday
  *
  * @param year number | string

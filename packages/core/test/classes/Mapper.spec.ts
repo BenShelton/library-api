@@ -104,12 +104,14 @@ describe('Classes: Mapper', () => {
         test('should return mapped media details for pub type', () => {
           const mapper = new CatalogMapper()
           const result = mapper.MapMediaDetails({
+            Id: 126346,
             Title: '16. Praise Jah for His Son, the Anointed',
             NameFragment: 'images/2a/sjjm_univ_lsr_016_xl.jpg',
             Width: 1200,
             Height: 600
           })
           expect(result).toEqual<MediaDetailsDTO>({
+            id: 'media#126346',
             filename: 'sjjm_univ_lsr_016_xl.jpg',
             caption: '16. Praise Jah for His Son, the Anointed',
             height: 600,
@@ -121,12 +123,14 @@ describe('Classes: Mapper', () => {
         test('should return mapped media details for doc type', () => {
           const mapper = new CatalogMapper()
           const result = mapper.MapMediaDetails({
+            Id: 546,
             Title: "What's a Real Friend?",
             NameFragment: 'images/21/502013393_univ_lsr_xl.jpg',
             Width: 1200,
             Height: 600
           })
           expect(result).toEqual<MediaDetailsDTO>({
+            id: 'media#546',
             filename: '502013393_univ_lsr_xl.jpg',
             caption: "What's a Real Friend?",
             height: 600,

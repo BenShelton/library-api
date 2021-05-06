@@ -83,6 +83,7 @@ export class CatalogMapper {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const filename = details.NameFragment.split('/').pop()!
     return {
+      id: `media#${details.Id}`,
       filename,
       caption: details.Title,
       height: details.Height,

@@ -15,6 +15,7 @@ export interface VideoDTO {
 }
 
 export interface MediaDetailsDTO {
+  id: string
   filename: string
   caption: string
   width: number

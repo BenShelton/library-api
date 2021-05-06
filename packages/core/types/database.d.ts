@@ -14,6 +14,7 @@ export interface ImageRow {
 }
 
 export interface MediaDetailsRow {
+  Id: number
   Title: string
   NameFragment: string
   Width: number

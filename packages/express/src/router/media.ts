@@ -84,7 +84,7 @@ router.get('/details', async (req, res) => {
   }
 
   const db = new CatalogDatabase(CATALOG_PATH)
-  const details = await db.getMediaDetails(type, doc, issue, track)
+  const details = await db.getMediaDetails({ type, doc, issue, track })
   if (!details) return res.status(404).json({ message: 'No Media Details Found' })
 
   const response: Media.Details.Response = {

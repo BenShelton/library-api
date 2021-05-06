@@ -79,16 +79,16 @@ export class CatalogDatabase extends Database {
     return new Publication({ filename, dir: downloadDir, type })
   }
 
-  async getMediaDetails (type: VideoDTO['type'], doc: string | number, issue: string | number, track: string | number): Promise<MediaDetailsDTO | null> {
+  async getMediaDetails ({ type, doc, issue, track }: { type: VideoDTO['type'], doc: string | number, issue: string | number, track: string | number }): Promise<MediaDetailsDTO | null> {
     const query = type === 'doc'
       ? `
-      SELECT DISTINCT ma.Title AS Title, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
+      SELECT DISTINCT ma.Title AS Title, ma.Id As Id, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
       FROM ImageAsset AS ia
       INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
       INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId
       WHERE ma.DocumentId = '${doc}' AND ma.Track = '${track}' AND ma.MepsLanguageId = 0`
       : `
-      SELECT DISTINCT ma.Title AS Title, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
+      SELECT DISTINCT ma.Title AS Title, ma.Id As Id, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
       FROM ImageAsset AS ia
       INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
       INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId

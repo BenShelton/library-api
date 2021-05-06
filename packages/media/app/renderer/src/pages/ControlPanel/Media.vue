@@ -81,7 +81,7 @@ import Loader from '@/components/Loader.vue'
 import PreviewMedia from '@/components/PreviewMedia.vue'
 import Controls from '@/components/Controls.vue'
 
-import { getMondaysOfYear, formatISODate, closestPreviousMonday } from '@/utils/date'
+import { getMondaysOfYear, formatISODate, closestPreviousMonday, isWeekend } from '@/utils/date'
 
 import { SelectOption } from 'types/select'
 import { PublicationMedia, IPCImageDTO, IPCVideoDTO, MediaImage, MediaVideo, MediaClear } from '../../../../../types/ipc'
@@ -101,7 +101,7 @@ export default defineComponent({
 
     const year = ref(currentYear)
     const week = ref(formatISODate(monday))
-    const publication = ref<'wt' | 'oclm'>('wt')
+    const publication = ref<'wt' | 'oclm'>(isWeekend(new Date()) ? 'wt' : 'oclm')
 
     const years: SelectOption<number>[] = [currentYear - 1, currentYear, currentYear + 1]
       .map(year => ({ text: String(year), value: year }))

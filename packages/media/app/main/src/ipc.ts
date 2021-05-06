@@ -1,12 +1,26 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 import { ipcMain } from 'electron'
-import { CatalogDatabase, Publication, updateCatalog } from '@library-api/core'
+import {
+  CatalogDatabase,
+  checkExists,
+  downloadFile,
+  Publication,
+  updateCatalog
+} from '@library-api/core'
 
 import { getDisplayWindow } from './window'
-import { CATALOG_PATH, DOWNLOAD_DIR } from './constants'
+import { CATALOG_PATH, DOWNLOAD_DIR, VIDEO_DIR } from './constants'
 
-import { CatalogUpdate, DisplayImage, DisplayVideo, MediaImage, MediaVideo, PublicationMedia } from '../../../types/ipc'
+import {
+  CatalogUpdate,
+  DisplayImage,
+  DisplayVideo,
+  IPCVideoDTO,
+  MediaImage,
+  MediaVideo,
+  PublicationMedia
+} from '../../../types/ipc'
 
 export function initIPC (): void {
   ipcMain.handle('catalog:update', async (): Promise<CatalogUpdate['Response']> => {
@@ -42,12 +56,26 @@ export function initIPC (): void {
     }))
 
     const baseVideos = await publication.getVideos(args.date)
-    const videos = await Promise.all(baseVideos.map(async (video) => {
-      const src = ''
+    const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {
+      const details = await db.getMediaDetails(video)
+      if (!details) throw new Error(`Cannot load details for video: ${video.id}`)
+      const srcPath = join(VIDEO_DIR, details.id)
+
+      const imagePath = srcPath + '_preview.jpg'
+      const imageDownloaded = await checkExists(imagePath)
+      if (!imageDownloaded) {
+        await downloadFile(details.url, imagePath)
+      }
+      const imageSrc = await readFile(imagePath, { encoding: 'base64' })
+
+      const videoPath = srcPath + '_video.mp4'
+      const downloaded = await checkExists(videoPath)
+
       return {
         ...video,
-        src: 'data:image/jpeg;base64,' + src,
-        text: 'Video'
+        src: 'data:image/jpeg;base64,' + imageSrc,
+        text: details.caption,
+        downloaded
       }
     }))
 

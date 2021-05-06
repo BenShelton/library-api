@@ -1,4 +1,4 @@
-import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
+import { ImageDTO, MediaDetailsDTO, VideoDTO } from '@library-api/core/types/dto'
 
 export interface ImageDTOWithURL extends ImageDTO {
   url: string
@@ -53,6 +53,19 @@ export namespace Media {
       message: {
         images: ImageDTOWithURL[]
         videos: VideoDTOWithURL[]
+      }
+    }
+  }
+  export namespace Details {
+    export interface QueryParams {
+      type: VideoDTO['type']
+      doc: string | number
+      issue: number
+      track: number
+    }
+    export interface Response {
+      message: {
+        details: MediaDetailsDTO
       }
     }
   }

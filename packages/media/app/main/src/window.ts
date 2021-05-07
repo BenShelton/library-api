@@ -1,4 +1,4 @@
-import { BrowserWindow } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import { URL } from 'url'
 import { join } from 'path'
 import { checkExists } from '@library-api/core'
@@ -41,6 +41,10 @@ export async function createControlWindow (): Promise<BrowserWindow> {
 
   checkDevTools(controlWindow)
   saveWindowConfig(controlWindow, storeKey)
+
+  controlWindow.on('closed', () => {
+    app.quit()
+  })
 
   const catalogExists = await checkExists(CATALOG_PATH)
 

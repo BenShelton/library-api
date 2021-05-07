@@ -1,7 +1,7 @@
 <template>
   <div class="control-panel">
     <Navbar />
-    <router-view />
+    <Media />
   </div>
 </template>
 
@@ -9,12 +9,14 @@
 import { defineComponent } from 'vue'
 
 import Navbar from '@/components/Navbar.vue'
+import Media from '@/components/Media.vue'
 
 export default defineComponent({
   name: 'ControlPanel',
 
   components: {
-    Navbar
+    Navbar,
+    Media
   }
 })
 </script>

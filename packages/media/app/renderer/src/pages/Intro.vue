@@ -1,23 +1,24 @@
 <template>
   <div class="intro">
-    <template v-if="!downloading">
-      <h3>Welcome to Library Media</h3>
-      <p>In order to start you will need to download the Publication Catalog. This is a large file (about 500MB) so it may take some time to download.</p>
-      <button
-        :disabled="downloading"
-        @click="downloadCatalog()"
-      >
-        Download Catalog
-      </button>
-      <p
-        v-if="error"
-        v-text="error"
-      />
-    </template>
-    <template v-else>
-      <p>Downloading Catalog, please wait...</p>
-      <Loader />
-    </template>
+    <img src="@/assets/logo-banner.png">
+    <h2>Welcome to Library Media</h2>
+    <p>In order to start you will need to download the Publication Catalog. This is a large file (about 500MB) so it may take some time to download</p>
+    <button
+      :disabled="downloading"
+      @click="downloadCatalog()"
+    >
+      Download Catalog
+    </button>
+    <p
+      v-if="error"
+      v-text="error"
+    />
+    <div class="downloading">
+      <template v-if="downloading">
+        <p>Downloading Catalog, please wait...</p>
+        <Loader />
+      </template>
+    </div>
   </div>
 </template>
 
@@ -28,7 +29,7 @@ import Loader from '@/components/Loader.vue'
 
 import router from '@/router'
 
-import { CatalogUpdate } from '../../../../../types/ipc'
+import { CatalogUpdate } from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'Intro',
@@ -45,7 +46,7 @@ export default defineComponent({
       try {
         const result = await window.electron.invoke<CatalogUpdate>('catalog:update')
         if (!result) throw new Error('An error occurred while downloading')
-        router.push({ name: 'Media' })
+        router.push({ name: 'ControlPanel' })
       } catch (err) {
         error.value = err.message
       } finally {
@@ -71,5 +72,27 @@ export default defineComponent({
   flex-flow: column nowrap;
   text-align: center;
   padding: 24px;
+  height: 100%;
+}
+img, p {
+  width: 100%;
+  margin: 0 24px;
+  max-width: 600px;
+}
+button {
+  margin: 24px 0;
+}
+img {
+  width: 100%;
+  margin-bottom: 48px;
+}
+.downloading {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 140px;
+}
+.downloading p {
+  margin-bottom: 12px;
 }
 </style>

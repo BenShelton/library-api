@@ -48,7 +48,7 @@ export async function createControlWindow (): Promise<BrowserWindow> {
 
   const catalogExists = await checkExists(CATALOG_PATH)
 
-  await controlWindow.loadURL(pageUrl + '#/control-panel/' + (catalogExists ? 'media' : 'intro'))
+  await controlWindow.loadURL(pageUrl + '#' + (catalogExists ? 'control-panel' : 'intro'))
   return controlWindow
 }
 

@@ -92,7 +92,7 @@ export default defineComponent({
 .preview-image {
   display: flex;
   flex-flow: column nowrap;
-  margin: 0 8px;
+  margin: 0 8px 24px;
   box-sizing: content-box;
   border: 1px solid var(--secondary);
   flex: 0 0 160px;
@@ -107,7 +107,7 @@ export default defineComponent({
   width: 28px;
   height: 28px;
   z-index: 5;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   border-radius: 50%;
   padding: 4px;
 }
@@ -131,6 +131,9 @@ export default defineComponent({
   flex: 0 0 50px;
   border-top: 1px dashed var(--secondary);
   padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 p {
   margin: 0;

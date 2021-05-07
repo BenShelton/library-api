@@ -206,11 +206,14 @@ export default defineComponent({
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
   margin-bottom: 24px;
 }
 .date-selection select {
-  min-width: 120px;
+  min-width: 140px;
+  margin: 0 8px;
+  background-color: var(--secondary);
+  padding: 4px;
+  border: none;
 }
 .media-display {
   flex: 1 0 auto;
@@ -231,9 +234,7 @@ h1 {
 }
 .media-row {
   display: flex;
-  flex-flow: row nowrap;
-  overflow-x: scroll;
+  flex-flow: row wrap;
   width: 100%;
-  margin-bottom: 24px;
 }
 </style>

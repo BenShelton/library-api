@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { join } from 'path'
 import { createReadStream } from 'fs'
-import { checkExists, downloadVideoStream } from '@library-api/core'
+import { checkExists, getVideoStream } from '@library-api/core'
 
 import { DOWNLOAD_DIR } from '../constants'
 
@@ -20,7 +20,7 @@ router.get('/image', (req, res) => {
 router.get('/video', async (req, res) => {
   const { type, doc, track, issue } = req.query as Partial<Download.Video.QueryParams>
   if (!type || !doc || !track || !issue) return res.status(401).json({ message: 'Type, Doc, Track and Issue are required' })
-  const stream = await downloadVideoStream({ type, doc, track, issue })
+  const stream = await getVideoStream({ type, doc, track, issue })
   if (!stream) return res.status(404).json({ message: 'No Video Found' })
   return stream.pipe(res)
 })

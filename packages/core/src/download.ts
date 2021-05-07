@@ -58,7 +58,7 @@ export async function downloadPublication (url: string, path: string): Promise<v
   await unlink(zipPath)
 }
 
-export async function downloadVideoStream ({ type, doc, track, issue } : { type: VideoDTO['type'], doc: string, track: string, issue: string }): Promise<NodeJS.ReadableStream | null> {
+export async function getVideoStream ({ type, doc, track, issue } : { type: VideoDTO['type'], doc: string | number, track: string | number, issue: string | number }): Promise<NodeJS.ReadableStream | null> {
   const url = new URL('https://api.hag27.com/GETPUBMEDIALINKS')
   url.searchParams.append('output', 'json')
   url.searchParams.append('langwritten', 'E')
@@ -67,13 +67,13 @@ export async function downloadVideoStream ({ type, doc, track, issue } : { type:
   url.searchParams.append('fileformat', 'mp4')
   switch (type) {
     case 'pub':
-      url.searchParams.append('pub', doc)
+      url.searchParams.append('pub', String(doc))
       break
     case 'doc':
-      url.searchParams.append('docid', doc)
+      url.searchParams.append('docid', String(doc))
   }
-  url.searchParams.append('track', track)
-  url.searchParams.append('issue', issue)
+  url.searchParams.append('track', String(track))
+  url.searchParams.append('issue', String(issue))
   const hagRes = await fetch(url)
   checkStatus(hagRes)
   const options: GetMediaPubLinks = await hagRes.json()
@@ -82,4 +82,14 @@ export async function downloadVideoStream ({ type, doc, track, issue } : { type:
   const fileRes = await fetch(downloadFile.file.url)
   checkStatus(fileRes)
   return fileRes.body
+}
+
+export async function downloadVideoStream (videoArgs: Parameters<typeof getVideoStream>[0], path: string): Promise<true | null> {
+  const stream = await getVideoStream(videoArgs)
+  if (!stream) return null
+  await streamPipeline(
+    stream,
+    createWriteStream(path)
+  )
+  return true
 }

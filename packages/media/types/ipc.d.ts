@@ -1,13 +1,14 @@
-import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
+import { ImageDTO, MediaDetailsDTO, VideoDTO } from '@library-api/core/types/dto'
 
 interface MediaDisplayProps {
   src: string
   text: string
+  downloaded: boolean
 }
 
 export type IPCImageDTO = ImageDTO & MediaDisplayProps
 
-export type IPCVideoDTO = VideoDTO & MediaDisplayProps
+export type IPCVideoDTO = VideoDTO & MediaDisplayProps & { details: MediaDetailsDTO }
 
 interface Invoke {
   Args?: unknown
@@ -30,6 +31,17 @@ export interface PublicationMedia extends Invoke {
   Response: { videos: IPCVideoDTO[], images: IPCImageDTO[] } | null
 }
 
+export interface DownloadVideo extends Invoke {
+  Args: {
+    type: VideoDTO['type']
+    doc: string | number
+    track: number
+    issue: number
+    details: MediaDetailsDTO
+  }
+  Response: void
+}
+
 export interface MediaImage extends Send {
   Args: {
     src: string
@@ -38,7 +50,7 @@ export interface MediaImage extends Send {
 
 export interface MediaVideo extends Send {
   Args: {
-    src: string
+    details: MediaDetailsDTO
   }
 }
 

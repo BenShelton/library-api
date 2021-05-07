@@ -7,17 +7,12 @@
       <img :src="media.src">
     </div>
     <div
-      v-if="hovering || isSelected"
+      v-if="showOverlay"
       class="overlay"
       @mouseleave="onMouseleave"
       @click="onClick"
     >
-      <p v-if="isSelected">
-        Showing
-      </p>
-      <p v-else>
-        Click to show
-      </p>
+      <p v-text="displayText" />
     </div>
     <div class="text">
       <p v-text="media.text" />
@@ -35,7 +30,8 @@ export default defineComponent({
 
   props: {
     media: { type: Object as PropType<IPCImageDTO | IPCVideoDTO>, required: true },
-    selected: { type: String, required: true }
+    selected: { type: String, required: true },
+    downloading: { type: Boolean, required: true }
   },
 
   emits: [
@@ -44,6 +40,12 @@ export default defineComponent({
 
   setup (props, { emit }) {
     const hovering = ref(false)
+    const displayText = computed(() => {
+      if (isSelected.value) return 'Showing'
+      if (props.downloading) return 'Downloading, please wait...'
+      if (!props.media.downloaded) return 'Click to download'
+      return 'Click to show'
+    })
     function onMouseenter () {
       hovering.value = true
     }
@@ -55,6 +57,9 @@ export default defineComponent({
       emit('display', props.media)
       hovering.value = false
     }
+    const showOverlay = computed(() => {
+      return hovering.value || isSelected.value || props.downloading
+    })
     const isSelected = computed(() => {
       return props.selected === props.media.id
     })
@@ -66,6 +71,8 @@ export default defineComponent({
     })
     return {
       hovering,
+      displayText,
+      showOverlay,
       isSelected,
       onMouseenter,
       onMouseleave,

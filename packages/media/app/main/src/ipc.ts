@@ -5,6 +5,7 @@ import {
   CatalogDatabase,
   checkExists,
   downloadFile,
+  downloadVideoStream,
   Publication,
   updateCatalog
 } from '@library-api/core'
@@ -16,11 +17,21 @@ import {
   CatalogUpdate,
   DisplayImage,
   DisplayVideo,
+  DownloadVideo,
   IPCVideoDTO,
   MediaImage,
   MediaVideo,
   PublicationMedia
 } from '../../../types/ipc'
+import { MediaDetailsDTO } from '@library-api/core/types/dto'
+
+function getVideoPaths (details: MediaDetailsDTO): { imagePath: string, videoPath: string } {
+  const srcPath = join(VIDEO_DIR, details.id.replace('#', ''))
+  return {
+    imagePath: srcPath + '_preview.jpg',
+    videoPath: srcPath + '_video.mp4'
+  }
+}
 
 export function initIPC (): void {
   ipcMain.handle('catalog:update', async (): Promise<CatalogUpdate['Response']> => {
@@ -51,7 +62,8 @@ export function initIPC (): void {
       return {
         ...image,
         src: 'data:image/jpeg;base64,' + src,
-        text: image.caption
+        text: image.caption,
+        downloaded: true
       }
     }))
 
@@ -59,20 +71,19 @@ export function initIPC (): void {
     const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {
       const details = await db.getMediaDetails(video)
       if (!details) throw new Error(`Cannot load details for video: ${video.id}`)
-      const srcPath = join(VIDEO_DIR, details.id)
+      const { imagePath, videoPath } = getVideoPaths(details)
 
-      const imagePath = srcPath + '_preview.jpg'
       const imageDownloaded = await checkExists(imagePath)
       if (!imageDownloaded) {
         await downloadFile(details.url, imagePath)
       }
       const imageSrc = await readFile(imagePath, { encoding: 'base64' })
 
-      const videoPath = srcPath + '_video.mp4'
       const downloaded = await checkExists(videoPath)
 
       return {
         ...video,
+        details,
         src: 'data:image/jpeg;base64,' + imageSrc,
         text: details.caption,
         downloaded
@@ -85,14 +96,21 @@ export function initIPC (): void {
     }
   })
 
+  ipcMain.handle('download:video', async (_event, args: DownloadVideo['Args']): Promise<DownloadVideo['Response']> => {
+    const { videoPath } = getVideoPaths(args.details)
+    const stream = await downloadVideoStream(args, videoPath)
+    if (!stream) throw new Error(`Could not load video stream for video detail: ${args.details.id}`)
+  })
+
   ipcMain.on('media:image', async (_event, args: MediaImage['Args']) => {
     const displayWindow = await getDisplayWindow()
     displayWindow.webContents.send('display:image', { src: args.src } as DisplayImage['Args'])
   })
 
   ipcMain.on('media:video', async (_event, args: MediaVideo['Args']) => {
+    const { videoPath } = getVideoPaths(args.details)
     const displayWindow = await getDisplayWindow()
-    displayWindow.webContents.send('display:video', { src: args.src } as DisplayVideo['Args'])
+    displayWindow.webContents.send('display:video', { src: 'file:///' + videoPath } as DisplayVideo['Args'])
   })
 
   ipcMain.on('media:clear', async () => {

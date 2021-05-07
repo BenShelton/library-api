@@ -214,6 +214,7 @@ export default defineComponent({
   background-color: var(--secondary);
   padding: 4px;
   border: none;
+  outline: none;
 }
 .media-display {
   flex: 1 0 auto;

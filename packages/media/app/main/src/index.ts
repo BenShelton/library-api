@@ -1,27 +1,21 @@
 import { app } from 'electron'
 import { createDir } from '@library-api/core'
 
+import { initEvents } from './events'
 import { initIPC } from './ipc'
-import { createWindows, refocusWindows } from './window'
+import { initMenu } from './menu'
+import { createWindows } from './window'
 import { DOWNLOAD_DIR, VIDEO_DIR } from './constants'
 
 if (!app.requestSingleInstanceLock()) {
   app.quit()
 }
 
-app.on('activate', async () => {
-  await refocusWindows()
-})
+(async () => {
+  // configure app
+  initMenu()
+  initEvents()
 
-app.on('second-instance', async () => {
-  await refocusWindows()
-})
-
-app.on('window-all-closed', () => {
-  app.quit()
-})
-
-;(async () => {
   // setup system files
   await createDir(DOWNLOAD_DIR)
   await createDir(VIDEO_DIR)
@@ -29,5 +23,7 @@ app.on('window-all-closed', () => {
   // setup everything else
   await app.whenReady()
   initIPC()
+
+  // start app
   await createWindows()
 })()

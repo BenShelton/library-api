@@ -1,6 +1,12 @@
 <template>
   <div class="preview-image">
     <div
+      v-if="!media.downloaded"
+      class="download-icon"
+    >
+      <img src="@/assets/download.svg">
+    </div>
+    <div
       class="image"
       @mouseenter="onMouseenter"
     >
@@ -94,6 +100,17 @@ export default defineComponent({
   width: 160px;
   position: relative;
 }
+.download-icon {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  z-index: 5;
+  background-color: var(--primary);
+  border-radius: 50%;
+  padding: 4px;
+}
 .overlay {
   position: absolute;
   top: 0;
@@ -107,6 +124,7 @@ export default defineComponent({
   color: white;
   cursor: pointer;
   user-select: none;
+  z-index: 10;
 }
 .text {
   overflow-y: scroll;

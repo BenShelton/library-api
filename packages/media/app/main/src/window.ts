@@ -61,7 +61,9 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
     // TODO: Enable this option when available (see https://github.com/electron/electron/pull/27572)
     // roundedCorners: false,
     webPreferences: {
-      preload
+      preload,
+      // TODO: This is so we can use local video src in the renderer, there should be a better way
+      webSecurity: false
     }
   })
 

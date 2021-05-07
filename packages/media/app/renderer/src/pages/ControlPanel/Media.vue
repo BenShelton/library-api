@@ -48,6 +48,7 @@
             :key="video.id"
             :media="video"
             :selected="selected"
+            :downloading="downloads.includes(video.id)"
             @display="onDisplayVideo"
           />
         </div>
@@ -58,6 +59,7 @@
             :key="image.id"
             :media="image"
             :selected="selected"
+            :downloading="false"
             @display="onDisplayImage"
           />
         </div>
@@ -84,7 +86,15 @@ import Controls from '@/components/Controls.vue'
 import { getMondaysOfYear, formatISODate, closestPreviousMonday, isWeekend } from '@/utils/date'
 
 import { SelectOption } from 'types/select'
-import { PublicationMedia, IPCImageDTO, IPCVideoDTO, MediaImage, MediaVideo, MediaClear } from '../../../../../types/ipc'
+import {
+  DownloadVideo,
+  PublicationMedia,
+  IPCImageDTO,
+  IPCVideoDTO,
+  MediaImage,
+  MediaVideo,
+  MediaClear
+} from '../../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',
@@ -136,9 +146,21 @@ export default defineComponent({
     })
 
     const selected = ref<string>('')
-    function onDisplayVideo (video: IPCVideoDTO): void {
-      window.electron.send<MediaVideo>('media:video', { src: video.src })
-      selected.value = video.id
+    const downloads = reactive<string[]>([])
+    async function onDisplayVideo (video: IPCVideoDTO): Promise<void> {
+      // need to unwrap this from the proxy to be able to send over IPC
+      const details = { ...video.details }
+      if (!video.downloaded) {
+        downloads.push(video.id)
+        await window.electron.invoke<DownloadVideo>('download:video', { ...video, details })
+        const prevVideo = media.videos.find(v => v.id === video.id)
+        if (prevVideo) prevVideo.downloaded = true
+        const downloadIdx = downloads.indexOf(video.id)
+        if (downloadIdx > -1) downloads.splice(downloadIdx, 1)
+      } else {
+        window.electron.send<MediaVideo>('media:video', { details })
+        selected.value = video.id
+      }
     }
     function onDisplayImage (image: IPCImageDTO): void {
       window.electron.send<MediaImage>('media:image', { src: image.src })
@@ -160,6 +182,7 @@ export default defineComponent({
       media,
 
       selected,
+      downloads,
       onDisplayVideo,
       onDisplayImage,
       onClear

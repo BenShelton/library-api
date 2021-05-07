@@ -7,9 +7,19 @@
       <p>Click and drag the corners to resize it</p>
     </template>
     <img
-      v-else
+      v-else-if="mediaType === 'image'"
       :src="src"
     >
+    <video
+      v-else-if="mediaType === 'video'"
+      autoplay
+      controls
+    >
+      <source
+        :src="src"
+        type="video/mp4"
+      >
+    </video>
   </div>
 </template>
 
@@ -23,17 +33,21 @@ export default defineComponent({
 
   setup () {
     const src = ref<string | null>(null)
+    const mediaType = ref<'image' | 'video'>('image')
     window.electron.on<DisplayImage>('display:image', (args) => {
+      mediaType.value = 'image'
       src.value = args.src
     })
     window.electron.on<DisplayVideo>('display:video', (args) => {
+      mediaType.value = 'video'
       src.value = args.src
     })
     window.electron.on<DisplayClear>('display:clear', () => {
       src.value = null
     })
     return {
-      src
+      src,
+      mediaType
     }
   }
 })
@@ -55,10 +69,12 @@ p {
   user-select: none;
   color: #666666;
 }
-img {
+img, video {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+img {
   pointer-events: none;
 }
 </style>

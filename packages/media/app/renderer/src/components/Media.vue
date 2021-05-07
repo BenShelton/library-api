@@ -94,7 +94,7 @@ import {
   MediaImage,
   MediaVideo,
   MediaClear
-} from '../../../../../types/ipc'
+} from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',

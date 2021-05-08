@@ -1,10 +1,15 @@
 <template>
   <div class="navbar">
-    <h2>Library Media</h2>
     <img
       class="icon"
       src="@/assets/logo.svg"
     >
+    <button
+      class="icon-btn"
+      @click="onSettingsClick"
+    >
+      <img src="@/assets/settings.svg">
+    </button>
   </div>
 </template>
 
@@ -12,7 +17,20 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Navbar'
+  name: 'Navbar',
+
+  emits: [
+    'settings:show'
+  ],
+
+  setup (props, { emit }) {
+    function onSettingsClick () {
+      emit('settings:show')
+    }
+    return {
+      onSettingsClick
+    }
+  }
 })
 </script>
 
@@ -27,7 +45,6 @@ export default defineComponent({
   justify-content: space-between;
   padding: 0 8px;
 }
-
 .icon {
   flex: 0 0 50px;
   width: 50px;

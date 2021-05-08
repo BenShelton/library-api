@@ -12,6 +12,7 @@
     >
     <video
       v-else-if="mediaType === 'video'"
+      :key="src"
       autoplay
       controls
     >

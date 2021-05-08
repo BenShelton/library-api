@@ -1,8 +1,15 @@
 import { constants } from 'fs'
-import { mkdir, access } from 'fs/promises'
+import { mkdir, rm, access } from 'fs/promises'
 
-export async function createDir (dir: string): Promise<string> {
+export function createDir (dir: string): Promise<string> {
   return mkdir(dir, { recursive: true })
+}
+
+/**
+ * Removes the entire directory (similar to rm -rf)
+ */
+export function emptyDir (dir: string): Promise<void> {
+  return rm(dir, { recursive: true, force: true })
 }
 
 export async function checkExists (path: string): Promise<boolean> {

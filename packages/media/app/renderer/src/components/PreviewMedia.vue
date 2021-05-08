@@ -128,15 +128,12 @@ export default defineComponent({
 }
 .text {
   overflow-y: scroll;
-  flex: 0 0 50px;
   border-top: 1px dashed var(--secondary);
   padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 50px;
 }
 p {
-  margin: 0;
+  margin: auto 0;
   font-size: 12px;
 }
 .image {

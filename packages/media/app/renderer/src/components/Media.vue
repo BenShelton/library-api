@@ -229,7 +229,6 @@ h1 {
   width: 150px;
   text-align: left;
   font-size: 24px;
-  font-weight: 400;
   text-transform: uppercase;
   border-bottom: 1px solid var(--secondary);
 }

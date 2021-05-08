@@ -6,14 +6,18 @@ import {
   checkExists,
   downloadFile,
   downloadVideoStream,
+  emptyDir,
   Publication,
   updateCatalog
 } from '@library-api/core'
+import { MediaDetailsDTO } from '@library-api/core/types/dto'
 
+import { initDirectories } from './directories'
 import { getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR, VIDEO_DIR } from './constants'
 
 import {
+  CacheClear,
   CatalogUpdate,
   DisplayImage,
   DisplayVideo,
@@ -23,7 +27,6 @@ import {
   MediaVideo,
   PublicationMedia
 } from '../../../types/ipc'
-import { MediaDetailsDTO } from '@library-api/core/types/dto'
 
 function getVideoPaths (details: MediaDetailsDTO): { imagePath: string, videoPath: string } {
   const srcPath = join(VIDEO_DIR, details.id.replace('#', ''))
@@ -100,6 +103,11 @@ export function initIPC (): void {
     const { videoPath } = getVideoPaths(args.details)
     const stream = await downloadVideoStream(args, videoPath)
     if (!stream) throw new Error(`Could not load video stream for video detail: ${args.details.id}`)
+  })
+
+  ipcMain.handle('cache:clear', async (): Promise<CacheClear['Response']> => {
+    await emptyDir(DOWNLOAD_DIR)
+    await initDirectories()
   })
 
   ipcMain.on('media:image', async (_event, args: MediaImage['Args']) => {

@@ -42,6 +42,11 @@ export interface DownloadVideo extends Invoke {
   Response: void
 }
 
+export interface CacheClear extends Invoke {
+  Args: void
+  Response: void
+}
+
 export interface MediaImage extends Send {
   Args: {
     src: string

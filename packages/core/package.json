@@ -10,11 +10,12 @@
   ],
   "scripts": {
     "build": "tsc --build tsconfig.json",
+    "ci": "yarn lint && jest --bail",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit && eslint . --ext .js,.ts --fix",
+    "lint": "tsc --noEmit && eslint . --ext .js,.ts",
     "test": "jest --coverage -t",
     "test:watch": "jest --watch-all -t",
-    "husky:lint": "yarn lint",
+    "husky:lint": "yarn lint --fix",
     "husky:test": "jest --bail",
     "husky:test:staged": "jest --bail --findRelatedTests"
   },

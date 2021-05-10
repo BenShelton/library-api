@@ -11,6 +11,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BenShelton/library-api",
+    "directory": "packages/core"
+  },
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "lint": "eslint . --ext .js,.ts",

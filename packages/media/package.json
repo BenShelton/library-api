@@ -6,6 +6,11 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BenShelton/library-api",
+    "directory": "packages/media"
+  },
   "scripts": {
     "build": "node scripts/build.js",
     "dev": "node scripts/watch.js",

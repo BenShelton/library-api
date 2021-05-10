@@ -11,6 +11,11 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BenShelton/library-api",
+    "directory": "packages/express"
+  },
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "dev": "tsc-watch --build --incremental --onSuccess \"yarn start\"",

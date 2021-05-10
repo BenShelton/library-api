@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "A cross-platform application that simplifies showing media for meetings of Jehovah's Witnesses.",
   "main": "app/main/dist/index.cjs",
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {
     "build": "node scripts/build.js",
     "ci": "yarn lint && yarn test",

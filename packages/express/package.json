@@ -13,16 +13,16 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "ci": "yarn lint && jest --bail",
-    "clean": "rm -rf dist",
     "dev": "tsc-watch --build --incremental --onSuccess \"yarn start\"",
-    "lint": "tsc --noEmit && eslint . --ext .js,.ts",
     "start": "node dist/server.js",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "yarn lint --fix",
     "test": "jest --coverage -t",
+    "test:bail": "jest --bail",
+    "test:ci": "yarn lint && yarn tsc && yarn test:bail",
     "test:watch": "jest --watch-all -t",
-    "husky:lint": "yarn lint --fix",
-    "husky:test": "jest --bail",
-    "husky:test:staged": "jest --bail --findRelatedTests"
+    "test:staged": "jest --bail --findRelatedTests",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@library-api/core": "^0.2.0",

@@ -33,7 +33,6 @@ yarn bootstrap
 yarn workspace [workspace] [command]
 # For example to run `yarn dev` in the `express` workspace
 yarn workspace @library-api/express dev
-
-# Shortcuts exist for the main packages
-yarn express [command]
+# Shortcuts exist for the main packages, this is equivalent to the above
+yarn express dev
 ```

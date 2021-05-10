@@ -13,14 +13,14 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.json",
-    "ci": "yarn lint && jest --bail",
-    "clean": "rm -rf dist",
-    "lint": "tsc --noEmit && eslint . --ext .js,.ts",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "yarn lint --fix",
     "test": "jest --coverage -t",
+    "test:bail": "jest --bail",
+    "test:ci": "yarn lint && yarn tsc && yarn test:bail",
     "test:watch": "jest --watch-all -t",
-    "husky:lint": "yarn lint --fix",
-    "husky:test": "jest --bail",
-    "husky:test:staged": "jest --bail --findRelatedTests"
+    "test:staged": "jest --bail --findRelatedTests",
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",

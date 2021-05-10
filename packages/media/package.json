@@ -1,6 +1,6 @@
 {
   "name": "@library-api/media",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A cross-platform application that simplifies showing media for meetings of Jehovah's Witnesses.",
   "main": "app/main/dist/index.cjs",
   "publishConfig": {
@@ -25,7 +25,7 @@
     "husky:test:staged": "yarn test"
   },
   "dependencies": {
-    "@library-api/core": "0.1.0",
+    "@library-api/core": "^0.2.0",
     "electron-aspect-ratio-browser-window": "^1.0.2",
     "electron-store": "^8.0.0",
     "vue": "^3.0.11",

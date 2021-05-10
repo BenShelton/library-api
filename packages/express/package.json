@@ -1,5 +1,6 @@
 {
   "name": "@library-api/express",
+  "private": true,
   "version": "0.2.1",
   "description": "An Express API for easily accessing information related to meetings and publications of Jehovah's Witnesses.",
   "main": "dist/server.js",
@@ -8,9 +9,6 @@
     "dist",
     "types"
   ],
-  "publishConfig": {
-    "access": "restricted"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/BenShelton/library-api",

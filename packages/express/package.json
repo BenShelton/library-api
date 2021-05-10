@@ -1,6 +1,6 @@
 {
   "name": "@library-api/express",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An Express API for easily accessing information related to meetings and publications of Jehovah's Witnesses.",
   "main": "dist/server.js",
   "types": "dist/server.d.ts",
@@ -30,7 +30,7 @@
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@library-api/core": "^0.2.0",
+    "@library-api/core": "^0.2.1",
     "express": "^4.17.1"
   },
   "devDependencies": {

@@ -12,6 +12,7 @@
       "ignoreChanges": [
         "*.md"
       ],
+      "verifyAccess": false,
       "conventionalCommits": true,
       "message": "chore(release): publish %s"
     }

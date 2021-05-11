@@ -1,7 +1,6 @@
-/**
- * @type { import("@jest/types").Config.InitialOptions }
- */
-module.exports = {
+import { Config } from '@jest/types'
+
+const config: Config.InitialOptions = {
   globals: {
     'ts-jest': {
       tsconfig: 'test/tsconfig.json'
@@ -22,3 +21,5 @@ module.exports = {
     '<rootDir>/src/**/*.ts'
   ]
 }
+
+export default config

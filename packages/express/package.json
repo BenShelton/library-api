@@ -20,11 +20,12 @@
     "start": "node dist/server.js",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "yarn lint --fix",
-    "test": "jest --coverage -t",
-    "test:bail": "jest --bail",
+    "test": "jest --config=jest.config.ts",
+    "test:bail": "yarn test --bail",
+    "test:coverage": "yarn test --coverage",
     "test:ci": "yarn lint && yarn tsc && yarn test:bail",
-    "test:watch": "jest --watch-all -t",
-    "test:staged": "jest --bail --findRelatedTests",
+    "test:watch": "yarn test --watch-all -t",
+    "test:staged": "yarn test --bail --findRelatedTests",
     "tsc": "tsc --noEmit"
   },
   "dependencies": {

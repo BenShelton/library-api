@@ -1,7 +1,0 @@
-{
-  "*.{ts,js,vue}": [
-    "yarn lint:fix",
-    "yarn tsc",
-    "yarn test:staged"
-  ]
-}

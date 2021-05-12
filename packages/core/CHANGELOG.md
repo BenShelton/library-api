@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/BenShelton/library-api/compare/v0.3.0...v0.3.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* **core:** remove dependency on tslib ([b22815b](https://github.com/BenShelton/library-api/commit/b22815bd43137cecad5583fa3311144bf65c8fac))
+
+
+
+
+
 # 0.3.0 (2021-05-11)
 
 

@@ -9,17 +9,22 @@ import { ImageDTO, VideoDTO } from '../../types/dto'
 import { PublicationCtor, PublicationType } from '../../types/publication'
 
 // TODO: Combine the queries below as most are similar
+
 /**
- * Provides methods for interacting with a downloaded publication
+ * Provides methods for interacting with a downloaded publication.
  */
 export class Publication {
+  private _mapper: PublicationMapper
   filename: string
   path: string
   contentsPath: string
   type: PublicationType
   database: Database
-  _mapper: PublicationMapper
 
+  /**
+   *
+   * @param {Object} ctor See {@link PublicationCtor}
+   */
   constructor ({ filename, dir, type }: PublicationCtor) {
     this.filename = filename
     this.path = join(dir, filename)

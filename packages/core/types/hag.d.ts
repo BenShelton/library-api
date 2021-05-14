@@ -1,4 +1,8 @@
-// These types may not be extensive but include at least what we require
+/**
+ * One of the returned links when requesting a video from the external Media API endpoint.
+ *
+ * These types may not be extensive but include what we need.
+ */
 interface MediaPubLink {
   title: string
   file: {
@@ -35,6 +39,11 @@ interface MediaPubLink {
   bitRate: number
 }
 
+/**
+ * @todo This only defines the English interface.
+ *
+ * The returned data when requesting a video from the external Media API endpoint.
+ */
 export interface GetMediaPubLinks {
   pubName: string
   parentPubName: string

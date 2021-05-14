@@ -23,9 +23,9 @@ npm install @library-api/core
 yarn add @library-api/core
 ```
 
-## Usage
+## Documentation
 
-TODO: Documentation
+View the documentation [here](https://benshelton.github.io/library-api/core)
 
 ## Development
 

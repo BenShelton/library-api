@@ -14,9 +14,9 @@ TODO: Add download files to release assets
 
 In the meantime you can package this yourself using the `build` and `package` commands in [Development](#Development).
 
-## Usage
+## Documentation
 
-TODO: Documentation
+View the documentation [here](https://benshelton.github.io/library-api/media)
 
 ## Development
 

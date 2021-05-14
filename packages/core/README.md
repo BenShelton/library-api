@@ -25,7 +25,7 @@ yarn add @library-api/core
 
 ## Documentation
 
-View the documentation [here](https://benshelton.github.io/library-api/core)
+View the documentation [here](https://benshelton.github.io/library-api/core/)
 
 ## Development
 

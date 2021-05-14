@@ -16,7 +16,7 @@ In the meantime you can package this yourself using the `build` and `package` co
 
 ## Documentation
 
-View the documentation [here](https://benshelton.github.io/library-api/media)
+View the documentation [here](https://benshelton.github.io/library-api/media/)
 
 ## Development
 

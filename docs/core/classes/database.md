@@ -1,4 +1,4 @@
-[@library-api/core](../README.md) / Database
+[Library Core - v0.3.1](../README.md) / Database
 
 # Class: Database
 
@@ -33,7 +33,7 @@
 
 **Returns:** [*Database*](database.md)
 
-Defined in: [classes/Database.ts:16](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L16)
+Defined in: [classes/Database.ts:16](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L16)
 
 ## Methods
 
@@ -56,7 +56,7 @@ Defined in: [classes/Database.ts:16](https://github.com/BenShelton/library-api/b
 
 **Returns:** *Promise*<undefined \| T\>
 
-Defined in: [classes/Database.ts:26](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L26)
+Defined in: [classes/Database.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L26)
 
 ___
 
@@ -79,4 +79,4 @@ ___
 
 **Returns:** *Promise*<T[]\>
 
-Defined in: [classes/Database.ts:31](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L31)
+Defined in: [classes/Database.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L31)

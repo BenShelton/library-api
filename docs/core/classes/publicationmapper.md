@@ -1,4 +1,4 @@
-[@library-api/core](../README.md) / PublicationMapper
+[Library Core - v0.3.1](../README.md) / PublicationMapper
 
 # Class: PublicationMapper
 
@@ -33,7 +33,7 @@
 
 **Returns:** [*PublicationMapper*](publicationmapper.md)
 
-Defined in: [classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Mapper.ts#L9)
+Defined in: [classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L9)
 
 ## Properties
 
@@ -41,7 +41,7 @@ Defined in: [classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob
 
 • **filename**: *string*
 
-Defined in: [classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Mapper.ts#L9)
+Defined in: [classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L9)
 
 ## Methods
 
@@ -57,7 +57,7 @@ Defined in: [classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob
 
 **Returns:** ImageDTO
 
-Defined in: [classes/Mapper.ts:18](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Mapper.ts#L18)
+Defined in: [classes/Mapper.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L18)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 **Returns:** ImageDTO[]
 
-Defined in: [classes/Mapper.ts:27](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Mapper.ts#L27)
+Defined in: [classes/Mapper.ts:27](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L27)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 **Returns:** VideoDTO
 
-Defined in: [classes/Mapper.ts:40](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Mapper.ts#L40)
+Defined in: [classes/Mapper.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L40)
 
 ___
 
@@ -105,4 +105,4 @@ ___
 
 **Returns:** VideoDTO[]
 
-Defined in: [classes/Mapper.ts:52](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Mapper.ts#L52)
+Defined in: [classes/Mapper.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L52)

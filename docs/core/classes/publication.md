@@ -1,4 +1,4 @@
-[@library-api/core](../README.md) / Publication
+[Library Core - v0.3.1](../README.md) / Publication
 
 # Class: Publication
 
@@ -39,7 +39,7 @@ Provides methods for interacting with a downloaded publication
 
 **Returns:** [*Publication*](publication.md)
 
-Defined in: [classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L21)
+Defined in: [classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
 
 ## Properties
 
@@ -47,7 +47,7 @@ Defined in: [classes/Publication.ts:21](https://github.com/BenShelton/library-ap
 
 • **\_mapper**: [*PublicationMapper*](publicationmapper.md)
 
-Defined in: [classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L21)
+Defined in: [classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 • **contentsPath**: *string*
 
-Defined in: [classes/Publication.ts:18](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L18)
+Defined in: [classes/Publication.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L18)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 • **database**: [*Database*](database.md)
 
-Defined in: [classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L20)
+Defined in: [classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L20)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 • **filename**: *string*
 
-Defined in: [classes/Publication.ts:16](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L16)
+Defined in: [classes/Publication.ts:16](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L16)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 • **path**: *string*
 
-Defined in: [classes/Publication.ts:17](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L17)
+Defined in: [classes/Publication.ts:17](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L17)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 • **type**: PublicationType
 
-Defined in: [classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L19)
+Defined in: [classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
 
 ## Methods
 
@@ -97,7 +97,7 @@ Defined in: [classes/Publication.ts:19](https://github.com/BenShelton/library-ap
 
 **Returns:** *Promise*<ArticleRow[]\>
 
-Defined in: [classes/Publication.ts:77](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L77)
+Defined in: [classes/Publication.ts:77](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L77)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 **Returns:** *Promise*<ImageDTO[]\>
 
-Defined in: [classes/Publication.ts:33](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L33)
+Defined in: [classes/Publication.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L33)
 
 ___
 
@@ -129,4 +129,4 @@ ___
 
 **Returns:** *Promise*<VideoDTO[]\>
 
-Defined in: [classes/Publication.ts:58](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Publication.ts#L58)
+Defined in: [classes/Publication.ts:58](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L58)

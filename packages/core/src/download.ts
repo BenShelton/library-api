@@ -7,7 +7,7 @@ import { createGunzip } from 'zlib'
 import fetch, { Response } from 'node-fetch'
 import { Extract } from 'unzipper'
 
-import { CATALOG_URL, PUBLICATION_URL } from './constants'
+import { CATALOG_URL, MEDIA_URL, PUBLICATION_URL } from './constants'
 import { GetMediaPubLinks } from '../types/hag'
 import { VideoDTO } from '../types/dto'
 
@@ -21,6 +21,12 @@ function checkStatus (res: Response): Response {
   }
 }
 
+/**
+ * A helper function that downloads the requested URL and writes it to the specified path.
+ *
+ * @param url The URL of the file to download.
+ * @param path The path to write the file to.
+ */
 export async function downloadFile (url: string, path: string): Promise<void> {
   const res = await fetch(url)
   checkStatus(res)
@@ -30,6 +36,11 @@ export async function downloadFile (url: string, path: string): Promise<void> {
   )
 }
 
+/**
+ * Downloads the catalog & writes it to the specified path.
+ *
+ * @param path The path to write the catalog file to.
+ */
 export async function downloadCatalog (path: string): Promise<void> {
   const res = await fetch(CATALOG_URL)
   checkStatus(res)
@@ -40,6 +51,23 @@ export async function downloadCatalog (path: string): Promise<void> {
   )
 }
 
+/**
+ * NOTE: You probably want to be using `getPublication` in {@link Database} which does this for you.
+ *
+ * Downloads a publication from a URL & extracts it to the specified directory path.
+ *
+ * The resulting structure will be:
+ * ```
+ * /path
+ *   /manifest.json
+ *   /contents
+ *     /(NameFragment).db
+ *     /(multiple .jpg files)
+ * ```
+ *
+ * @param url The publication URL.
+ * @param path The path to write the catalog file to. This is usually the publication NameFragment.
+ */
 export async function downloadPublication (url: string, path: string): Promise<void> {
   const res = await fetch(PUBLICATION_URL + url)
   checkStatus(res)
@@ -58,8 +86,15 @@ export async function downloadPublication (url: string, path: string): Promise<v
   await unlink(zipPath)
 }
 
+/**
+ * Searches the external Media API endpoint for the requested video and retrieves the highest quality (720p) version of it.
+ *
+ * @param videoParams Params to find the video, you can pass in a video from `getVideos` of {@link Publication}.
+ *
+ * @returns A Stream of the video file or `null` if the video cannot be found.
+ */
 export async function getVideoStream ({ type, doc, track, issue } : { type: VideoDTO['type'], doc: string | number, track: string | number, issue: string | number }): Promise<NodeJS.ReadableStream | null> {
-  const url = new URL('https://api.hag27.com/GETPUBMEDIALINKS')
+  const url = new URL(MEDIA_URL)
   url.searchParams.append('output', 'json')
   url.searchParams.append('langwritten', 'E')
   url.searchParams.append('alllangs', '0')
@@ -84,6 +119,14 @@ export async function getVideoStream ({ type, doc, track, issue } : { type: Vide
   return fileRes.body
 }
 
+/**
+ * Does the same as {@link getVideoStream} but writes the stream to a file instead of returning the stream.
+ *
+ * @param videoParams See {@link getVideoStream} videoParams.
+ * @param path The path to write the video to.
+ *
+ * @returns `true` if the file was written successfully, `null` if the video could not be found.
+ */
 export async function downloadVideoStream (videoArgs: Parameters<typeof getVideoStream>[0], path: string): Promise<true | null> {
   const stream = await getVideoStream(videoArgs)
   if (!stream) return null

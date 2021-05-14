@@ -6,7 +6,7 @@ This package is brought to you by [Library API](../../README.md).
 
 ## Documentation
 
-View the documentation [here](https://benshelton.github.io/library-api/express)
+View the documentation [here](https://benshelton.github.io/library-api/express/)
 
 ## Development
 

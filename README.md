@@ -26,6 +26,8 @@ Library API offers the following packages:
 | [Library Express](./packages/express/README.md) | An express server for providing easy access to publication information | [View](./packages/express/CHANGELOG.md) |
 | [Library Core](./packages/core/README.md)       | Core tools used in other packages                                      |  [View](./packages/core/CHANGELOG.md)   |
 
+Documentation can be viewed [here](https://benshelton.github.io/library-api/)
+
 ## Support
 
 For instructions on how to use the individual packages view them using the links above.

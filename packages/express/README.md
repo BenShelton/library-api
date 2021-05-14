@@ -4,9 +4,9 @@ An Express API for easily accessing information related to meetings and publicat
 
 This package is brought to you by [Library API](../../README.md).
 
-## Usage
+## Documentation
 
-TODO: Documentation
+View the documentation [here](https://benshelton.github.io/library-api/express)
 
 ## Development
 

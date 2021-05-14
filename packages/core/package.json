@@ -26,7 +26,8 @@
     "test:ci": "yarn lint && yarn tsc && yarn test:bail",
     "test:watch": "yarn test --watch-all -t",
     "test:staged": "yarn test --bail --findRelatedTests",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "docs": "typedoc"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",

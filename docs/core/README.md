@@ -1,6 +1,6 @@
-@library-api/core
+Library Core - v0.3.1
 
-# @library-api/core
+# Library Core - v0.3.1
 
 ## Table of contents
 
@@ -39,7 +39,7 @@
 
 • `Const` **CATALOG\_URL**: ``"https://download-a.akamaihd.net/meps/jwl/current/catalogs/v3/catalog.db.gz"``
 
-Defined in: [constants.ts:2](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/constants.ts#L2)
+Defined in: [constants.ts:2](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L2)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 • `Const` **MEDIA\_URL**: ``"https://api.hag27.com/GETPUBMEDIALINKS"``= 'https://api.hag27.com/GETPUBMEDIALINKS'
 
-Defined in: [constants.ts:3](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/constants.ts#L3)
+Defined in: [constants.ts:3](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L3)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 | `OCLM_WEEK` | *number* |
 | `WATCHTOWER_ARTICLE` | *number* |
 
-Defined in: [constants.ts:10](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/constants.ts#L10)
+Defined in: [constants.ts:10](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L10)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 | `OCLM` | *number* |
 | `WATCHTOWER` | *number* |
 
-Defined in: [constants.ts:5](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/constants.ts#L5)
+Defined in: [constants.ts:5](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L5)
 
 ___
 
@@ -85,7 +85,7 @@ ___
 
 • `Const` **PUBLICATION\_URL**: ``"https://download-a.akamaihd.net"``= 'https://download-a.akamaihd.net'
 
-Defined in: [constants.ts:1](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/constants.ts#L1)
+Defined in: [constants.ts:1](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L1)
 
 ## Functions
 
@@ -101,7 +101,7 @@ Defined in: [constants.ts:1](https://github.com/BenShelton/library-api/blob/ba93
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [utils.ts:15](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/utils.ts#L15)
+Defined in: [utils.ts:15](https://github.com/BenShelton/library-api/blob/master/packages/core/src/utils.ts#L15)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 **Returns:** *Promise*<string\>
 
-Defined in: [utils.ts:4](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/utils.ts#L4)
+Defined in: [utils.ts:4](https://github.com/BenShelton/library-api/blob/master/packages/core/src/utils.ts#L4)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [download.ts:33](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/download.ts#L33)
+Defined in: [download.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L33)
 
 ___
 
@@ -150,7 +150,7 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [download.ts:24](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/download.ts#L24)
+Defined in: [download.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L24)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 **Returns:** *Promise*<void\>
 
-Defined in: [download.ts:43](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/download.ts#L43)
+Defined in: [download.ts:43](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L43)
 
 ___
 
@@ -184,7 +184,7 @@ ___
 
 **Returns:** *Promise*<``true`` \| ``null``\>
 
-Defined in: [download.ts:87](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/download.ts#L87)
+Defined in: [download.ts:87](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L87)
 
 ___
 
@@ -202,7 +202,7 @@ Removes the entire directory (similar to rm -rf)
 
 **Returns:** *Promise*<void\>
 
-Defined in: [utils.ts:11](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/utils.ts#L11)
+Defined in: [utils.ts:11](https://github.com/BenShelton/library-api/blob/master/packages/core/src/utils.ts#L11)
 
 ___
 
@@ -222,7 +222,7 @@ ___
 
 **Returns:** *Promise*<NodeJS.ReadableStream \| ``null``\>
 
-Defined in: [download.ts:61](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/download.ts#L61)
+Defined in: [download.ts:61](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L61)
 
 ___
 
@@ -238,7 +238,7 @@ ___
 
 **Returns:** date is string
 
-Defined in: [utils.ts:24](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/utils.ts#L24)
+Defined in: [utils.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/src/utils.ts#L24)
 
 ___
 
@@ -258,4 +258,4 @@ Returns `true` if the catalog was updated, `false` if it was already the latest 
 
 **Returns:** *Promise*<boolean\>
 
-Defined in: [catalog.ts:9](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/catalog.ts#L9)
+Defined in: [catalog.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/src/catalog.ts#L9)

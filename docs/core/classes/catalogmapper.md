@@ -1,4 +1,4 @@
-[@library-api/core](../README.md) / CatalogMapper
+[Library Core - v0.3.1](../README.md) / CatalogMapper
 
 # Class: CatalogMapper
 
@@ -34,4 +34,4 @@
 
 **Returns:** MediaDetailsDTO
 
-Defined in: [classes/Mapper.ts:82](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Mapper.ts#L82)
+Defined in: [classes/Mapper.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L82)

@@ -1,4 +1,4 @@
-[@library-api/core](../README.md) / CatalogDatabase
+[Library Core - v0.3.1](../README.md) / CatalogDatabase
 
 # Class: CatalogDatabase
 
@@ -38,7 +38,7 @@
 
 Overrides: [Database](database.md)
 
-Defined in: [classes/Database.ts:38](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L38)
+Defined in: [classes/Database.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L38)
 
 ## Methods
 
@@ -58,7 +58,7 @@ Defined in: [classes/Database.ts:38](https://github.com/BenShelton/library-api/b
 
 **Returns:** *Promise*<``null`` \| MediaDetailsDTO\>
 
-Defined in: [classes/Database.ts:82](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L82)
+Defined in: [classes/Database.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L82)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 **Returns:** *Promise*<PublicationRow[]\>
 
-Defined in: [classes/Database.ts:45](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L45)
+Defined in: [classes/Database.ts:45](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L45)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 **Returns:** *Promise*<``null`` \| [*Publication*](publication.md)\>
 
-Defined in: [classes/Database.ts:53](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L53)
+Defined in: [classes/Database.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L53)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 Inherited from: [Database](database.md)
 
-Defined in: [classes/Database.ts:26](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L26)
+Defined in: [classes/Database.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L26)
 
 ___
 
@@ -136,4 +136,4 @@ ___
 
 Inherited from: [Database](database.md)
 
-Defined in: [classes/Database.ts:31](https://github.com/BenShelton/library-api/blob/ba93c4c/packages/core/src/classes/Database.ts#L31)
+Defined in: [classes/Database.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L31)

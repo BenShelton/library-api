@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / [src](../modules/src.md) / CatalogMapper
+[Library Core](../README.md) / [src](../modules/src.md) / CatalogMapper
 
 # Class: CatalogMapper
 

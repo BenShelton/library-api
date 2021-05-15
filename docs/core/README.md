@@ -1,6 +1,6 @@
-Library Core - v0.3.1
+Library Core
 
-# Library Core - v0.3.1
+# Library Core
 
 ## Table of contents
 

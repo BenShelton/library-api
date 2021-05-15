@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / src
+[Library Core](../README.md) / src
 
 # Module: src
 

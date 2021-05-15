@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / [types/dto](../modules/types_dto.md) / ImageDTO
+[Library Core](../README.md) / [types/dto](../modules/types_dto.md) / ImageDTO
 
 # Interface: ImageDTO
 

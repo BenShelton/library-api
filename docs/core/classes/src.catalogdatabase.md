@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / [src](../modules/src.md) / CatalogDatabase
+[Library Core](../README.md) / [src](../modules/src.md) / CatalogDatabase
 
 # Class: CatalogDatabase
 

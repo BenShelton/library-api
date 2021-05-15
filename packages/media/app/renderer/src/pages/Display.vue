@@ -1,26 +1,33 @@
 <template>
-  <div class="display-wrapper">
-    <template v-if="!src">
+  <div
+    class="display-wrapper"
+    @contextmenu="onContextmenu"
+  >
+    <template v-if="!src && helpText">
       <p>Nothing Displaying</p>
+      <br>
+      <p>Right click to hide/show this help text (on some devices this is a 2-finger click)</p>
       <br>
       <p>Click and drag from inside this window to move it</p>
       <p>Click and drag the corners to resize it</p>
     </template>
-    <img
-      v-else-if="mediaType === 'image'"
-      :src="src"
-    >
-    <video
-      v-else-if="mediaType === 'video'"
-      :key="src"
-      autoplay
-      controls
-    >
-      <source
+    <template v-if="src">
+      <img
+        v-if="mediaType === 'image'"
         :src="src"
-        type="video/mp4"
       >
-    </video>
+      <video
+        v-else-if="mediaType === 'video'"
+        :key="src"
+        autoplay
+        controls
+      >
+        <source
+          :src="src"
+          type="video/mp4"
+        >
+      </video>
+    </template>
   </div>
 </template>
 
@@ -46,9 +53,17 @@ export default defineComponent({
     window.electron.on<DisplayClear>('display:clear', () => {
       src.value = null
     })
+
+    const helpText = ref(true)
+    function onContextmenu () {
+      helpText.value = !helpText.value
+    }
     return {
       src,
-      mediaType
+      mediaType,
+
+      helpText,
+      onContextmenu
     }
   }
 })
@@ -66,7 +81,7 @@ export default defineComponent({
   color: white;
   -webkit-app-region: drag;
 }
-p {
+p, br {
   user-select: none;
   color: #666666;
 }

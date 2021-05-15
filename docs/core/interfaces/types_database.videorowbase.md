@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / [types/database](../modules/types_database.md) / VideoRowBase
+[Library Core](../README.md) / [types/database](../modules/types_database.md) / VideoRowBase
 
 # Interface: VideoRowBase
 

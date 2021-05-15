@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / [types/hag](../modules/types_hag.md) / MediaPubLink
+[Library Core](../README.md) / [types/hag](../modules/types_hag.md) / MediaPubLink
 
 # Interface: MediaPubLink
 

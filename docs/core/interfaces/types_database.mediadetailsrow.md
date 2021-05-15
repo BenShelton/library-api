@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / [types/database](../modules/types_database.md) / MediaDetailsRow
+[Library Core](../README.md) / [types/database](../modules/types_database.md) / MediaDetailsRow
 
 # Interface: MediaDetailsRow
 

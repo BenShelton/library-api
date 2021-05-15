@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / types/dto
+[Library Core](../README.md) / types/dto
 
 # Module: types/dto
 

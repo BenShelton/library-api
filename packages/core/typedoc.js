@@ -3,7 +3,6 @@
  */
 module.exports = {
   name: 'Library Core',
-  includeVersion: true,
   entryPoints: [
     'src/index.ts',
     'types'

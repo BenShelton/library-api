@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / [types/publication](../modules/types_publication.md) / PublicationCtor
+[Library Core](../README.md) / [types/publication](../modules/types_publication.md) / PublicationCtor
 
 # Interface: PublicationCtor
 

@@ -1,4 +1,4 @@
-[Library Core - v0.3.1](../README.md) / types/publication
+[Library Core](../README.md) / types/publication
 
 # Module: types/publication
 

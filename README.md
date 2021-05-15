@@ -8,7 +8,21 @@
 
 An API for accessing information related to meetings and publications of Jehovah's Witnesses.
 
-## Motivation
+## 📦 Packages
+
+Library API offers the following packages:
+
+| Package                                         | Description                                                                  |                Changelog                |
+| ----------------------------------------------- | ---------------------------------------------------------------------------- | :-------------------------------------: |
+| [Library Media](./packages/media/README.md)     | A **desktop app** that makes sharing meeting media easy                      |  [View](./packages/media/CHANGELOG.md)  |
+| [Library Express](./packages/express/README.md) | An **express server** for providing easy access to publication information   | [View](./packages/express/CHANGELOG.md) |
+| [Library Core](./packages/core/README.md)       | **Core tools** used in other packages that can be used to build your own app |  [View](./packages/core/CHANGELOG.md)   |
+
+## 📖 Documentation
+
+Documentation for all packages can be viewed [here](https://benshelton.github.io/library-api/).
+
+## 💡 Motivation
 
 There is no publicly available API for this information and the data structure is not created in a way to make things simple to parse or access.
 
@@ -16,25 +30,13 @@ These packages aim to provide an API that provides the information without havin
 
 We also aim to provide sample applications that use this API.
 
-## Packages
-
-Library API offers the following packages:
-
-| Package                                         | Description                                                            |                Changelog                |
-| ----------------------------------------------- | ---------------------------------------------------------------------- | :-------------------------------------: |
-| [Library Media](./packages/media/README.md)     | A desktop app that makes sharing meeting media easy                    |  [View](./packages/media/CHANGELOG.md)  |
-| [Library Express](./packages/express/README.md) | An express server for providing easy access to publication information | [View](./packages/express/CHANGELOG.md) |
-| [Library Core](./packages/core/README.md)       | Core tools used in other packages                                      |  [View](./packages/core/CHANGELOG.md)   |
-
-Documentation can be viewed [here](https://benshelton.github.io/library-api/)
-
-## Support
+## ❓ Support
 
 For instructions on how to use the individual packages view them using the links above.
 
 If you have any issues or feature requests please check if this had already been suggested on [our issues page](https://github.com/BenShelton/library-api/issues) and if not then select "New issue".
 
-## Development
+## 🛠 Development
 
 If you would like to contribute then thank you in advance! Library API uses the following tools for development you will need to install:
 

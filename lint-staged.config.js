@@ -11,7 +11,7 @@ module.exports = {
     () => 'yarn express tsc',
     'yarn express test:staged'
   ],
-  'packages/media/**/*.{js,ts}': [
+  'packages/media/**/*.{js,ts,vue}': [
     'yarn media lint:fix',
     () => 'yarn media tsc',
     'yarn media test:staged'

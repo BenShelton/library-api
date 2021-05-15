@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/BenShelton/library-api/compare/v0.3.1...v0.4.0) (2021-05-15)
+
+
+### Features
+
+* **media/display:** allow show/hide of help text with right/context click ([d8ae6d8](https://github.com/BenShelton/library-api/commit/d8ae6d8ae26c62105ad2ea89d9b9a5618f540f34)), closes [#13](https://github.com/BenShelton/library-api/issues/13)
+
+
+
+
+
 ## [0.3.1](https://github.com/BenShelton/library-api/compare/v0.3.0...v0.3.1) (2021-05-12)
 
 **Note:** Version bump only for package @library-api/media

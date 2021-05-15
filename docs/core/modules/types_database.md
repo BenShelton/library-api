@@ -16,21 +16,14 @@
 
 ### Type aliases
 
-- [QueryParams](types_database.md#queryparams)
 - [VideoRow](types_database.md#videorow)
 
 ## Type aliases
-
-### QueryParams
-
-Ƭ **QueryParams**: *string* \| *string*[] \| *Record*<string, string\>
-
-Defined in: [types/database.d.ts:1](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L1)
-
-___
 
 ### VideoRow
 
 Ƭ **VideoRow**: [*VideoRowPub*](../interfaces/types_database.videorowpub.md) \| [*VideoRowDoc*](../interfaces/types_database.videorowdoc.md)
 
-Defined in: [types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)
+A union of the raw database columns when using a video query that returns any type video.
+
+Defined in: [types/database.d.ts:62](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L62)

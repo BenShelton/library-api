@@ -4,6 +4,8 @@
 
 [types/dto](../modules/types_dto.md).VideoDTO
 
+The returned information when mapping raw video data.
+
 ## Table of contents
 
 ### Properties
@@ -21,7 +23,7 @@
 
 • **doc**: *string* \| *number*
 
-Defined in: [types/dto.d.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L12)
+Defined in: [types/dto.d.ts:36](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L36)
 
 ___
 
@@ -29,7 +31,7 @@ ___
 
 • **filename**: *string*
 
-Defined in: [types/dto.d.ts:10](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L10)
+Defined in: [types/dto.d.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L31)
 
 ___
 
@@ -37,7 +39,9 @@ ___
 
 • **id**: *string*
 
-Defined in: [types/dto.d.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L9)
+A unique id not related to the database.
+
+Defined in: [types/dto.d.ts:30](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L30)
 
 ___
 
@@ -45,7 +49,7 @@ ___
 
 • **issue**: *number*
 
-Defined in: [types/dto.d.ts:14](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L14)
+Defined in: [types/dto.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L38)
 
 ___
 
@@ -53,7 +57,7 @@ ___
 
 • **track**: *number*
 
-Defined in: [types/dto.d.ts:13](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L13)
+Defined in: [types/dto.d.ts:37](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L37)
 
 ___
 
@@ -61,4 +65,6 @@ ___
 
 • **type**: ``"pub"`` \| ``"doc"``
 
-Defined in: [types/dto.d.ts:11](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L11)
+Affects how information is retrieved about this video (for example in getting details or the video stream)
+
+Defined in: [types/dto.d.ts:35](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L35)

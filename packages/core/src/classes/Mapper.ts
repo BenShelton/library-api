@@ -5,6 +5,9 @@ interface PublicationMapperCtor {
   filename: string
 }
 
+/**
+ *
+ */
 export class PublicationMapper {
   filename: string
   constructor ({ filename }: PublicationMapperCtor) {
@@ -15,6 +18,11 @@ export class PublicationMapper {
     return `${this.filename}#${row.MultimediaId}`
   }
 
+  /**
+   * Maps a raw Image database row to a Image DTO.
+   *
+   * @param image The database row.
+   */
   public MapImage (image: ImageRow): ImageDTO {
     return {
       id: this._createId(image),
@@ -24,10 +32,20 @@ export class PublicationMapper {
     }
   }
 
+  /**
+   * Maps multiple Image database rows using {@link MapImage} and returns the mapped array.
+   *
+   * @param images The database rows.
+   */
   public MapImages (images: ImageRow[]): ImageDTO[] {
     return images.map(image => this.MapImage(image))
   }
 
+  /**
+   * Figures out the `type` of a row based on the structure. See `type` of {@link VideoDTO}.
+   *
+   * @param video The database row.
+   */
   private _videoType (video: VideoRow): Pick<VideoDTO, 'type' | 'doc'> {
     if (video.KeySymbol) {
       return { type: 'pub', doc: video.KeySymbol }
@@ -37,6 +55,11 @@ export class PublicationMapper {
     throw new Error('Unknown video type')
   }
 
+  /**
+   * Maps a raw Video database row to a Video DTO.
+   *
+   * @param video The database row.
+   */
   public MapVideo (video: VideoRow): VideoDTO {
     const { type, doc } = this._videoType(video)
     return {
@@ -49,11 +72,19 @@ export class PublicationMapper {
     }
   }
 
+  /**
+   * Maps multiple Video database rows using {@link MapVideo} and returns the mapped array.
+   *
+   * @param videos The database rows.
+   */
   public MapVideos (videos: VideoRow[]): VideoDTO[] {
     return videos.map(video => this.MapVideo(video))
   }
 }
 
+/**
+ * Maps raw database rows to more accessible DTOs.
+ */
 export class CatalogMapper {
   /**
    * Figures out the asset url based on the filename
@@ -79,6 +110,11 @@ export class CatalogMapper {
     return url
   }
 
+  /**
+   * Maps a raw Media Details database row to a Media Details DTO.
+   *
+   * @param details The database row.
+   */
   public MapMediaDetails (details: MediaDetailsRow): MediaDetailsDTO {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const filename = details.NameFragment.split('/').pop()!

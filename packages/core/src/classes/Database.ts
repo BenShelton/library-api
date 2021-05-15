@@ -8,40 +8,89 @@ import { downloadPublication } from '../download'
 import { checkExists } from '../utils'
 import { PUBLICATION_TYPES } from '../constants'
 
-import { MediaDetailsRow, PublicationRow, QueryParams } from '../../types/database'
+import { MediaDetailsRow, PublicationRow } from '../../types/database'
 import { MediaDetailsDTO, VideoDTO } from '../../types/dto'
 import { PublicationType } from '../../types/publication'
 
+type QueryParams = string | string[] | Record<string, string>
+
+/**
+ * Wraps a `sqlite3` database and provides abstracted methods to access database information.
+ */
 export class Database {
   private _database: ReturnType<typeof open>
 
-  constructor (filename: string) {
+  /**
+   * @param path The path to the database.
+   */
+  constructor (path: string) {
     this._database = open({
-      filename,
+      filename: path,
       mode: sqlite3.OPEN_READONLY,
       driver: sqlite3.cached.Database
     })
   }
 
+  /**
+   * Returns the first matched row of the provided query.
+   * The return type must be provided in TS as the row structure is unknown.
+   *
+   * @param query The SQL query to run.
+   * @param params Query params to use.
+   *
+   * @returns A single row if it exists, or `undefined` if not found.
+   *
+   * @example
+   * ```ts
+   * const db = new Database(path)
+   * const row = await db.getRow<PublicationRow>(query)
+   * ```
+   */
   async getRow<T> (query: string, params?: QueryParams): Promise<T | undefined> {
     const db = await this._database
     return db.get<T>(query, params)
   }
 
+  /**
+   * Returns all matched rows of the provided query.
+   * The return type of a single row must be provided in TS as the row structure is unknown.
+   *
+   * @param query The SQL query to run.
+   * @param params Query params to use.
+   *
+   * @returns An array of matched rows. If none were found an empty array will be returned.
+   *
+   * @example
+   * ```ts
+   * const db = new Database(path)
+   * const rows = await db.getRows<PublicationRow>(query)
+   * ```
+   */
   async getRows<T> (query: string, params?: QueryParams): Promise<T[]> {
     const db = await this._database
     return db.all<T[]>(query, params)
   }
 }
 
+/**
+ * Provides extra methods for running preset queries against a catalog.
+ */
 export class CatalogDatabase extends Database {
   private _mapper: CatalogMapper
 
-  constructor (filename: string) {
-    super(filename)
+  /**
+   * @param path The path to the database.
+   */
+  constructor (path: string) {
+    super(path)
     this._mapper = new CatalogMapper()
   }
 
+  /**
+   * @deprecated This has a hardcoded date and returns unmapped data, use {@link getPublication} instead.
+   *
+   * @returns All the publications for the current month based on today.
+   */
   async getMonthlyPublications (): Promise<PublicationRow[]> {
     const query = `
       SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
@@ -50,6 +99,18 @@ export class CatalogDatabase extends Database {
     return this.getRows<PublicationRow>(query)
   }
 
+  /**
+   * Searches the database for the specified publication based on a date.
+   * If that publication is not yet downloaded, will download it to the specified directory.
+   *
+   * @todo Validate date.
+   *
+   * @param date The date to search for, must be formatted as `yyyy-mm-dd`.
+   * @param downloadDir The directory to download the publication to if it does not exist.
+   * @param type See {@link PublicationType}
+   *
+   * @returns A {@link Publication} class to help access the downloaded publication, or `null` if not found.
+   */
   async getPublication (date: string, downloadDir: string, type: PublicationType): Promise<Publication | null> {
     // TODO: Combine the queries below, they are almost identical
     const pubQuery = type === 'wt'
@@ -79,6 +140,24 @@ export class CatalogDatabase extends Database {
     return new Publication({ filename, dir: downloadDir, type })
   }
 
+  /**
+   * Retrieves information about a video from the main catalog.
+   * The video details found within a publication's database contain limited information about the video itself.
+   * Most of this information is contained within the main catalog but mapped completely differently.
+   *
+   * This method allows passing in the video returned from the publication to get more details from the catalog.
+   * The returned image will be of the highest quality available (biggest size).
+   *
+   * @param video Pass in a returned {@link VideoDTO} from another method, see example.
+   *
+   * @returns MediaDetails if they exist, `null` if they are not found.
+   *
+   * @example
+   * ```ts
+   * const video = publication.getVideo(...)
+   * const details = await db.getMediaDetails(video)
+   * ```
+   */
   async getMediaDetails ({ type, doc, issue, track }: { type: VideoDTO['type'], doc: string | number, issue: string | number, track: string | number }): Promise<MediaDetailsDTO | null> {
     const query = type === 'doc'
       ? `

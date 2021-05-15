@@ -35,7 +35,7 @@
 
 **Returns:** [*PublicationMapper*](src.publicationmapper.md)
 
-Defined in: [src/classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L9)
+Defined in: [src/classes/Mapper.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L12)
 
 ## Properties
 
@@ -43,7 +43,7 @@ Defined in: [src/classes/Mapper.ts:9](https://github.com/BenShelton/library-api/
 
 • **filename**: *string*
 
-Defined in: [src/classes/Mapper.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L9)
+Defined in: [src/classes/Mapper.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L12)
 
 ## Methods
 
@@ -51,15 +51,17 @@ Defined in: [src/classes/Mapper.ts:9](https://github.com/BenShelton/library-api/
 
 ▸ **MapImage**(`image`: [*ImageRow*](../interfaces/types_database.imagerow.md)): [*ImageDTO*](../interfaces/types_dto.imagedto.md)
 
+Maps a raw Image database row to a Image DTO.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `image` | [*ImageRow*](../interfaces/types_database.imagerow.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `image` | [*ImageRow*](../interfaces/types_database.imagerow.md) | The database row. |
 
 **Returns:** [*ImageDTO*](../interfaces/types_dto.imagedto.md)
 
-Defined in: [src/classes/Mapper.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L18)
+Defined in: [src/classes/Mapper.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L26)
 
 ___
 
@@ -67,15 +69,17 @@ ___
 
 ▸ **MapImages**(`images`: [*ImageRow*](../interfaces/types_database.imagerow.md)[]): [*ImageDTO*](../interfaces/types_dto.imagedto.md)[]
 
+Maps multiple Image database rows using [MapImage](src.publicationmapper.md#mapimage) and returns the mapped array.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `images` | [*ImageRow*](../interfaces/types_database.imagerow.md)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `images` | [*ImageRow*](../interfaces/types_database.imagerow.md)[] | The database rows. |
 
 **Returns:** [*ImageDTO*](../interfaces/types_dto.imagedto.md)[]
 
-Defined in: [src/classes/Mapper.ts:27](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L27)
+Defined in: [src/classes/Mapper.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L40)
 
 ___
 
@@ -83,15 +87,17 @@ ___
 
 ▸ **MapVideo**(`video`: [*VideoRow*](../modules/types_database.md#videorow)): [*VideoDTO*](../interfaces/types_dto.videodto.md)
 
+Maps a raw Video database row to a Video DTO.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `video` | [*VideoRow*](../modules/types_database.md#videorow) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `video` | [*VideoRow*](../modules/types_database.md#videorow) | The database row. |
 
 **Returns:** [*VideoDTO*](../interfaces/types_dto.videodto.md)
 
-Defined in: [src/classes/Mapper.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L40)
+Defined in: [src/classes/Mapper.ts:63](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L63)
 
 ___
 
@@ -99,12 +105,14 @@ ___
 
 ▸ **MapVideos**(`videos`: [*VideoRow*](../modules/types_database.md#videorow)[]): [*VideoDTO*](../interfaces/types_dto.videodto.md)[]
 
+Maps multiple Video database rows using [MapVideo](src.publicationmapper.md#mapvideo) and returns the mapped array.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `videos` | [*VideoRow*](../modules/types_database.md#videorow)[] |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `videos` | [*VideoRow*](../modules/types_database.md#videorow)[] | The database rows. |
 
 **Returns:** [*VideoDTO*](../interfaces/types_dto.videodto.md)[]
 
-Defined in: [src/classes/Mapper.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L52)
+Defined in: [src/classes/Mapper.ts:80](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L80)

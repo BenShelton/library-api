@@ -4,6 +4,8 @@
 
 [src](../modules/src.md).Database
 
+Wraps a `sqlite3` database and provides abstracted methods to access database information.
+
 ## Hierarchy
 
 - **Database**
@@ -25,17 +27,17 @@
 
 ### constructor
 
-\+ **new Database**(`filename`: *string*): [*Database*](src.database.md)
+\+ **new Database**(`path`: *string*): [*Database*](src.database.md)
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `filename` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `path` | *string* | The path to the database. |
 
 **Returns:** [*Database*](src.database.md)
 
-Defined in: [src/classes/Database.ts:16](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L16)
+Defined in: [src/classes/Database.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L21)
 
 ## Methods
 
@@ -43,6 +45,15 @@ Defined in: [src/classes/Database.ts:16](https://github.com/BenShelton/library-a
 
 ▸ **getRow**<T\>(`query`: *string*, `params?`: *string* \| *string*[] \| *Record*<string, string\>): *Promise*<undefined \| T\>
 
+Returns the first matched row of the provided query.
+The return type must be provided in TS as the row structure is unknown.
+
+**`example`**
+```ts
+const db = new Database(path)
+const row = await db.getRow<PublicationRow>(query)
+```
+
 #### Type parameters
 
 | Name |
@@ -51,14 +62,16 @@ Defined in: [src/classes/Database.ts:16](https://github.com/BenShelton/library-a
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `query` | *string* |
-| `params?` | *string* \| *string*[] \| *Record*<string, string\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `query` | *string* | The SQL query to run. |
+| `params?` | *string* \| *string*[] \| *Record*<string, string\> | Query params to use. |
 
 **Returns:** *Promise*<undefined \| T\>
 
-Defined in: [src/classes/Database.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L26)
+A single row if it exists, or `undefined` if not found.
+
+Defined in: [src/classes/Database.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L49)
 
 ___
 
@@ -66,6 +79,15 @@ ___
 
 ▸ **getRows**<T\>(`query`: *string*, `params?`: *string* \| *string*[] \| *Record*<string, string\>): *Promise*<T[]\>
 
+Returns all matched rows of the provided query.
+The return type of a single row must be provided in TS as the row structure is unknown.
+
+**`example`**
+```ts
+const db = new Database(path)
+const rows = await db.getRows<PublicationRow>(query)
+```
+
 #### Type parameters
 
 | Name |
@@ -74,11 +96,13 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `query` | *string* |
-| `params?` | *string* \| *string*[] \| *Record*<string, string\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `query` | *string* | The SQL query to run. |
+| `params?` | *string* \| *string*[] \| *Record*<string, string\> | Query params to use. |
 
 **Returns:** *Promise*<T[]\>
 
-Defined in: [src/classes/Database.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L31)
+An array of matched rows. If none were found an empty array will be returned.
+
+Defined in: [src/classes/Database.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L69)

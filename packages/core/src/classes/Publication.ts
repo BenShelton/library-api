@@ -15,14 +15,13 @@ import { PublicationCtor, PublicationType } from '../../types/publication'
  */
 export class Publication {
   private _mapper: PublicationMapper
+  private _database: Database
   filename: string
   path: string
   contentsPath: string
   type: PublicationType
-  database: Database
 
   /**
-   *
    * @param {Object} ctor See {@link PublicationCtor}
    */
   constructor ({ filename, dir, type }: PublicationCtor) {
@@ -31,10 +30,20 @@ export class Publication {
     this.type = type
     this.contentsPath = join(this.path, 'contents')
     const dbPath = join(this.contentsPath, this.filename + '.db')
-    this.database = new Database(dbPath)
+    this._database = new Database(dbPath)
     this._mapper = new PublicationMapper({ filename })
   }
 
+  /**
+   * Retrieves all the images for a particular date from the publication.
+   * As a publication includes multiple articles this chooses the one for that day and only returns the relevant images.
+   *
+   * @todo Validate date.
+   *
+   * @param date The date to search for, must be formatted as `yyyy-mm-dd`.
+   *
+   * @returns An array of mapped images, the array will be empty if no images were found.
+   */
   async getImages (date: string): Promise<ImageDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = this.type === 'wt'
@@ -56,10 +65,20 @@ export class Publication {
       INNER JOIN DocumentInternalLink AS DIL ON DIL.InternalLinkId = IL.InternalLinkId
       INNER JOIN DatedText AS DT ON DT.DocumentId = DIL.DocumentId
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-    const rows = await this.database.getRows<ImageRow>(query)
+    const rows = await this._database.getRows<ImageRow>(query)
     return this._mapper.MapImages(rows)
   }
 
+  /**
+   * Retrieves all the videos for a particular date from the publication.
+   * As a publication includes multiple articles this chooses the one for that day and only returns the relevant videos.
+   *
+   * @todo Validate date.
+   *
+   * @param date The date to search for, must be formatted as `yyyy-mm-dd`.
+   *
+   * @returns An array of mapped videos, the array will be empty if no videos were found.
+   */
   async getVideos (date: string): Promise<VideoDTO[]> {
     const offsetDate = date.replace(/-/g, '')
     const query = this.type === 'wt'
@@ -75,10 +94,15 @@ export class Publication {
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN DatedText AS DT ON DT.DocumentId = DM.DocumentId
       WHERE M.DataType = 2 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-    const rows = await this.database.getRows<VideoRow>(query)
+    const rows = await this._database.getRows<VideoRow>(query)
     return this._mapper.MapVideos(rows)
   }
 
+  /**
+   * @deprecated This is not tested and may no longer work.
+   *
+   * Returns raw database rows for all the articles in this publication.
+   */
   async getArticles (): Promise<ArticleRow[]> {
     const query = this.type === 'wt'
       ? `
@@ -89,7 +113,7 @@ export class Publication {
       SELECT DocumentId, ContextTitle, Title
       FROM Document
       WHERE D.Class IS ${PUBLICATION_CLASSES.OCLM_WEEK}`
-    const rows = await this.database.getRows<ArticleRow>(query)
+    const rows = await this._database.getRows<ArticleRow>(query)
     return rows
   }
 }

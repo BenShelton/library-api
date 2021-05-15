@@ -4,6 +4,8 @@
 
 [types/database](../modules/types_database.md).ArticleRow
 
+The raw database columns when using an article query.
+
 ## Table of contents
 
 ### Properties
@@ -18,7 +20,7 @@
 
 • **ContextTitle**: *string*
 
-Defined in: [types/database.d.ts:44](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L44)
+Defined in: [types/database.d.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L69)
 
 ___
 
@@ -26,7 +28,7 @@ ___
 
 • **DocumentId**: *number*
 
-Defined in: [types/database.d.ts:43](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L43)
+Defined in: [types/database.d.ts:68](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L68)
 
 ___
 
@@ -34,4 +36,4 @@ ___
 
 • **Title**: *string*
 
-Defined in: [types/database.d.ts:45](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L45)
+Defined in: [types/database.d.ts:70](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L70)

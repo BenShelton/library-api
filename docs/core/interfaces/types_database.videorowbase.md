@@ -26,7 +26,7 @@
 
 • **IssueTagNumber**: *number*
 
-Defined in: [types/database.d.ts:27](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L27)
+Defined in: [types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)
 
 ___
 
@@ -34,7 +34,7 @@ ___
 
 • **MultimediaId**: *number*
 
-Defined in: [types/database.d.ts:25](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L25)
+Defined in: [types/database.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L38)
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 • **Track**: *number*
 
-Defined in: [types/database.d.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L26)
+Defined in: [types/database.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L39)

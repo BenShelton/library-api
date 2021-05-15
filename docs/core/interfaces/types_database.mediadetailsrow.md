@@ -4,6 +4,8 @@
 
 [types/database](../modules/types_database.md).MediaDetailsRow
 
+The raw database columns when using a media details query.
+
 ## Table of contents
 
 ### Properties
@@ -20,7 +22,7 @@
 
 • **Height**: *number*
 
-Defined in: [types/database.d.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L21)
+Defined in: [types/database.d.ts:34](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L34)
 
 ___
 
@@ -28,7 +30,7 @@ ___
 
 • **Id**: *number*
 
-Defined in: [types/database.d.ts:17](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L17)
+Defined in: [types/database.d.ts:30](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L30)
 
 ___
 
@@ -36,7 +38,7 @@ ___
 
 • **NameFragment**: *string*
 
-Defined in: [types/database.d.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L19)
+Defined in: [types/database.d.ts:32](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L32)
 
 ___
 
@@ -44,7 +46,7 @@ ___
 
 • **Title**: *string*
 
-Defined in: [types/database.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L18)
+Defined in: [types/database.d.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L31)
 
 ___
 
@@ -52,4 +54,4 @@ ___
 
 • **Width**: *number*
 
-Defined in: [types/database.d.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L20)
+Defined in: [types/database.d.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L33)

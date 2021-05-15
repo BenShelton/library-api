@@ -15,7 +15,6 @@ Provides methods for interacting with a downloaded publication.
 ### Properties
 
 - [contentsPath](src.publication.md#contentspath)
-- [database](src.publication.md#database)
 - [filename](src.publication.md#filename)
 - [path](src.publication.md#path)
 - [type](src.publication.md#type)
@@ -48,15 +47,7 @@ Defined in: [src/classes/Publication.ts:22](https://github.com/BenShelton/librar
 
 • **contentsPath**: *string*
 
-Defined in: [src/classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L20)
-
-___
-
-### database
-
-• **database**: [*Database*](src.database.md)
-
-Defined in: [src/classes/Publication.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L22)
+Defined in: [src/classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
 
 ___
 
@@ -64,7 +55,7 @@ ___
 
 • **filename**: *string*
 
-Defined in: [src/classes/Publication.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L18)
+Defined in: [src/classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
 
 ___
 
@@ -72,7 +63,7 @@ ___
 
 • **path**: *string*
 
-Defined in: [src/classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
+Defined in: [src/classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L20)
 
 ___
 
@@ -80,7 +71,7 @@ ___
 
 • **type**: [*PublicationType*](../modules/types_publication.md#publicationtype)
 
-Defined in: [src/classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
+Defined in: [src/classes/Publication.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L22)
 
 ## Methods
 
@@ -88,9 +79,13 @@ Defined in: [src/classes/Publication.ts:21](https://github.com/BenShelton/librar
 
 ▸ **getArticles**(): *Promise*<[*ArticleRow*](../interfaces/types_database.articlerow.md)[]\>
 
+**`deprecated`** This is not tested and may no longer work.
+
+Returns raw database rows for all the articles in this publication.
+
 **Returns:** *Promise*<[*ArticleRow*](../interfaces/types_database.articlerow.md)[]\>
 
-Defined in: [src/classes/Publication.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L82)
+Defined in: [src/classes/Publication.ts:106](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L106)
 
 ___
 
@@ -98,15 +93,22 @@ ___
 
 ▸ **getImages**(`date`: *string*): *Promise*<[*ImageDTO*](../interfaces/types_dto.imagedto.md)[]\>
 
+Retrieves all the images for a particular date from the publication.
+As a publication includes multiple articles this chooses the one for that day and only returns the relevant images.
+
+**`todo`** Validate date.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `date` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `date` | *string* | The date to search for, must be formatted as `yyyy-mm-dd`. |
 
 **Returns:** *Promise*<[*ImageDTO*](../interfaces/types_dto.imagedto.md)[]\>
 
-Defined in: [src/classes/Publication.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L38)
+An array of mapped images, the array will be empty if no images were found.
+
+Defined in: [src/classes/Publication.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L47)
 
 ___
 
@@ -114,12 +116,19 @@ ___
 
 ▸ **getVideos**(`date`: *string*): *Promise*<[*VideoDTO*](../interfaces/types_dto.videodto.md)[]\>
 
+Retrieves all the videos for a particular date from the publication.
+As a publication includes multiple articles this chooses the one for that day and only returns the relevant videos.
+
+**`todo`** Validate date.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `date` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `date` | *string* | The date to search for, must be formatted as `yyyy-mm-dd`. |
 
 **Returns:** *Promise*<[*VideoDTO*](../interfaces/types_dto.videodto.md)[]\>
 
-Defined in: [src/classes/Publication.ts:63](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L63)
+An array of mapped videos, the array will be empty if no videos were found.
+
+Defined in: [src/classes/Publication.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L82)

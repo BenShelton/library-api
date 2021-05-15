@@ -4,6 +4,8 @@
 
 [src](../modules/src.md).CatalogMapper
 
+Maps raw database rows to more accessible DTOs.
+
 ## Table of contents
 
 ### Constructors
@@ -28,12 +30,14 @@
 
 ▸ **MapMediaDetails**(`details`: [*MediaDetailsRow*](../interfaces/types_database.mediadetailsrow.md)): [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)
 
+Maps a raw Media Details database row to a Media Details DTO.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `details` | [*MediaDetailsRow*](../interfaces/types_database.mediadetailsrow.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `details` | [*MediaDetailsRow*](../interfaces/types_database.mediadetailsrow.md) | The database row. |
 
 **Returns:** [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)
 
-Defined in: [src/classes/Mapper.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L82)
+Defined in: [src/classes/Mapper.ts:118](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L118)

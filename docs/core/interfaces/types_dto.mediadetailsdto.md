@@ -4,6 +4,8 @@
 
 [types/dto](../modules/types_dto.md).MediaDetailsDTO
 
+The returned information when mapping raw media details data.
+
 ## Table of contents
 
 ### Properties
@@ -21,7 +23,7 @@
 
 • **caption**: *string*
 
-Defined in: [types/dto.d.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L20)
+Defined in: [types/dto.d.ts:50](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L50)
 
 ___
 
@@ -29,7 +31,7 @@ ___
 
 • **filename**: *string*
 
-Defined in: [types/dto.d.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L19)
+Defined in: [types/dto.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L49)
 
 ___
 
@@ -37,7 +39,9 @@ ___
 
 • **height**: *number*
 
-Defined in: [types/dto.d.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L22)
+The height in pixels of the image.
+
+Defined in: [types/dto.d.ts:58](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L58)
 
 ___
 
@@ -45,7 +49,9 @@ ___
 
 • **id**: *string*
 
-Defined in: [types/dto.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L18)
+A unique id not related to the database.
+
+Defined in: [types/dto.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L48)
 
 ___
 
@@ -53,7 +59,10 @@ ___
 
 • **url**: *string*
 
-Defined in: [types/dto.d.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L23)
+The URL of the image on the external media server.
+Can be used as a `src` for an `img` element or downloaded.
+
+Defined in: [types/dto.d.ts:63](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L63)
 
 ___
 
@@ -61,4 +70,6 @@ ___
 
 • **width**: *number*
 
-Defined in: [types/dto.d.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L21)
+The width in pixels of the image.
+
+Defined in: [types/dto.d.ts:54](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L54)

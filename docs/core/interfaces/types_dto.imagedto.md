@@ -4,6 +4,8 @@
 
 [types/dto](../modules/types_dto.md).ImageDTO
 
+The returned information when mapping raw image data.
+
 ## Table of contents
 
 ### Properties
@@ -19,7 +21,9 @@
 
 • **caption**: *string*
 
-Defined in: [types/dto.d.ts:4](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L4)
+The description in the database for this image.
+
+Defined in: [types/dto.d.ts:16](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L16)
 
 ___
 
@@ -27,7 +31,9 @@ ___
 
 • **filePath**: *string*
 
-Defined in: [types/dto.d.ts:5](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L5)
+The path to access the image within the downloaded publication.
+
+Defined in: [types/dto.d.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L20)
 
 ___
 
@@ -35,7 +41,9 @@ ___
 
 • **filename**: *string*
 
-Defined in: [types/dto.d.ts:3](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L3)
+The filename of the image.
+
+Defined in: [types/dto.d.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L12)
 
 ___
 
@@ -43,4 +51,6 @@ ___
 
 • **id**: *string*
 
-Defined in: [types/dto.d.ts:2](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L2)
+A unique id not related to the database.
+
+Defined in: [types/dto.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L8)

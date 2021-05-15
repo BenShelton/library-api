@@ -4,6 +4,8 @@
 
 [types/database](../modules/types_database.md).ImageRow
 
+The raw database columns when using an image query.
+
 ## Table of contents
 
 ### Properties
@@ -19,7 +21,7 @@
 
 • **Caption**: *string*
 
-Defined in: [types/database.d.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L12)
+Defined in: [types/database.d.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L19)
 
 ___
 
@@ -27,7 +29,7 @@ ___
 
 • **ContextTitle**: *string*
 
-Defined in: [types/database.d.ts:11](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L11)
+Defined in: [types/database.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L18)
 
 ___
 
@@ -35,7 +37,9 @@ ___
 
 • **FilePath**: *string*
 
-Defined in: [types/database.d.ts:13](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L13)
+The path within the contents directory of a publication to access this image.
+
+Defined in: [types/database.d.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L23)
 
 ___
 
@@ -43,4 +47,4 @@ ___
 
 • **MultimediaId**: *number*
 
-Defined in: [types/database.d.ts:10](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L10)
+Defined in: [types/database.d.ts:17](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L17)

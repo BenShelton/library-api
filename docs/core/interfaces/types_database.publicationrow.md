@@ -4,6 +4,8 @@
 
 [types/database](../modules/types_database.md).PublicationRow
 
+The raw database columns when using a publication query.
+
 ## Table of contents
 
 ### Properties
@@ -18,7 +20,9 @@
 
 • **NameFragment**: *string*
 
-Defined in: [types/database.d.ts:4](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L4)
+The filename used on the storage servers and for the internal database of a publication.
+
+Defined in: [types/database.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L8)
 
 ___
 
@@ -26,7 +30,7 @@ ___
 
 • **PubMepsLanguageId**: *number*
 
-Defined in: [types/database.d.ts:6](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L6)
+Defined in: [types/database.d.ts:10](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L10)
 
 ___
 
@@ -34,4 +38,4 @@ ___
 
 • **PublicationTypeId**: *number*
 
-Defined in: [types/database.d.ts:5](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L5)
+Defined in: [types/database.d.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L9)

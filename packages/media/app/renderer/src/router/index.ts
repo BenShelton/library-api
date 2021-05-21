@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Intro from '@/pages/Intro.vue'
 import ControlPanel from '@/pages/ControlPanel/Index.vue'
 import Media from '@/pages/ControlPanel/Media.vue'
+import Song from '@/pages/ControlPanel/Song.vue'
 import Settings from '@/pages/ControlPanel/Settings.vue'
 import Display from '@/pages/Display.vue'
 
@@ -25,6 +26,11 @@ const routes: RouteRecordRaw[] = [
         path: 'media',
         name: 'Media',
         component: Media
+      },
+      {
+        path: 'song',
+        name: 'Song',
+        component: Song
       },
       {
         path: 'settings',

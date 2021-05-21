@@ -1,14 +1,17 @@
 import { ImageDTO, MediaDetailsDTO, VideoDTO } from '@library-api/core/types/dto'
 
 interface MediaDisplayProps {
+  id: string
   src: string
   text: string
   downloaded: boolean
 }
 
+export type VideoDetails = MediaDisplayProps & { details: MediaDetailsDTO }
+
 export type IPCImageDTO = ImageDTO & MediaDisplayProps
 
-export type IPCVideoDTO = VideoDTO & MediaDisplayProps & { details: MediaDetailsDTO }
+export type IPCVideoDTO = VideoDTO & VideoDetails
 
 interface Invoke {
   Args?: unknown
@@ -40,6 +43,21 @@ export interface DownloadVideo extends Invoke {
     details: MediaDetailsDTO
   }
   Response: void
+}
+
+export interface DownloadSong extends Invoke {
+  Args: {
+    details: MediaDetailsDTO
+    track: number
+  }
+  Response: void
+}
+
+export interface SongDetails extends Invoke {
+  Args: {
+    track: number
+  }
+  Response: VideoDetails
 }
 
 export interface CacheClear extends Invoke {

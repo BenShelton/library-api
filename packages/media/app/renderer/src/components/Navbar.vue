@@ -10,6 +10,10 @@
         src="@/assets/media.svg"
       />
       <NavbarBtn
+        name="Song"
+        src="@/assets/song.svg"
+      />
+      <NavbarBtn
         name="Settings"
         src="@/assets/settings.svg"
       />

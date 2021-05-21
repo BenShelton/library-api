@@ -197,15 +197,6 @@ export default defineComponent({
   flex-flow: row wrap;
   margin-bottom: 16px;
 }
-.date-selection select {
-  min-width: 140px;
-  margin: 0 8px;
-  background-color: var(--secondary);
-  padding: 4px;
-  border: none;
-  outline: none;
-  margin-bottom: 8px;
-}
 .media-display {
   flex: 1 0 auto;
   width: 100%;

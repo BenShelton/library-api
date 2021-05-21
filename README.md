@@ -1,4 +1,10 @@
-# Library API
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/84573271/119142508-80687480-ba3e-11eb-8277-444f0c97c003.png" width="150" height="275">
+</p>
+
+<h1 align="center">
+  Library API
+</h1>
 
 [![Github Actions Status](https://github.com/BenShelton/library-api/workflows/CI/badge.svg)](https://github.com/BenShelton/library-api/actions)
 [![TypeScript](https://img.shields.io/npm/types/typescript)](https://www.typescriptlang.org/)

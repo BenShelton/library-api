@@ -1,7 +1,9 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 import Intro from '@/pages/Intro.vue'
-import ControlPanel from '@/pages/ControlPanel.vue'
+import ControlPanel from '@/pages/ControlPanel/Index.vue'
+import Media from '@/pages/ControlPanel/Media.vue'
+import Settings from '@/pages/ControlPanel/Settings.vue'
 import Display from '@/pages/Display.vue'
 
 const routes: RouteRecordRaw[] = [
@@ -13,7 +15,23 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/control-panel',
     name: 'ControlPanel',
-    component: ControlPanel
+    component: ControlPanel,
+    children: [
+      {
+        path: '',
+        redirect: { name: 'Media' }
+      },
+      {
+        path: 'media',
+        name: 'Media',
+        component: Media
+      },
+      {
+        path: 'settings',
+        name: 'Settings',
+        component: Settings
+      }
+    ]
   },
   {
     path: '/display',

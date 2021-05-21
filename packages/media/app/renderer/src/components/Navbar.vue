@@ -5,30 +5,14 @@
       src="@/assets/logo.svg"
     >
     <div>
-      <router-link
-        v-slot="{ href, navigate }"
-        :to="{ name: 'Media' }"
-      >
-        <button
-          :href="href"
-          class="icon-btn"
-          @click="navigate"
-        >
-          <img src="@/assets/media.svg">
-        </button>
-      </router-link>
-      <router-link
-        v-slot="{ href, navigate }"
-        :to="{ name: 'Settings' }"
-      >
-        <button
-          :href="href"
-          class="icon-btn"
-          @click="navigate"
-        >
-          <img src="@/assets/settings.svg">
-        </button>
-      </router-link>
+      <NavbarBtn
+        name="Media"
+        src="@/assets/media.svg"
+      />
+      <NavbarBtn
+        name="Settings"
+        src="@/assets/settings.svg"
+      />
     </div>
   </div>
 </template>
@@ -36,8 +20,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import NavbarBtn from '@/components/NavbarBtn.vue'
+
 export default defineComponent({
-  name: 'Navbar'
+  name: 'Navbar',
+
+  components: {
+    NavbarBtn
+  }
 })
 </script>
 
@@ -57,13 +47,5 @@ export default defineComponent({
   width: 50px;
   height: 50px;
   box-sizing: unset;
-}
-button {
-  margin-left: 8px;
-  border: 1px solid transparent;
-}
-.router-link-active button {
-  background-color: var(--button-disabled);
-  border: 1px solid var(--secondary);
 }
 </style>

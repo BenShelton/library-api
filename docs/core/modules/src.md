@@ -22,6 +22,7 @@
 - [CATALOG\_URL](src.md#catalog_url)
 - [MEDIA\_URL](src.md#media_url)
 - [PUBLICATION\_URL](src.md#publication_url)
+- [SONG\_PUBLICATION](src.md#song_publication)
 
 ### Functions
 
@@ -30,8 +31,10 @@
 - [downloadCatalog](src.md#downloadcatalog)
 - [downloadFile](src.md#downloadfile)
 - [downloadPublication](src.md#downloadpublication)
+- [downloadSongStream](src.md#downloadsongstream)
 - [downloadVideoStream](src.md#downloadvideostream)
 - [emptyDir](src.md#emptydir)
+- [getSongStream](src.md#getsongstream)
 - [getVideoStream](src.md#getvideostream)
 - [isValidDate](src.md#isvaliddate)
 - [updateCatalog](src.md#updatecatalog)
@@ -69,6 +72,26 @@ The URL used as a base for downloading publications.
 This is the site hosting most of the files.
 
 Defined in: [src/constants.ts:6](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L6)
+
+___
+
+### SONG\_PUBLICATION
+
+• `Const` **SONG\_PUBLICATION**: *object*
+
+Params for the current songbook publication, without the track.
+
+Used internally to provide methods which only require a track in order to retrieve a song.
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `doc` | ``"sjjm"`` |
+| `issue` | ``0`` |
+| `type` | ``"pub"`` |
+
+Defined in: [src/constants.ts:41](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L41)
 
 ## Functions
 
@@ -177,6 +200,27 @@ Defined in: [src/download.ts:71](https://github.com/BenShelton/library-api/blob/
 
 ___
 
+### downloadSongStream
+
+▸ **downloadSongStream**(`track`: *number*, `path`: *string*): *Promise*<``true`` \| ``null``\>
+
+Does the same as [downloadVideoStream](src.md#downloadvideostream) but only requires passing a song number.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `track` | *number* | The song number to use. |
+| `path` | *string* | The path to write the song to. |
+
+**Returns:** *Promise*<``true`` \| ``null``\>
+
+See [downloadVideoStream](src.md#downloadvideostream).
+
+Defined in: [src/download.ts:159](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L159)
+
+___
+
 ### downloadVideoStream
 
 ▸ **downloadVideoStream**(`videoArgs`: *Parameters*<*typeof* [*getVideoStream*](src.md#getvideostream)\>[``0``], `path`: *string*): *Promise*<``true`` \| ``null``\>
@@ -213,6 +257,26 @@ Removes the entire specified directory, similar to `rm -rf {dir}`.
 **Returns:** *Promise*<void\>
 
 Defined in: [src/utils.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/src/utils.ts#L18)
+
+___
+
+### getSongStream
+
+▸ **getSongStream**(`track`: *number*): *Promise*<NodeJS.ReadableStream \| ``null``\>
+
+Does the same as [getVideoStream](src.md#getvideostream) but only requires passing a song number.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `track` | *number* | The song number to use. |
+
+**Returns:** *Promise*<NodeJS.ReadableStream \| ``null``\>
+
+See [getVideoStream](src.md#getvideostream).
+
+Defined in: [src/download.ts:147](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L147)
 
 ___
 

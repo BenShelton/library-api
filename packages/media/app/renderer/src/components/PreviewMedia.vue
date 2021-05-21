@@ -29,13 +29,13 @@
 <script lang="ts">
 import { computed, defineComponent, inject, onMounted, onUnmounted, PropType, Ref, ref } from 'vue'
 
-import { IPCImageDTO, IPCVideoDTO } from '../../../../types/ipc'
+import { IPCImageDTO, IPCVideoDTO, VideoDetails } from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'PreviewMedia',
 
   props: {
-    media: { type: Object as PropType<IPCImageDTO | IPCVideoDTO>, required: true },
+    media: { type: Object as PropType<IPCImageDTO | IPCVideoDTO | VideoDetails>, required: true },
     downloading: { type: Boolean, required: true }
   },
 
@@ -132,6 +132,7 @@ export default defineComponent({
   border-top: 1px dashed var(--secondary);
   padding: 2px 10px;
   height: 50px;
+  text-align: center;
 }
 p {
   margin: auto 0;

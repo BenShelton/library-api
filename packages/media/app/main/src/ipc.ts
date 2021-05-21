@@ -5,6 +5,7 @@ import {
   CatalogDatabase,
   checkExists,
   downloadFile,
+  downloadSongStream,
   downloadVideoStream,
   emptyDir,
   Publication,
@@ -21,11 +22,14 @@ import {
   CatalogUpdate,
   DisplayImage,
   DisplayVideo,
+  DownloadSong,
   DownloadVideo,
   IPCVideoDTO,
   MediaImage,
   MediaVideo,
-  PublicationMedia
+  PublicationMedia,
+  SongDetails,
+  VideoDetails
 } from '../../../types/ipc'
 
 function getVideoPaths (details: MediaDetailsDTO): { imagePath: string, videoPath: string } {
@@ -33,6 +37,26 @@ function getVideoPaths (details: MediaDetailsDTO): { imagePath: string, videoPat
   return {
     imagePath: srcPath + '_preview.jpg',
     videoPath: srcPath + '_video.mp4'
+  }
+}
+
+async function processVideoDetails (details: MediaDetailsDTO): Promise<VideoDetails> {
+  const { imagePath, videoPath } = getVideoPaths(details)
+
+  const imageDownloaded = await checkExists(imagePath)
+  if (!imageDownloaded) {
+    await downloadFile(details.url, imagePath)
+  }
+  const imageSrc = await readFile(imagePath, { encoding: 'base64' })
+
+  const downloaded = await checkExists(videoPath)
+
+  return {
+    details,
+    id: details.id,
+    src: 'data:image/jpeg;base64,' + imageSrc,
+    text: details.caption,
+    downloaded
   }
 }
 
@@ -74,22 +98,12 @@ export function initIPC (): void {
     const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {
       const details = await db.getMediaDetails(video)
       if (!details) throw new Error(`Cannot load details for video: ${video.id}`)
-      const { imagePath, videoPath } = getVideoPaths(details)
 
-      const imageDownloaded = await checkExists(imagePath)
-      if (!imageDownloaded) {
-        await downloadFile(details.url, imagePath)
-      }
-      const imageSrc = await readFile(imagePath, { encoding: 'base64' })
-
-      const downloaded = await checkExists(videoPath)
+      const videoDetails = await processVideoDetails(details)
 
       return {
         ...video,
-        details,
-        src: 'data:image/jpeg;base64,' + imageSrc,
-        text: details.caption,
-        downloaded
+        ...videoDetails
       }
     }))
 
@@ -103,6 +117,20 @@ export function initIPC (): void {
     const { videoPath } = getVideoPaths(args.details)
     const stream = await downloadVideoStream(args, videoPath)
     if (!stream) throw new Error(`Could not load video stream for video detail: ${args.details.id}`)
+  })
+
+  ipcMain.handle('download:song', async (_event, args: DownloadSong['Args']): Promise<DownloadSong['Response']> => {
+    const { videoPath } = getVideoPaths(args.details)
+    const stream = await downloadSongStream(args.track, videoPath)
+    if (!stream) throw new Error(`Could not load song stream for song: ${args.track}`)
+  })
+
+  ipcMain.handle('song:details', async (_event, args: SongDetails['Args']): Promise<SongDetails['Response']> => {
+    const db = new CatalogDatabase(CATALOG_PATH)
+    const details = await db.getSongDetails(args.track)
+    if (!details) throw new Error('Could not find details')
+    const videoDetails = processVideoDetails(details)
+    return videoDetails
   })
 
   ipcMain.handle('cache:clear', async (): Promise<CacheClear['Response']> => {

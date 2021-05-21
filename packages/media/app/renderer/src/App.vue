@@ -76,6 +76,16 @@ button:disabled {
   background-color: var(--button-disabled);
 }
 
+select {
+  min-width: 140px;
+  margin: 0 8px;
+  background-color: var(--secondary);
+  padding: 4px;
+  border: none;
+  outline: none;
+  margin-bottom: 8px;
+}
+
 .icon-btn {
   height: 46px;
   width: 46px;
@@ -98,7 +108,7 @@ button:disabled {
 .heading {
   margin: 0 0 16px;
   align-self: flex-start;
-  width: 150px;
+  width: 180px;
   text-align: left;
   font-size: 24px;
   text-transform: uppercase;

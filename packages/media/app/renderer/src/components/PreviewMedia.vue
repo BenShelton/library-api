@@ -95,9 +95,10 @@ export default defineComponent({
   margin: 0 8px 24px;
   box-sizing: content-box;
   border: 1px solid var(--secondary);
-  flex: 0 0 160px;
+  flex: 1 0 160px;
   height: 140px;
   width: 160px;
+  max-width: 220px;
   position: relative;
 }
 .download-icon {
@@ -127,9 +128,9 @@ export default defineComponent({
   z-index: 10;
 }
 .text {
-  overflow-y: scroll;
+  overflow-y: overlay;
   border-top: 1px dashed var(--secondary);
-  padding: 2px;
+  padding: 2px 10px;
   height: 50px;
 }
 p {

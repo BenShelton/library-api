@@ -43,6 +43,23 @@ body,
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+  border-radius: 100px;
+}
+::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+::-webkit-scrollbar-thumb:vertical {
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+  background-color: rgba(0,0,0,0.61);
+  border-radius: 100px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }

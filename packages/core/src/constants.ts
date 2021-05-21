@@ -32,3 +32,14 @@ export enum PUBLICATION_CLASSES {
   WATCHTOWER_ARTICLE = 40,
   OCLM_WEEK = 106
 }
+
+/**
+ * Params for the current songbook publication, without the track.
+ *
+ * Used internally to provide methods which only require a track in order to retrieve a song.
+ */
+export const SONG_PUBLICATION = {
+  type: 'pub',
+  doc: 'sjjm',
+  issue: 0
+} as const

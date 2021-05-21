@@ -7,7 +7,7 @@ import { createGunzip } from 'zlib'
 import fetch, { Response } from 'node-fetch'
 import { Extract } from 'unzipper'
 
-import { CATALOG_URL, MEDIA_URL, PUBLICATION_URL } from './constants'
+import { CATALOG_URL, MEDIA_URL, PUBLICATION_URL, SONG_PUBLICATION } from './constants'
 import { GetMediaPubLinks } from '../types/hag'
 import { VideoDTO } from '../types/dto'
 
@@ -135,4 +135,27 @@ export async function downloadVideoStream (videoArgs: Parameters<typeof getVideo
     createWriteStream(path)
   )
   return true
+}
+
+/**
+ * Does the same as {@link getVideoStream} but only requires passing a song number.
+ *
+ * @param track The song number to use.
+ *
+ * @returns See {@link getVideoStream}.
+ */
+export async function getSongStream (track: number): Promise<NodeJS.ReadableStream | null> {
+  return getVideoStream({ ...SONG_PUBLICATION, track })
+}
+
+/**
+ * Does the same as {@link downloadVideoStream} but only requires passing a song number.
+ *
+ * @param track The song number to use.
+ * @param path The path to write the song to.
+ *
+ * @returns See {@link downloadVideoStream}.
+ */
+export async function downloadSongStream (track: number, path: string): Promise<true | null> {
+  return downloadVideoStream({ ...SONG_PUBLICATION, track }, path)
 }

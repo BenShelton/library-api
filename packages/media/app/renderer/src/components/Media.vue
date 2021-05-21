@@ -195,7 +195,7 @@ export default defineComponent({
 .media {
   flex: 0 1 100%;
   display: flex;
-  overflow-y: scroll;
+  overflow-y: overlay;
   align-items: center;
   flex-flow: column nowrap;
   text-align: center;
@@ -206,7 +206,7 @@ export default defineComponent({
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 .date-selection select {
   min-width: 140px;
@@ -215,6 +215,7 @@ export default defineComponent({
   padding: 4px;
   border: none;
   outline: none;
+  margin-bottom: 8px;
 }
 .media-display {
   flex: 1 0 auto;

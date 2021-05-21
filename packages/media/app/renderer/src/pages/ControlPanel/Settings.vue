@@ -22,8 +22,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-
-import router from '@/router'
+import { useRouter } from 'vue-router'
 
 import { CacheClear } from '../../../../../types/ipc'
 
@@ -31,13 +30,14 @@ export default defineComponent({
   name: 'Settings',
 
   setup () {
+    const { push } = useRouter()
     const loading = ref(false)
 
     async function onClearCache () {
       loading.value = true
       try {
         await window.electron.invoke<CacheClear>('cache:clear')
-        router.push({ name: 'Intro' })
+        push({ name: 'Intro' })
       } catch (err) {
         console.error(err)
       } finally {

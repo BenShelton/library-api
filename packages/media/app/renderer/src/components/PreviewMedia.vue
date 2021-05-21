@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, onUnmounted, PropType, ref } from 'vue'
+import { computed, defineComponent, inject, onMounted, onUnmounted, PropType, Ref, ref } from 'vue'
 
 import { IPCImageDTO, IPCVideoDTO } from '../../../../types/ipc'
 
@@ -36,7 +36,6 @@ export default defineComponent({
 
   props: {
     media: { type: Object as PropType<IPCImageDTO | IPCVideoDTO>, required: true },
-    selected: { type: String, required: true },
     downloading: { type: Boolean, required: true }
   },
 
@@ -66,8 +65,9 @@ export default defineComponent({
     const showOverlay = computed(() => {
       return hovering.value || isSelected.value || props.downloading
     })
+    const selected = inject<Ref<string | null>>('selected')
     const isSelected = computed(() => {
-      return props.selected === props.media.id
+      return selected?.value === props.media.id
     })
     onMounted(() => {
       window.addEventListener('blur', onMouseleave)

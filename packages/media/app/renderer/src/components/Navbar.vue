@@ -4,12 +4,32 @@
       class="icon"
       src="@/assets/logo.svg"
     >
-    <button
-      class="icon-btn"
-      @click="onSettingsClick"
-    >
-      <img src="@/assets/settings.svg">
-    </button>
+    <div>
+      <router-link
+        v-slot="{ href, navigate }"
+        :to="{ name: 'Media' }"
+      >
+        <button
+          :href="href"
+          class="icon-btn"
+          @click="navigate"
+        >
+          <img src="@/assets/media.svg">
+        </button>
+      </router-link>
+      <router-link
+        v-slot="{ href, navigate }"
+        :to="{ name: 'Settings' }"
+      >
+        <button
+          :href="href"
+          class="icon-btn"
+          @click="navigate"
+        >
+          <img src="@/assets/settings.svg">
+        </button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -17,20 +37,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Navbar',
-
-  emits: [
-    'settings:show'
-  ],
-
-  setup (props, { emit }) {
-    function onSettingsClick () {
-      emit('settings:show')
-    }
-    return {
-      onSettingsClick
-    }
-  }
+  name: 'Navbar'
 })
 </script>
 
@@ -49,5 +56,14 @@ export default defineComponent({
   flex: 0 0 50px;
   width: 50px;
   height: 50px;
+  box-sizing: unset;
+}
+button {
+  margin-left: 8px;
+  border: 1px solid transparent;
+}
+.router-link-active button {
+  background-color: var(--button-disabled);
+  border: 1px solid var(--secondary);
 }
 </style>

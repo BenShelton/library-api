@@ -77,10 +77,11 @@ button:disabled {
 }
 
 .icon-btn {
-  height: 44px;
-  width: 44px;
+  height: 46px;
+  width: 46px;
   padding: 10px;
   border-radius: 50%;
+  border: 1px solid transparent;
 }
 
 .icon-btn img {
@@ -92,5 +93,15 @@ button:disabled {
   width: 100%;
   height: 100%;
   background-color: var(--background);
+}
+
+.heading {
+  margin: 0 0 16px;
+  align-self: flex-start;
+  width: 150px;
+  text-align: left;
+  font-size: 24px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--secondary);
 }
 </style>

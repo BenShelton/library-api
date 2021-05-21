@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/BenShelton/library-api/compare/v0.4.0...v0.5.0) (2021-05-21)
+
+
+### Features
+
+* **core:** add new helper methods for getting song details & streams ([9d1b504](https://github.com/BenShelton/library-api/commit/9d1b504f18f150af63a98d7a210c290f7afdf47c))
+
+
+
+
+
 # [0.4.0](https://github.com/BenShelton/library-api/compare/v0.3.1...v0.4.0) (2021-05-15)
 
 **Note:** Version bump only for package @library-api/core

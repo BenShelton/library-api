@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/BenShelton/library-api/compare/v0.4.0...v0.5.0) (2021-05-21)
+
+
+### Bug Fixes
+
+* **media:** consistent scrollbar appearance, realign some media elements ([ca18098](https://github.com/BenShelton/library-api/commit/ca18098c05a81ebe7dbcd64431bf893376753e1c)), closes [#25](https://github.com/BenShelton/library-api/issues/25)
+
+
+### Features
+
+* **core:** add new helper methods for getting song details & streams ([9d1b504](https://github.com/BenShelton/library-api/commit/9d1b504f18f150af63a98d7a210c290f7afdf47c))
+* **media:** add song choosing screen ([18accf6](https://github.com/BenShelton/library-api/commit/18accf665458737c4c765edf135da4fe707c3d65)), closes [#16](https://github.com/BenShelton/library-api/issues/16)
+* **media:** create separate pages for media and settings ([a31fb74](https://github.com/BenShelton/library-api/commit/a31fb7411aa0735469becb0b10862b4eae298791))
+* **media:** move controls to root of control panel, use provide/inject for selected ([8d38b70](https://github.com/BenShelton/library-api/commit/8d38b70c14d8eef58ab9f6c9afe90822f7496401))
+
+
+
+
+
 # [0.4.0](https://github.com/BenShelton/library-api/compare/v0.3.1...v0.4.0) (2021-05-15)
 
 

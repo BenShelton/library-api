@@ -49,7 +49,6 @@
             v-for="video of media.videos"
             :key="video.id"
             :media="video"
-            :selected="selected"
             :downloading="downloads.includes(video.id)"
             @display="onDisplayVideo"
           />
@@ -62,7 +61,6 @@
             v-for="image of media.images"
             :key="image.id"
             :media="image"
-            :selected="selected"
             :downloading="false"
             @display="onDisplayImage"
           />
@@ -73,19 +71,14 @@
         <p>It may be that it is not yet available, try a different date</p>
       </template>
     </div>
-    <Controls
-      :selected="selected"
-      @clear="onClear"
-    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watch, watchEffect } from 'vue'
+import { defineComponent, inject, reactive, ref, watch, watchEffect } from 'vue'
 
 import Loader from '@/components/Loader.vue'
 import PreviewMedia from '@/components/PreviewMedia.vue'
-import Controls from '@/components/Controls.vue'
 
 import { getMondaysOfYear, formatISODate, closestPreviousMonday, isWeekend } from '@/utils/date'
 
@@ -96,8 +89,7 @@ import {
   IPCImageDTO,
   IPCVideoDTO,
   MediaImage,
-  MediaVideo,
-  MediaClear
+  MediaVideo
 } from '../../../../../types/ipc'
 
 export default defineComponent({
@@ -105,8 +97,7 @@ export default defineComponent({
 
   components: {
     Loader,
-    PreviewMedia,
-    Controls
+    PreviewMedia
   },
 
   setup () {
@@ -149,7 +140,8 @@ export default defineComponent({
       media.loading = false
     })
 
-    const selected = ref<string>('')
+    const updateSelected = inject<(val: string) => void>('updateSelected')
+
     const downloads = reactive<string[]>([])
     async function onDisplayVideo (video: IPCVideoDTO): Promise<void> {
       // need to unwrap this from the proxy to be able to send over IPC
@@ -163,16 +155,12 @@ export default defineComponent({
         if (downloadIdx > -1) downloads.splice(downloadIdx, 1)
       } else {
         window.electron.send<MediaVideo>('media:video', { details })
-        selected.value = video.id
+        updateSelected?.(video.id)
       }
     }
     function onDisplayImage (image: IPCImageDTO): void {
       window.electron.send<MediaImage>('media:image', { src: image.src })
-      selected.value = image.id
-    }
-    function onClear (): void {
-      window.electron.send<MediaClear>('media:clear')
-      selected.value = ''
+      updateSelected?.(image.id)
     }
 
     return {
@@ -185,11 +173,9 @@ export default defineComponent({
 
       media,
 
-      selected,
       downloads,
       onDisplayVideo,
-      onDisplayImage,
-      onClear
+      onDisplayImage
     }
   }
 })
@@ -203,8 +189,7 @@ export default defineComponent({
   align-items: center;
   flex-flow: column nowrap;
   text-align: center;
-  padding: 24px 24px 0 24px;
-  margin-bottom: 48px;
+  padding: 24px;
 }
 .date-selection {
   width: 100%;

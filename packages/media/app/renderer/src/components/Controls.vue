@@ -12,24 +12,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, inject, Ref } from 'vue'
+
+import { MediaClear } from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'Controls',
 
-  props: {
-    selected: { type: String, default: null }
-  },
-
-  emits: [
-    'clear'
-  ],
-
-  setup (props, { emit }) {
+  setup () {
+    const selected = inject<Ref<string | null>>('selected')
+    const updateSelected = inject<(val: string | null) => void>('updateSelected')
     function onClear () {
-      emit('clear')
+      window.electron.send<MediaClear>('media:clear')
+      updateSelected?.(null)
     }
     return {
+      selected,
       onClear
     }
   }

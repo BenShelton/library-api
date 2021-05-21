@@ -2,19 +2,32 @@
   <div class="control-panel">
     <Navbar />
     <router-view />
+    <Controls />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, provide, ref } from 'vue'
 
 import Navbar from '@/components/Navbar.vue'
+import Controls from '@/components/Controls.vue'
 
 export default defineComponent({
   name: 'ControlPanel',
 
   components: {
-    Navbar
+    Navbar,
+    Controls
+  },
+
+  setup () {
+    const selected = ref<string>('')
+    function updateSelected (val: string): void {
+      selected.value = val
+    }
+
+    provide('selected', selected)
+    provide('updateSelected', updateSelected)
   }
 })
 </script>
@@ -25,5 +38,7 @@ export default defineComponent({
   flex-flow: column nowrap;
   height: 100%;
   position: relative;
+  /* room for controls */
+  padding-bottom: 48px;
 }
 </style>

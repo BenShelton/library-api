@@ -6,7 +6,7 @@ import { Publication } from './Publication'
 import { CatalogMapper } from './Mapper'
 import { downloadPublication } from '../download'
 import { checkExists } from '../utils'
-import { PUBLICATION_TYPES } from '../constants'
+import { PUBLICATION_TYPES, SONG_PUBLICATION } from '../constants'
 
 import { MediaDetailsRow, PublicationRow } from '../../types/database'
 import { MediaDetailsDTO, VideoDTO } from '../../types/dto'
@@ -183,5 +183,16 @@ export class CatalogDatabase extends Database {
     })
 
     return this._mapper.MapMediaDetails(biggest)
+  }
+
+  /**
+   * Retrieves the video MediaDetails of a chosen song number.
+   *
+   * @param track The number of the track.
+   *
+   * @returns MediaDetails if they exist, `null` if they are not found.
+   */
+  async getSongDetails (track: number): Promise<MediaDetailsDTO | null> {
+    return this.getMediaDetails({ ...SONG_PUBLICATION, track })
   }
 }

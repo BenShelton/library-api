@@ -25,6 +25,7 @@ Provides extra methods for running preset queries against a catalog.
 - [getPublication](src.catalogdatabase.md#getpublication)
 - [getRow](src.catalogdatabase.md#getrow)
 - [getRows](src.catalogdatabase.md#getrows)
+- [getSongDetails](src.catalogdatabase.md#getsongdetails)
 
 ## Constructors
 
@@ -189,3 +190,23 @@ An array of matched rows. If none were found an empty array will be returned.
 Inherited from: [Database](src.database.md)
 
 Defined in: [src/classes/Database.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L69)
+
+___
+
+### getSongDetails
+
+▸ **getSongDetails**(`track`: *number*): *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+
+Retrieves the video MediaDetails of a chosen song number.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `track` | *number* | The number of the track. |
+
+**Returns:** *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+
+MediaDetails if they exist, `null` if they are not found.
+
+Defined in: [src/classes/Database.ts:195](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L195)

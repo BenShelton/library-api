@@ -46,7 +46,7 @@ export default defineComponent({
       try {
         const result = await window.electron.invoke<CatalogUpdate>('catalog:update')
         if (!result) throw new Error('An error occurred while downloading')
-        push({ name: 'ControlPanel' })
+        push({ name: 'Media' })
       } catch (err) {
         error.value = err.message
       } finally {

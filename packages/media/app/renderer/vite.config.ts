@@ -13,7 +13,16 @@ export default defineConfig({
       '@/': join(PACKAGE_ROOT, 'src') + '/'
     }
   },
-  plugins: [vue()],
+  plugins: [
+    vue({
+      template: {
+        transformAssetUrls: {
+          img: ['src'],
+          NavbarBtn: ['src']
+        }
+      }
+    })
+  ],
   base: '',
   build: {
     sourcemap: true,

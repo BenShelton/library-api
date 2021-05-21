@@ -1,12 +1,22 @@
-# Library Media
+<br>
 
-![Library Media](./app/renderer/src/assets/logo-banner.png)
+<p align="center">
+  <img src="./app/renderer/src/assets/logo-banner.png" width="800" height="430">
+</p>
 
-A cross-platform desktop application that simplifies showing media for meetings of Jehovah's Witnesses.
+<br>
 
-Finally, non-Windows users can now also display media in a more professional way.
+<p align="center">
+  A cross-platform desktop application that simplifies showing media for meetings of Jehovah's Witnesses.
+</p>
 
-This package is brought to you by [Library API](../../README.md).
+<p align="center">
+  Finally, non-Windows users can now also display media in a more professional way.
+</p>
+
+<p align="center">
+  This package is brought to you by <a href="../../README.md">Library API</a>
+</p>
 
 ## Download
 

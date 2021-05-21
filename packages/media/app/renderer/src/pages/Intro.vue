@@ -24,10 +24,9 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 import Loader from '@/components/Loader.vue'
-
-import router from '@/router'
 
 import { CatalogUpdate } from '../../../../types/ipc'
 
@@ -41,12 +40,13 @@ export default defineComponent({
   setup () {
     const downloading = ref(false)
     const error = ref('')
+    const { push } = useRouter()
     async function downloadCatalog () {
       downloading.value = true
       try {
         const result = await window.electron.invoke<CatalogUpdate>('catalog:update')
         if (!result) throw new Error('An error occurred while downloading')
-        router.push({ name: 'ControlPanel' })
+        push({ name: 'ControlPanel' })
       } catch (err) {
         error.value = err.message
       } finally {

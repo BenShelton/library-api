@@ -1,6 +1,6 @@
 <template>
   <div class="media">
-    <h1>
+    <h1 class="heading">
       Date
     </h1>
     <div class="date-selection">
@@ -41,7 +41,9 @@
     <div class="media-display">
       <Loader v-if="media.loading" />
       <template v-else-if="media.found">
-        <h1>Videos</h1>
+        <h1 class="heading">
+          Videos
+        </h1>
         <div class="media-row">
           <PreviewMedia
             v-for="video of media.videos"
@@ -52,7 +54,9 @@
             @display="onDisplayVideo"
           />
         </div>
-        <h1>Images</h1>
+        <h1 class="heading">
+          Images
+        </h1>
         <div class="media-row">
           <PreviewMedia
             v-for="image of media.images"
@@ -94,7 +98,7 @@ import {
   MediaImage,
   MediaVideo,
   MediaClear
-} from '../../../../types/ipc'
+} from '../../../../../types/ipc'
 
 export default defineComponent({
   name: 'Media',
@@ -223,15 +227,6 @@ export default defineComponent({
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-}
-h1 {
-  margin: 0 0 16px;
-  align-self: flex-start;
-  width: 150px;
-  text-align: left;
-  font-size: 24px;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--secondary);
 }
 .media-row {
   display: flex;

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/84573271/119142508-80687480-ba3e-11eb-8277-444f0c97c003.png" width="150" height="275">
+  <img src="./assets/logo.png" alt="Library API Logo" width="125">
 </p>
 
 <h1 align="center">

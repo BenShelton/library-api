@@ -1,9 +1,23 @@
-# Library Core
+<h1 align="center">
+  Library Core
+</h1>
 
-[![NPM Version](https://img.shields.io/npm/v/@library-api/core)](https://www.npmjs.com/package/@library-api/core)
-[![Package Size](https://img.shields.io/bundlephobia/min/@library-api/core)](https://www.npmjs.com/package/@library-api/core)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@library-api/core">
+    <img src="https://img.shields.io/npm/v/@library-api/core" alt="NPM Version">
+  </a>
+  <a href="https://www.npmjs.com/package/@library-api/core">
+    <img src="https://img.shields.io/bundlephobia/min/@library-api/core" alt="Package Size">
+  </a>
+</p>
 
-Core tools for use with other Library API packages.
+<p align="center">
+  Core tools for use with other Library API packages.
+<p>
+
+<br>
+
+## Description
 
 These can also be used to build your own app based on this API.
 

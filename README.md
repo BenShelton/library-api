@@ -6,13 +6,29 @@
   Library API
 </h1>
 
-[![Github Actions Status](https://github.com/BenShelton/library-api/workflows/CI/badge.svg)](https://github.com/BenShelton/library-api/actions)
-[![TypeScript](https://img.shields.io/npm/types/typescript)](https://www.typescriptlang.org/)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
-[![license](https://img.shields.io/npm/l/@library-api/core)](./LICENSE.md)
+<p align="center">
+  <a href="https://github.com/BenShelton/library-api/actions">
+    <img src="https://github.com/BenShelton/library-api/workflows/CI/badge.svg" alt="Github Actions Status">
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img src="https://img.shields.io/npm/types/typescript" alt="TypeScript">
+  </a>
+  <a href="http://commitizen.github.io/cz-cli/">
+    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly">
+  </a>
+  <a href="https://lerna.js.org/">
+    <img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg" alt="lerna">
+  </a>
+  <a href="./LICENSE.md">
+    <img src="https://img.shields.io/npm/l/@library-api/core" alt="license">
+  </a>
+</p>
 
-An API for accessing information related to meetings and publications of Jehovah's Witnesses.
+<p align="center">
+  An API for accessing information related to meetings and publications of Jehovah's Witnesses.
+</p>
+
+<br>
 
 ## 📦 Packages
 

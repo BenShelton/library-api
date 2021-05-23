@@ -4,6 +4,7 @@ import Intro from '@/pages/Intro.vue'
 import ControlPanel from '@/pages/ControlPanel/Index.vue'
 import Media from '@/pages/ControlPanel/Media.vue'
 import Song from '@/pages/ControlPanel/Song.vue'
+import Picker from '@/pages/ControlPanel/Picker.vue'
 import Settings from '@/pages/ControlPanel/Settings.vue'
 import Display from '@/pages/Display.vue'
 
@@ -31,6 +32,11 @@ const routes: RouteRecordRaw[] = [
         path: 'song',
         name: 'Song',
         component: Song
+      },
+      {
+        path: 'picker',
+        name: 'Picker',
+        component: Picker
       },
       {
         path: 'settings',

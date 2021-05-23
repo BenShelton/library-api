@@ -14,6 +14,11 @@
         src="@/assets/song.svg"
       />
       <NavbarBtn
+        name="Picker"
+        src="@/assets/picker.svg"
+        :width="30"
+      />
+      <NavbarBtn
         name="Settings"
         src="@/assets/settings.svg"
       />

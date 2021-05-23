@@ -8,7 +8,10 @@
       class="icon-btn"
       @click="navigate"
     >
-      <img :src="src">
+      <img
+        :src="src"
+        :style="{ width: width + 'px' }"
+      >
     </button>
   </router-link>
 </template>
@@ -21,7 +24,8 @@ export default defineComponent({
 
   props: {
     name: { type: String, required: true },
-    src: { type: String, required: true }
+    src: { type: String, required: true },
+    width: { type: Number, default: 24 }
   }
 })
 </script>

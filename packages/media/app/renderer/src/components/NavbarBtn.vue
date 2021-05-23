@@ -27,8 +27,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-button {
+a {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
   margin-left: 8px;
+}
+button {
   border: 1px solid transparent;
 }
 .router-link-active button {

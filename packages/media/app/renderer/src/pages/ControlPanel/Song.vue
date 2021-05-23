@@ -1,5 +1,5 @@
 <template>
-  <div class="song">
+  <div class="song control-page">
     <h1 class="heading">
       Choose Song
     </h1>
@@ -100,13 +100,7 @@ export default defineComponent({
 
 <style scoped>
 .song {
-  flex: 0 1 100%;
-  display: flex;
-  overflow-y: overlay;
-  flex-flow: column nowrap;
   align-items: center;
-  padding: 24px 24px 0 24px;
-  margin-bottom: 48px;
 }
 select {
   width: 120px;

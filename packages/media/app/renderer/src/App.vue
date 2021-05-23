@@ -105,6 +105,14 @@ select {
   background-color: var(--background);
 }
 
+.control-page {
+  flex: 0 1 100%;
+  display: flex;
+  overflow-y: overlay;
+  flex-flow: column nowrap;
+  padding: 24px;
+}
+
 .heading {
   margin: 0 0 16px;
   align-self: flex-start;

@@ -19,14 +19,10 @@
       <video
         v-else-if="mediaType === 'video'"
         :key="src"
+        :src="src"
         autoplay
         controls
-      >
-        <source
-          :src="src"
-          type="video/mp4"
-        >
-      </video>
+      />
     </template>
   </div>
 </template>
@@ -34,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
-import { DisplayImage, DisplayVideo, DisplayClear } from '../../../../types/ipc'
+import { DisplayMedia, DisplayClear } from '../../../../types/ipc'
 
 export default defineComponent({
   name: 'Display',
@@ -42,12 +38,22 @@ export default defineComponent({
   setup () {
     const src = ref<string | null>(null)
     const mediaType = ref<'image' | 'video'>('image')
-    window.electron.on<DisplayImage>('display:image', (args) => {
-      mediaType.value = 'image'
-      src.value = args.src
-    })
-    window.electron.on<DisplayVideo>('display:video', (args) => {
-      mediaType.value = 'video'
+    window.electron.on<DisplayMedia>('display:media', (args) => {
+      if (args.src.startsWith('data:image/jpeg;base64')) {
+        mediaType.value = 'image'
+      } else {
+        const ext = args.src.split('.').pop()
+        switch (ext) {
+          case 'jpg':
+          case 'png':
+          case 'gif':
+            mediaType.value = 'image'
+            break
+          case 'mp4':
+          case 'avi':
+            mediaType.value = 'video'
+        }
+      }
       src.value = args.src
     })
     window.electron.on<DisplayClear>('display:clear', () => {

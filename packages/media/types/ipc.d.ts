@@ -65,6 +65,11 @@ export interface CacheClear extends Invoke {
   Response: void
 }
 
+export interface MediaPick extends Invoke {
+  Args?: never
+  Response: boolean
+}
+
 export interface MediaImage extends Send {
   Args: {
     src: string
@@ -81,13 +86,7 @@ export interface MediaClear extends Send {
   Args?: never
 }
 
-export interface DisplayImage extends Send {
-  Args: {
-    src: string
-  }
-}
-
-export interface DisplayVideo extends Send {
+export interface DisplayMedia extends Send {
   Args: {
     src: string
   }

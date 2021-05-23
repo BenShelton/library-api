@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
-import { ipcMain } from 'electron'
+import { ipcMain, dialog, app } from 'electron'
 import {
   CatalogDatabase,
   checkExists,
@@ -14,18 +14,18 @@ import {
 import { MediaDetailsDTO } from '@library-api/core/types/dto'
 
 import { initDirectories } from './directories'
-import { getDisplayWindow } from './window'
+import { getControlWindow, getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR, VIDEO_DIR } from './constants'
 
 import {
   CacheClear,
   CatalogUpdate,
-  DisplayImage,
-  DisplayVideo,
+  DisplayMedia,
   DownloadSong,
   DownloadVideo,
   IPCVideoDTO,
   MediaImage,
+  MediaPick,
   MediaVideo,
   PublicationMedia,
   SongDetails,
@@ -58,6 +58,11 @@ async function processVideoDetails (details: MediaDetailsDTO): Promise<VideoDeta
     text: details.caption,
     downloaded
   }
+}
+
+async function sendMedia (src: string): Promise<void> {
+  const displayWindow = await getDisplayWindow()
+  displayWindow.webContents.send('display:media', { src } as DisplayMedia['Args'])
 }
 
 export function initIPC (): void {
@@ -138,15 +143,28 @@ export function initIPC (): void {
     await initDirectories()
   })
 
+  ipcMain.handle('media:pick', async (): Promise<MediaPick['Response']> => {
+    const window = await getControlWindow()
+    const { canceled, filePaths } = await dialog.showOpenDialog(window, {
+      title: 'Choose the media you want to display',
+      defaultPath: app.getPath('downloads'),
+      filters: [
+        { name: 'Media', extensions: ['jpg', 'png', 'gif', 'mp4', 'avi'] }
+      ]
+    })
+    if (canceled || !filePaths.length) return false
+    const file = filePaths[0]
+    await sendMedia('file:///' + file)
+    return true
+  })
+
   ipcMain.on('media:image', async (_event, args: MediaImage['Args']) => {
-    const displayWindow = await getDisplayWindow()
-    displayWindow.webContents.send('display:image', { src: args.src } as DisplayImage['Args'])
+    await sendMedia(args.src)
   })
 
   ipcMain.on('media:video', async (_event, args: MediaVideo['Args']) => {
     const { videoPath } = getVideoPaths(args.details)
-    const displayWindow = await getDisplayWindow()
-    displayWindow.webContents.send('display:video', { src: 'file:///' + videoPath } as DisplayVideo['Args'])
+    await sendMedia('file:///' + videoPath)
   })
 
   ipcMain.on('media:clear', async () => {

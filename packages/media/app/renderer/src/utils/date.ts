@@ -3,12 +3,11 @@ import { SelectOption } from 'types/select'
 /**
  * Returns the most recent previous Monday
  */
-export function closestPreviousMonday (): Date {
-  const thisWeek = new Date()
-  thisWeek.setHours(12)
-  const day = thisWeek.getDay()
-  thisWeek.setDate(thisWeek.getDate() - (day === 0 ? 7 : day - 1))
-  return thisWeek
+export function closestPreviousMonday (date: Date): Date {
+  date.setHours(12)
+  const day = date.getDay()
+  date.setDate(date.getDate() - (day === 0 ? 6 : day - 1))
+  return date
 }
 
 /**

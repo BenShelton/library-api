@@ -101,7 +101,7 @@ export default defineComponent({
   },
 
   setup () {
-    const monday = closestPreviousMonday()
+    const monday = closestPreviousMonday(new Date())
     const currentYear = monday.getFullYear()
 
     const year = ref(currentYear)

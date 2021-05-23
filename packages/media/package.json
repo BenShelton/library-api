@@ -16,7 +16,7 @@
     "package": "electron-builder build --config electron-builder.config.js",
     "lint": "eslint . --ext .js,.ts,.vue",
     "lint:fix": "yarn lint --fix",
-    "test": "echo \"No tests written\"",
+    "test": "jest --config=jest.config.ts",
     "test:bail": "yarn test --bail",
     "test:ci": "yarn lint && yarn tsc && yarn test:bail",
     "test:watch": "yarn test --watch-all -t",

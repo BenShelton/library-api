@@ -1,5 +1,5 @@
 <template>
-  <div class="media">
+  <div class="media control-page">
     <h1 class="heading">
       Date
     </h1>
@@ -182,15 +182,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.media {
-  flex: 0 1 100%;
-  display: flex;
-  overflow-y: overlay;
-  align-items: center;
-  flex-flow: column nowrap;
-  text-align: center;
-  padding: 24px;
-}
 .date-selection {
   width: 100%;
   display: flex;

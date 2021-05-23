@@ -1,5 +1,5 @@
 <template>
-  <div class="settings">
+  <div class="settings control-page">
     <h1 class="heading">
       SETTINGS
     </h1>
@@ -53,14 +53,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.settings {
-  flex: 0 1 100%;
-  display: flex;
-  overflow-y: overlay;
-  flex-flow: column nowrap;
-  padding: 24px 24px 0 24px;
-  margin-bottom: 48px;
-}
 h2 {
   font-size: 18px;
   text-decoration: underline;

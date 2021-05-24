@@ -1,4 +1,4 @@
-import { Menu } from 'electron'
+import { Menu, shell } from 'electron'
 import { MenuItemConstructorOptions } from 'electron/main'
 
 const appName = 'Library Media'
@@ -7,6 +7,17 @@ const template: MenuItemConstructorOptions[] = [
     label: appName,
     submenu: [
       { role: 'quit', label: `Quit ${appName}` }
+    ]
+  },
+  {
+    label: 'Help',
+    submenu: [
+      {
+        label: 'Open Documentation',
+        click: async () => {
+          await shell.openExternal('https://benshelton.github.io/library-api/media/')
+        }
+      }
     ]
   }
 ]

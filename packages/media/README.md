@@ -18,7 +18,7 @@ This package is brought to you by [Library API](../../README.md).
 
 TODO: Add download files to release assets
 
-In the meantime you can package this yourself using the `build` and `package` commands in [Development](#Development).
+In the meantime you can package this yourself using the `build` and `package` commands in [Packaging Locally](#packaging-locally).
 
 ## Documentation
 
@@ -35,9 +35,6 @@ yarn dev
 # Build (outputs to /dist)
 yarn build
 
-# Package into an app (make sure to `yarn build` first)
-yarn package
-
 # Lint files
 yarn lint
 
@@ -46,4 +43,38 @@ yarn test
 
 # Run Type Checking Service
 yarn tsc
+```
+
+### Packaging Locally
+
+**MacOS**
+
+Packaging the app locally requires the correct certificates in order to notarize the application.
+
+If you want to build locally without notarizing, remove the `afterSign: 'scripts/notarize.js'` setting in `electron-builder.config.js`.
+
+You will need to following `.env` files to created in the `packages/media` directory:
+
+`.env`
+```bash
+APPLE_ID="YourAppleID"
+# NOT your Apple ID password. Generate an app specific password at appleid.apple.com
+APPLE_ID_PASS="aaaa-bbbb-cccc-dddd"
+```
+
+`electron-builder.env`
+```bash
+# See https://www.electron.build/code-signing
+CSC_LINK="Base64OrFile"
+CSC_KEY_PASSWORD="YourPassword"
+```
+
+After these files have been created, run the following to package the app:
+
+```bash
+# Do a fresh build of the electron app
+yarn build
+
+# Run the builder
+yarn package
 ```

@@ -24,6 +24,7 @@ node_modules/
 # dotenv environment variables file
 .env
 .env.test
+electron-builder.env
 
 # Output
 coverage

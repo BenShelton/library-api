@@ -1,4 +1,5 @@
 import { app } from 'electron'
+import { autoUpdater } from 'electron-updater'
 
 import { initDirectories } from './directories'
 import { initEvents } from './events'
@@ -6,11 +7,16 @@ import { initIPC } from './ipc'
 import { initMenu } from './menu'
 import { createWindows } from './window'
 
-if (!app.requestSingleInstanceLock()) {
-  app.quit()
-}
-
 (async () => {
+  // only allow a single instance
+  if (!app.requestSingleInstanceLock()) {
+    app.quit()
+    return
+  }
+
+  // check for updates
+  autoUpdater.checkForUpdatesAndNotify()
+
   // configure app
   initMenu()
   initEvents()

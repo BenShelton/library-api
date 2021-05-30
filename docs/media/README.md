@@ -3,6 +3,10 @@
 Welcome to Library Media. This application is meant to be used during a meeting to show media to an audience.
 
 ## Table of contents
+
+- [Installation](#installation)
+  - [Mac](#mac)
+  - [Other Platforms](#other-platforms)
 - [Getting Started](#getting-started)
 - [The Display Window](#the-display-window)
   - [Resizing](#resizing)
@@ -18,6 +22,28 @@ Welcome to Library Media. This application is meant to be used during a meeting 
     - [File Picker](#file-picker)
     - [Settings](#settings)
 - [Support](#support)
+
+## Installation
+
+### Mac
+
+You can download the latest version of the application by:
+
+- Going to the [latest releases page](https://github.com/BenShelton/library-api/releases/latest)
+- Downloading the `Library-Media-x.y.z.dmg` file under Assets (the x.y.z numbers will depend on the version)
+  - Note this is not the one ending `.blockmap`
+- Open the downloaded installer
+- Drag and drop Library Media onto the Applications icon
+
+Library Media will now be installed, you can close the installer window. You can open Library Media wherever you normally view other Applications (Launchpad, Finder, Spotlight etc.)
+
+**Security Message**
+
+The first time you open Library Media you may get a message confirming you want to open this program because it was downloaded from the internet and not from the App Store. This is normal, simply click `Open` to approve the application.
+
+### Other Platforms
+
+Other platforms are not officially supported and no release is available to download. You will need to build the application yourself.
 
 ## Getting Started
 

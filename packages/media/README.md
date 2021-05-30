@@ -16,13 +16,13 @@ This package is brought to you by [Library API](../../README.md).
 
 ## Download
 
-TODO: Add download files to release assets
+You can download the latest versions from the [latest releases page](https://github.com/BenShelton/library-api/releases/latest). For Mac you want to `.dmg` file (not the one ending `.blockmap`). You can view more detailed installation instructions [here](https://benshelton.github.io/library-api/media/#installation).
 
 In the meantime you can package this yourself using the `build` and `package` commands in [Packaging Locally](#packaging-locally).
 
 ## Documentation
 
-View the documentation [here](https://benshelton.github.io/library-api/media/)
+View the documentation [here](https://benshelton.github.io/library-api/media/).
 
 ## Development
 

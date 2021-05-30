@@ -1,8 +1,10 @@
-# Library API Documentation
+# Home
 
-Documentation for Library API Packages
+Welcome to Library API Documentation.
 
 ## Packages
+
+Select a package below to view documentation for that package.
 
 - [Library Media](./media/)
 - [Library Express](./express/)

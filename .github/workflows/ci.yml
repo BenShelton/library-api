@@ -72,3 +72,13 @@ jobs:
         run: yarn gh-release --yes
         # In the case no changes to version were made
         continue-on-error: true
+      - name: Build MacOS Application
+        env:
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASS: ${{ secrets.APPLE_ID_PASS }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          yarn media build
+          yarn media release

@@ -40,7 +40,7 @@
     "@vue/compiler-sfc": "^3.0.11",
     "dotenv": "^10.0.0",
     "electron": "^12.0.6",
-    "electron-builder": "^22.11.1",
+    "electron-builder": "~22.10.5",
     "electron-notarize": "^1.0.0",
     "eslint-plugin-vue": "^7.9.0",
     "vite": "^2.2.4",

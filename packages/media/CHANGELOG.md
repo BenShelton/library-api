@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/BenShelton/library-api/compare/v0.5.0...v0.6.0) (2021-05-30)
+
+
+### Bug Fixes
+
+* **media:** adjust link area to match button size ([08fb9f5](https://github.com/BenShelton/library-api/commit/08fb9f5fd8039c5c02eff648d57e4b367c5952f5))
+* **media:** load the correct week when opened on a sunday ([0561317](https://github.com/BenShelton/library-api/commit/0561317cd0700f489e2c512e032fbcf2a5527fd2)), closes [#31](https://github.com/BenShelton/library-api/issues/31)
+
+
+### Features
+
+* **media:** add auto-updating functionality ([aa92539](https://github.com/BenShelton/library-api/commit/aa92539f1491d5e928dbc1ae9be50f2508f0ce1f)), closes [#19](https://github.com/BenShelton/library-api/issues/19)
+* **media:** add picker page to show any image or video from the computer ([c8b079f](https://github.com/BenShelton/library-api/commit/c8b079fca802ace406cc59a6dc4394431b1efdbe)), closes [#10](https://github.com/BenShelton/library-api/issues/10)
+
+
+
+
+
 # [0.5.0](https://github.com/BenShelton/library-api/compare/v0.4.0...v0.5.0) (2021-05-21)
 
 

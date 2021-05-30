@@ -10,7 +10,6 @@ const config = {
   files: [
     'app/**/dist/**'
   ],
-  forceCodeSigning: true,
   mac: {
     hardenedRuntime: true,
     gatekeeperAssess: false,
@@ -20,7 +19,13 @@ const config = {
   dmg: {
     sign: false
   },
-  afterSign: 'scripts/notarize.js'
+  forceCodeSigning: true,
+  afterSign: 'scripts/notarize.js',
+  electronUpdaterCompatibility: '>= 2.16',
+  publish: {
+    provider: 'github',
+    releaseType: 'release'
+  }
 }
 
 module.exports = config

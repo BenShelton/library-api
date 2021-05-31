@@ -113,20 +113,15 @@ export class CatalogDatabase extends Database {
    * @returns A {@link Publication} class to help access the downloaded publication, or `null` if not found.
    */
   async getPublication (date: string, downloadDir: string, type: PublicationType, languageId = 0): Promise<Publication | null> {
-    // TODO: Combine the queries below, they are almost identical
-    const pubQuery = type === 'wt'
-      ? `
+    const pubTypeId = type === 'wt'
+      ? PUBLICATION_TYPES.WATCHTOWER
+      : PUBLICATION_TYPES.OCLM
+    const pubQuery = `
       SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
       FROM Publication AS p
       INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
       INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
-      WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = ${languageId} AND PublicationTypeId = ${PUBLICATION_TYPES.WATCHTOWER}`
-      : `
-      SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
-      FROM Publication AS p
-      INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
-      INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
-      WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = ${languageId} AND PublicationTypeId = ${PUBLICATION_TYPES.OCLM}`
+      WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = ${languageId} AND PublicationTypeId = ${pubTypeId}`
 
     const result = await this.getRow<PublicationRow>(pubQuery)
     if (!result) return null
@@ -163,20 +158,18 @@ export class CatalogDatabase extends Database {
    * ```
    */
   async getMediaDetails ({ type, doc, issue, track, languageId = 0 }: { type: VideoDTO['type'], doc: string | number, issue: string | number, track: string | number, languageId?: number }): Promise<MediaDetailsDTO | null> {
-    const query = type === 'doc'
-      ? `
+    const query = `
       SELECT DISTINCT ma.Title AS Title, ma.Id As Id, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
       FROM ImageAsset AS ia
       INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
       INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId
-      WHERE ma.DocumentId = '${doc}' AND ma.Track = '${track}' AND ma.MepsLanguageId = ${languageId}`
-      : `
-      SELECT DISTINCT ma.Title AS Title, ma.Id As Id, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
-      FROM ImageAsset AS ia
-      INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
-      INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId
-      INNER JOIN Publication AS p ON p.Id = ma.PublicationId
-      WHERE p.KeySymbol = '${doc}' AND p.IssueTagNumber = '${issue}' AND ma.Track = '${track}' AND ma.MepsLanguageId = ${languageId}`
+      ${type === 'doc'
+        ? `WHERE ma.DocumentId = '${doc}'`
+        : `
+        INNER JOIN Publication AS p ON p.Id = ma.PublicationId
+        WHERE p.KeySymbol = '${doc}' AND p.IssueTagNumber = '${issue}'`
+      }
+      AND ma.Track = '${track}' AND ma.MepsLanguageId = ${languageId}`
 
     const results = await this.getRows<MediaDetailsRow>(query)
     if (!results.length) return null

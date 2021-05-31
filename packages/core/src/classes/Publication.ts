@@ -8,8 +8,6 @@ import { ArticleRow, ImageRow, VideoRow } from '../../types/database'
 import { ImageDTO, VideoDTO } from '../../types/dto'
 import { PublicationCtor, PublicationType } from '../../types/publication'
 
-// TODO: Combine the queries below as most are similar
-
 /**
  * Provides methods for interacting with a downloaded publication.
  */
@@ -48,24 +46,18 @@ export class Publication {
    */
   async getImages (date: string): Promise<ImageDTO[]> {
     const offsetDate = date.replace(/-/g, '')
-    const query = this.type === 'wt'
-      ? `
-      SELECT D.ContextTitle, M.Caption, M.FilePath, M.MultimediaId, M.CategoryType
-      FROM Multimedia M
-      JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
-      INNER JOIN Document D ON DM.DocumentId = D.DocumentId
-      INNER JOIN InternalLink IL ON IL.MepsDocumentId = D.MepsDocumentId
-      INNER JOIN DocumentInternalLink AS DIL ON DIL.InternalLinkId = IL.InternalLinkId
-      INNER JOIN DatedText AS DT ON DT.EndParagraphOrdinal = DIL.EndParagraphOrdinal
-      WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-      : `
+    const query = `
       SELECT DISTINCT D.ContextTitle, M.Caption, M.FilePath, M.MultimediaId, M.CategoryType
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
       INNER JOIN Document D ON DM.DocumentId = D.DocumentId
       INNER JOIN InternalLink IL ON IL.MepsDocumentId = D.MepsDocumentId
       INNER JOIN DocumentInternalLink AS DIL ON DIL.InternalLinkId = IL.InternalLinkId
-      INNER JOIN DatedText AS DT ON DT.DocumentId = DIL.DocumentId
+      INNER JOIN DatedText AS DT ON ${
+        this.type === 'wt'
+          ? 'DT.EndParagraphOrdinal = DIL.EndParagraphOrdinal'
+          : 'DT.DocumentId = DIL.DocumentId'
+      }
       WHERE DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const rows = await this._database.getRows<ImageRow>(query)
     return this._mapper.MapImages(rows)
@@ -83,19 +75,17 @@ export class Publication {
    */
   async getVideos (date: string): Promise<VideoDTO[]> {
     const offsetDate = date.replace(/-/g, '')
-    const query = this.type === 'wt'
-      ? `
+    const query = `
       SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId, M.MultimediaId
       FROM Multimedia M
       JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
-      INNER JOIN DatedText AS DT ON DT.BeginParagraphOrdinal = DM.BeginParagraphOrdinal
-      WHERE DM.DocumentId = 1 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
-      : `
-      SELECT M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId, M.MultimediaId
-      FROM Multimedia M
-      JOIN DocumentMultimedia DM ON M.MultimediaId = DM.MultimediaId
-      INNER JOIN DatedText AS DT ON DT.DocumentId = DM.DocumentId
-      WHERE M.DataType = 2 AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
+      INNER JOIN DatedText AS DT ON ${
+        this.type === 'wt'
+          ? 'DT.BeginParagraphOrdinal = DM.BeginParagraphOrdinal'
+          : 'DT.DocumentId = DM.DocumentId'
+      }
+      WHERE ${this.type === 'wt' ? 'DM.DocumentId = 1' : 'M.DataType = 2'}
+      AND DT.FirstDateOffset <= '${offsetDate}' AND DT.LastDateOffset >= '${offsetDate}'`
     const rows = await this._database.getRows<VideoRow>(query)
     return this._mapper.MapVideos(rows)
   }
@@ -106,15 +96,13 @@ export class Publication {
    * Returns raw database rows for all the articles in this publication.
    */
   async getArticles (): Promise<ArticleRow[]> {
-    const query = this.type === 'wt'
-      ? `
+    const articleClass = this.type === 'wt'
+      ? PUBLICATION_CLASSES.WATCHTOWER_ARTICLE
+      : PUBLICATION_CLASSES.OCLM_WEEK
+    const query = `
       SELECT DocumentId, ContextTitle, Title
       FROM Document
-      WHERE D.Class IS ${PUBLICATION_CLASSES.WATCHTOWER_ARTICLE}`
-      : `
-      SELECT DocumentId, ContextTitle, Title
-      FROM Document
-      WHERE D.Class IS ${PUBLICATION_CLASSES.OCLM_WEEK}`
+      WHERE D.Class IS ${articleClass}`
     const rows = await this._database.getRows<ArticleRow>(query)
     return rows
   }

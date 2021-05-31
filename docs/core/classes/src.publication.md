@@ -40,7 +40,7 @@ Provides methods for interacting with a downloaded publication.
 
 #### Defined in
 
-[src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
+[src/classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
 
 ## Properties
 
@@ -50,7 +50,7 @@ Provides methods for interacting with a downloaded publication.
 
 #### Defined in
 
-[src/classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
+[src/classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[src/classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
+[src/classes/Publication.ts:17](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L17)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
+[src/classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 #### Defined in
 
-[src/classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L20)
+[src/classes/Publication.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L18)
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 #### Defined in
 
-[src/classes/Publication.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L22)
+[src/classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L20)
 
 ## Methods
 
@@ -108,7 +108,7 @@ Returns raw database rows for all the articles in this publication.
 
 #### Defined in
 
-[src/classes/Publication.ts:108](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L108)
+[src/classes/Publication.ts:98](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L98)
 
 ___
 
@@ -135,7 +135,7 @@ An array of mapped images, the array will be empty if no images were found.
 
 #### Defined in
 
-[src/classes/Publication.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L49)
+[src/classes/Publication.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L47)
 
 ___
 
@@ -162,4 +162,4 @@ An array of mapped videos, the array will be empty if no videos were found.
 
 #### Defined in
 
-[src/classes/Publication.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L84)
+[src/classes/Publication.ts:76](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L76)

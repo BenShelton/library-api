@@ -88,7 +88,7 @@ MediaDetails if they exist, `null` if they are not found.
 
 #### Defined in
 
-[src/classes/Database.ts:165](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L165)
+[src/classes/Database.ts:160](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L160)
 
 ___
 
@@ -248,4 +248,4 @@ MediaDetails if they exist, `null` if they are not found.
 
 #### Defined in
 
-[src/classes/Database.ts:203](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L203)
+[src/classes/Database.ts:196](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L196)

@@ -1,4 +1,6 @@
-# Library Media
+<h1 align="center">
+  <img alt="Library Media" src="https://raw.githubusercontent.com/BenShelton/library-api/master/packages/media/app/renderer/src/assets/logo-banner.png">
+</h1>
 
 Welcome to Library Media. This application is meant to be used during a meeting to show media to an audience.
 

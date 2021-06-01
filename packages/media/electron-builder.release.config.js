@@ -1,15 +1,10 @@
+const packageConfig = require('./electron-builder.package.config')
+
 /**
  * @type { import('electron-builder').Configuration }
  */
 const config = {
-  productName: 'Library Media',
-  directories: {
-    output: 'dist',
-    buildResources: 'buildResources'
-  },
-  files: [
-    'app/**/dist/**'
-  ],
+  ...packageConfig,
   mac: {
     hardenedRuntime: true,
     gatekeeperAssess: false,

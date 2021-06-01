@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/BenShelton/library-api/compare/v0.6.2...v0.7.0) (2021-06-01)
+
+
+### Features
+
+* **media:** add internal logging & error reporting dialog ([248ad26](https://github.com/BenShelton/library-api/commit/248ad26d3d8b4b8de3b12c077e20d5a290c7a020)), closes [#23](https://github.com/BenShelton/library-api/issues/23)
+* **media/menu:** add about option to view the version ([9c5331a](https://github.com/BenShelton/library-api/commit/9c5331a6a9d9073b77c28766da1261e836f61def)), closes [#20](https://github.com/BenShelton/library-api/issues/20)
+
+
+
+
+
 ## [0.6.2](https://github.com/BenShelton/library-api/compare/v0.6.1...v0.6.2) (2021-05-30)
 
 **Note:** Version bump only for package library-api

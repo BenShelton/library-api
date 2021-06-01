@@ -30,6 +30,7 @@
   "dependencies": {
     "@library-api/core": "^0.6.0",
     "electron-aspect-ratio-browser-window": "^1.0.2",
+    "electron-log": "^4.3.5",
     "electron-store": "^8.0.0",
     "electron-updater": "^4.3.9",
     "vue": "^3.0.11",

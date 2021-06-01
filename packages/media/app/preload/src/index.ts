@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
+import { functions } from 'electron-log'
 
 const apiKey: keyof Window = 'electron'
 const api: ElectronApi = {
@@ -14,3 +15,4 @@ const api: ElectronApi = {
 }
 
 contextBridge.exposeInMainWorld(apiKey, api)
+contextBridge.exposeInMainWorld('log', functions)

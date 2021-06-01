@@ -6,4 +6,5 @@ interface ElectronApi {
 
 declare interface Window {
   electron: Readonly<ElectronApi>
+  log: import('electron-log').LogFunctions
 }

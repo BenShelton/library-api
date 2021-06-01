@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 import { ipcMain, dialog, app } from 'electron'
+import log from 'electron-log'
 import {
   CatalogDatabase,
   checkExists,
@@ -71,7 +72,7 @@ export function initIPC (): void {
       await updateCatalog(CATALOG_PATH)
       return true
     } catch (err) {
-      console.log(err)
+      log.error(err)
       return false
     }
   })
@@ -81,7 +82,8 @@ export function initIPC (): void {
     let publication: Publication | null = null
     try {
       publication = await db.getPublication(args.date, DOWNLOAD_DIR, args.type)
-    } catch {
+    } catch (err) {
+      log.info('Unable to download publication', args, err)
       return null
     }
     if (!publication) return null

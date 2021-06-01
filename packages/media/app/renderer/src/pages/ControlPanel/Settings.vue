@@ -39,7 +39,7 @@ export default defineComponent({
         await window.electron.invoke<CacheClear>('cache:clear')
         push({ name: 'Intro' })
       } catch (err) {
-        console.error(err)
+        window.log.error(err)
       } finally {
         loading.value = false
       }

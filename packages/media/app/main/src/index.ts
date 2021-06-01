@@ -4,6 +4,7 @@ import { autoUpdater } from 'electron-updater'
 import { initDirectories } from './directories'
 import { initEvents } from './events'
 import { initIPC } from './ipc'
+import { initLogger } from './logger'
 import { initMenu } from './menu'
 import { createWindows } from './window'
 
@@ -18,6 +19,7 @@ import { createWindows } from './window'
   autoUpdater.checkForUpdatesAndNotify()
 
   // configure app
+  initLogger()
   initMenu()
   initEvents()
   await initDirectories()

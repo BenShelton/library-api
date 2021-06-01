@@ -61,7 +61,7 @@ export default defineComponent({
         const songDetails = await window.electron.invoke<SongDetails>('song:details', { track: val })
         details.value = songDetails
       } catch (err) {
-        console.error(err)
+        window.log.error(err)
         song.value = undefined
       } finally {
         loading.value = false

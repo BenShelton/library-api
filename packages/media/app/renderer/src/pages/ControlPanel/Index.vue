@@ -1,7 +1,11 @@
 <template>
   <div class="control-panel">
     <Navbar />
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
     <Controls />
   </div>
 </template>

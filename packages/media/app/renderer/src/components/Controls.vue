@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent, inject, Ref } from 'vue'
 
-import { MediaClear } from '../../../../types/ipc'
+import { MediaClear } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Controls',

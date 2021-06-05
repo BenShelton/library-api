@@ -28,7 +28,7 @@ import { useRouter } from 'vue-router'
 
 import Loader from '@/components/Loader.vue'
 
-import { CatalogUpdate } from '../../../../types/ipc'
+import { CatalogUpdate } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Intro',

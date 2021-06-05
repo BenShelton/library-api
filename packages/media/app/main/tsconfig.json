@@ -2,15 +2,19 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "..",
     "module": "es2020",
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "shared/*": [
+        "../shared/*"
       ]
     },
   },
   "include": [
     "src/**/*.ts",
-    "../../types/**/*.d.ts"
+    "../shared/**/*.ts"
   ]
 }

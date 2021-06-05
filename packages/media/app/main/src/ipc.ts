@@ -14,6 +14,7 @@ import {
 } from '@library-api/core'
 import { MediaDetailsDTO } from '@library-api/core/types/dto'
 
+import { imageExtensions, videoExtensions } from 'shared/extensions'
 import { initDirectories } from './directories'
 import { getControlWindow, getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR, VIDEO_DIR } from './constants'
@@ -151,7 +152,13 @@ export function initIPC (): void {
       title: 'Choose the media you want to display',
       defaultPath: app.getPath('downloads'),
       filters: [
-        { name: 'Media', extensions: ['jpg', 'png', 'gif', 'mp4', 'avi'] }
+        {
+          name: 'Media',
+          extensions: [
+            ...imageExtensions,
+            ...videoExtensions
+          ]
+        }
       ]
     })
     if (canceled || !filePaths.length) return false

@@ -30,6 +30,8 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
+import { imageExtensions, videoExtensions } from 'shared/extensions'
+
 import { DisplayMedia, DisplayClear } from 'shared/types/ipc'
 
 export default defineComponent({
@@ -43,15 +45,12 @@ export default defineComponent({
         mediaType.value = 'image'
       } else {
         const ext = args.src.split('.').pop()
-        switch (ext) {
-          case 'jpg':
-          case 'png':
-          case 'gif':
+        if (ext) {
+          if (imageExtensions.includes(ext)) {
             mediaType.value = 'image'
-            break
-          case 'mp4':
-          case 'avi':
+          } else if (videoExtensions.includes(ext)) {
             mediaType.value = 'video'
+          }
         }
       }
       src.value = args.src

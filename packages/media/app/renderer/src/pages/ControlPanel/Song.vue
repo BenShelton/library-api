@@ -33,7 +33,7 @@ import { defineComponent, inject, ref, watch } from 'vue'
 import PreviewMedia from '@/components/PreviewMedia.vue'
 import Loader from '@/components/Loader.vue'
 
-import { DownloadSong, MediaVideo, SongDetails, VideoDetails } from '../../../../../types/ipc'
+import { DownloadSong, MediaVideo, SongDetails, VideoDetails } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Song',

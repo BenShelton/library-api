@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
-import { DisplayMedia, DisplayClear } from '../../../../types/ipc'
+import { DisplayMedia, DisplayClear } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Display',

@@ -90,7 +90,7 @@ import {
   IPCVideoDTO,
   MediaImage,
   MediaVideo
-} from '../../../../../types/ipc'
+} from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Media',

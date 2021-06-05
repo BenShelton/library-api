@@ -31,7 +31,7 @@ import {
   PublicationMedia,
   SongDetails,
   VideoDetails
-} from '../../../types/ipc'
+} from 'shared/types/ipc'
 
 function getVideoPaths (details: MediaDetailsDTO): { imagePath: string, videoPath: string } {
   const srcPath = join(VIDEO_DIR, details.id.replace('#', ''))

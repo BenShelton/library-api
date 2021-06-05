@@ -2,10 +2,14 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "rootDir": "..",
     "composite": false,
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "shared/*": [
+        "../shared/*"
       ]
     },
     "lib": [
@@ -18,7 +22,6 @@
     "src/**/*.vue",
     "src/**/*.ts",
     "types/**/*.d.ts",
-    "../preload/types/electron-api.d.ts",
-    "../../types/**/*.d.ts"
+    "../shared/**/*.ts"
   ]
 }

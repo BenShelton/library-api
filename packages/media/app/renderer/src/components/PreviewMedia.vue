@@ -29,7 +29,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, onMounted, onUnmounted, PropType, Ref, ref } from 'vue'
 
-import { IPCImageDTO, IPCVideoDTO, VideoDetails } from '../../../../types/ipc'
+import { IPCImageDTO, IPCVideoDTO, VideoDetails } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'PreviewMedia',

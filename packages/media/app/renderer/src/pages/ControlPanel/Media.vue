@@ -37,6 +37,14 @@
           OCLM Workbook
         </option>
       </select>
+      <button
+        v-if="!isInitial"
+        class="return-btn"
+        :disabled="media.loading"
+        @click="onReturn"
+      >
+        Return to Today
+      </button>
     </div>
     <div class="media-display">
       <Loader v-if="media.loading" />
@@ -75,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, reactive, ref, watch, watchEffect } from 'vue'
+import { computed, defineComponent, inject, reactive, ref, watch, watchEffect } from 'vue'
 
 import Loader from '@/components/Loader.vue'
 import PreviewMedia from '@/components/PreviewMedia.vue'
@@ -102,20 +110,35 @@ export default defineComponent({
 
   setup () {
     const monday = closestPreviousMonday(new Date())
-    const currentYear = monday.getFullYear()
+    const initialYear = monday.getFullYear()
+    const initialWeek = formatISODate(monday)
+    const initialPublication = isWeekend(new Date()) ? 'wt' : 'oclm'
 
-    const year = ref(currentYear)
-    const week = ref(formatISODate(monday))
-    const publication = ref<'wt' | 'oclm'>(isWeekend(new Date()) ? 'wt' : 'oclm')
+    const year = ref(initialYear)
+    const week = ref(initialWeek)
+    const publication = ref<'wt' | 'oclm'>(initialPublication)
 
-    const years: SelectOption<number>[] = [currentYear - 1, currentYear, currentYear + 1]
+    const isInitial = computed(() => {
+      return year.value === initialYear &&
+        week.value === initialWeek &&
+        publication.value === initialPublication
+    })
+    function onReturn (): void {
+      year.value = initialYear
+      week.value = initialWeek
+      publication.value = initialPublication
+    }
+
+    const years: SelectOption<number>[] = [initialYear - 1, initialYear, initialYear + 1]
       .map(year => ({ text: String(year), value: year }))
     const weeks = ref(getMondaysOfYear(year.value))
 
     watch(year, (val) => {
       const mondays = getMondaysOfYear(val)
       weeks.value = mondays
-      week.value = mondays[0].value
+      if (!mondays.some(m => m.value === week.value)) {
+        week.value = mondays[0].value
+      }
     })
 
     const media = reactive({
@@ -168,6 +191,9 @@ export default defineComponent({
       week,
       publication,
 
+      isInitial,
+      onReturn,
+
       years,
       weeks,
 
@@ -187,6 +213,12 @@ export default defineComponent({
   display: flex;
   flex-flow: row wrap;
   margin-bottom: 16px;
+}
+.return-btn {
+  height: 24px;
+  min-width: 140px;
+  margin: 0 8px;
+  padding: 4px;
 }
 .media-display {
   flex: 1 0 auto;

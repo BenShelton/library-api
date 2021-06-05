@@ -32,7 +32,7 @@ export async function createControlWindow (): Promise<BrowserWindow> {
   const windowSettings = store.get(storeKey)
   controlWindow = new BrowserWindow({
     ...windowSettings,
-    title: 'Library Media - Control Panel',
+    title: 'Control Panel',
     show: true,
     webPreferences: {
       preload
@@ -57,7 +57,7 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
   const windowSettings = store.get(storeKey)
   displayWindow = new AspectRatioBrowserWindow({
     ...windowSettings,
-    title: 'Library Media - Display',
+    title: 'Display',
     show: true,
     // this prevents Zoom from showing this window as an option
     // alwaysOnTop: true,

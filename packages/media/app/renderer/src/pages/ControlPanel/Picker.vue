@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent, inject } from 'vue'
 
-import { MediaPick } from '../../../../../types/ipc'
+import { MediaPick } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Picker',

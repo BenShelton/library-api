@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@/': join(PACKAGE_ROOT, 'src') + '/',
+      shared: join(PACKAGE_ROOT, '..', 'shared'),
       '@library-api/core': join(PACKAGE_ROOT, '..', '..', '..', 'core', 'src', 'index.ts')
     }
   },

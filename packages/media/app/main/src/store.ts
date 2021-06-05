@@ -1,6 +1,6 @@
 import Store from 'electron-store'
 
-import { StoreDefinition } from '../../../types/store'
+import { StoreDefinition } from 'shared/types/store'
 
 const devToolsWidth = import.meta.env.DEV ? 350 : 0
 

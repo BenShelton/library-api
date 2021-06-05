@@ -24,7 +24,7 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { CacheClear } from '../../../../../types/ipc'
+import { CacheClear } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Settings',

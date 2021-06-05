@@ -102,7 +102,7 @@ Using the navigation bar at the top of the Control Panel will allow you to visit
 
 #### **Publication Media**
 
-<img src="../../packages/media/app/renderer/src/assets/media.svg" alt="Publication Media" width="24">
+<img src="https://raw.githubusercontent.com/BenShelton/library-api/master/packages/media/app/renderer/src/assets/media.svg" alt="Publication Media" width="24">
 
 This page allows you to select a publication and automatically load all the media for the specified meeting.
 
@@ -114,13 +114,13 @@ The media for that publication will be loaded automatically and displayed in Vid
 
 Videos need to be downloaded before they are displayed. Videos that are not yet downloaded are indicated by the following download icon:
 
-<img src="../../packages/media/app/renderer/src/assets/download.svg" alt="Download" width="24">
+<img src="https://raw.githubusercontent.com/BenShelton/library-api/master/packages/media/app/renderer/src/assets/download.svg" alt="Download" width="24">
 
 When you want to display an image or video on the Display Window, simply click it.
 
 #### **Song**
 
-<img src="../../packages/media/app/renderer/src/assets/song.svg" alt="Song" width="24">
+<img src="https://raw.githubusercontent.com/BenShelton/library-api/master/packages/media/app/renderer/src/assets/song.svg" alt="Song" width="24">
 
 This window allows you to choose any song from the songbook to be played. This is useful for weekend meetings for example where the Public Talk Speaker chooses an opening song or for other times where a different song may be played, such as a Circuit Overseer visit.
 
@@ -128,7 +128,7 @@ Select the song from the dropdown, download the song if necessary, then click to
 
 #### **File Picker**
 
-<img src="../../packages/media/app/renderer/src/assets/picker.svg" alt="File Picker" width="24">
+<img src="https://raw.githubusercontent.com/BenShelton/library-api/master/packages/media/app/renderer/src/assets/picker.svg" alt="File Picker" width="24">
 
 This page allows you to choose a file from your computer to be displayed on the Display Window.
 
@@ -138,7 +138,7 @@ Click the button to choose a file, once chosen it will be displayed. If you need
 
 #### **Settings**
 
-<img src="../../packages/media/app/renderer/src/assets/settings.svg" alt="Settings" width="24">
+<img src="https://raw.githubusercontent.com/BenShelton/library-api/master/packages/media/app/renderer/src/assets/settings.svg" alt="Settings" width="24">
 
 This page allows you to adjust some settings to meet your circumstances.
 

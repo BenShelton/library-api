@@ -20,7 +20,7 @@ import { getControlWindow, getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR, VIDEO_DIR } from './constants'
 
 import {
-  CacheClear,
+  SettingsClearDownloads,
   CatalogUpdate,
   DisplayMedia,
   DownloadSong,
@@ -141,7 +141,7 @@ export function initIPC (): void {
     return videoDetails
   })
 
-  ipcMain.handle('cache:clear', async (): Promise<CacheClear['Response']> => {
+  ipcMain.handle('settings:clearDownloads', async (): Promise<SettingsClearDownloads['Response']> => {
     await emptyDir(DOWNLOAD_DIR)
     await initDirectories()
   })

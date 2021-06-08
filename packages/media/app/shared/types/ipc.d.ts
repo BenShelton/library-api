@@ -60,7 +60,7 @@ export interface SongDetails extends Invoke {
   Response: VideoDetails
 }
 
-export interface CacheClear extends Invoke {
+export interface SettingsClearDownloads extends Invoke {
   Args: void
   Response: void
 }

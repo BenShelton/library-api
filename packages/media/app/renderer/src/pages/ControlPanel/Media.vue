@@ -66,7 +66,7 @@
         </h1>
         <div class="media-row">
           <PreviewMedia
-            v-for="image of media.images"
+            v-for="image of visibleImages"
             :key="image.id"
             :media="image"
             :downloading="false"
@@ -87,6 +87,7 @@ import { computed, defineComponent, inject, reactive, ref, watch, watchEffect } 
 
 import Loader from '@/components/Loader.vue'
 import PreviewMedia from '@/components/PreviewMedia.vue'
+import { useStore } from '@/composables/store'
 
 import { getMondaysOfYear, formatISODate, closestPreviousMonday, isWeekend } from '@/utils/date'
 
@@ -163,6 +164,15 @@ export default defineComponent({
       media.loading = false
     })
 
+    const { store } = useStore('controlPanel')
+    const visibleImages = computed(() => {
+      if (store.showImages === 'display') {
+        const unwantedCategories = [9, 15]
+        return media.images.filter(image => !unwantedCategories.includes(image.categoryType))
+      }
+      return media.images
+    })
+
     const updateSelected = inject<(val: string) => void>('updateSelected')
 
     const downloads = reactive<string[]>([])
@@ -198,6 +208,7 @@ export default defineComponent({
       weeks,
 
       media,
+      visibleImages,
 
       downloads,
       onDisplayVideo,

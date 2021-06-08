@@ -3,6 +3,22 @@
     <h1 class="heading">
       SETTINGS
     </h1>
+    <h2>Media</h2>
+    <div class="settings-line">
+      <p>
+        Hide images not normally shown during the meeting (cover images, publication covers etc.)
+      </p>
+      <select
+        v-model="settings.showImages"
+      >
+        <option value="all">
+          Show all
+        </option>
+        <option value="display">
+          Only show relevant
+        </option>
+      </select>
+    </div>
     <h2>Reset</h2>
     <div class="settings-line">
       <p>
@@ -24,6 +40,8 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+import { useStore } from '@/composables/store'
+
 import { SettingsClearDownloads } from 'shared/types/ipc'
 
 export default defineComponent({
@@ -32,6 +50,8 @@ export default defineComponent({
   setup () {
     const { push } = useRouter()
     const loading = ref(false)
+
+    const { store: settings } = useStore('controlPanel')
 
     async function onClearDownloads () {
       loading.value = true
@@ -46,6 +66,7 @@ export default defineComponent({
     }
     return {
       loading,
+      settings,
       onClearDownloads
     }
   }

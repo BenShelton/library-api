@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "rootDir": "..",
     "composite": false,
+    "module": "es2020",
     "paths": {
       "@/*": [
         "src/*"

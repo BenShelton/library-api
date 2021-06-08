@@ -17,5 +17,14 @@ module.exports = {
   ignorePatterns: [
     ...baseConfig.ignorePatterns,
     'index.html'
+  ],
+  overrides: [
+    ...baseConfig.overrides,
+    {
+      files: ['src/composables/**/*.ts'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off'
+      }
+    }
   ]
 }

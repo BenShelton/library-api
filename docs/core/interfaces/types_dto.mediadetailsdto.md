@@ -23,7 +23,7 @@ The returned information when mapping raw media details data.
 
 • **caption**: *string*
 
-Defined in: [types/dto.d.ts:50](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L50)
+Defined in: [types/dto.d.ts:57](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L57)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 • **filename**: *string*
 
-Defined in: [types/dto.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L49)
+Defined in: [types/dto.d.ts:56](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L56)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 The height in pixels of the image.
 
-Defined in: [types/dto.d.ts:58](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L58)
+Defined in: [types/dto.d.ts:65](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L65)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 A unique id not related to the database.
 
-Defined in: [types/dto.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L48)
+Defined in: [types/dto.d.ts:55](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L55)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 The URL of the image on the external media server.
 Can be used as a `src` for an `img` element or downloaded.
 
-Defined in: [types/dto.d.ts:63](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L63)
+Defined in: [types/dto.d.ts:70](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L70)
 
 ___
 
@@ -72,4 +72,4 @@ ___
 
 The width in pixels of the image.
 
-Defined in: [types/dto.d.ts:54](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L54)
+Defined in: [types/dto.d.ts:61](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L61)

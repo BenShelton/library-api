@@ -11,6 +11,7 @@ The returned information when mapping raw image data.
 ### Properties
 
 - [caption](types_dto.imagedto.md#caption)
+- [categoryType](types_dto.imagedto.md#categorytype)
 - [filePath](types_dto.imagedto.md#filepath)
 - [filename](types_dto.imagedto.md#filename)
 - [id](types_dto.imagedto.md#id)
@@ -24,6 +25,19 @@ The returned information when mapping raw image data.
 The description in the database for this image.
 
 Defined in: [types/dto.d.ts:16](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L16)
+
+___
+
+### categoryType
+
+• **categoryType**: *number*
+
+The internal category type. Known types are:
+- 8 = Article image (Normally displayed)
+- 9 = Article cover image (Not normally displayed)
+- 15 = Publication cover image (Not normally displayed)
+
+Defined in: [types/dto.d.ts:27](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L27)
 
 ___
 

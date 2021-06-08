@@ -11,6 +11,7 @@ The raw database columns when using an image query.
 ### Properties
 
 - [Caption](types_database.imagerow.md#caption)
+- [CategoryType](types_database.imagerow.md#categorytype)
 - [ContextTitle](types_database.imagerow.md#contexttitle)
 - [FilePath](types_database.imagerow.md#filepath)
 - [MultimediaId](types_database.imagerow.md#multimediaid)
@@ -22,6 +23,14 @@ The raw database columns when using an image query.
 • **Caption**: *string*
 
 Defined in: [types/database.d.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L19)
+
+___
+
+### CategoryType
+
+• **CategoryType**: *number*
+
+Defined in: [types/database.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L24)
 
 ___
 

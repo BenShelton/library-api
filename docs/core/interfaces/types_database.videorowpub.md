@@ -30,7 +30,7 @@ The raw database columns when using a video query that returns a `pub` type vide
 
 Inherited from: [VideoRowBase](types_database.videorowbase.md).[IssueTagNumber](types_database.videorowbase.md#issuetagnumber)
 
-Defined in: [types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)
+Defined in: [types/database.d.ts:41](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L41)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 • **KeySymbol**: *string*
 
-Defined in: [types/database.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L47)
+Defined in: [types/database.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L48)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 • **MepsDocumentId**: ``null``
 
-Defined in: [types/database.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L48)
+Defined in: [types/database.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L49)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 Inherited from: [VideoRowBase](types_database.videorowbase.md).[MultimediaId](types_database.videorowbase.md#multimediaid)
 
-Defined in: [types/database.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L38)
+Defined in: [types/database.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L39)
 
 ___
 
@@ -66,4 +66,4 @@ ___
 
 Inherited from: [VideoRowBase](types_database.videorowbase.md).[Track](types_database.videorowbase.md#track)
 
-Defined in: [types/database.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L39)
+Defined in: [types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)

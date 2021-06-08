@@ -3,7 +3,7 @@
     <h1 class="heading">
       SETTINGS
     </h1>
-    <h2>Clear Cache</h2>
+    <h2>Reset</h2>
     <div class="settings-line">
       <p>
         Removes all downloaded data (catalog, publications, videos etc.)
@@ -12,9 +12,9 @@
       </p>
       <button
         :disabled="loading"
-        @click="onClearCache"
+        @click="onClearDownloads"
       >
-        CLEAR CACHE
+        CLEAR DOWNLOADS
       </button>
     </div>
   </div>
@@ -24,7 +24,7 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { CacheClear } from 'shared/types/ipc'
+import { SettingsClearDownloads } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Settings',
@@ -33,10 +33,10 @@ export default defineComponent({
     const { push } = useRouter()
     const loading = ref(false)
 
-    async function onClearCache () {
+    async function onClearDownloads () {
       loading.value = true
       try {
-        await window.electron.invoke<CacheClear>('cache:clear')
+        await window.electron.invoke<SettingsClearDownloads>('settings:clearDownloads')
         push({ name: 'Intro' })
       } catch (err) {
         window.log.error(err)
@@ -46,7 +46,7 @@ export default defineComponent({
     }
     return {
       loading,
-      onClearCache
+      onClearDownloads
     }
   }
 })

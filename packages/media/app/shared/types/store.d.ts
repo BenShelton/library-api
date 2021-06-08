@@ -8,4 +8,7 @@ interface WindowPosition {
 export interface StoreDefinition {
   controlWindow: WindowPosition
   displayWindow: WindowPosition
+  controlPanel: {
+    showImages: 'all' | 'display'
+  }
 }

@@ -17,6 +17,14 @@ export const store = new Store<StoreDefinition>({
       y: 20,
       width: 800,
       height: 450
+    },
+    controlPanel: {
+      showImages: 'display'
+    }
+  },
+  migrations: {
+    '0.7.0': store => {
+      store.set('controlPanel', { showImages: 'display' })
     }
   }
 })

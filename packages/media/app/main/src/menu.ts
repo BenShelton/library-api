@@ -7,7 +7,7 @@ const template: MenuItemConstructorOptions[] = [
     label: appName,
     submenu: [
       { role: 'about', label: `About ${appName}` },
-      { role: 'quit', label: `Quit ${appName}` }
+      { role: 'quit', label: 'Quit' }
     ]
   },
   {

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "es2020"
+  },
+  "include": [
+    "src/**/*.ts",
+    "types/**/*.ts"
+  ]
+}

@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
-import { imageExtensions, videoExtensions } from 'shared/extensions'
+import { imageExtensions, videoExtensions } from 'shared/src/extensions'
 
 import { DisplayMedia, DisplayClear } from 'shared/types/ipc'
 

@@ -14,7 +14,7 @@ import {
 } from '@library-api/core'
 import { MediaDetailsDTO } from '@library-api/core/types/dto'
 
-import { imageExtensions, videoExtensions } from 'shared/extensions'
+import { imageExtensions, videoExtensions } from 'shared/src/extensions'
 import { initDirectories } from './directories'
 import { getControlWindow, getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR, VIDEO_DIR } from './constants'

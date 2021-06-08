@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/BenShelton/library-api/compare/v0.7.0...v0.8.0) (2021-06-08)
+
+
+### Bug Fixes
+
+* **media:** only check for updates after app is ready ([6d45159](https://github.com/BenShelton/library-api/commit/6d4515929fe46376ac1e47da6630abc01a630a31))
+* **media:** remove app name from window titles ([4741a7d](https://github.com/BenShelton/library-api/commit/4741a7dc7b876c1faa0191278f83f7cf9184fdad)), closes [#38](https://github.com/BenShelton/library-api/issues/38)
+
+
+### Features
+
+* **media:** add more supported file extensions ([b1862c0](https://github.com/BenShelton/library-api/commit/b1862c066470f7e374e733944bcefc79f5f1a279)), closes [#45](https://github.com/BenShelton/library-api/issues/45)
+* **media:** add Return to Today button on Media page ([0f346e4](https://github.com/BenShelton/library-api/commit/0f346e430ef7169368dbc95c1845014f86189972))
+* **media:** add setting to only show relevant images ([b9b62c4](https://github.com/BenShelton/library-api/commit/b9b62c4238f6efc8747f368534a47c7dc5fa08e8)), closes [#26](https://github.com/BenShelton/library-api/issues/26)
+* **media:** persist state of control panel screens to avoid them reloading ([f686b10](https://github.com/BenShelton/library-api/commit/f686b101a0b991e24d09b949e3e175f4610d4034)), closes [#42](https://github.com/BenShelton/library-api/issues/42)
+* **media:** update icon ([90d5b26](https://github.com/BenShelton/library-api/commit/90d5b26beb9e307f45242c023e29ab9152872296)), closes [#39](https://github.com/BenShelton/library-api/issues/39)
+* **media/developer:** adds store communication between renderer and main processes ([2f7ba05](https://github.com/BenShelton/library-api/commit/2f7ba05ebfbf9d8497bee9864d765ff58879c14c))
+
+
+
+
+
 # [0.7.0](https://github.com/BenShelton/library-api/compare/v0.6.2...v0.7.0) (2021-06-01)
 
 

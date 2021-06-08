@@ -21,6 +21,7 @@ export interface ImageRow {
    * The path within the contents directory of a publication to access this image.
    */
   FilePath: string
+  CategoryType: number
 }
 
 /**

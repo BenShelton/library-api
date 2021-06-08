@@ -23,7 +23,7 @@ The returned information when mapping raw video data.
 
 • **doc**: *string* \| *number*
 
-Defined in: [types/dto.d.ts:36](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L36)
+Defined in: [types/dto.d.ts:43](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L43)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 • **filename**: *string*
 
-Defined in: [types/dto.d.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L31)
+Defined in: [types/dto.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L38)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 A unique id not related to the database.
 
-Defined in: [types/dto.d.ts:30](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L30)
+Defined in: [types/dto.d.ts:37](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L37)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 • **issue**: *number*
 
-Defined in: [types/dto.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L38)
+Defined in: [types/dto.d.ts:45](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L45)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 • **track**: *number*
 
-Defined in: [types/dto.d.ts:37](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L37)
+Defined in: [types/dto.d.ts:44](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L44)
 
 ___
 
@@ -67,4 +67,4 @@ ___
 
 Affects how information is retrieved about this video (for example in getting details or the video stream)
 
-Defined in: [types/dto.d.ts:35](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L35)
+Defined in: [types/dto.d.ts:42](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L42)

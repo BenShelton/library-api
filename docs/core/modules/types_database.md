@@ -26,4 +26,4 @@
 
 A union of the raw database columns when using a video query that returns any type video.
 
-Defined in: [types/database.d.ts:62](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L62)
+Defined in: [types/database.d.ts:63](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L63)

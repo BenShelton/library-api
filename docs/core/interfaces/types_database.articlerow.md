@@ -20,7 +20,7 @@ The raw database columns when using an article query.
 
 • **ContextTitle**: *string*
 
-Defined in: [types/database.d.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L69)
+Defined in: [types/database.d.ts:70](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L70)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **DocumentId**: *number*
 
-Defined in: [types/database.d.ts:68](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L68)
+Defined in: [types/database.d.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L69)
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **Title**: *string*
 
-Defined in: [types/database.d.ts:70](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L70)
+Defined in: [types/database.d.ts:71](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L71)

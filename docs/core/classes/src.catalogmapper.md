@@ -40,4 +40,4 @@ Maps a raw Media Details database row to a Media Details DTO.
 
 **Returns:** [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)
 
-Defined in: [src/classes/Mapper.ts:118](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L118)
+Defined in: [src/classes/Mapper.ts:119](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L119)

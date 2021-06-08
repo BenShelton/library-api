@@ -13,13 +13,15 @@ describe('Classes: Mapper', () => {
             MultimediaId: 42,
             Caption: 'caption',
             FilePath: 'path',
-            ContextTitle: 'title'
+            ContextTitle: 'title',
+            CategoryType: 8
           })
           expect(result).toEqual<ImageDTO>({
             id: 'name#42',
             filename: 'name',
             caption: 'caption',
-            filePath: 'path'
+            filePath: 'path',
+            categoryType: 8
           })
         })
       })
@@ -27,12 +29,12 @@ describe('Classes: Mapper', () => {
       describe('MapImages', () => {
         test('should return multiple mapped images', () => {
           const mapper = new PublicationMapper({ filename: 'name' })
-          const mockImage: ImageDTO = { id: 'name#42', filename: 'name', caption: '', filePath: '' }
+          const mockImage: ImageDTO = { id: 'name#42', filename: 'name', caption: '', filePath: '', categoryType: 8 }
           const spy = jest.spyOn(mapper, 'MapImage').mockReturnValue(mockImage)
           const mockImageRows: ImageRow[] = [
-            { MultimediaId: 1, Caption: 'caption1', FilePath: 'path1', ContextTitle: 'title1' },
-            { MultimediaId: 2, Caption: 'caption2', FilePath: 'path2', ContextTitle: 'title2' },
-            { MultimediaId: 3, Caption: 'caption3', FilePath: 'path3', ContextTitle: 'title3' }
+            { MultimediaId: 1, Caption: 'caption1', FilePath: 'path1', ContextTitle: 'title1', CategoryType: 8 },
+            { MultimediaId: 2, Caption: 'caption2', FilePath: 'path2', ContextTitle: 'title2', CategoryType: 8 },
+            { MultimediaId: 3, Caption: 'caption3', FilePath: 'path3', ContextTitle: 'title3', CategoryType: 8 }
           ]
           const result = mapper.MapImages(mockImageRows)
           expect(spy.mock.calls).toEqual([[mockImageRows[0]], [mockImageRows[1]], [mockImageRows[2]]])

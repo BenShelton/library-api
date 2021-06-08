@@ -4,7 +4,7 @@ import { join } from 'path'
 import { checkExists } from '@library-api/core'
 import AspectRatioBrowserWindow from 'electron-aspect-ratio-browser-window'
 
-import { store } from 'shared/store'
+import { store } from 'shared/src/store'
 
 import { CATALOG_PATH } from './constants'
 

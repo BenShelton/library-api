@@ -1,8 +1,12 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { functions } from 'electron-log'
 
-const apiKey: keyof Window = 'electron'
-const api: ElectronApi = {
+import { store } from 'shared/src/store'
+
+import { ElectronApi, StoreApi } from 'shared/types/electron-api'
+
+const electronApiKey: keyof Window = 'electron'
+const electronApi: ElectronApi = {
   invoke (channel, args) {
     return ipcRenderer.invoke(channel, args)
   },
@@ -14,5 +18,19 @@ const api: ElectronApi = {
   }
 }
 
-contextBridge.exposeInMainWorld(apiKey, api)
+const storeApiKey: keyof Window = 'store'
+const storeApi: StoreApi = {
+  get (key: string, defaultValue?: unknown) {
+    return store.get(key, defaultValue)
+  },
+  set (key, value) {
+    store.set(key, value)
+  },
+  watch (key, cb) {
+    return store.onDidChange(key, cb)
+  }
+}
+
+contextBridge.exposeInMainWorld(electronApiKey, electronApi)
+contextBridge.exposeInMainWorld(storeApiKey, storeApi)
 contextBridge.exposeInMainWorld('log', functions)

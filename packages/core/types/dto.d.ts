@@ -18,6 +18,13 @@ export interface ImageDTO {
    * The path to access the image within the downloaded publication.
    */
   filePath: string
+  /**
+   * The internal category type. Known types are:
+   * - 8 = Article image (Normally displayed)
+   * - 9 = Article cover image (Not normally displayed)
+   * - 15 = Publication cover image (Not normally displayed)
+   */
+  categoryType: number
 }
 
 /**

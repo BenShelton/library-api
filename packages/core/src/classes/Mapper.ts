@@ -28,7 +28,8 @@ export class PublicationMapper {
       id: this._createId(image),
       filename: this.filename,
       caption: image.Caption,
-      filePath: image.FilePath
+      filePath: image.FilePath,
+      categoryType: image.CategoryType
     }
   }
 

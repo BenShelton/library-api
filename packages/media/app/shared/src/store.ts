@@ -19,12 +19,16 @@ export const store = new Store<StoreDefinition>({
       height: 450
     },
     controlPanel: {
-      showImages: 'display'
+      showImages: 'display',
+      languageId: 0
     }
   },
   migrations: {
     '0.7.0': store => {
       store.set('controlPanel', { showImages: 'display' })
+    },
+    '0.8.0': store => {
+      store.set('controlPanel.languageId', 0)
     }
   }
 })

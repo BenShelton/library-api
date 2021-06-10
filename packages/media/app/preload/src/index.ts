@@ -1,5 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { functions } from 'electron-log'
+import { getLanguages } from '@library-api/core'
 
 import { store } from 'shared/src/store'
 
@@ -31,6 +32,12 @@ const storeApi: StoreApi = {
   }
 }
 
+const logApiKey: keyof Window = 'log'
+
+const languagesApiKey: keyof Window = 'languages'
+const languages = getLanguages()
+
 contextBridge.exposeInMainWorld(electronApiKey, electronApi)
 contextBridge.exposeInMainWorld(storeApiKey, storeApi)
-contextBridge.exposeInMainWorld('log', functions)
+contextBridge.exposeInMainWorld(logApiKey, functions)
+contextBridge.exposeInMainWorld(languagesApiKey, languages)

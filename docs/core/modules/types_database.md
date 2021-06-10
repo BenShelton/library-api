@@ -8,6 +8,7 @@
 
 - [ArticleRow](../interfaces/types_database.articlerow.md)
 - [ImageRow](../interfaces/types_database.imagerow.md)
+- [LanguageRow](../interfaces/types_database.languagerow.md)
 - [MediaDetailsRow](../interfaces/types_database.mediadetailsrow.md)
 - [PublicationRow](../interfaces/types_database.publicationrow.md)
 - [VideoRowBase](../interfaces/types_database.videorowbase.md)

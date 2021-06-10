@@ -4,8 +4,6 @@
 
 [types/hag](../modules/types_hag.md).GetMediaPubLinks
 
-**`todo`** This only defines the English interface.
-
 The returned data when requesting a video from the external Media API endpoint.
 
 ## Table of contents
@@ -30,7 +28,7 @@ The returned data when requesting a video from the external Media API endpoint.
 
 • **booknum**: ``null``
 
-Defined in: [types/hag.d.ts:50](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L50)
+Defined in: [types/hag.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L48)
 
 ___
 
@@ -40,12 +38,7 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `E` | *object* |
-| `E.MP4` | [*MediaPubLink*](types_hag.mediapublink.md)[] |
-
-Defined in: [types/hag.d.ts:68](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L68)
+Defined in: [types/hag.d.ts:66](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L66)
 
 ___
 
@@ -53,7 +46,7 @@ ___
 
 • **formattedDate**: *string*[]
 
-Defined in: [types/hag.d.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L53)
+Defined in: [types/hag.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L51)
 
 ___
 
@@ -61,7 +54,7 @@ ___
 
 • **issue**: *string*
 
-Defined in: [types/hag.d.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L52)
+Defined in: [types/hag.d.ts:50](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L50)
 
 ___
 
@@ -71,14 +64,7 @@ ___
 
 #### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `E` | *object* |
-| `E.direction` | *string* |
-| `E.locale` | *string* |
-| `E.name` | *string* |
-
-Defined in: [types/hag.d.ts:61](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L61)
+Defined in: [types/hag.d.ts:59](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L59)
 
 ___
 
@@ -86,7 +72,7 @@ ___
 
 • **parentPubName**: *string*
 
-Defined in: [types/hag.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L49)
+Defined in: [types/hag.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L47)
 
 ___
 
@@ -94,7 +80,7 @@ ___
 
 • **pub**: *string*
 
-Defined in: [types/hag.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L51)
+Defined in: [types/hag.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L49)
 
 ___
 
@@ -110,7 +96,7 @@ ___
 | `modifiedDatetime` | *string* |
 | `url` | *string* |
 
-Defined in: [types/hag.d.ts:56](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L56)
+Defined in: [types/hag.d.ts:54](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L54)
 
 ___
 
@@ -118,7 +104,7 @@ ___
 
 • **pubName**: *string*
 
-Defined in: [types/hag.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L48)
+Defined in: [types/hag.d.ts:46](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L46)
 
 ___
 
@@ -126,7 +112,7 @@ ___
 
 • **specialty**: *string*
 
-Defined in: [types/hag.d.ts:55](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L55)
+Defined in: [types/hag.d.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L53)
 
 ___
 
@@ -134,4 +120,4 @@ ___
 
 • **track**: *number*
 
-Defined in: [types/hag.d.ts:54](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L54)
+Defined in: [types/hag.d.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L52)

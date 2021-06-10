@@ -26,4 +26,10 @@ export interface PublicationCtor {
    * @see PublicationType
    */
   type: PublicationType
+  /**
+   * The Meps Language Id of this publication.
+   *
+   * @default 0 (English)
+   */
+  languageId?: number
 }

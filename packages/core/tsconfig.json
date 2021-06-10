@@ -5,10 +5,12 @@
     "rootDir": "src",
     "outDir": "dist",
     "importHelpers": false,
-    "tsBuildInfoFile": "dist/.tsbuildinfo"
+    "tsBuildInfoFile": "dist/.tsbuildinfo",
+    "resolveJsonModule": true
   },
   "include": [
-    "src"
+    "src/**/*.ts",
+    "src/**/*.json"
   ],
   "exclude": [
     "**/*.spec.ts"

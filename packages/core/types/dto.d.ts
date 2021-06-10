@@ -25,6 +25,10 @@ export interface ImageDTO {
    * - 15 = Publication cover image (Not normally displayed)
    */
   categoryType: number
+  /**
+   * The Meps Language Id of this image.
+   */
+  languageId: number
 }
 
 /**
@@ -43,6 +47,10 @@ export interface VideoDTO {
   doc: string | number
   track: number
   issue: number
+  /**
+   * The Meps Language Id of this video.
+   */
+  languageId: number
 }
 
 /**
@@ -68,4 +76,31 @@ export interface MediaDetailsDTO {
    * Can be used as a `src` for an `img` element or downloaded.
    */
   url: string
+}
+
+/**
+ * Information returned when requesting a language.
+ */
+export interface LanguageDTO {
+  /**
+   * The Meps Language Id.
+   */
+  id: number
+  /**
+   * The unique language Symbol.
+   */
+  symbol: string
+  /**
+   * The English name for the language, e.g. `Spanish` for Spanish.
+   */
+  englishName: string
+  /**
+   * The language name as displayed in that language, e.g. `español` for Spanish.
+   */
+  vernacularName: string
+  /**
+   * Indicates whether this is a sign language.
+   * Sign languages do not use publications so are generally unsupported.
+   */
+  signLanguage: boolean
 }

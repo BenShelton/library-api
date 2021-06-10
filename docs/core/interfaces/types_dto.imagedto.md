@@ -15,6 +15,7 @@ The returned information when mapping raw image data.
 - [filePath](types_dto.imagedto.md#filepath)
 - [filename](types_dto.imagedto.md#filename)
 - [id](types_dto.imagedto.md#id)
+- [languageId](types_dto.imagedto.md#languageid)
 
 ## Properties
 
@@ -68,3 +69,13 @@ ___
 A unique id not related to the database.
 
 Defined in: [types/dto.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L8)
+
+___
+
+### languageId
+
+• **languageId**: *number*
+
+The Meps Language Id of this image.
+
+Defined in: [types/dto.d.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L31)

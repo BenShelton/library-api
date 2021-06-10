@@ -1,17 +1,20 @@
-import { ImageRow, MediaDetailsRow, VideoRow } from '../../types/database'
-import { ImageDTO, MediaDetailsDTO, VideoDTO } from '../../types/dto'
+import { ImageRow, LanguageRow, MediaDetailsRow, VideoRow } from '../../types/database'
+import { ImageDTO, LanguageDTO, MediaDetailsDTO, VideoDTO } from '../../types/dto'
 
 interface PublicationMapperCtor {
   filename: string
+  languageId?: number
 }
 
 /**
- *
+ * Maps raw Publication database rows to more accessible DTOs.
  */
 export class PublicationMapper {
   filename: string
-  constructor ({ filename }: PublicationMapperCtor) {
+  languageId: number
+  constructor ({ filename, languageId = 0 }: PublicationMapperCtor) {
     this.filename = filename
+    this.languageId = languageId
   }
 
   private _createId (row: ImageRow | VideoRow): string {
@@ -29,7 +32,8 @@ export class PublicationMapper {
       filename: this.filename,
       caption: image.Caption,
       filePath: image.FilePath,
-      categoryType: image.CategoryType
+      categoryType: image.CategoryType,
+      languageId: this.languageId
     }
   }
 
@@ -69,7 +73,8 @@ export class PublicationMapper {
       type,
       doc,
       track: video.Track,
-      issue: video.IssueTagNumber
+      issue: video.IssueTagNumber,
+      languageId: this.languageId
     }
   }
 
@@ -84,7 +89,7 @@ export class PublicationMapper {
 }
 
 /**
- * Maps raw database rows to more accessible DTOs.
+ * Maps raw Catalog database rows to more accessible DTOs.
  */
 export class CatalogMapper {
   /**
@@ -127,5 +132,34 @@ export class CatalogMapper {
       width: details.Width,
       url: this._detailUrl(filename)
     }
+  }
+}
+
+/**
+ * Maps raw language data to more accessible DTOs.
+ */
+export class LanguageMapper {
+  /**
+   * Maps a raw Language data row to a Language DTO.
+   *
+   * @param language The data row.
+   */
+  public MapLanguage (language: LanguageRow): LanguageDTO {
+    return {
+      id: language.LanguageId,
+      englishName: language.EnglishName,
+      vernacularName: language.VernacularName,
+      symbol: language.Symbol,
+      signLanguage: language.IsSignLanguage === 1
+    }
+  }
+
+  /**
+   * Maps multiple Language data rows using {@link MapLanguage} and returns the mapped array.
+   *
+   * @param languages The data rows.
+   */
+  public MapLanguages (languages: LanguageRow[]): LanguageDTO[] {
+    return languages.map(language => this.MapLanguage(language))
   }
 }

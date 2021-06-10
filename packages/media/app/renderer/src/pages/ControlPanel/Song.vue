@@ -28,10 +28,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref, watch } from 'vue'
+import { defineComponent, inject, ref, watchEffect } from 'vue'
 
 import PreviewMedia from '@/components/PreviewMedia.vue'
 import Loader from '@/components/Loader.vue'
+import { useStore } from '@/composables/store'
 
 import { DownloadSong, MediaVideo, SongDetails, VideoDetails } from 'shared/types/ipc'
 
@@ -44,6 +45,8 @@ export default defineComponent({
   },
 
   setup () {
+    const { store } = useStore('controlPanel')
+
     const loading = ref(false)
     const song = ref<number | undefined>(undefined)
     const details = ref<VideoDetails | null>(null)
@@ -53,12 +56,12 @@ export default defineComponent({
       songs.push({ text: 'Song ' + i, value: i })
     }
 
-    watch(song, async (val) => {
+    watchEffect(async () => {
       details.value = null
-      if (val === undefined) return
+      if (!song.value) return
       loading.value = true
       try {
-        const songDetails = await window.electron.invoke<SongDetails>('song:details', { track: val })
+        const songDetails = await window.electron.invoke<SongDetails>('song:details', { track: song.value, languageId: store.languageId })
         details.value = songDetails
       } catch (err) {
         window.log.error(err)
@@ -76,7 +79,7 @@ export default defineComponent({
       if (!video.downloaded) {
         downloading.value = true
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        await window.electron.invoke<DownloadSong>('download:song', { details: downloadDetails, track: song.value! })
+        await window.electron.invoke<DownloadSong>('download:song', { details: downloadDetails, track: song.value!, languageId: store.languageId })
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         details.value!.downloaded = true
         downloading.value = false

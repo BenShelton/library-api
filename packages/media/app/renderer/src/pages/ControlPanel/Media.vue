@@ -148,10 +148,12 @@ export default defineComponent({
       videos: [] as IPCVideoDTO[],
       images: [] as IPCImageDTO[]
     })
+    const { store } = useStore('controlPanel')
+
     watchEffect(async () => {
       media.loading = true
 
-      const pubMedia = await window.electron.invoke<PublicationMedia>('publication:media', { date: week.value, type: publication.value })
+      const pubMedia = await window.electron.invoke<PublicationMedia>('publication:media', { date: week.value, type: publication.value, languageId: store.languageId })
 
       if (!pubMedia) {
         media.found = false
@@ -164,7 +166,6 @@ export default defineComponent({
       media.loading = false
     })
 
-    const { store } = useStore('controlPanel')
     const visibleImages = computed(() => {
       if (store.showImages === 'display') {
         const unwantedCategories = [9, 15]

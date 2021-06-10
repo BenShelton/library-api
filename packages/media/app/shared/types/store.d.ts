@@ -10,5 +10,6 @@ export interface StoreDefinition {
   displayWindow: WindowPosition
   controlPanel: {
     showImages: 'all' | 'display'
+    languageId: number
   }
 }

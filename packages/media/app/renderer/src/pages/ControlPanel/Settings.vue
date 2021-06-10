@@ -7,6 +7,21 @@
     <div>
       <div class="settings-line">
         <p>
+          Choose the language for publications & songs
+        </p>
+        <select
+          v-model="settings.languageId"
+        >
+          <option
+            v-for="language of languages"
+            :key="language.id"
+            :value="language.id"
+            v-text="language.englishName"
+          />
+        </select>
+      </div>
+      <div class="settings-line">
+        <p>
           Hide images not normally shown during the meeting (cover images, publication covers etc.)
         </p>
         <select
@@ -56,6 +71,11 @@ export default defineComponent({
     const loading = ref(false)
 
     const { store: settings } = useStore('controlPanel')
+    const languages = [...window.languages]
+      .filter(l => !l.signLanguage)
+      .sort((a, b) => {
+        return a.englishName > b.englishName ? 1 : -1
+      })
 
     async function onClearDownloads () {
       loading.value = true
@@ -71,6 +91,7 @@ export default defineComponent({
     return {
       loading,
       settings,
+      languages,
       onClearDownloads
     }
   }

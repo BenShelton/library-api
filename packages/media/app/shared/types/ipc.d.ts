@@ -30,6 +30,7 @@ export interface PublicationMedia extends Invoke {
   Args: {
     date: string
     type: 'wt' | 'oclm'
+    languageId: number
   }
   Response: { videos: IPCVideoDTO[], images: IPCImageDTO[] } | null
 }
@@ -40,6 +41,7 @@ export interface DownloadVideo extends Invoke {
     doc: string | number
     track: number
     issue: number
+    languageId: number
     details: MediaDetailsDTO
   }
   Response: void
@@ -49,6 +51,7 @@ export interface DownloadSong extends Invoke {
   Args: {
     details: MediaDetailsDTO
     track: number
+    languageId: number
   }
   Response: void
 }
@@ -56,6 +59,7 @@ export interface DownloadSong extends Invoke {
 export interface SongDetails extends Invoke {
   Args: {
     track: number
+    languageId: number
   }
   Response: VideoDetails
 }

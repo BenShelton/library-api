@@ -29,11 +29,16 @@ function addVideoURL (video: VideoDTO): VideoDTOWithURL {
 }
 
 router.get('/watchtower', async (req, res) => {
-  const { date } = req.query as Partial<Media.Watchtower.QueryParams>
+  const { date, languageId } = req.query as Partial<Media.Watchtower.QueryParams>
   if (!isValidDate(date)) return res.status(401).json({ message: 'Invalid Date' })
 
+  const language = Number(languageId || 0)
+  if (isNaN(language)) {
+    return res.status(401).json({ message: 'LanguageId must be a number' })
+  }
+
   const db = new CatalogDatabase(CATALOG_PATH)
-  const publication = await db.getPublication(date, DOWNLOAD_DIR, 'wt')
+  const publication = await db.getPublication(date, DOWNLOAD_DIR, 'wt', language)
   if (!publication) return res.status(404).json({ message: 'No Watchtower Found' })
 
   const images = (await publication.getImages(date))
@@ -52,11 +57,16 @@ router.get('/watchtower', async (req, res) => {
 })
 
 router.get('/oclm', async (req, res) => {
-  const { date } = req.query as Partial<Media.OCLM.QueryParams>
+  const { date, languageId } = req.query as Partial<Media.OCLM.QueryParams>
   if (!isValidDate(date)) return res.status(401).json({ message: 'Invalid Date' })
 
+  const language = Number(languageId || 0)
+  if (isNaN(language)) {
+    return res.status(401).json({ message: 'LanguageId must be a number' })
+  }
+
   const db = new CatalogDatabase(CATALOG_PATH)
-  const publication = await db.getPublication(date, DOWNLOAD_DIR, 'oclm')
+  const publication = await db.getPublication(date, DOWNLOAD_DIR, 'oclm', language)
   if (!publication) return res.status(404).json({ message: 'No OCLM Workbook Found' })
 
   const images = (await publication.getImages(date))
@@ -75,16 +85,20 @@ router.get('/oclm', async (req, res) => {
 })
 
 router.get('/details', async (req, res) => {
-  const { type, doc, issue, track } = req.query as Partial<Media.Details.QueryParams>
+  const { type, doc, issue, track, languageId } = req.query as Partial<Media.Details.QueryParams>
   if (type !== 'doc' && type !== 'pub') {
     return res.status(401).json({ message: 'Type must be one of "doc" or "pub"' })
   }
   if (doc === undefined || issue === undefined || track === undefined) {
     return res.status(401).json({ message: 'Doc, Issue & Track are required' })
   }
+  const language = Number(languageId || 0)
+  if (isNaN(language)) {
+    return res.status(401).json({ message: 'LanguageId must be a number' })
+  }
 
   const db = new CatalogDatabase(CATALOG_PATH)
-  const details = await db.getMediaDetails({ type, doc, issue, track })
+  const details = await db.getMediaDetails({ type, doc, issue, track, languageId: language })
   if (!details) return res.status(404).json({ message: 'No Media Details Found' })
 
   const response: Media.Details.Response = {

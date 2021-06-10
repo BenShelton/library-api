@@ -82,7 +82,7 @@ export function initIPC (): void {
     const db = new CatalogDatabase(CATALOG_PATH)
     let publication: Publication | null = null
     try {
-      publication = await db.getPublication(args.date, DOWNLOAD_DIR, args.type)
+      publication = await db.getPublication(args.date, DOWNLOAD_DIR, args.type, args.languageId)
     } catch (err) {
       log.info('Unable to download publication', args, err)
       return null
@@ -129,13 +129,13 @@ export function initIPC (): void {
 
   ipcMain.handle('download:song', async (_event, args: DownloadSong['Args']): Promise<DownloadSong['Response']> => {
     const { videoPath } = getVideoPaths(args.details)
-    const stream = await downloadSongStream(args.track, videoPath)
+    const stream = await downloadSongStream(args.track, videoPath, args.languageId)
     if (!stream) throw new Error(`Could not load song stream for song: ${args.track}`)
   })
 
   ipcMain.handle('song:details', async (_event, args: SongDetails['Args']): Promise<SongDetails['Response']> => {
     const db = new CatalogDatabase(CATALOG_PATH)
-    const details = await db.getSongDetails(args.track)
+    const details = await db.getSongDetails(args.track, args.languageId)
     if (!details) throw new Error('Could not find details')
     const videoDetails = processVideoDetails(details)
     return videoDetails

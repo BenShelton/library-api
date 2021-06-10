@@ -1,7 +1,7 @@
 import { LanguageMapper } from './classes'
 import languages from './data/languages.json'
 
-import { LanguageDTO } from 'types/dto'
+import { LanguageDTO } from '../types/dto'
 
 /**
  * Retrieves a list of all languages currently supported.

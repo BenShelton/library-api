@@ -40,8 +40,6 @@ interface MediaPubLink {
 }
 
 /**
- * @todo This only defines the English interface.
- *
  * The returned data when requesting a video from the external Media API endpoint.
  */
 export interface GetMediaPubLinks {
@@ -59,14 +57,14 @@ export interface GetMediaPubLinks {
     checksum: null
   }
   languages: {
-    E: {
+    [key: string]: {
       name: string
       direction: string
       locale: string
     }
   }
   files: {
-    E: {
+    [key: string]: {
       MP4: MediaPubLink[]
     }
   }

@@ -49,7 +49,7 @@ Defined in: [src/classes/Database.ts:79](https://github.com/BenShelton/library-a
 
 ### getMediaDetails
 
-▸ **getMediaDetails**(`__namedParameters`: { `doc`: *string* \| *number* ; `issue`: *string* \| *number* ; `track`: *string* \| *number* ; `type`: ``"pub"`` \| ``"doc"``  }): *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+▸ **getMediaDetails**(`__namedParameters`: { `doc`: *string* \| *number* ; `issue`: *string* \| *number* ; `languageId?`: *number* ; `track`: *string* \| *number* ; `type`: ``"pub"`` \| ``"doc"``  }): *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
 
 Retrieves information about a video from the main catalog.
 The video details found within a publication's database contain limited information about the video itself.
@@ -71,6 +71,7 @@ const details = await db.getMediaDetails(video)
 | `__namedParameters` | *object* |
 | `__namedParameters.doc` | *string* \| *number* |
 | `__namedParameters.issue` | *string* \| *number* |
+| `__namedParameters.languageId?` | *number* |
 | `__namedParameters.track` | *string* \| *number* |
 | `__namedParameters.type` | ``"pub"`` \| ``"doc"`` |
 
@@ -78,7 +79,7 @@ const details = await db.getMediaDetails(video)
 
 MediaDetails if they exist, `null` if they are not found.
 
-Defined in: [src/classes/Database.ts:161](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L161)
+Defined in: [src/classes/Database.ts:162](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L162)
 
 ___
 
@@ -98,7 +99,7 @@ ___
 
 ### getPublication
 
-▸ **getPublication**(`date`: *string*, `downloadDir`: *string*, `type`: [*PublicationType*](../modules/types_publication.md#publicationtype)): *Promise*<``null`` \| [*Publication*](src.publication.md)\>
+▸ **getPublication**(`date`: *string*, `downloadDir`: *string*, `type`: [*PublicationType*](../modules/types_publication.md#publicationtype), `languageId?`: *number*): *Promise*<``null`` \| [*Publication*](src.publication.md)\>
 
 Searches the database for the specified publication based on a date.
 If that publication is not yet downloaded, will download it to the specified directory.
@@ -107,17 +108,18 @@ If that publication is not yet downloaded, will download it to the specified dir
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `date` | *string* | The date to search for, must be formatted as `yyyy-mm-dd`. |
-| `downloadDir` | *string* | The directory to download the publication to if it does not exist. |
-| `type` | [*PublicationType*](../modules/types_publication.md#publicationtype) | See [PublicationType](../modules/types_publication.md#publicationtype) |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `date` | *string* | - | The date to search for, must be formatted as `yyyy-mm-dd`. |
+| `downloadDir` | *string* | - | The directory to download the publication to if it does not exist. |
+| `type` | [*PublicationType*](../modules/types_publication.md#publicationtype) | - | See [PublicationType](../modules/types_publication.md#publicationtype) |
+| `languageId` | *number* | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
 
 **Returns:** *Promise*<``null`` \| [*Publication*](src.publication.md)\>
 
 A [Publication](src.publication.md) class to help access the downloaded publication, or `null` if not found.
 
-Defined in: [src/classes/Database.ts:114](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L114)
+Defined in: [src/classes/Database.ts:115](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L115)
 
 ___
 
@@ -195,18 +197,19 @@ ___
 
 ### getSongDetails
 
-▸ **getSongDetails**(`track`: *number*): *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+▸ **getSongDetails**(`track`: *number*, `languageId?`: *number*): *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
 
 Retrieves the video MediaDetails of a chosen song number.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `track` | *number* | The number of the track. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `track` | *number* | - | The number of the track. |
+| `languageId` | *number* | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
 
 **Returns:** *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
 
 MediaDetails if they exist, `null` if they are not found.
 
-Defined in: [src/classes/Database.ts:195](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L195)
+Defined in: [src/classes/Database.ts:197](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L197)

@@ -4,6 +4,8 @@
 
 [src](../modules/src.md).PublicationMapper
 
+Maps raw Publication database rows to more accessible DTOs.
+
 ## Table of contents
 
 ### Constructors
@@ -13,6 +15,7 @@
 ### Properties
 
 - [filename](src.publicationmapper.md#filename)
+- [languageId](src.publicationmapper.md#languageid)
 
 ### Methods
 
@@ -35,7 +38,7 @@
 
 **Returns:** [*PublicationMapper*](src.publicationmapper.md)
 
-Defined in: [src/classes/Mapper.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L12)
+Defined in: [src/classes/Mapper.ts:14](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L14)
 
 ## Properties
 
@@ -43,7 +46,15 @@ Defined in: [src/classes/Mapper.ts:12](https://github.com/BenShelton/library-api
 
 • **filename**: *string*
 
-Defined in: [src/classes/Mapper.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L12)
+Defined in: [src/classes/Mapper.ts:13](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L13)
+
+___
+
+### languageId
+
+• **languageId**: *number*
+
+Defined in: [src/classes/Mapper.ts:14](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L14)
 
 ## Methods
 
@@ -61,7 +72,7 @@ Maps a raw Image database row to a Image DTO.
 
 **Returns:** [*ImageDTO*](../interfaces/types_dto.imagedto.md)
 
-Defined in: [src/classes/Mapper.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L26)
+Defined in: [src/classes/Mapper.ts:29](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L29)
 
 ___
 
@@ -79,7 +90,7 @@ Maps multiple Image database rows using [MapImage](src.publicationmapper.md#mapi
 
 **Returns:** [*ImageDTO*](../interfaces/types_dto.imagedto.md)[]
 
-Defined in: [src/classes/Mapper.ts:41](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L41)
+Defined in: [src/classes/Mapper.ts:45](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L45)
 
 ___
 
@@ -97,7 +108,7 @@ Maps a raw Video database row to a Video DTO.
 
 **Returns:** [*VideoDTO*](../interfaces/types_dto.videodto.md)
 
-Defined in: [src/classes/Mapper.ts:64](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L64)
+Defined in: [src/classes/Mapper.ts:68](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L68)
 
 ___
 
@@ -115,4 +126,4 @@ Maps multiple Video database rows using [MapVideo](src.publicationmapper.md#mapv
 
 **Returns:** [*VideoDTO*](../interfaces/types_dto.videodto.md)[]
 
-Defined in: [src/classes/Mapper.ts:81](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L81)
+Defined in: [src/classes/Mapper.ts:86](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L86)

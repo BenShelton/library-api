@@ -12,6 +12,7 @@ Constructor params for [Publication](../classes/src.publication.md) class.
 
 - [dir](types_publication.publicationctor.md#dir)
 - [filename](types_publication.publicationctor.md#filename)
+- [languageId](types_publication.publicationctor.md#languageid)
 - [type](types_publication.publicationctor.md#type)
 
 ## Properties
@@ -38,6 +39,18 @@ This must be the NameFragment as it is used the internal database too.
 **`example`** 'w_E_202012'
 
 Defined in: [types/publication.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L18)
+
+___
+
+### languageId
+
+• `Optional` **languageId**: *number*
+
+The Meps Language Id of this publication.
+
+**`default`** 0 (English)
+
+Defined in: [types/publication.d.ts:34](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L34)
 
 ___
 

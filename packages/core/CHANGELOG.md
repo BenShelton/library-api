@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/BenShelton/library-api/compare/v0.8.0...v0.9.0) (2021-06-10)
+
+
+### Features
+
+* **core:** add language support to existing methods & classes, add language methods ([c473ffe](https://github.com/BenShelton/library-api/commit/c473ffe1b5d3d09a23655793151875053c8327bf)), closes [#12](https://github.com/BenShelton/library-api/issues/12)
+
+
+
+
+
 # [0.8.0](https://github.com/BenShelton/library-api/compare/v0.7.0...v0.8.0) (2021-06-08)
 
 

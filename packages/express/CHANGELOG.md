@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/BenShelton/library-api/compare/v0.8.0...v0.9.0) (2021-06-10)
+
+
+### Features
+
+* **express:** add optional language support on existing endpoints ([7426ec0](https://github.com/BenShelton/library-api/commit/7426ec05df594400b438d76cce2f139c9c13185d)), closes [#12](https://github.com/BenShelton/library-api/issues/12)
+
+
+
+
+
 # [0.8.0](https://github.com/BenShelton/library-api/compare/v0.7.0...v0.8.0) (2021-06-08)
 
 **Note:** Version bump only for package @library-api/express

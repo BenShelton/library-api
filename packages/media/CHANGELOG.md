@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/BenShelton/library-api/compare/v0.8.0...v0.9.0) (2021-06-10)
+
+
+### Bug Fixes
+
+* **media/settings:** correct alignment of selects & buttons, add dividers between settings ([6bea8e5](https://github.com/BenShelton/library-api/commit/6bea8e50aaca4d3fa5b30223c504e52684dab867))
+
+
+### Features
+
+* **media:** add language setting & multi language support for media/song pages ([1ceda51](https://github.com/BenShelton/library-api/commit/1ceda51ee2205a7b6f9a8c6f683ba7fa96e8f128)), closes [#12](https://github.com/BenShelton/library-api/issues/12)
+
+
+
+
+
 # [0.8.0](https://github.com/BenShelton/library-api/compare/v0.7.0...v0.8.0) (2021-06-08)
 
 

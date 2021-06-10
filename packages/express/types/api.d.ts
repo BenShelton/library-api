@@ -29,6 +29,7 @@ export namespace Download {
       doc: string
       track: string
       issue: string
+      languageId?: string
     }
   }
 }
@@ -37,6 +38,7 @@ export namespace Media {
   export namespace Watchtower {
     export interface QueryParams {
       date: string
+      languageId?: string
     }
     export interface Response {
       message: {
@@ -48,6 +50,7 @@ export namespace Media {
   export namespace OCLM {
     export interface QueryParams {
       date: string
+      languageId?: string
     }
     export interface Response {
       message: {
@@ -62,6 +65,7 @@ export namespace Media {
       doc: string | number
       issue: number
       track: number
+      languageId?: string
     }
     export interface Response {
       message: {

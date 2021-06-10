@@ -4,7 +4,7 @@
 
 [src](../modules/src.md).CatalogMapper
 
-Maps raw database rows to more accessible DTOs.
+Maps raw Catalog database rows to more accessible DTOs.
 
 ## Table of contents
 
@@ -40,4 +40,4 @@ Maps a raw Media Details database row to a Media Details DTO.
 
 **Returns:** [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)
 
-Defined in: [src/classes/Mapper.ts:119](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L119)
+Defined in: [src/classes/Mapper.ts:124](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L124)

@@ -7,7 +7,9 @@ import { createGunzip } from 'zlib'
 import fetch, { Response } from 'node-fetch'
 import { Extract } from 'unzipper'
 
+import { getLanguageById } from './language'
 import { CATALOG_URL, MEDIA_URL, PUBLICATION_URL, SONG_PUBLICATION } from './constants'
+
 import { GetMediaPubLinks } from '../types/hag'
 import { VideoDTO } from '../types/dto'
 
@@ -93,12 +95,14 @@ export async function downloadPublication (url: string, path: string): Promise<v
  *
  * @returns A Stream of the video file or `null` if the video cannot be found.
  */
-export async function getVideoStream ({ type, doc, track, issue } : { type: VideoDTO['type'], doc: string | number, track: string | number, issue: string | number }): Promise<NodeJS.ReadableStream | null> {
+export async function getVideoStream ({ type, doc, track, issue, languageId = 0 } : { type: VideoDTO['type'], doc: string | number, track: string | number, issue: string | number, languageId?: number }): Promise<NodeJS.ReadableStream | null> {
+  const language = getLanguageById(languageId)
+  if (!language) return null
   const url = new URL(MEDIA_URL)
   url.searchParams.append('output', 'json')
-  url.searchParams.append('langwritten', 'E')
+  url.searchParams.append('langwritten', language.symbol)
   url.searchParams.append('alllangs', '0')
-  url.searchParams.append('txtCMSLang', 'E')
+  url.searchParams.append('txtCMSLang', language.symbol)
   url.searchParams.append('fileformat', 'mp4')
   switch (type) {
     case 'pub':
@@ -112,7 +116,7 @@ export async function getVideoStream ({ type, doc, track, issue } : { type: Vide
   const hagRes = await fetch(url)
   checkStatus(hagRes)
   const options: GetMediaPubLinks = await hagRes.json()
-  const downloadFile = options.files.E.MP4.find(f => f.label === '720p')
+  const downloadFile = options.files[language.symbol].MP4.find(f => f.label === '720p')
   if (!downloadFile) return null
   const fileRes = await fetch(downloadFile.file.url)
   checkStatus(fileRes)
@@ -141,11 +145,12 @@ export async function downloadVideoStream (videoArgs: Parameters<typeof getVideo
  * Does the same as {@link getVideoStream} but only requires passing a song number.
  *
  * @param track The song number to use.
+ * @param languageId The Meps Language Id to use. Defaults to `0` (English).
  *
  * @returns See {@link getVideoStream}.
  */
-export async function getSongStream (track: number): Promise<NodeJS.ReadableStream | null> {
-  return getVideoStream({ ...SONG_PUBLICATION, track })
+export async function getSongStream (track: number, languageId = 0): Promise<NodeJS.ReadableStream | null> {
+  return getVideoStream({ ...SONG_PUBLICATION, track, languageId })
 }
 
 /**
@@ -153,9 +158,10 @@ export async function getSongStream (track: number): Promise<NodeJS.ReadableStre
  *
  * @param track The song number to use.
  * @param path The path to write the song to.
+ * @param languageId The Meps Language Id to use. Defaults to `0` (English).
  *
  * @returns See {@link downloadVideoStream}.
  */
-export async function downloadSongStream (track: number, path: string): Promise<true | null> {
-  return downloadVideoStream({ ...SONG_PUBLICATION, track }, path)
+export async function downloadSongStream (track: number, path: string, languageId = 0): Promise<true | null> {
+  return downloadVideoStream({ ...SONG_PUBLICATION, track, languageId }, path)
 }

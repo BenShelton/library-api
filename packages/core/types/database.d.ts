@@ -70,3 +70,23 @@ export interface ArticleRow {
   ContextTitle: string
   Title: string
 }
+
+/**
+ * The raw database columns when reading the JSON export of the `Language` table from `mepsunit.db`.
+ *
+ * The export can be found in `data/languages.json`.
+ */
+export interface LanguageRow {
+  LanguageId: number
+  Symbol: string
+  EnglishName: string
+  VernacularName: string
+  IsoName: string
+  IsoAlpha2Code: string
+  IsoAlpha3Code: string
+  PrimaryIetfCode: string
+  PrimaryFallbackLanguageId: number
+  IsSignLanguage: number
+  ScriptId: number
+  AssociatedTextLanguageId: number
+}

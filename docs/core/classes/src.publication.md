@@ -16,6 +16,7 @@ Provides methods for interacting with a downloaded publication.
 
 - [contentsPath](src.publication.md#contentspath)
 - [filename](src.publication.md#filename)
+- [languageId](src.publication.md#languageid)
 - [path](src.publication.md#path)
 - [type](src.publication.md#type)
 
@@ -39,7 +40,7 @@ Provides methods for interacting with a downloaded publication.
 
 **Returns:** [*Publication*](src.publication.md)
 
-Defined in: [src/classes/Publication.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L22)
+Defined in: [src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
 
 ## Properties
 
@@ -56,6 +57,14 @@ ___
 • **filename**: *string*
 
 Defined in: [src/classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
+
+___
+
+### languageId
+
+• **languageId**: *number*
+
+Defined in: [src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
 
 ___
 
@@ -85,7 +94,7 @@ Returns raw database rows for all the articles in this publication.
 
 **Returns:** *Promise*<[*ArticleRow*](../interfaces/types_database.articlerow.md)[]\>
 
-Defined in: [src/classes/Publication.ts:106](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L106)
+Defined in: [src/classes/Publication.ts:108](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L108)
 
 ___
 
@@ -108,7 +117,7 @@ As a publication includes multiple articles this chooses the one for that day an
 
 An array of mapped images, the array will be empty if no images were found.
 
-Defined in: [src/classes/Publication.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L47)
+Defined in: [src/classes/Publication.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L49)
 
 ___
 
@@ -131,4 +140,4 @@ As a publication includes multiple articles this chooses the one for that day an
 
 An array of mapped videos, the array will be empty if no videos were found.
 
-Defined in: [src/classes/Publication.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L82)
+Defined in: [src/classes/Publication.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L84)

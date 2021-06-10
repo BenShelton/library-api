@@ -14,6 +14,7 @@
 - [CatalogDatabase](../classes/src.catalogdatabase.md)
 - [CatalogMapper](../classes/src.catalogmapper.md)
 - [Database](../classes/src.database.md)
+- [LanguageMapper](../classes/src.languagemapper.md)
 - [Publication](../classes/src.publication.md)
 - [PublicationMapper](../classes/src.publicationmapper.md)
 
@@ -34,6 +35,8 @@
 - [downloadSongStream](src.md#downloadsongstream)
 - [downloadVideoStream](src.md#downloadvideostream)
 - [emptyDir](src.md#emptydir)
+- [getLanguageById](src.md#getlanguagebyid)
+- [getLanguages](src.md#getlanguages)
 - [getSongStream](src.md#getsongstream)
 - [getVideoStream](src.md#getvideostream)
 - [isValidDate](src.md#isvaliddate)
@@ -147,7 +150,7 @@ Downloads the catalog & writes it to the specified path.
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/download.ts:44](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L44)
+Defined in: [src/download.ts:46](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L46)
 
 ___
 
@@ -166,7 +169,7 @@ A helper function that downloads the requested URL and writes it to the specifie
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/download.ts:30](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L30)
+Defined in: [src/download.ts:32](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L32)
 
 ___
 
@@ -196,28 +199,29 @@ The resulting structure will be:
 
 **Returns:** *Promise*<void\>
 
-Defined in: [src/download.ts:71](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L71)
+Defined in: [src/download.ts:73](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L73)
 
 ___
 
 ### downloadSongStream
 
-▸ **downloadSongStream**(`track`: *number*, `path`: *string*): *Promise*<``true`` \| ``null``\>
+▸ **downloadSongStream**(`track`: *number*, `path`: *string*, `languageId?`: *number*): *Promise*<``true`` \| ``null``\>
 
 Does the same as [downloadVideoStream](src.md#downloadvideostream) but only requires passing a song number.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `track` | *number* | The song number to use. |
-| `path` | *string* | The path to write the song to. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `track` | *number* | - | The song number to use. |
+| `path` | *string* | - | The path to write the song to. |
+| `languageId` | *number* | 0 | The Meps Language Id to use. Defaults to `0` (English). |
 
 **Returns:** *Promise*<``true`` \| ``null``\>
 
 See [downloadVideoStream](src.md#downloadvideostream).
 
-Defined in: [src/download.ts:159](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L159)
+Defined in: [src/download.ts:165](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L165)
 
 ___
 
@@ -238,7 +242,7 @@ Does the same as [getVideoStream](src.md#getvideostream) but writes the stream t
 
 `true` if the file was written successfully, `null` if the video could not be found.
 
-Defined in: [src/download.ts:130](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L130)
+Defined in: [src/download.ts:134](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L134)
 
 ___
 
@@ -260,29 +264,64 @@ Defined in: [src/utils.ts:18](https://github.com/BenShelton/library-api/blob/mas
 
 ___
 
-### getSongStream
+### getLanguageById
 
-▸ **getSongStream**(`track`: *number*): *Promise*<NodeJS.ReadableStream \| ``null``\>
+▸ **getLanguageById**(`id`: *number*): [*LanguageDTO*](../interfaces/types_dto.languagedto.md) \| ``null``
 
-Does the same as [getVideoStream](src.md#getvideostream) but only requires passing a song number.
+Searches for the specified language based on the provided id.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `track` | *number* | The song number to use. |
+| `id` | *number* | The Meps Language Id to search for. |
+
+**Returns:** [*LanguageDTO*](../interfaces/types_dto.languagedto.md) \| ``null``
+
+The language if it was found, `null` if it does not exist.
+
+Defined in: [src/language.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/src/language.ts#L22)
+
+___
+
+### getLanguages
+
+▸ **getLanguages**(): [*LanguageDTO*](../interfaces/types_dto.languagedto.md)[]
+
+Retrieves a list of all languages currently supported.
+
+**Returns:** [*LanguageDTO*](../interfaces/types_dto.languagedto.md)[]
+
+An array of languages.
+
+Defined in: [src/language.ts:11](https://github.com/BenShelton/library-api/blob/master/packages/core/src/language.ts#L11)
+
+___
+
+### getSongStream
+
+▸ **getSongStream**(`track`: *number*, `languageId?`: *number*): *Promise*<NodeJS.ReadableStream \| ``null``\>
+
+Does the same as [getVideoStream](src.md#getvideostream) but only requires passing a song number.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `track` | *number* | - | The song number to use. |
+| `languageId` | *number* | 0 | The Meps Language Id to use. Defaults to `0` (English). |
 
 **Returns:** *Promise*<NodeJS.ReadableStream \| ``null``\>
 
 See [getVideoStream](src.md#getvideostream).
 
-Defined in: [src/download.ts:147](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L147)
+Defined in: [src/download.ts:152](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L152)
 
 ___
 
 ### getVideoStream
 
-▸ **getVideoStream**(`__namedParameters`: { `doc`: *string* \| *number* ; `issue`: *string* \| *number* ; `track`: *string* \| *number* ; `type`: [*VideoDTO*](../interfaces/types_dto.videodto.md)[``"type"``]  }): *Promise*<NodeJS.ReadableStream \| ``null``\>
+▸ **getVideoStream**(`__namedParameters`: { `doc`: *string* \| *number* ; `issue`: *string* \| *number* ; `languageId?`: *number* ; `track`: *string* \| *number* ; `type`: [*VideoDTO*](../interfaces/types_dto.videodto.md)[``"type"``]  }): *Promise*<NodeJS.ReadableStream \| ``null``\>
 
 Searches the external Media API endpoint for the requested video and retrieves the highest quality (720p) version of it.
 
@@ -293,6 +332,7 @@ Searches the external Media API endpoint for the requested video and retrieves t
 | `__namedParameters` | *object* |
 | `__namedParameters.doc` | *string* \| *number* |
 | `__namedParameters.issue` | *string* \| *number* |
+| `__namedParameters.languageId?` | *number* |
 | `__namedParameters.track` | *string* \| *number* |
 | `__namedParameters.type` | [*VideoDTO*](../interfaces/types_dto.videodto.md)[``"type"``] |
 
@@ -300,7 +340,7 @@ Searches the external Media API endpoint for the requested video and retrieves t
 
 A Stream of the video file or `null` if the video cannot be found.
 
-Defined in: [src/download.ts:96](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L96)
+Defined in: [src/download.ts:98](https://github.com/BenShelton/library-api/blob/master/packages/core/src/download.ts#L98)
 
 ___
 

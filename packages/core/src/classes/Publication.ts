@@ -20,18 +20,20 @@ export class Publication {
   path: string
   contentsPath: string
   type: PublicationType
+  languageId: number
 
   /**
    * @param {Object} ctor See {@link PublicationCtor}
    */
-  constructor ({ filename, dir, type }: PublicationCtor) {
+  constructor ({ filename, dir, type, languageId = 0 }: PublicationCtor) {
     this.filename = filename
     this.path = join(dir, filename)
     this.type = type
+    this.languageId = languageId
     this.contentsPath = join(this.path, 'contents')
     const dbPath = join(this.contentsPath, this.filename + '.db')
     this._database = new Database(dbPath)
-    this._mapper = new PublicationMapper({ filename })
+    this._mapper = new PublicationMapper({ filename, languageId })
   }
 
   /**

@@ -108,10 +108,11 @@ export class CatalogDatabase extends Database {
    * @param date The date to search for, must be formatted as `yyyy-mm-dd`.
    * @param downloadDir The directory to download the publication to if it does not exist.
    * @param type See {@link PublicationType}
+   * @param languageId The Meps Language Id to search for. Defaults to `0` (English).
    *
    * @returns A {@link Publication} class to help access the downloaded publication, or `null` if not found.
    */
-  async getPublication (date: string, downloadDir: string, type: PublicationType): Promise<Publication | null> {
+  async getPublication (date: string, downloadDir: string, type: PublicationType, languageId = 0): Promise<Publication | null> {
     // TODO: Combine the queries below, they are almost identical
     const pubQuery = type === 'wt'
       ? `
@@ -119,13 +120,13 @@ export class CatalogDatabase extends Database {
       FROM Publication AS p
       INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
       INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
-      WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = 0 AND PublicationTypeId = ${PUBLICATION_TYPES.WATCHTOWER}`
+      WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = ${languageId} AND PublicationTypeId = ${PUBLICATION_TYPES.WATCHTOWER}`
       : `
       SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
       FROM Publication AS p
       INNER JOIN PublicationAsset pa ON p.Id = pa.PublicationId
       INNER JOIN DatedText AS dt ON dt.PublicationId = p.Id
-      WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = 0 AND PublicationTypeId = ${PUBLICATION_TYPES.OCLM}`
+      WHERE dt.Start <= '${date}' AND dt.End >= '${date}' AND PubMepsLanguageId = ${languageId} AND PublicationTypeId = ${PUBLICATION_TYPES.OCLM}`
 
     const result = await this.getRow<PublicationRow>(pubQuery)
     if (!result) return null
@@ -137,7 +138,7 @@ export class CatalogDatabase extends Database {
     if (!exists) {
       await downloadPublication(result.NameFragment, path)
     }
-    return new Publication({ filename, dir: downloadDir, type })
+    return new Publication({ filename, dir: downloadDir, type, languageId })
   }
 
   /**
@@ -158,21 +159,21 @@ export class CatalogDatabase extends Database {
    * const details = await db.getMediaDetails(video)
    * ```
    */
-  async getMediaDetails ({ type, doc, issue, track }: { type: VideoDTO['type'], doc: string | number, issue: string | number, track: string | number }): Promise<MediaDetailsDTO | null> {
+  async getMediaDetails ({ type, doc, issue, track, languageId = 0 }: { type: VideoDTO['type'], doc: string | number, issue: string | number, track: string | number, languageId?: number }): Promise<MediaDetailsDTO | null> {
     const query = type === 'doc'
       ? `
       SELECT DISTINCT ma.Title AS Title, ma.Id As Id, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
       FROM ImageAsset AS ia
       INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
       INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId
-      WHERE ma.DocumentId = '${doc}' AND ma.Track = '${track}' AND ma.MepsLanguageId = 0`
+      WHERE ma.DocumentId = '${doc}' AND ma.Track = '${track}' AND ma.MepsLanguageId = ${languageId}`
       : `
       SELECT DISTINCT ma.Title AS Title, ma.Id As Id, ia.NameFragment AS NameFragment, ia.Width as Width, ia.Height as Height
       FROM ImageAsset AS ia
       INNER JOIN MediaAssetImageMap AS maim ON maim.ImageAssetId = ia.Id
       INNER JOIN MediaAsset AS ma ON ma.Id = maim.MediaAssetId
       INNER JOIN Publication AS p ON p.Id = ma.PublicationId
-      WHERE p.KeySymbol = '${doc}' AND p.IssueTagNumber = '${issue}' AND ma.Track = '${track}' AND ma.MepsLanguageId = 0`
+      WHERE p.KeySymbol = '${doc}' AND p.IssueTagNumber = '${issue}' AND ma.Track = '${track}' AND ma.MepsLanguageId = ${languageId}`
 
     const results = await this.getRows<MediaDetailsRow>(query)
     if (!results.length) return null
@@ -189,10 +190,11 @@ export class CatalogDatabase extends Database {
    * Retrieves the video MediaDetails of a chosen song number.
    *
    * @param track The number of the track.
+   * @param languageId The Meps Language Id to search for. Defaults to `0` (English).
    *
    * @returns MediaDetails if they exist, `null` if they are not found.
    */
-  async getSongDetails (track: number): Promise<MediaDetailsDTO | null> {
-    return this.getMediaDetails({ ...SONG_PUBLICATION, track })
+  async getSongDetails (track: number, languageId = 0): Promise<MediaDetailsDTO | null> {
+    return this.getMediaDetails({ ...SONG_PUBLICATION, track, languageId })
   }
 }

@@ -18,6 +18,7 @@ import { imageExtensions, videoExtensions } from 'shared/src/extensions'
 import { initDirectories } from './directories'
 import { getControlWindow, getDisplayWindow } from './window'
 import { CATALOG_PATH, DOWNLOAD_DIR, VIDEO_DIR } from './constants'
+import { showErrorDialog } from './logger'
 
 import {
   SettingsClearDownloads,
@@ -103,21 +104,26 @@ export function initIPC (): void {
     }))
 
     const baseVideos = await publication.getVideos(args.date)
-    const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {
-      const details = await db.getMediaDetails(video)
-      if (!details) throw new Error(`Cannot load details for video: ${video.id}`)
+    try {
+      const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {
+        const details = await db.getMediaDetails(video)
+        if (!details) throw new Error(`Cannot load details for video: ${video.id}`)
 
-      const videoDetails = await processVideoDetails(details)
+        const videoDetails = await processVideoDetails(details)
 
+        return {
+          ...video,
+          ...videoDetails
+        }
+      }))
       return {
-        ...video,
-        ...videoDetails
+        videos,
+        images
       }
-    }))
-
-    return {
-      videos,
-      images
+    } catch (err) {
+      log.error('Cannot load details for video', err)
+      await showErrorDialog(err)
+      return null
     }
   })
 

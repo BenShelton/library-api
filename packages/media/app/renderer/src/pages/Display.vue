@@ -41,7 +41,7 @@ export default defineComponent({
     const src = ref<string | null>(null)
     const mediaType = ref<'image' | 'video'>('image')
     window.electron.on<DisplayMedia>('display:media', (args) => {
-      if (args.src.startsWith('data:image/jpeg;base64')) {
+      if (args.src.startsWith('data:image/')) {
         mediaType.value = 'image'
       } else {
         const ext = args.src.split('.').pop()

@@ -12,7 +12,7 @@ import {
   Publication,
   updateCatalog
 } from '@library-api/core'
-import { MediaDetailsDTO } from '@library-api/core/types/dto'
+import { MediaDetailsDTO, VideoDTO } from '@library-api/core/types/dto'
 
 import { imageExtensions, videoExtensions } from 'shared/src/extensions'
 import { initDirectories } from './directories'
@@ -35,8 +35,8 @@ import {
   VideoDetails
 } from 'shared/types/ipc'
 
-function getVideoPaths (details: MediaDetailsDTO): { imagePath: string, videoPath: string } {
-  const srcPath = join(VIDEO_DIR, details.id.replace('#', ''))
+function getVideoPaths (id: string): { imagePath: string, videoPath: string } {
+  const srcPath = join(VIDEO_DIR, id.replace('#', ''))
   return {
     imagePath: srcPath + '_preview.jpg',
     videoPath: srcPath + '_video.mp4'
@@ -44,7 +44,7 @@ function getVideoPaths (details: MediaDetailsDTO): { imagePath: string, videoPat
 }
 
 async function processVideoDetails (details: MediaDetailsDTO): Promise<VideoDetails> {
-  const { imagePath, videoPath } = getVideoPaths(details)
+  const { imagePath, videoPath } = getVideoPaths(details.id)
 
   const imageDownloaded = await checkExists(imagePath)
   if (!imageDownloaded) {
@@ -59,6 +59,28 @@ async function processVideoDetails (details: MediaDetailsDTO): Promise<VideoDeta
     id: details.id,
     src: 'data:image/jpeg;base64,' + imageSrc,
     text: details.caption,
+    downloaded
+  }
+}
+
+async function placeholderVideoDetails (video: VideoDTO): Promise<VideoDetails> {
+  const detailsId = video.id + '_placeholder'
+  const { videoPath } = getVideoPaths(detailsId)
+  const imageSrc = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlIGZpbGw9IiMyNGU4YmQiPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGZpbGw9IiMyNGU4YmQiIGlkPSJGaWxsLTQ3IiBkPSJtMzIuMSw1NmMtMTMuMiwwIC0yMy45LC0xMC43IC0yMy45LC0yMy45czEwLjcsLTIzLjkgMjMuOSwtMjMuOWMxMy4yLDAgMjMuOSwxMC43IDIzLjksMjMuOXMtMTAuNywyMy45IC0yMy45LDIzLjlsMCwwem0wLC00NS4yYy0xMS43LDAgLTIxLjMsOS42IC0yMS4zLDIxLjNjMCwxMS43IDkuNiwyMS4zIDIxLjMsMjEuM2MxMS43LDAgMjEuMywtOS42IDIxLjMsLTIxLjNjMCwtMTEuOCAtOS42LC0yMS4zIC0yMS4zLC0yMS4zbDAsMHoiIGNsYXNzPSJzdDAiLz4KICA8cGF0aCBmaWxsPSIjMjRlOGJkIiBpZD0iRmlsbC00OCIgZD0ibTI0LjcsMjQuNWMwLjQsLTEuMSAwLjksLTIgMS42LC0yLjdjMC43LC0wLjcgMS42LC0xLjMgMi42LC0xLjdjMSwtMC40IDIuMiwtMC42IDMuNSwtMC42YzEsMCAyLDAuMiAyLjksMC41YzAuOSwwLjMgMS43LDAuOCAyLjQsMS4zczEuMiwxLjMgMS42LDIuMWMwLjQsMC44IDAuNiwxLjggMC42LDIuOWMwLDEuNCAtMC4zLDIuNSAtMC45LDMuNXMtMS40LDEuOSAtMi4zLDIuOGMtMC44LDAuOCAtMS40LDEuNCAtMS44LDEuOGMtMC41LDAuNCAtMC44LDAuOSAtMSwxLjNzLTAuNCwwLjkgLTAuNCwxLjVjLTAuMSwwLjYgLTAuMSwxIC0wLjEsMi4xbC0yLjMsMGMwLC0xLjEgMCwtMS42IDAuMiwtMi4zYzAuMSwtMC44IDAuNCwtMS40IDAuNywtMi4xYzAuMywtMC42IDAuOCwtMS4yIDEuMywtMS44YzAuNiwtMC42IDEuMiwtMS4yIDIsLTEuOWMwLjcsLTAuNiAxLjMsLTEuMyAxLjcsLTIuMWMwLjUsLTAuOCAwLjcsLTEuNyAwLjcsLTIuNmMwLC0wLjcgLTAuMSwtMS40IC0wLjQsLTJjLTAuMywtMC42IC0wLjcsLTEuMSAtMS4xLC0xLjZzLTEsLTAuOCAtMS43LC0xYy0wLjYsLTAuMiAtMS4zLC0wLjQgLTIsLTAuNGMtMSwwIC0xLjksMC4yIC0yLjYsMC41Yy0wLjgsMC4zIC0xLjQsMC44IC0xLjksMS40Yy0wLjUsMC42IC0wLjksMS4zIC0xLjEsMi4xYy0wLjIsMC44IC0wLjQsMS41IC0wLjMsMi40bC0yLjMsMGMtMC4xLC0xLjQgMCwtMi4zIDAuNCwtMy40bDAsMHptNiwxNy41bDIuOCwwbDAsMi44bC0yLjgsMGwwLC0yLjh6IiBjbGFzcz0ic3QwIi8+CiA8L2c+Cjwvc3ZnPg=='
+  const downloaded = await checkExists(videoPath)
+
+  return {
+    details: {
+      id: detailsId,
+      caption: '(Unknown Video)',
+      filename: '',
+      height: 0,
+      width: 0,
+      url: ''
+    },
+    id: video.id,
+    src: imageSrc,
+    text: '(Unknown Video)',
     downloaded
   }
 }
@@ -107,7 +129,14 @@ export function initIPC (): void {
     try {
       const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {
         const details = await db.getMediaDetails(video)
-        if (!details) throw new Error(`Cannot load details for video: ${video.id}`)
+        if (!details) {
+          log.error(`Cannot load details for video: ${video.id}`)
+          const videoDetails = await placeholderVideoDetails(video)
+          return {
+            ...video,
+            ...videoDetails
+          }
+        }
 
         const videoDetails = await processVideoDetails(details)
 
@@ -128,13 +157,13 @@ export function initIPC (): void {
   })
 
   ipcMain.handle('download:video', async (_event, args: DownloadVideo['Args']): Promise<DownloadVideo['Response']> => {
-    const { videoPath } = getVideoPaths(args.details)
+    const { videoPath } = getVideoPaths(args.details.id)
     const stream = await downloadVideoStream(args, videoPath)
     if (!stream) throw new Error(`Could not load video stream for video detail: ${args.details.id}`)
   })
 
   ipcMain.handle('download:song', async (_event, args: DownloadSong['Args']): Promise<DownloadSong['Response']> => {
-    const { videoPath } = getVideoPaths(args.details)
+    const { videoPath } = getVideoPaths(args.details.id)
     const stream = await downloadSongStream(args.track, videoPath, args.languageId)
     if (!stream) throw new Error(`Could not load song stream for song: ${args.track}`)
   })
@@ -178,7 +207,7 @@ export function initIPC (): void {
   })
 
   ipcMain.on('media:video', async (_event, args: MediaVideo['Args']) => {
-    const { videoPath } = getVideoPaths(args.details)
+    const { videoPath } = getVideoPaths(args.details.id)
     await sendMedia('file:///' + videoPath)
   })
 

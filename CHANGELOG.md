@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/BenShelton/library-api/compare/v0.9.0...v0.9.1) (2021-06-20)
+
+
+### Bug Fixes
+
+* **media:** show error dialog when media fails to load rather than infinite loader ([8331046](https://github.com/BenShelton/library-api/commit/83310469028724ee6ffbfadd1956b27d50b2fbf3))
+* **media:** use placeholder image when videos do not have image details ([c6ed45e](https://github.com/BenShelton/library-api/commit/c6ed45ef4f358c240cb88d6431805178717efd0e)), closes [#53](https://github.com/BenShelton/library-api/issues/53)
+
+
+
+
+
 # [0.9.0](https://github.com/BenShelton/library-api/compare/v0.8.0...v0.9.0) (2021-06-10)
 
 

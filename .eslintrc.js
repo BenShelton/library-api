@@ -23,6 +23,10 @@ module.exports = {
   ignorePatterns: [
     'dist/*'
   ],
+  rules: {
+    // typescript handles this for us
+    'no-use-before-define': 'off'
+  },
   overrides: [
     {
       files: ['*.js'],

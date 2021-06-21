@@ -62,8 +62,7 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
     // this prevents Zoom from showing this window as an option
     // alwaysOnTop: true,
     frame: false,
-    // TODO: Enable this option when available (see https://github.com/electron/electron/pull/27572)
-    // roundedCorners: false,
+    roundedCorners: false,
     webPreferences: {
       preload,
       // TODO: This is so we can use local video src in the renderer, there should be a better way

@@ -21,61 +21,73 @@ The returned information when mapping raw image data.
 
 ### caption
 
-• **caption**: *string*
+• **caption**: `string`
 
 The description in the database for this image.
 
-Defined in: [types/dto.d.ts:16](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L16)
+#### Defined in
+
+[types/dto.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L18)
 
 ___
 
 ### categoryType
 
-• **categoryType**: *number*
+• **categoryType**: `number`
 
 The internal category type. Known types are:
 - 8 = Article image (Normally displayed)
 - 9 = Article cover image (Not normally displayed)
 - 15 = Publication cover image (Not normally displayed)
 
-Defined in: [types/dto.d.ts:27](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L27)
+#### Defined in
+
+[types/dto.d.ts:29](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L29)
 
 ___
 
 ### filePath
 
-• **filePath**: *string*
+• **filePath**: `string`
 
 The path to access the image within the downloaded publication.
 
-Defined in: [types/dto.d.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L20)
+#### Defined in
+
+[types/dto.d.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L22)
 
 ___
 
 ### filename
 
-• **filename**: *string*
+• **filename**: `string`
 
 The filename of the image.
 
-Defined in: [types/dto.d.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L12)
+#### Defined in
+
+[types/dto.d.ts:14](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L14)
 
 ___
 
 ### id
 
-• **id**: *string*
+• **id**: `string`
 
 A unique id not related to the database.
 
-Defined in: [types/dto.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L8)
+#### Defined in
+
+[types/dto.d.ts:10](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L10)
 
 ___
 
 ### languageId
 
-• **languageId**: *number*
+• **languageId**: `number`
 
 The Meps Language Id of this image.
 
-Defined in: [types/dto.d.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L31)
+#### Defined in
+
+[types/dto.d.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L33)

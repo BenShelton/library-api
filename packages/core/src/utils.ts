@@ -1,13 +1,14 @@
-import { constants } from 'fs'
+import { constants, createReadStream } from 'fs'
 import { mkdir, rm, access } from 'fs/promises'
+import { createInterface } from 'readline'
 
 /**
  * Creates the specified directory. Will create parent directories if missing.
  *
  * @param dir The directory to create.
  */
-export function createDir (dir: string): Promise<string> {
-  return mkdir(dir, { recursive: true })
+export async function createDir (dir: string): Promise<void> {
+  await mkdir(dir, { recursive: true })
 }
 
 /**
@@ -31,6 +32,23 @@ export async function checkExists (path: string): Promise<boolean> {
     return true
   } catch (err) {
     return false
+  }
+}
+
+/**
+ * Reads a file line by line and allows running a callback for each line.
+ *
+ * @param path The path to the file.
+ * @param cb The callback to apply for each line.
+ */
+export async function readLines (path: string, cb: (line: string) => void): Promise<void> {
+  const stream = createReadStream(path)
+  const rl = createInterface({
+    input: stream,
+    crlfDelay: Infinity
+  })
+  for await (const line of rl) {
+    if (line) cb(line)
   }
 }
 

@@ -30,77 +30,91 @@ Provides methods for interacting with a downloaded publication.
 
 ### constructor
 
-\+ **new Publication**(`__namedParameters`: [*PublicationCtor*](../interfaces/types_publication.publicationctor.md)): [*Publication*](src.publication.md)
+• **new Publication**(`__namedParameters`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `__namedParameters` | [*PublicationCtor*](../interfaces/types_publication.publicationctor.md) |
+| `__namedParameters` | [PublicationCtor](../interfaces/types_publication.publicationctor.md) |
 
-**Returns:** [*Publication*](src.publication.md)
+#### Defined in
 
-Defined in: [src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
+[src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
 
 ## Properties
 
 ### contentsPath
 
-• **contentsPath**: *string*
+• **contentsPath**: `string`
 
-Defined in: [src/classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
+#### Defined in
+
+[src/classes/Publication.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L21)
 
 ___
 
 ### filename
 
-• **filename**: *string*
+• **filename**: `string`
 
-Defined in: [src/classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
+#### Defined in
+
+[src/classes/Publication.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L19)
 
 ___
 
 ### languageId
 
-• **languageId**: *number*
+• **languageId**: `number`
 
-Defined in: [src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
+#### Defined in
+
+[src/classes/Publication.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L23)
 
 ___
 
 ### path
 
-• **path**: *string*
+• **path**: `string`
 
-Defined in: [src/classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L20)
+#### Defined in
+
+[src/classes/Publication.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L20)
 
 ___
 
 ### type
 
-• **type**: [*PublicationType*](../modules/types_publication.md#publicationtype)
+• **type**: [PublicationType](../modules/types_publication.md#publicationtype)
 
-Defined in: [src/classes/Publication.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L22)
+#### Defined in
+
+[src/classes/Publication.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L22)
 
 ## Methods
 
 ### getArticles
 
-▸ **getArticles**(): *Promise*<[*ArticleRow*](../interfaces/types_database.articlerow.md)[]\>
+▸ **getArticles**(): `Promise`<[ArticleRow](../interfaces/types_database.articlerow.md)[]\>
 
 **`deprecated`** This is not tested and may no longer work.
 
 Returns raw database rows for all the articles in this publication.
 
-**Returns:** *Promise*<[*ArticleRow*](../interfaces/types_database.articlerow.md)[]\>
+#### Returns
 
-Defined in: [src/classes/Publication.ts:108](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L108)
+`Promise`<[ArticleRow](../interfaces/types_database.articlerow.md)[]\>
+
+#### Defined in
+
+[src/classes/Publication.ts:108](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L108)
 
 ___
 
 ### getImages
 
-▸ **getImages**(`date`: *string*): *Promise*<[*ImageDTO*](../interfaces/types_dto.imagedto.md)[]\>
+▸ **getImages**(`date`): `Promise`<[ImageDTO](../interfaces/types_dto.imagedto.md)[]\>
 
 Retrieves all the images for a particular date from the publication.
 As a publication includes multiple articles this chooses the one for that day and only returns the relevant images.
@@ -111,19 +125,23 @@ As a publication includes multiple articles this chooses the one for that day an
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `date` | *string* | The date to search for, must be formatted as `yyyy-mm-dd`. |
+| `date` | `string` | The date to search for, must be formatted as `yyyy-mm-dd`. |
 
-**Returns:** *Promise*<[*ImageDTO*](../interfaces/types_dto.imagedto.md)[]\>
+#### Returns
+
+`Promise`<[ImageDTO](../interfaces/types_dto.imagedto.md)[]\>
 
 An array of mapped images, the array will be empty if no images were found.
 
-Defined in: [src/classes/Publication.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L49)
+#### Defined in
+
+[src/classes/Publication.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L49)
 
 ___
 
 ### getVideos
 
-▸ **getVideos**(`date`: *string*): *Promise*<[*VideoDTO*](../interfaces/types_dto.videodto.md)[]\>
+▸ **getVideos**(`date`): `Promise`<[VideoDTO](../interfaces/types_dto.videodto.md)[]\>
 
 Retrieves all the videos for a particular date from the publication.
 As a publication includes multiple articles this chooses the one for that day and only returns the relevant videos.
@@ -134,10 +152,14 @@ As a publication includes multiple articles this chooses the one for that day an
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `date` | *string* | The date to search for, must be formatted as `yyyy-mm-dd`. |
+| `date` | `string` | The date to search for, must be formatted as `yyyy-mm-dd`. |
 
-**Returns:** *Promise*<[*VideoDTO*](../interfaces/types_dto.videodto.md)[]\>
+#### Returns
+
+`Promise`<[VideoDTO](../interfaces/types_dto.videodto.md)[]\>
 
 An array of mapped videos, the array will be empty if no videos were found.
 
-Defined in: [src/classes/Publication.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L84)
+#### Defined in
+
+[src/classes/Publication.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L84)

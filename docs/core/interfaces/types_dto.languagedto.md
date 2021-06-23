@@ -20,49 +20,59 @@ Information returned when requesting a language.
 
 ### englishName
 
-• **englishName**: *string*
+• **englishName**: `string`
 
 The English name for the language, e.g. `Spanish` for Spanish.
 
-Defined in: [types/dto.d.ts:96](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L96)
+#### Defined in
+
+[types/dto.d.ts:111](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L111)
 
 ___
 
 ### id
 
-• **id**: *number*
+• **id**: `number`
 
 The Meps Language Id.
 
-Defined in: [types/dto.d.ts:88](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L88)
+#### Defined in
+
+[types/dto.d.ts:103](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L103)
 
 ___
 
 ### signLanguage
 
-• **signLanguage**: *boolean*
+• **signLanguage**: `boolean`
 
 Indicates whether this is a sign language.
 Sign languages do not use publications so are generally unsupported.
 
-Defined in: [types/dto.d.ts:105](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L105)
+#### Defined in
+
+[types/dto.d.ts:120](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L120)
 
 ___
 
 ### symbol
 
-• **symbol**: *string*
+• **symbol**: `string`
 
 The unique language Symbol.
 
-Defined in: [types/dto.d.ts:92](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L92)
+#### Defined in
+
+[types/dto.d.ts:107](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L107)
 
 ___
 
 ### vernacularName
 
-• **vernacularName**: *string*
+• **vernacularName**: `string`
 
 The language name as displayed in that language, e.g. `español` for Spanish.
 
-Defined in: [types/dto.d.ts:100](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L100)
+#### Defined in
+
+[types/dto.d.ts:115](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L115)

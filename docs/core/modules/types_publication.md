@@ -22,4 +22,6 @@ The types of publications that can be accessed.
 - `wt`: Watchtower
 - `oclm`: Our Christian Life & Ministry Workbook
 
-Defined in: [types/publication.d.ts:6](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L6)
+#### Defined in
+
+[types/publication.d.ts:6](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L6)

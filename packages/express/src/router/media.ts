@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { isValidDate, CatalogDatabase } from '@library-api/core'
+import { isValidDate, CatalogDatabase, getMediaCatalog } from '@library-api/core'
 import { ImageDTO, VideoDTO } from '@library-api/core/types/dto'
 
 import { CATALOG_PATH, DOWNLOAD_DIR } from '../constants'
@@ -97,8 +97,9 @@ router.get('/details', async (req, res) => {
     return res.status(401).json({ message: 'LanguageId must be a number' })
   }
 
-  const db = new CatalogDatabase(CATALOG_PATH)
-  const details = await db.getMediaDetails({ type, doc, issue, track, languageId: language })
+  const catalog = await getMediaCatalog(DOWNLOAD_DIR, language)
+  if (!catalog) return res.status(404).json({ message: 'No Media Catalog Found' })
+  const details = await catalog.getMediaDetails({ doc, issue, track })
   if (!details) return res.status(404).json({ message: 'No Media Details Found' })
 
   const response: Media.Details.Response = {

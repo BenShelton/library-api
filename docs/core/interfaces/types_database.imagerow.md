@@ -20,40 +20,50 @@ The raw database columns when using an image query.
 
 ### Caption
 
-• **Caption**: *string*
+• **Caption**: `string`
 
-Defined in: [types/database.d.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L19)
+#### Defined in
+
+[types/database.d.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L19)
 
 ___
 
 ### CategoryType
 
-• **CategoryType**: *number*
+• **CategoryType**: `number`
 
-Defined in: [types/database.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L24)
+#### Defined in
+
+[types/database.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L24)
 
 ___
 
 ### ContextTitle
 
-• **ContextTitle**: *string*
+• **ContextTitle**: `string`
 
-Defined in: [types/database.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L18)
+#### Defined in
+
+[types/database.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L18)
 
 ___
 
 ### FilePath
 
-• **FilePath**: *string*
+• **FilePath**: `string`
 
 The path within the contents directory of a publication to access this image.
 
-Defined in: [types/database.d.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L23)
+#### Defined in
+
+[types/database.d.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L23)
 
 ___
 
 ### MultimediaId
 
-• **MultimediaId**: *number*
+• **MultimediaId**: `number`
 
-Defined in: [types/database.d.ts:17](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L17)
+#### Defined in
+
+[types/database.d.ts:17](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L17)

@@ -19,45 +19,53 @@ Constructor params for [Publication](../classes/src.publication.md) class.
 
 ### dir
 
-• **dir**: *string*
+• **dir**: `string`
 
 The directory where the publication is located.
 
 **`example`** 'downloads/publications'
 
-Defined in: [types/publication.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L24)
+#### Defined in
+
+[types/publication.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L24)
 
 ___
 
 ### filename
 
-• **filename**: *string*
+• **filename**: `string`
 
 The filename of the downloaded publication.
 This must be the NameFragment as it is used the internal database too.
 
 **`example`** 'w_E_202012'
 
-Defined in: [types/publication.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L18)
+#### Defined in
+
+[types/publication.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L18)
 
 ___
 
 ### languageId
 
-• `Optional` **languageId**: *number*
+• `Optional` **languageId**: `number`
 
 The Meps Language Id of this publication.
 
 **`default`** 0 (English)
 
-Defined in: [types/publication.d.ts:34](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L34)
+#### Defined in
+
+[types/publication.d.ts:34](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L34)
 
 ___
 
 ### type
 
-• **type**: [*PublicationType*](../modules/types_publication.md#publicationtype)
+• **type**: [PublicationType](../modules/types_publication.md#publicationtype)
 
 **`see`** PublicationType
 
-Defined in: [types/publication.d.ts:28](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L28)
+#### Defined in
+
+[types/publication.d.ts:28](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L28)

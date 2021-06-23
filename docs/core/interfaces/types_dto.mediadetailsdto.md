@@ -21,55 +21,71 @@ The returned information when mapping raw media details data.
 
 ### caption
 
-• **caption**: *string*
+• **caption**: `string`
 
-Defined in: [types/dto.d.ts:65](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L65)
+#### Defined in
+
+[types/dto.d.ts:76](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L76)
 
 ___
 
 ### filename
 
-• **filename**: *string*
+• **filename**: `string`
 
-Defined in: [types/dto.d.ts:64](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L64)
+#### Defined in
+
+[types/dto.d.ts:75](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L75)
 
 ___
 
 ### height
 
-• **height**: *number*
+• **height**: `number`
+
+**`deprecated`** Is no longer available since the switch to media catalogs.
 
 The height in pixels of the image.
 
-Defined in: [types/dto.d.ts:73](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L73)
+#### Defined in
+
+[types/dto.d.ts:88](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L88)
 
 ___
 
 ### id
 
-• **id**: *string*
+• **id**: `string`
 
 A unique id not related to the database.
 
-Defined in: [types/dto.d.ts:63](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L63)
+#### Defined in
+
+[types/dto.d.ts:74](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L74)
 
 ___
 
 ### url
 
-• **url**: *string*
+• **url**: `string`
 
 The URL of the image on the external media server.
 Can be used as a `src` for an `img` element or downloaded.
 
-Defined in: [types/dto.d.ts:78](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L78)
+#### Defined in
+
+[types/dto.d.ts:93](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L93)
 
 ___
 
 ### width
 
-• **width**: *number*
+• **width**: `number`
+
+**`deprecated`** Is no longer available since the switch to media catalogs.
 
 The width in pixels of the image.
 
-Defined in: [types/dto.d.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L69)
+#### Defined in
+
+[types/dto.d.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L82)

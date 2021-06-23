@@ -8,9 +8,9 @@
 
 - **VideoRowBase**
 
-  ↳ [*VideoRowPub*](types_database.videorowpub.md)
+  ↳ [VideoRowPub](types_database.videorowpub.md)
 
-  ↳ [*VideoRowDoc*](types_database.videorowdoc.md)
+  ↳ [VideoRowDoc](types_database.videorowdoc.md)
 
 ## Table of contents
 
@@ -24,22 +24,30 @@
 
 ### IssueTagNumber
 
-• **IssueTagNumber**: *number*
+• **IssueTagNumber**: `number`
 
-Defined in: [types/database.d.ts:41](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L41)
+Will be `0` if no issue exists.
+
+#### Defined in
+
+[types/database.d.ts:44](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L44)
 
 ___
 
 ### MultimediaId
 
-• **MultimediaId**: *number*
+• **MultimediaId**: `number`
 
-Defined in: [types/database.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L39)
+#### Defined in
+
+[types/database.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L39)
 
 ___
 
 ### Track
 
-• **Track**: *number*
+• **Track**: `number`
 
-Defined in: [types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)
+#### Defined in
+
+[types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)

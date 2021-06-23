@@ -28,96 +28,122 @@ The returned data when requesting a video from the external Media API endpoint.
 
 • **booknum**: ``null``
 
-Defined in: [types/hag.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L48)
+#### Defined in
+
+[types/hag.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L48)
 
 ___
 
 ### files
 
-• **files**: *object*
+• **files**: `Object`
 
-#### Type declaration
+#### Index signature
 
-Defined in: [types/hag.d.ts:66](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L66)
+▪ [key: `string`]: { `MP4`: [MediaPubLink](types_hag.mediapublink.md)[]  }
+
+#### Defined in
+
+[types/hag.d.ts:66](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L66)
 
 ___
 
 ### formattedDate
 
-• **formattedDate**: *string*[]
+• **formattedDate**: `string`[]
 
-Defined in: [types/hag.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L51)
+#### Defined in
+
+[types/hag.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L51)
 
 ___
 
 ### issue
 
-• **issue**: *string*
+• **issue**: `string`
 
-Defined in: [types/hag.d.ts:50](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L50)
+#### Defined in
+
+[types/hag.d.ts:50](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L50)
 
 ___
 
 ### languages
 
-• **languages**: *object*
+• **languages**: `Object`
 
-#### Type declaration
+#### Index signature
 
-Defined in: [types/hag.d.ts:59](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L59)
+▪ [key: `string`]: { `direction`: `string` ; `locale`: `string` ; `name`: `string`  }
+
+#### Defined in
+
+[types/hag.d.ts:59](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L59)
 
 ___
 
 ### parentPubName
 
-• **parentPubName**: *string*
+• **parentPubName**: `string`
 
-Defined in: [types/hag.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L47)
+#### Defined in
+
+[types/hag.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L47)
 
 ___
 
 ### pub
 
-• **pub**: *string*
+• **pub**: `string`
 
-Defined in: [types/hag.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L49)
+#### Defined in
+
+[types/hag.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L49)
 
 ___
 
 ### pubImage
 
-• **pubImage**: *object*
+• **pubImage**: `Object`
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
 | `checksum` | ``null`` |
-| `modifiedDatetime` | *string* |
-| `url` | *string* |
+| `modifiedDatetime` | `string` |
+| `url` | `string` |
 
-Defined in: [types/hag.d.ts:54](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L54)
+#### Defined in
+
+[types/hag.d.ts:54](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L54)
 
 ___
 
 ### pubName
 
-• **pubName**: *string*
+• **pubName**: `string`
 
-Defined in: [types/hag.d.ts:46](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L46)
+#### Defined in
+
+[types/hag.d.ts:46](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L46)
 
 ___
 
 ### specialty
 
-• **specialty**: *string*
+• **specialty**: `string`
 
-Defined in: [types/hag.d.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L53)
+#### Defined in
+
+[types/hag.d.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L53)
 
 ___
 
 ### track
 
-• **track**: *number*
+• **track**: `number`
 
-Defined in: [types/hag.d.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L52)
+#### Defined in
+
+[types/hag.d.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L52)

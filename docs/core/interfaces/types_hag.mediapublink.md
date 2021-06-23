@@ -41,122 +41,150 @@ These types may not be extensive but include what we need.
 
 ### bitRate
 
-• **bitRate**: *number*
+• **bitRate**: `number`
 
-Defined in: [types/hag.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L39)
+#### Defined in
+
+[types/hag.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L39)
 
 ___
 
 ### booknum
 
-• **booknum**: *number*
+• **booknum**: `number`
 
-Defined in: [types/hag.d.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L26)
+#### Defined in
+
+[types/hag.d.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L26)
 
 ___
 
 ### docid
 
-• **docid**: *number*
+• **docid**: `number`
 
-Defined in: [types/hag.d.ts:25](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L25)
+#### Defined in
+
+[types/hag.d.ts:25](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L25)
 
 ___
 
 ### duration
 
-• **duration**: *number*
+• **duration**: `number`
 
-Defined in: [types/hag.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L38)
+#### Defined in
+
+[types/hag.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L38)
 
 ___
 
 ### edition
 
-• **edition**: *string*
+• **edition**: `string`
 
-Defined in: [types/hag.d.ts:28](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L28)
+#### Defined in
+
+[types/hag.d.ts:28](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L28)
 
 ___
 
 ### editionDescr
 
-• **editionDescr**: *string*
+• **editionDescr**: `string`
 
-Defined in: [types/hag.d.ts:29](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L29)
+#### Defined in
+
+[types/hag.d.ts:29](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L29)
 
 ___
 
 ### file
 
-• **file**: *object*
+• **file**: `Object`
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `checksum` | *string* |
-| `modifiedDatetime` | *string* |
-| `stream` | *string* |
-| `url` | *string* |
+| `checksum` | `string` |
+| `modifiedDatetime` | `string` |
+| `stream` | `string` |
+| `url` | `string` |
 
-Defined in: [types/hag.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L8)
+#### Defined in
+
+[types/hag.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L8)
 
 ___
 
 ### filesize
 
-• **filesize**: *number*
+• **filesize**: `number`
 
-Defined in: [types/hag.d.ts:14](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L14)
+#### Defined in
+
+[types/hag.d.ts:14](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L14)
 
 ___
 
 ### format
 
-• **format**: *string*
+• **format**: `string`
 
-Defined in: [types/hag.d.ts:30](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L30)
+#### Defined in
+
+[types/hag.d.ts:30](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L30)
 
 ___
 
 ### formatDescr
 
-• **formatDescr**: *string*
+• **formatDescr**: `string`
 
-Defined in: [types/hag.d.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L31)
+#### Defined in
+
+[types/hag.d.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L31)
 
 ___
 
 ### frameHeight
 
-• **frameHeight**: *number*
+• **frameHeight**: `number`
 
-Defined in: [types/hag.d.ts:36](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L36)
+#### Defined in
+
+[types/hag.d.ts:36](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L36)
 
 ___
 
 ### frameRate
 
-• **frameRate**: *number*
+• **frameRate**: `number`
 
-Defined in: [types/hag.d.ts:37](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L37)
+#### Defined in
+
+[types/hag.d.ts:37](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L37)
 
 ___
 
 ### frameWidth
 
-• **frameWidth**: *number*
+• **frameWidth**: `number`
 
-Defined in: [types/hag.d.ts:35](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L35)
+#### Defined in
+
+[types/hag.d.ts:35](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L35)
 
 ___
 
 ### hasTrack
 
-• **hasTrack**: *boolean*
+• **hasTrack**: `boolean`
 
-Defined in: [types/hag.d.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L23)
+#### Defined in
+
+[types/hag.d.ts:23](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L23)
 
 ___
 
@@ -164,7 +192,9 @@ ___
 
 • **label**: ``"240p"`` \| ``"480p"`` \| ``"720p"``
 
-Defined in: [types/hag.d.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L21)
+#### Defined in
+
+[types/hag.d.ts:21](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L21)
 
 ___
 
@@ -172,76 +202,94 @@ ___
 
 • **markers**: ``null``
 
-Defined in: [types/hag.d.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L20)
+#### Defined in
+
+[types/hag.d.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L20)
 
 ___
 
 ### mimetype
 
-• **mimetype**: *string*
+• **mimetype**: `string`
 
-Defined in: [types/hag.d.ts:27](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L27)
+#### Defined in
+
+[types/hag.d.ts:27](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L27)
 
 ___
 
 ### pub
 
-• **pub**: *string*
+• **pub**: `string`
 
-Defined in: [types/hag.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L24)
+#### Defined in
+
+[types/hag.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L24)
 
 ___
 
 ### specialty
 
-• **specialty**: *string*
+• **specialty**: `string`
 
-Defined in: [types/hag.d.ts:32](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L32)
+#### Defined in
+
+[types/hag.d.ts:32](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L32)
 
 ___
 
 ### specialtyDescr
 
-• **specialtyDescr**: *string*
+• **specialtyDescr**: `string`
 
-Defined in: [types/hag.d.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L33)
+#### Defined in
+
+[types/hag.d.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L33)
 
 ___
 
 ### subtitled
 
-• **subtitled**: *boolean*
+• **subtitled**: `boolean`
 
-Defined in: [types/hag.d.ts:34](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L34)
+#### Defined in
+
+[types/hag.d.ts:34](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L34)
 
 ___
 
 ### title
 
-• **title**: *string*
+• **title**: `string`
 
-Defined in: [types/hag.d.ts:7](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L7)
+#### Defined in
+
+[types/hag.d.ts:7](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L7)
 
 ___
 
 ### track
 
-• **track**: *number*
+• **track**: `number`
 
-Defined in: [types/hag.d.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L22)
+#### Defined in
+
+[types/hag.d.ts:22](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L22)
 
 ___
 
 ### trackImage
 
-• **trackImage**: *object*
+• **trackImage**: `Object`
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
 | `checksum` | ``null`` |
-| `modifiedDatetime` | *string* |
-| `url` | *string* |
+| `modifiedDatetime` | `string` |
+| `url` | `string` |
 
-Defined in: [types/hag.d.ts:15](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L15)
+#### Defined in
+
+[types/hag.d.ts:15](https://github.com/BenShelton/library-api/blob/master/packages/core/types/hag.d.ts#L15)

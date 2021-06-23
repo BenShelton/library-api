@@ -17,14 +17,18 @@ Integer enums used to refer to certain article types in a publication database.
 
 ### OCLM\_WEEK
 
-• **OCLM\_WEEK**: = 106
+• **OCLM\_WEEK** = 106
 
-Defined in: [src/constants.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L33)
+#### Defined in
+
+[src/constants.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L40)
 
 ___
 
 ### WATCHTOWER\_ARTICLE
 
-• **WATCHTOWER\_ARTICLE**: = 40
+• **WATCHTOWER\_ARTICLE** = 40
 
-Defined in: [src/constants.ts:32](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L32)
+#### Defined in
+
+[src/constants.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L39)

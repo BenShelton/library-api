@@ -10,4 +10,5 @@ Library Core
 - [types/database](modules/types_database.md)
 - [types/dto](modules/types_dto.md)
 - [types/hag](modules/types_hag.md)
+- [types/media](modules/types_media.md)
 - [types/publication](modules/types_publication.md)

@@ -18,22 +18,28 @@ The raw database columns when using an article query.
 
 ### ContextTitle
 
-• **ContextTitle**: *string*
+• **ContextTitle**: `string`
 
-Defined in: [types/database.d.ts:70](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L70)
+#### Defined in
+
+[types/database.d.ts:73](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L73)
 
 ___
 
 ### DocumentId
 
-• **DocumentId**: *number*
+• **DocumentId**: `number`
 
-Defined in: [types/database.d.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L69)
+#### Defined in
+
+[types/database.d.ts:72](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L72)
 
 ___
 
 ### Title
 
-• **Title**: *string*
+• **Title**: `string`
 
-Defined in: [types/database.d.ts:71](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L71)
+#### Defined in
+
+[types/database.d.ts:74](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L74)

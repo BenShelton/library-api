@@ -30,7 +30,7 @@
 
 #### Defined in
 
-types/media.d.ts:94
+[types/media.d.ts:94](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L94)
 
 ___
 
@@ -42,7 +42,7 @@ A list of `naturalKey` values that can be used to link to a [MediaItemRow](types
 
 #### Defined in
 
-types/media.d.ts:105
+[types/media.d.ts:105](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L105)
 
 ___
 
@@ -56,4 +56,4 @@ The media available is under `media`.
 
 #### Defined in
 
-types/media.d.ts:93
+[types/media.d.ts:93](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L93)

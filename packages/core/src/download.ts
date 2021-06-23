@@ -8,7 +8,7 @@ import fetch, { Response } from 'node-fetch'
 import { Extract } from 'unzipper'
 
 import { getLanguageById } from './language'
-import { CATALOG_URL, MEDIA_URL, PUBLICATION_URL, SONG_PUBLICATION } from './constants'
+import { CATALOG_URL, MEDIA_CATALOGS_URL, MEDIA_URL, PUBLICATION_URL, SONG_PUBLICATION } from './constants'
 
 import { GetMediaPubLinks } from '../types/hag'
 import { VideoDTO } from '../types/dto'
@@ -45,6 +45,24 @@ export async function downloadFile (url: string, path: string): Promise<void> {
  */
 export async function downloadCatalog (path: string): Promise<void> {
   const res = await fetch(CATALOG_URL)
+  checkStatus(res)
+  await streamPipeline(
+    res.body,
+    createGunzip(),
+    createWriteStream(path)
+  )
+}
+
+/**
+ * NOTE: You probably want to be using {@link getMediaCatalog} instead.
+ *
+ * Downloads a Media Catalog & writes it to the specified path.
+ *
+ * @param languageId The path to write the catalog file to.
+ * @param path The path to write the catalog file to.
+ */
+export async function downloadMediaCatalog (languageCode: string, path: string): Promise<void> {
+  const res = await fetch(`${MEDIA_CATALOGS_URL}/${languageCode}.json.gz`)
   checkStatus(res)
   await streamPipeline(
     res.body,

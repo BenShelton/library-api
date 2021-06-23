@@ -29,94 +29,118 @@ The export can be found in `data/languages.json`.
 
 ### AssociatedTextLanguageId
 
-• **AssociatedTextLanguageId**: *number*
+• **AssociatedTextLanguageId**: `number`
 
-Defined in: [types/database.d.ts:91](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L91)
+#### Defined in
+
+[types/database.d.ts:94](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L94)
 
 ___
 
 ### EnglishName
 
-• **EnglishName**: *string*
+• **EnglishName**: `string`
 
-Defined in: [types/database.d.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L82)
+#### Defined in
+
+[types/database.d.ts:85](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L85)
 
 ___
 
 ### IsSignLanguage
 
-• **IsSignLanguage**: *number*
+• **IsSignLanguage**: `number`
 
-Defined in: [types/database.d.ts:89](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L89)
+#### Defined in
+
+[types/database.d.ts:92](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L92)
 
 ___
 
 ### IsoAlpha2Code
 
-• **IsoAlpha2Code**: *string*
+• **IsoAlpha2Code**: `string`
 
-Defined in: [types/database.d.ts:85](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L85)
+#### Defined in
+
+[types/database.d.ts:88](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L88)
 
 ___
 
 ### IsoAlpha3Code
 
-• **IsoAlpha3Code**: *string*
+• **IsoAlpha3Code**: `string`
 
-Defined in: [types/database.d.ts:86](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L86)
+#### Defined in
+
+[types/database.d.ts:89](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L89)
 
 ___
 
 ### IsoName
 
-• **IsoName**: *string*
+• **IsoName**: `string`
 
-Defined in: [types/database.d.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L84)
+#### Defined in
+
+[types/database.d.ts:87](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L87)
 
 ___
 
 ### LanguageId
 
-• **LanguageId**: *number*
+• **LanguageId**: `number`
 
-Defined in: [types/database.d.ts:80](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L80)
+#### Defined in
+
+[types/database.d.ts:83](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L83)
 
 ___
 
 ### PrimaryFallbackLanguageId
 
-• **PrimaryFallbackLanguageId**: *number*
+• **PrimaryFallbackLanguageId**: `number`
 
-Defined in: [types/database.d.ts:88](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L88)
+#### Defined in
+
+[types/database.d.ts:91](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L91)
 
 ___
 
 ### PrimaryIetfCode
 
-• **PrimaryIetfCode**: *string*
+• **PrimaryIetfCode**: `string`
 
-Defined in: [types/database.d.ts:87](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L87)
+#### Defined in
+
+[types/database.d.ts:90](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L90)
 
 ___
 
 ### ScriptId
 
-• **ScriptId**: *number*
+• **ScriptId**: `number`
 
-Defined in: [types/database.d.ts:90](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L90)
+#### Defined in
+
+[types/database.d.ts:93](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L93)
 
 ___
 
 ### Symbol
 
-• **Symbol**: *string*
+• **Symbol**: `string`
 
-Defined in: [types/database.d.ts:81](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L81)
+#### Defined in
+
+[types/database.d.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L84)
 
 ___
 
 ### VernacularName
 
-• **VernacularName**: *string*
+• **VernacularName**: `string`
 
-Defined in: [types/database.d.ts:83](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L83)
+#### Defined in
+
+[types/database.d.ts:86](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L86)

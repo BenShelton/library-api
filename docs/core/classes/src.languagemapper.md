@@ -21,15 +21,13 @@ Maps raw language data to more accessible DTOs.
 
 ### constructor
 
-\+ **new LanguageMapper**(): [*LanguageMapper*](src.languagemapper.md)
-
-**Returns:** [*LanguageMapper*](src.languagemapper.md)
+• **new LanguageMapper**()
 
 ## Methods
 
 ### MapLanguage
 
-▸ **MapLanguage**(`language`: [*LanguageRow*](../interfaces/types_database.languagerow.md)): [*LanguageDTO*](../interfaces/types_dto.languagedto.md)
+▸ **MapLanguage**(`language`): [LanguageDTO](../interfaces/types_dto.languagedto.md)
 
 Maps a raw Language data row to a Language DTO.
 
@@ -37,17 +35,21 @@ Maps a raw Language data row to a Language DTO.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `language` | [*LanguageRow*](../interfaces/types_database.languagerow.md) | The data row. |
+| `language` | [LanguageRow](../interfaces/types_database.languagerow.md) | The data row. |
 
-**Returns:** [*LanguageDTO*](../interfaces/types_dto.languagedto.md)
+#### Returns
 
-Defined in: [src/classes/Mapper.ts:147](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L147)
+[LanguageDTO](../interfaces/types_dto.languagedto.md)
+
+#### Defined in
+
+[src/classes/Mapper.ts:147](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L147)
 
 ___
 
 ### MapLanguages
 
-▸ **MapLanguages**(`languages`: [*LanguageRow*](../interfaces/types_database.languagerow.md)[]): [*LanguageDTO*](../interfaces/types_dto.languagedto.md)[]
+▸ **MapLanguages**(`languages`): [LanguageDTO](../interfaces/types_dto.languagedto.md)[]
 
 Maps multiple Language data rows using [MapLanguage](src.languagemapper.md#maplanguage) and returns the mapped array.
 
@@ -55,8 +57,12 @@ Maps multiple Language data rows using [MapLanguage](src.languagemapper.md#mapla
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `languages` | [*LanguageRow*](../interfaces/types_database.languagerow.md)[] | The data rows. |
+| `languages` | [LanguageRow](../interfaces/types_database.languagerow.md)[] | The data rows. |
 
-**Returns:** [*LanguageDTO*](../interfaces/types_dto.languagedto.md)[]
+#### Returns
 
-Defined in: [src/classes/Mapper.ts:162](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L162)
+[LanguageDTO](../interfaces/types_dto.languagedto.md)[]
+
+#### Defined in
+
+[src/classes/Mapper.ts:162](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L162)

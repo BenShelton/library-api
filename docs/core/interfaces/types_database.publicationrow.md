@@ -18,24 +18,30 @@ The raw database columns when using a publication query.
 
 ### NameFragment
 
-• **NameFragment**: *string*
+• **NameFragment**: `string`
 
 The filename used on the storage servers and for the internal database of a publication.
 
-Defined in: [types/database.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L8)
+#### Defined in
+
+[types/database.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L8)
 
 ___
 
 ### PubMepsLanguageId
 
-• **PubMepsLanguageId**: *number*
+• **PubMepsLanguageId**: `number`
 
-Defined in: [types/database.d.ts:10](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L10)
+#### Defined in
+
+[types/database.d.ts:10](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L10)
 
 ___
 
 ### PublicationTypeId
 
-• **PublicationTypeId**: *number*
+• **PublicationTypeId**: `number`
 
-Defined in: [types/database.d.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L9)
+#### Defined in
+
+[types/database.d.ts:9](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L9)

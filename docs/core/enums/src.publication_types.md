@@ -17,14 +17,18 @@ Integer enums used to refer to certain publication types in the catalog database
 
 ### OCLM
 
-• **OCLM**: = 30
+• **OCLM** = 30
 
-Defined in: [src/constants.ts:25](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L25)
+#### Defined in
+
+[src/constants.ts:32](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L32)
 
 ___
 
 ### WATCHTOWER
 
-• **WATCHTOWER**: = 14
+• **WATCHTOWER** = 14
 
-Defined in: [src/constants.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L24)
+#### Defined in
+
+[src/constants.ts:31](https://github.com/BenShelton/library-api/blob/master/packages/core/src/constants.ts#L31)

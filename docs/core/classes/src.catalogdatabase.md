@@ -8,7 +8,7 @@ Provides extra methods for running preset queries against a catalog.
 
 ## Hierarchy
 
-- [*Database*](src.database.md)
+- [Database](src.database.md)
 
   ↳ **CatalogDatabase**
 
@@ -31,25 +31,30 @@ Provides extra methods for running preset queries against a catalog.
 
 ### constructor
 
-\+ **new CatalogDatabase**(`path`: *string*): [*CatalogDatabase*](src.catalogdatabase.md)
+• **new CatalogDatabase**(`path`)
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `path` | *string* | The path to the database. |
+| `path` | `string` | The path to the database. |
 
-**Returns:** [*CatalogDatabase*](src.catalogdatabase.md)
+#### Overrides
 
-Overrides: [Database](src.database.md)
+[Database](src.database.md).[constructor](src.database.md#constructor)
 
-Defined in: [src/classes/Database.ts:79](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L79)
+#### Defined in
+
+[src/classes/Database.ts:79](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L79)
 
 ## Methods
 
 ### getMediaDetails
 
-▸ **getMediaDetails**(`__namedParameters`: { `doc`: *string* \| *number* ; `issue`: *string* \| *number* ; `languageId?`: *number* ; `track`: *string* \| *number* ; `type`: ``"pub"`` \| ``"doc"``  }): *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+▸ **getMediaDetails**(`__namedParameters`): `Promise`<``null`` \| [MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)\>
+
+**`deprecated`** These details are no longer found in the main catalog.
+Use [getMediaCatalog](../modules/src.md#getmediacatalog) instead and use the `getMediaDetails` method on the returned class.
 
 Retrieves information about a video from the main catalog.
 The video details found within a publication's database contain limited information about the video itself.
@@ -68,38 +73,46 @@ const details = await db.getMediaDetails(video)
 
 | Name | Type |
 | :------ | :------ |
-| `__namedParameters` | *object* |
-| `__namedParameters.doc` | *string* \| *number* |
-| `__namedParameters.issue` | *string* \| *number* |
-| `__namedParameters.languageId?` | *number* |
-| `__namedParameters.track` | *string* \| *number* |
+| `__namedParameters` | `Object` |
+| `__namedParameters.doc` | `string` \| `number` |
+| `__namedParameters.issue` | `string` \| `number` |
+| `__namedParameters.languageId?` | `number` |
+| `__namedParameters.track` | `string` \| `number` |
 | `__namedParameters.type` | ``"pub"`` \| ``"doc"`` |
 
-**Returns:** *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+#### Returns
+
+`Promise`<``null`` \| [MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)\>
 
 MediaDetails if they exist, `null` if they are not found.
 
-Defined in: [src/classes/Database.ts:162](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L162)
+#### Defined in
+
+[src/classes/Database.ts:165](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L165)
 
 ___
 
 ### getMonthlyPublications
 
-▸ **getMonthlyPublications**(): *Promise*<[*PublicationRow*](../interfaces/types_database.publicationrow.md)[]\>
+▸ **getMonthlyPublications**(): `Promise`<[PublicationRow](../interfaces/types_database.publicationrow.md)[]\>
 
 **`deprecated`** This has a hardcoded date and returns unmapped data, use [getPublication](src.catalogdatabase.md#getpublication) instead.
 
-**Returns:** *Promise*<[*PublicationRow*](../interfaces/types_database.publicationrow.md)[]\>
+#### Returns
+
+`Promise`<[PublicationRow](../interfaces/types_database.publicationrow.md)[]\>
 
 All the publications for the current month based on today.
 
-Defined in: [src/classes/Database.ts:94](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L94)
+#### Defined in
+
+[src/classes/Database.ts:94](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L94)
 
 ___
 
 ### getPublication
 
-▸ **getPublication**(`date`: *string*, `downloadDir`: *string*, `type`: [*PublicationType*](../modules/types_publication.md#publicationtype), `languageId?`: *number*): *Promise*<``null`` \| [*Publication*](src.publication.md)\>
+▸ **getPublication**(`date`, `downloadDir`, `type`, `languageId?`): `Promise`<``null`` \| [Publication](src.publication.md)\>
 
 Searches the database for the specified publication based on a date.
 If that publication is not yet downloaded, will download it to the specified directory.
@@ -110,22 +123,26 @@ If that publication is not yet downloaded, will download it to the specified dir
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `date` | *string* | - | The date to search for, must be formatted as `yyyy-mm-dd`. |
-| `downloadDir` | *string* | - | The directory to download the publication to if it does not exist. |
-| `type` | [*PublicationType*](../modules/types_publication.md#publicationtype) | - | See [PublicationType](../modules/types_publication.md#publicationtype) |
-| `languageId` | *number* | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
+| `date` | `string` | `undefined` | The date to search for, must be formatted as `yyyy-mm-dd`. |
+| `downloadDir` | `string` | `undefined` | The directory to download the publication to if it does not exist. |
+| `type` | [PublicationType](../modules/types_publication.md#publicationtype) | `undefined` | See [PublicationType](../modules/types_publication.md#publicationtype) |
+| `languageId` | `number` | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
 
-**Returns:** *Promise*<``null`` \| [*Publication*](src.publication.md)\>
+#### Returns
+
+`Promise`<``null`` \| [Publication](src.publication.md)\>
 
 A [Publication](src.publication.md) class to help access the downloaded publication, or `null` if not found.
 
-Defined in: [src/classes/Database.ts:115](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L115)
+#### Defined in
+
+[src/classes/Database.ts:115](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L115)
 
 ___
 
 ### getRow
 
-▸ **getRow**<T\>(`query`: *string*, `params?`: *string* \| *string*[] \| *Record*<string, string\>): *Promise*<undefined \| T\>
+▸ **getRow**<T\>(`query`, `params?`): `Promise`<undefined \| T\>
 
 Returns the first matched row of the provided query.
 The return type must be provided in TS as the row structure is unknown.
@@ -146,22 +163,28 @@ const row = await db.getRow<PublicationRow>(query)
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `query` | *string* | The SQL query to run. |
-| `params?` | *string* \| *string*[] \| *Record*<string, string\> | Query params to use. |
+| `query` | `string` | The SQL query to run. |
+| `params?` | `QueryParams` | Query params to use. |
 
-**Returns:** *Promise*<undefined \| T\>
+#### Returns
+
+`Promise`<undefined \| T\>
 
 A single row if it exists, or `undefined` if not found.
 
-Inherited from: [Database](src.database.md)
+#### Inherited from
 
-Defined in: [src/classes/Database.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L49)
+[Database](src.database.md).[getRow](src.database.md#getrow)
+
+#### Defined in
+
+[src/classes/Database.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L49)
 
 ___
 
 ### getRows
 
-▸ **getRows**<T\>(`query`: *string*, `params?`: *string* \| *string*[] \| *Record*<string, string\>): *Promise*<T[]\>
+▸ **getRows**<T\>(`query`, `params?`): `Promise`<T[]\>
 
 Returns all matched rows of the provided query.
 The return type of a single row must be provided in TS as the row structure is unknown.
@@ -182,22 +205,28 @@ const rows = await db.getRows<PublicationRow>(query)
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `query` | *string* | The SQL query to run. |
-| `params?` | *string* \| *string*[] \| *Record*<string, string\> | Query params to use. |
+| `query` | `string` | The SQL query to run. |
+| `params?` | `QueryParams` | Query params to use. |
 
-**Returns:** *Promise*<T[]\>
+#### Returns
+
+`Promise`<T[]\>
 
 An array of matched rows. If none were found an empty array will be returned.
 
-Inherited from: [Database](src.database.md)
+#### Inherited from
 
-Defined in: [src/classes/Database.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L69)
+[Database](src.database.md).[getRows](src.database.md#getrows)
+
+#### Defined in
+
+[src/classes/Database.ts:69](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L69)
 
 ___
 
 ### getSongDetails
 
-▸ **getSongDetails**(`track`: *number*, `languageId?`: *number*): *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+▸ **getSongDetails**(`track`, `languageId?`): `Promise`<``null`` \| [MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)\>
 
 Retrieves the video MediaDetails of a chosen song number.
 
@@ -205,11 +234,15 @@ Retrieves the video MediaDetails of a chosen song number.
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `track` | *number* | - | The number of the track. |
-| `languageId` | *number* | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
+| `track` | `number` | `undefined` | The number of the track. |
+| `languageId` | `number` | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
 
-**Returns:** *Promise*<``null`` \| [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)\>
+#### Returns
+
+`Promise`<``null`` \| [MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)\>
 
 MediaDetails if they exist, `null` if they are not found.
 
-Defined in: [src/classes/Database.ts:197](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L197)
+#### Defined in
+
+[src/classes/Database.ts:200](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L200)

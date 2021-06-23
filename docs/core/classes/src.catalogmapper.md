@@ -20,15 +20,13 @@ Maps raw Catalog database rows to more accessible DTOs.
 
 ### constructor
 
-\+ **new CatalogMapper**(): [*CatalogMapper*](src.catalogmapper.md)
-
-**Returns:** [*CatalogMapper*](src.catalogmapper.md)
+• **new CatalogMapper**()
 
 ## Methods
 
 ### MapMediaDetails
 
-▸ **MapMediaDetails**(`details`: [*MediaDetailsRow*](../interfaces/types_database.mediadetailsrow.md)): [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)
+▸ **MapMediaDetails**(`details`): [MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)
 
 Maps a raw Media Details database row to a Media Details DTO.
 
@@ -36,8 +34,12 @@ Maps a raw Media Details database row to a Media Details DTO.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `details` | [*MediaDetailsRow*](../interfaces/types_database.mediadetailsrow.md) | The database row. |
+| `details` | [MediaDetailsRow](../interfaces/types_database.mediadetailsrow.md) | The database row. |
 
-**Returns:** [*MediaDetailsDTO*](../interfaces/types_dto.mediadetailsdto.md)
+#### Returns
 
-Defined in: [src/classes/Mapper.ts:124](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L124)
+[MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)
+
+#### Defined in
+
+[src/classes/Mapper.ts:124](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L124)

@@ -22,53 +22,72 @@ The returned information when mapping raw video data.
 
 ### doc
 
-• **doc**: *string* \| *number*
+• **doc**: `string` \| `number`
 
-Defined in: [types/dto.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L47)
+#### Defined in
+
+[types/dto.d.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L52)
 
 ___
 
 ### filename
 
-• **filename**: *string*
+• **filename**: `string`
 
-Defined in: [types/dto.d.ts:42](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L42)
+A filename. Purely informational.
+
+#### Defined in
+
+[types/dto.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L47)
 
 ___
 
 ### id
 
-• **id**: *string*
+• **id**: `string`
 
 A unique id not related to the database.
 
-Defined in: [types/dto.d.ts:41](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L41)
+#### Defined in
+
+[types/dto.d.ts:43](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L43)
 
 ___
 
 ### issue
 
-• **issue**: *number*
+• **issue**: `number`
 
-Defined in: [types/dto.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L49)
+Either an issue date stored as a number, or `0` if irrelevant.
+
+**`example`**
+20210500
+
+#### Defined in
+
+[types/dto.d.ts:60](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L60)
 
 ___
 
 ### languageId
 
-• **languageId**: *number*
+• **languageId**: `number`
 
 The Meps Language Id of this video.
 
-Defined in: [types/dto.d.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L53)
+#### Defined in
+
+[types/dto.d.ts:64](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L64)
 
 ___
 
 ### track
 
-• **track**: *number*
+• **track**: `number`
 
-Defined in: [types/dto.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L48)
+#### Defined in
+
+[types/dto.d.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L53)
 
 ___
 
@@ -78,4 +97,6 @@ ___
 
 Affects how information is retrieved about this video (for example in getting details or the video stream)
 
-Defined in: [types/dto.d.ts:46](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L46)
+#### Defined in
+
+[types/dto.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L51)

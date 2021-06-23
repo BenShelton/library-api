@@ -8,7 +8,7 @@ The raw database columns when using a video query that returns a `pub` type vide
 
 ## Hierarchy
 
-- [*VideoRowBase*](types_database.videorowbase.md)
+- [VideoRowBase](types_database.videorowbase.md)
 
   ↳ **VideoRowPub**
 
@@ -26,19 +26,27 @@ The raw database columns when using a video query that returns a `pub` type vide
 
 ### IssueTagNumber
 
-• **IssueTagNumber**: *number*
+• **IssueTagNumber**: `number`
 
-Inherited from: [VideoRowBase](types_database.videorowbase.md).[IssueTagNumber](types_database.videorowbase.md#issuetagnumber)
+Will be `0` if no issue exists.
 
-Defined in: [types/database.d.ts:41](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L41)
+#### Inherited from
+
+[VideoRowBase](types_database.videorowbase.md).[IssueTagNumber](types_database.videorowbase.md#issuetagnumber)
+
+#### Defined in
+
+[types/database.d.ts:44](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L44)
 
 ___
 
 ### KeySymbol
 
-• **KeySymbol**: *string*
+• **KeySymbol**: `string`
 
-Defined in: [types/database.d.ts:48](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L48)
+#### Defined in
+
+[types/database.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L51)
 
 ___
 
@@ -46,24 +54,34 @@ ___
 
 • **MepsDocumentId**: ``null``
 
-Defined in: [types/database.d.ts:49](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L49)
+#### Defined in
+
+[types/database.d.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L52)
 
 ___
 
 ### MultimediaId
 
-• **MultimediaId**: *number*
+• **MultimediaId**: `number`
 
-Inherited from: [VideoRowBase](types_database.videorowbase.md).[MultimediaId](types_database.videorowbase.md#multimediaid)
+#### Inherited from
 
-Defined in: [types/database.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L39)
+[VideoRowBase](types_database.videorowbase.md).[MultimediaId](types_database.videorowbase.md#multimediaid)
+
+#### Defined in
+
+[types/database.d.ts:39](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L39)
 
 ___
 
 ### Track
 
-• **Track**: *number*
+• **Track**: `number`
 
-Inherited from: [VideoRowBase](types_database.videorowbase.md).[Track](types_database.videorowbase.md#track)
+#### Inherited from
 
-Defined in: [types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)
+[VideoRowBase](types_database.videorowbase.md).[Track](types_database.videorowbase.md#track)
+
+#### Defined in
+
+[types/database.d.ts:40](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L40)

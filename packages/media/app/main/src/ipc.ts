@@ -171,8 +171,9 @@ export function initIPC (): void {
   })
 
   ipcMain.handle('song:details', async (_event, args: SongDetails['Args']): Promise<SongDetails['Response']> => {
-    const db = new CatalogDatabase(CATALOG_PATH)
-    const details = await db.getSongDetails(args.track, args.languageId)
+    const mediaCatalog = await getMediaCatalog(DOWNLOAD_DIR, args.languageId)
+    if (!mediaCatalog) throw new Error('Could not find catalog')
+    const details = await mediaCatalog.getSongDetails(args.track)
     if (!details) throw new Error('Could not find details')
     const videoDetails = processVideoDetails(details)
     return videoDetails

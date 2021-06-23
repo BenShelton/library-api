@@ -21,7 +21,7 @@
 
 #### Defined in
 
-types/media.d.ts:79
+[types/media.d.ts:79](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L79)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 #### Defined in
 
-types/media.d.ts:80
+[types/media.d.ts:80](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L80)
 
 ___
 
@@ -43,7 +43,7 @@ Nested "pages" of categories.
 
 #### Defined in
 
-types/media.d.ts:84
+[types/media.d.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L84)
 
 ___
 
@@ -57,4 +57,4 @@ The nested categories are under `subcategories`.
 
 #### Defined in
 
-types/media.d.ts:78
+[types/media.d.ts:78](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L78)

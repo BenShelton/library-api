@@ -38,6 +38,9 @@ export interface MediaDetailsRow {
 interface VideoRowBase {
   MultimediaId: number
   Track: number
+  /**
+   * Will be `0` if no issue exists.
+   */
   IssueTagNumber: number
 }
 

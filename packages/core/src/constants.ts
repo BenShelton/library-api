@@ -18,6 +18,13 @@ export const CATALOG_URL = `${PUBLICATION_URL}/meps/jwl/current/catalogs/v3/cata
 export const MEDIA_URL = 'https://api.hag27.com/GETPUBMEDIALINKS'
 
 /**
+ * The URL of all the media catalogs.
+ *
+ * These are NDJSON files that list images and other metadata used for media found within publications.
+ */
+export const MEDIA_CATALOGS_URL = 'https://app.jw-cdn.org/catalogs/media'
+
+/**
  * Integer enums used to refer to certain publication types in the catalog database.
  */
 export enum PUBLICATION_TYPES {

@@ -23,7 +23,7 @@ The Meps Language Id of this publication.
 
 #### Defined in
 
-types/media.d.ts:12
+[types/media.d.ts:12](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L12)
 
 ___
 
@@ -35,4 +35,4 @@ The path to the downloaded Media Catalog.
 
 #### Defined in
 
-types/media.d.ts:8
+[types/media.d.ts:8](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L8)

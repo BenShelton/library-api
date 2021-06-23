@@ -29,7 +29,7 @@
 
 #### Defined in
 
-types/media.d.ts:108
+[types/media.d.ts:108](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L108)
 
 ___
 
@@ -43,4 +43,4 @@ Rows can have different structures and are identified using `type`.
 
 #### Defined in
 
-types/media.d.ts:197
+[types/media.d.ts:197](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L197)

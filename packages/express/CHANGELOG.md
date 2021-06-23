@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/BenShelton/library-api/compare/v0.9.1...v0.10.0) (2021-06-23)
+
+
+### Features
+
+* **express:** use new media catalog when getting media details ([2d21c24](https://github.com/BenShelton/library-api/commit/2d21c240c90085191cbfc9281213894b34009e2c)), closes [#55](https://github.com/BenShelton/library-api/issues/55)
+
+
+
+
+
 # [0.9.0](https://github.com/BenShelton/library-api/compare/v0.8.0...v0.9.0) (2021-06-10)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/BenShelton/library-api/compare/v0.9.1...v0.10.0) (2021-06-23)
+
+
+### Features
+
+* **core:** add `getSongDetails` method to MediaCatalog ([485cf13](https://github.com/BenShelton/library-api/commit/485cf139078eef90b98d958acc861d744d2a2c93))
+* **core:** add class for accessing the newer media catalog ([881d264](https://github.com/BenShelton/library-api/commit/881d264477e4a9e883757fc9591828755cb9efa8)), closes [#55](https://github.com/BenShelton/library-api/issues/55)
+* **core:** add util to process a file line by line ([81da56e](https://github.com/BenShelton/library-api/commit/81da56e877eddfba6636f9207ee86bccc3f486f4))
+* **express:** use new media catalog when getting media details ([2d21c24](https://github.com/BenShelton/library-api/commit/2d21c240c90085191cbfc9281213894b34009e2c)), closes [#55](https://github.com/BenShelton/library-api/issues/55)
+* **media:** remove rounded corners from display window for better screen sharing ([70a9560](https://github.com/BenShelton/library-api/commit/70a95600a8c51992c91a1d2ef25599323e4119c8))
+* **media:** use newer media catalog for video images/titles ([15706f4](https://github.com/BenShelton/library-api/commit/15706f4d04ecb807b45518c6f8295fe605a4e315)), closes [#55](https://github.com/BenShelton/library-api/issues/55)
+* **media:** use newer media details when loading song details ([65e7c55](https://github.com/BenShelton/library-api/commit/65e7c555f88769d0c1a9b63fa688327bdca50b74))
+
+
+
+
+
 ## [0.9.1](https://github.com/BenShelton/library-api/compare/v0.9.0...v0.9.1) (2021-06-20)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/BenShelton/library-api/compare/v0.9.1...v0.10.0) (2021-06-23)
+
+
+### Features
+
+* **media:** remove rounded corners from display window for better screen sharing ([70a9560](https://github.com/BenShelton/library-api/commit/70a95600a8c51992c91a1d2ef25599323e4119c8))
+* **media:** use newer media catalog for video images/titles ([15706f4](https://github.com/BenShelton/library-api/commit/15706f4d04ecb807b45518c6f8295fe605a4e315)), closes [#55](https://github.com/BenShelton/library-api/issues/55)
+* **media:** use newer media details when loading song details ([65e7c55](https://github.com/BenShelton/library-api/commit/65e7c555f88769d0c1a9b63fa688327bdca50b74))
+
+
+
+
+
 ## [0.9.1](https://github.com/BenShelton/library-api/compare/v0.9.0...v0.9.1) (2021-06-20)
 
 

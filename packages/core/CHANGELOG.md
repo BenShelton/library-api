@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/BenShelton/library-api/compare/v0.9.1...v0.10.0) (2021-06-23)
+
+
+### Features
+
+* **core:** add `getSongDetails` method to MediaCatalog ([485cf13](https://github.com/BenShelton/library-api/commit/485cf139078eef90b98d958acc861d744d2a2c93))
+* **core:** add class for accessing the newer media catalog ([881d264](https://github.com/BenShelton/library-api/commit/881d264477e4a9e883757fc9591828755cb9efa8)), closes [#55](https://github.com/BenShelton/library-api/issues/55)
+* **core:** add util to process a file line by line ([81da56e](https://github.com/BenShelton/library-api/commit/81da56e877eddfba6636f9207ee86bccc3f486f4))
+
+
+
+
+
 # [0.9.0](https://github.com/BenShelton/library-api/compare/v0.8.0...v0.9.0) (2021-06-10)
 
 

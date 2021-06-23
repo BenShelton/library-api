@@ -228,6 +228,9 @@ ___
 
 ▸ **getSongDetails**(`track`, `languageId?`): `Promise`<``null`` \| [MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)\>
 
+**`deprecated`** These details may be removed from the main catalog in future.
+Use [getMediaCatalog](../modules/src.md#getmediacatalog) instead and use the `getSongDetails` method on the returned class.
+
 Retrieves the video MediaDetails of a chosen song number.
 
 #### Parameters
@@ -245,4 +248,4 @@ MediaDetails if they exist, `null` if they are not found.
 
 #### Defined in
 
-[src/classes/Database.ts:200](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L200)
+[src/classes/Database.ts:203](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L203)

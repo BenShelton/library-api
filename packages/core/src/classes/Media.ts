@@ -1,5 +1,6 @@
 import { MediaCatalogMapper } from './Mapper'
 import { readLines } from '../utils'
+import { SONG_PUBLICATION } from '../constants'
 
 import { MediaDetailsDTO, MediaCatalogDatabaseDTO } from '../../types/dto'
 import { MediaCatalogCtor, MediaCatalogRow } from '../../types/media'
@@ -100,5 +101,16 @@ export class MediaCatalog {
     })
     if (!details) return null
     return this._mapper.MapMediaDetails(details)
+  }
+
+  /**
+   * Retrieves the video MediaDetails of a chosen song number.
+   *
+   * @param track The number of the track.
+   *
+   * @returns MediaDetails if they exist, `null` if they are not found.
+   */
+  async getSongDetails (track: number): Promise<MediaDetailsDTO | null> {
+    return this.getMediaDetails({ ...SONG_PUBLICATION, track })
   }
 }

@@ -9,6 +9,7 @@ import {
   downloadSongStream,
   downloadVideoStream,
   emptyDir,
+  getMediaCatalog,
   Publication,
   updateCatalog
 } from '@library-api/core'
@@ -126,9 +127,10 @@ export function initIPC (): void {
     }))
 
     const baseVideos = await publication.getVideos(args.date)
+    const mediaCatalog = await getMediaCatalog(DOWNLOAD_DIR, args.languageId)
     try {
       const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {
-        const details = await db.getMediaDetails(video)
+        const details = mediaCatalog ? await mediaCatalog.getMediaDetails(video) : null
         if (!details) {
           log.error(`Cannot load details for video: ${video.id}`)
           const videoDetails = await placeholderVideoDetails(video)

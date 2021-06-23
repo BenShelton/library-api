@@ -190,6 +190,9 @@ export class CatalogDatabase extends Database {
   }
 
   /**
+   * @deprecated These details may be removed from the main catalog in future.
+   * Use {@link getMediaCatalog} instead and use the `getSongDetails` method on the returned class.
+   *
    * Retrieves the video MediaDetails of a chosen song number.
    *
    * @param track The number of the track.

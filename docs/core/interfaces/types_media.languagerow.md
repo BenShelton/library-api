@@ -33,7 +33,7 @@ Details about the language being used in this Media Catalog.
 
 #### Defined in
 
-types/media.d.ts:58
+[types/media.d.ts:58](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L58)
 
 ___
 
@@ -43,4 +43,4 @@ ___
 
 #### Defined in
 
-types/media.d.ts:54
+[types/media.d.ts:54](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L54)

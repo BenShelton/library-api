@@ -21,7 +21,7 @@ A hash of some sort.
 
 #### Defined in
 
-types/media.d.ts:189
+[types/media.d.ts:189](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L189)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-types/media.d.ts:185
+[types/media.d.ts:185](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L185)

@@ -35,7 +35,7 @@
 
 #### Defined in
 
-types/media.d.ts:117
+[types/media.d.ts:117](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L117)
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 #### Defined in
 
-types/media.d.ts:116
+[types/media.d.ts:116](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L116)

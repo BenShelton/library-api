@@ -21,7 +21,7 @@ The Media Catalog version.
 
 #### Defined in
 
-types/media.d.ts:20
+[types/media.d.ts:20](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L20)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-types/media.d.ts:16
+[types/media.d.ts:16](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L16)

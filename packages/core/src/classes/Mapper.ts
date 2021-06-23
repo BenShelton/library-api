@@ -1,5 +1,5 @@
 import { ImageRow, LanguageRow, MediaDetailsRow, VideoRow } from '../../types/database'
-import { ImageDTO, LanguageDTO, MediaDetailsDTO, VideoDTO } from '../../types/dto'
+import { ImageDTO, LanguageDTO, MediaCatalogItemDTO, MediaDetailsDTO, VideoDTO } from '../../types/dto'
 
 interface PublicationMapperCtor {
   filename: string
@@ -161,5 +161,26 @@ export class LanguageMapper {
    */
   public MapLanguages (languages: LanguageRow[]): LanguageDTO[] {
     return languages.map(language => this.MapLanguage(language))
+  }
+}
+
+/**
+ * Maps Media Catalog database details to more accessible DTOs.
+ */
+export class MediaCatalogMapper {
+  /**
+   * Maps a Media Catalog media details row to a Media Details DTO.
+   *
+   * @param details The database row.
+   */
+  public MapMediaDetails (details: MediaCatalogItemDTO): MediaDetailsDTO {
+    return {
+      id: `media#${details.id}`,
+      filename: details.id,
+      caption: details.title,
+      height: 0,
+      width: 0,
+      url: details.image
+    }
   }
 }

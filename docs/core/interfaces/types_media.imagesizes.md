@@ -25,7 +25,7 @@ Large size.
 
 #### Defined in
 
-types/media.d.ts:43
+[types/media.d.ts:43](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L43)
 
 ___
 
@@ -38,7 +38,7 @@ Medium size.
 
 #### Defined in
 
-types/media.d.ts:38
+[types/media.d.ts:38](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L38)
 
 ___
 
@@ -51,7 +51,7 @@ Small size.
 
 #### Defined in
 
-types/media.d.ts:33
+[types/media.d.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L33)
 
 ___
 
@@ -66,7 +66,7 @@ Isn't always available. If not use `lg` instead.
 
 #### Defined in
 
-types/media.d.ts:50
+[types/media.d.ts:50](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L50)
 
 ___
 
@@ -79,4 +79,4 @@ Extra small size.
 
 #### Defined in
 
-types/media.d.ts:28
+[types/media.d.ts:28](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L28)

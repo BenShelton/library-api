@@ -142,6 +142,9 @@ export class CatalogDatabase extends Database {
   }
 
   /**
+   * @deprecated These details are no longer found in the main catalog.
+   * Use {@link getMediaCatalog} instead and use the `getMediaDetails` method on the returned class.
+   *
    * Retrieves information about a video from the main catalog.
    * The video details found within a publication's database contain limited information about the video itself.
    * Most of this information is contained within the main catalog but mapped completely differently.

@@ -19,7 +19,7 @@
 
 #### Defined in
 
-types/media.d.ts:112
+[types/media.d.ts:112](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L112)
 
 ___
 
@@ -29,4 +29,4 @@ ___
 
 #### Defined in
 
-types/media.d.ts:111
+[types/media.d.ts:111](https://github.com/BenShelton/library-api/blob/master/packages/core/types/media.d.ts#L111)

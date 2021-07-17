@@ -35,7 +35,8 @@ yarn dev
 # Build (outputs to /dist)
 yarn build
 
-# Package the app for testing locally (make sure to `yarn build` first)
+# Package the app for testing locally
+# Note that local versions will raise app-update errors on startup, they can be ignored
 yarn package
 
 # Lint files

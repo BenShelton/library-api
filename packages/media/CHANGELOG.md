@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/BenShelton/library-api/compare/v0.10.0...v0.10.1) (2021-07-17)
+
+
+### Bug Fixes
+
+* **media:** enable roundedCorners again as it prevents the app from closing ([fb250f7](https://github.com/BenShelton/library-api/commit/fb250f7599309c412e0c33abb1eaac261b7c6c5f)), closes [#59](https://github.com/BenShelton/library-api/issues/59)
+
+
+
+
+
 # [0.10.0](https://github.com/BenShelton/library-api/compare/v0.9.1...v0.10.0) (2021-06-23)
 
 

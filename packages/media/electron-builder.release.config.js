@@ -5,12 +5,6 @@ const packageConfig = require('./electron-builder.package.config')
  */
 const config = {
   ...packageConfig,
-  mac: {
-    hardenedRuntime: true,
-    gatekeeperAssess: false,
-    entitlements: 'buildResources/entitlements.mac.plist',
-    entitlementsInherit: 'buildResources/entitlements.mac.plist'
-  },
   dmg: {
     sign: false
   },

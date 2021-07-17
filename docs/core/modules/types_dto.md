@@ -11,4 +11,5 @@
 - [MediaCatalogDatabaseDTO](../interfaces/types_dto.mediacatalogdatabasedto.md)
 - [MediaCatalogItemDTO](../interfaces/types_dto.mediacatalogitemdto.md)
 - [MediaDetailsDTO](../interfaces/types_dto.mediadetailsdto.md)
+- [RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)
 - [VideoDTO](../interfaces/types_dto.videodto.md)

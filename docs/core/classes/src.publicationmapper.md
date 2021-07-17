@@ -21,6 +21,8 @@ Maps raw Publication database rows to more accessible DTOs.
 
 - [MapImage](src.publicationmapper.md#mapimage)
 - [MapImages](src.publicationmapper.md#mapimages)
+- [MapRelatedPublication](src.publicationmapper.md#maprelatedpublication)
+- [MapRelatedPublications](src.publicationmapper.md#maprelatedpublications)
 - [MapVideo](src.publicationmapper.md#mapvideo)
 - [MapVideos](src.publicationmapper.md#mapvideos)
 
@@ -103,6 +105,50 @@ Maps multiple Image database rows using [MapImage](src.publicationmapper.md#mapi
 #### Defined in
 
 [src/classes/Mapper.ts:45](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L45)
+
+___
+
+### MapRelatedPublication
+
+▸ **MapRelatedPublication**(`publication`): [RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)
+
+Maps a raw Related Publication database row to a Related Publication DTO.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `publication` | [RelatedPublicationRow](../interfaces/types_database.relatedpublicationrow.md) | The database row. |
+
+#### Returns
+
+[RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)
+
+#### Defined in
+
+[src/classes/Mapper.ts:95](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L95)
+
+___
+
+### MapRelatedPublications
+
+▸ **MapRelatedPublications**(`publications`): [RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)[]
+
+Maps multiple Related Publication database rows using [MapRelatedPublication](src.publicationmapper.md#maprelatedpublication) and returns the mapped array.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `publications` | [RelatedPublicationRow](../interfaces/types_database.relatedpublicationrow.md)[] | The database rows. |
+
+#### Returns
+
+[RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)[]
+
+#### Defined in
+
+[src/classes/Mapper.ts:108](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L108)
 
 ___
 

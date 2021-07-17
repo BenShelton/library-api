@@ -24,6 +24,7 @@ Provides methods for interacting with a downloaded publication.
 
 - [getArticles](src.publication.md#getarticles)
 - [getImages](src.publication.md#getimages)
+- [getRelatedPublications](src.publication.md#getrelatedpublications)
 - [getVideos](src.publication.md#getvideos)
 
 ## Constructors
@@ -108,7 +109,7 @@ Returns raw database rows for all the articles in this publication.
 
 #### Defined in
 
-[src/classes/Publication.ts:98](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L98)
+[src/classes/Publication.ts:118](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L118)
 
 ___
 
@@ -116,8 +117,10 @@ ___
 
 ▸ **getImages**(`date`): `Promise`<[ImageDTO](../interfaces/types_dto.imagedto.md)[]\>
 
-Retrieves all the images for a particular date from the publication.
+Retrieves all the images for a particular date stored within the publication itself.
 As a publication includes multiple articles this chooses the one for that day and only returns the relevant images.
+
+If you also want images from related articles use [getRelatedPublications](src.publication.md#getrelatedpublications).
 
 **`todo`** Validate date.
 
@@ -135,7 +138,31 @@ An array of mapped images, the array will be empty if no images were found.
 
 #### Defined in
 
-[src/classes/Publication.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L47)
+[src/classes/Publication.ts:80](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L80)
+
+___
+
+### getRelatedPublications
+
+▸ **getRelatedPublications**(`date`): `Promise`<[RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)[]\>
+
+Retrieves all the related publications
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `date` | `string` | The date to search for, must be formatted as `yyyy-mm-dd`. |
+
+#### Returns
+
+`Promise`<[RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)[]\>
+
+An array of mapped related publications, the array will be empty if none are found.
+
+#### Defined in
+
+[src/classes/Publication.ts:58](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L58)
 
 ___
 
@@ -162,4 +189,4 @@ An array of mapped videos, the array will be empty if no videos were found.
 
 #### Defined in
 
-[src/classes/Publication.ts:76](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L76)
+[src/classes/Publication.ts:101](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L101)

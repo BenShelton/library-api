@@ -1,5 +1,5 @@
-import { ImageRow, LanguageRow, MediaDetailsRow, VideoRow } from '../../types/database'
-import { ImageDTO, LanguageDTO, MediaCatalogItemDTO, MediaDetailsDTO, VideoDTO } from '../../types/dto'
+import { ImageRow, LanguageRow, MediaDetailsRow, RelatedPublicationRow, VideoRow } from '../../types/database'
+import { ImageDTO, LanguageDTO, MediaCatalogItemDTO, MediaDetailsDTO, RelatedPublicationDTO, VideoDTO } from '../../types/dto'
 
 interface PublicationMapperCtor {
   filename: string
@@ -85,6 +85,28 @@ export class PublicationMapper {
    */
   public MapVideos (videos: VideoRow[]): VideoDTO[] {
     return videos.map(video => this.MapVideo(video))
+  }
+
+  /**
+   * Maps a raw Related Publication database row to a Related Publication DTO.
+   *
+   * @param publication The database row.
+   */
+  public MapRelatedPublication (publication: RelatedPublicationRow): RelatedPublicationDTO {
+    return {
+      id: publication.RefMepsDocumentId,
+      beginParagraph: publication.RefBeginParagraphOrdinal,
+      endParagraph: publication.RefEndParagraphOrdinal
+    }
+  }
+
+  /**
+   * Maps multiple Related Publication database rows using {@link MapRelatedPublication} and returns the mapped array.
+   *
+   * @param publications The database rows.
+   */
+  public MapRelatedPublications (publications: RelatedPublicationRow[]): RelatedPublicationDTO[] {
+    return publications.map(publication => this.MapRelatedPublication(publication))
   }
 }
 

@@ -196,3 +196,18 @@ export interface MediaCatalogDatabaseDTO {
    */
   mediaItems: MediaCatalogItemDTO[]
 }
+
+export interface RelatedPublicationDTO {
+  /**
+   * The Meps Document Id.
+   */
+  id: number
+  /**
+   *
+   */
+  beginParagraph: number | null
+  /**
+   *
+   */
+   endParagraph: number | null
+}

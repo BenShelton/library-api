@@ -151,7 +151,7 @@ ___
 
 ### createDir
 
-▸ **createDir**(`dir`): `Promise`<void\>
+▸ **createDir**(`dir`): `Promise`<string \| undefined\>
 
 Creates the specified directory. Will create parent directories if missing.
 
@@ -163,7 +163,7 @@ Creates the specified directory. Will create parent directories if missing.
 
 #### Returns
 
-`Promise`<void\>
+`Promise`<string \| undefined\>
 
 #### Defined in
 

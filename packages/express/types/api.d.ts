@@ -1,4 +1,5 @@
-import { ImageDTO, MediaDetailsDTO, VideoDTO } from '@library-api/core/types/dto'
+import { ImageDTO, MediaDetailsDTO, RelatedPublicationDTO, VideoDTO } from '@library-api/core/types/dto'
+import { PublicationType } from '@library-api/core/types/publication'
 
 export interface ImageDTOWithURL extends ImageDTO {
   url: string
@@ -70,6 +71,23 @@ export namespace Media {
     export interface Response {
       message: {
         details: MediaDetailsDTO
+      }
+    }
+  }
+}
+
+export namespace Publication {
+  export namespace RelatedPublications {
+    export interface Params {
+      type: PublicationType
+    }
+    export interface QueryParams {
+      date: string
+      languageId?: string
+    }
+    export interface Response {
+      message: {
+        publications: RelatedPublicationDTO[]
       }
     }
   }

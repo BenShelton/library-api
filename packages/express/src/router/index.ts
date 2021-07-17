@@ -4,6 +4,7 @@ import { CatalogDatabase } from '@library-api/core'
 import { catalog } from './catalog'
 import { download } from './download'
 import { media } from './media'
+import { publication } from './publication'
 import { CATALOG_PATH } from '../constants'
 
 const router = Router()
@@ -17,6 +18,7 @@ router.get('/monthly-publications', async (req, res) => {
 router.use('/catalog', catalog)
 router.use('/download', download)
 router.use('/media', media)
+router.use('/publication', publication)
 
 // handle 404
 router.use((req, res) => {

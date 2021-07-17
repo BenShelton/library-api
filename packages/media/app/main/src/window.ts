@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { BrowserWindow } from 'electron'
 import { URL } from 'url'
 import { join } from 'path'
 import { checkExists } from '@library-api/core'
@@ -20,13 +20,6 @@ function checkDevTools (window: BrowserWindow): void {
   window.webContents.openDevTools({ mode: 'right' })
 }
 
-function saveWindowConfig (window: BrowserWindow, key: 'controlWindow' | 'displayWindow'): void {
-  window.on('close', () => {
-    const { x, y, width, height } = window.getBounds()
-    store.set(key, { x, y, width, height })
-  })
-}
-
 export async function createControlWindow (): Promise<BrowserWindow> {
   const storeKey = 'controlWindow'
   const windowSettings = store.get(storeKey)
@@ -40,10 +33,15 @@ export async function createControlWindow (): Promise<BrowserWindow> {
   })
 
   checkDevTools(controlWindow)
-  saveWindowConfig(controlWindow, storeKey)
-
+  controlWindow.on('close', () => {
+    if (controlWindow) {
+      const { x, y, width, height } = controlWindow.getBounds()
+      store.set('controlWindow', { x, y, width, height })
+    }
+  })
   controlWindow.on('closed', () => {
-    app.quit()
+    controlWindow = null
+    displayWindow?.close()
   })
 
   const catalogExists = await checkExists(CATALOG_PATH)
@@ -62,7 +60,8 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
     // this prevents Zoom from showing this window as an option
     // alwaysOnTop: true,
     frame: false,
-    roundedCorners: false,
+    // TODO: Enable this when fixed, see https://github.com/electron/electron/issues/28686
+    // roundedCorners: false,
     webPreferences: {
       preload,
       // TODO: This is so we can use local video src in the renderer, there should be a better way
@@ -73,7 +72,15 @@ export async function createDisplayWindow (): Promise<BrowserWindow> {
   displayWindow.setAspectRatio(16 / 9)
 
   // checkDevTools(displayWindow)
-  saveWindowConfig(displayWindow, storeKey)
+  displayWindow.on('close', () => {
+    if (displayWindow) {
+      const { x, y, width, height } = displayWindow.getBounds()
+      store.set('displayWindow', { x, y, width, height })
+    }
+  })
+  displayWindow.on('closed', () => {
+    displayWindow = null
+  })
 
   await displayWindow.loadURL(pageUrl + '#display')
   return displayWindow

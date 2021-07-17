@@ -11,6 +11,7 @@
 - [LanguageRow](../interfaces/types_database.languagerow.md)
 - [MediaDetailsRow](../interfaces/types_database.mediadetailsrow.md)
 - [PublicationRow](../interfaces/types_database.publicationrow.md)
+- [RelatedPublicationRow](../interfaces/types_database.relatedpublicationrow.md)
 - [VideoRowBase](../interfaces/types_database.videorowbase.md)
 - [VideoRowDoc](../interfaces/types_database.videorowdoc.md)
 - [VideoRowPub](../interfaces/types_database.videorowpub.md)

@@ -7,8 +7,8 @@ import { createInterface } from 'readline'
  *
  * @param dir The directory to create.
  */
-export async function createDir (dir: string): Promise<void> {
-  await mkdir(dir, { recursive: true })
+export function createDir (dir: string): Promise<string | undefined> {
+  return mkdir(dir, { recursive: true })
 }
 
 /**

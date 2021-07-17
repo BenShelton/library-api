@@ -42,4 +42,4 @@ Maps a Media Catalog media details row to a Media Details DTO.
 
 #### Defined in
 
-[src/classes/Mapper.ts:176](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L176)
+[src/classes/Mapper.ts:198](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L198)

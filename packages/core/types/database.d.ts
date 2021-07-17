@@ -93,3 +93,12 @@ export interface LanguageRow {
   ScriptId: number
   AssociatedTextLanguageId: number
 }
+
+/**
+ * The raw database columns when using a relation publications query.
+ */
+interface RelatedPublicationRow {
+  RefMepsDocumentId: number
+  RefBeginParagraphOrdinal: number | null
+  RefEndParagraphOrdinal: number | null
+}

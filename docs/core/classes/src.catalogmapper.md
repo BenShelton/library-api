@@ -42,4 +42,4 @@ Maps a raw Media Details database row to a Media Details DTO.
 
 #### Defined in
 
-[src/classes/Mapper.ts:124](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L124)
+[src/classes/Mapper.ts:146](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L146)

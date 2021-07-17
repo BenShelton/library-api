@@ -43,7 +43,7 @@ Maps a raw Language data row to a Language DTO.
 
 #### Defined in
 
-[src/classes/Mapper.ts:147](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L147)
+[src/classes/Mapper.ts:169](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L169)
 
 ___
 
@@ -65,4 +65,4 @@ Maps multiple Language data rows using [MapLanguage](src.languagemapper.md#mapla
 
 #### Defined in
 
-[src/classes/Mapper.ts:162](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L162)
+[src/classes/Mapper.ts:184](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Mapper.ts#L184)

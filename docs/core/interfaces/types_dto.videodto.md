@@ -26,7 +26,7 @@ The returned information when mapping raw video data.
 
 #### Defined in
 
-[types/dto.d.ts:52](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L52)
+[types/dto.d.ts:56](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L56)
 
 ___
 
@@ -38,7 +38,7 @@ A filename. Purely informational.
 
 #### Defined in
 
-[types/dto.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L47)
+[types/dto.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L51)
 
 ___
 
@@ -50,7 +50,7 @@ A unique id not related to the database.
 
 #### Defined in
 
-[types/dto.d.ts:43](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L43)
+[types/dto.d.ts:47](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L47)
 
 ___
 
@@ -65,7 +65,7 @@ Either an issue date stored as a number, or `0` if irrelevant.
 
 #### Defined in
 
-[types/dto.d.ts:60](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L60)
+[types/dto.d.ts:64](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L64)
 
 ___
 
@@ -77,7 +77,7 @@ The Meps Language Id of this video.
 
 #### Defined in
 
-[types/dto.d.ts:64](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L64)
+[types/dto.d.ts:68](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L68)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[types/dto.d.ts:53](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L53)
+[types/dto.d.ts:57](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L57)
 
 ___
 
@@ -99,4 +99,4 @@ Affects how information is retrieved about this video (for example in getting de
 
 #### Defined in
 
-[types/dto.d.ts:51](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L51)
+[types/dto.d.ts:55](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L55)

@@ -66,6 +66,13 @@ export interface VideoRowDoc extends VideoRowBase {
 export type VideoRow = VideoRowPub | VideoRowDoc
 
 /**
+ * Either an image or video row based on `DataType`.
+ */
+export type DocumentMediaRow =
+  | (ImageRow & { DataType: 0 })
+  | (VideoRow & { DataType: 2 })
+
+/**
  * The raw database columns when using an article query.
  */
 export interface ArticleRow {

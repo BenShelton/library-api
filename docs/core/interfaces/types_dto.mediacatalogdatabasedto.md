@@ -23,7 +23,7 @@ A list of media items in this catalog.
 
 #### Defined in
 
-[types/dto.d.ts:197](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L197)
+[types/dto.d.ts:201](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L201)
 
 ___
 
@@ -35,4 +35,4 @@ The version of the catalog.
 
 #### Defined in
 
-[types/dto.d.ts:186](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L186)
+[types/dto.d.ts:190](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L190)

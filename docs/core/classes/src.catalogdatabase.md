@@ -23,6 +23,8 @@ Provides extra methods for running preset queries against a catalog.
 - [getMediaDetails](src.catalogdatabase.md#getmediadetails)
 - [getMonthlyPublications](src.catalogdatabase.md#getmonthlypublications)
 - [getPublication](src.catalogdatabase.md#getpublication)
+- [getPublicationByDocumentId](src.catalogdatabase.md#getpublicationbydocumentid)
+- [getRelatedPublicationMedia](src.catalogdatabase.md#getrelatedpublicationmedia)
 - [getRow](src.catalogdatabase.md#getrow)
 - [getRows](src.catalogdatabase.md#getrows)
 - [getSongDetails](src.catalogdatabase.md#getsongdetails)
@@ -88,7 +90,7 @@ MediaDetails if they exist, `null` if they are not found.
 
 #### Defined in
 
-[src/classes/Database.ts:160](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L160)
+[src/classes/Database.ts:210](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L210)
 
 ___
 
@@ -136,7 +138,60 @@ A [Publication](src.publication.md) class to help access the downloaded publicat
 
 #### Defined in
 
-[src/classes/Database.ts:115](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L115)
+[src/classes/Database.ts:130](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L130)
+
+___
+
+### getPublicationByDocumentId
+
+▸ **getPublicationByDocumentId**(`documentId`, `downloadDir`, `languageId?`): `Promise`<``null`` \| [Publication](src.publication.md)\>
+
+Searches the database for the specified publication based on a document id.
+If that publication is not yet downloaded, will download it to the specified directory.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `documentId` | `string` \| `number` | `undefined` | The DocumentId (aka MepsDocumentId) to search for. |
+| `downloadDir` | `string` | `undefined` | The directory to download the publication to if it does not exist. |
+| `languageId` | `number` | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
+
+#### Returns
+
+`Promise`<``null`` \| [Publication](src.publication.md)\>
+
+A [Publication](src.publication.md) class to help access the downloaded publication, or `null` if not found.
+
+#### Defined in
+
+[src/classes/Database.ts:157](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L157)
+
+___
+
+### getRelatedPublicationMedia
+
+▸ **getRelatedPublicationMedia**(`relatedPublication`, `downloadDir`, `languageId?`): `Promise`<``null`` \| { `images`: [ImageDTO](../interfaces/types_dto.imagedto.md)[] ; `videos`: [VideoDTO](../interfaces/types_dto.videodto.md)[]  }\>
+
+A convenience method that gets a publication using [getPublicationByDocumentId](src.catalogdatabase.md#getpublicationbydocumentid) and returns the media with [getMediaByDocumentId](src.publication.md#getmediabydocumentid).
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `relatedPublication` | [RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md) | `undefined` | The related publication. |
+| `downloadDir` | `string` | `undefined` | The directory to download the publication to if it does not exist. |
+| `languageId` | `number` | 0 | The Meps Language Id to search for. Defaults to `0` (English). |
+
+#### Returns
+
+`Promise`<``null`` \| { `images`: [ImageDTO](../interfaces/types_dto.imagedto.md)[] ; `videos`: [VideoDTO](../interfaces/types_dto.videodto.md)[]  }\>
+
+The media for a related publication, or `null` if the publication could not be found.
+
+#### Defined in
+
+[src/classes/Database.ts:180](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L180)
 
 ___
 
@@ -248,4 +303,4 @@ MediaDetails if they exist, `null` if they are not found.
 
 #### Defined in
 
-[src/classes/Database.ts:196](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L196)
+[src/classes/Database.ts:246](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Database.ts#L246)

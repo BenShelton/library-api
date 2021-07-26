@@ -18,9 +18,22 @@
 
 ### Type aliases
 
+- [DocumentMediaRow](types_database.md#documentmediarow)
 - [VideoRow](types_database.md#videorow)
 
 ## Type aliases
+
+### DocumentMediaRow
+
+Ƭ **DocumentMediaRow**: [ImageRow](../interfaces/types_database.imagerow.md) & { `DataType`: ``0``  } \| [VideoRow](types_database.md#videorow) & { `DataType`: ``2``  }
+
+Either an image or video row based on `DataType`.
+
+#### Defined in
+
+[types/database.d.ts:71](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L71)
+
+___
 
 ### VideoRow
 

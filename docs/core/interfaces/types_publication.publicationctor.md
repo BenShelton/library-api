@@ -27,7 +27,7 @@ The directory where the publication is located.
 
 #### Defined in
 
-[types/publication.d.ts:24](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L24)
+[types/publication.d.ts:25](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L25)
 
 ___
 
@@ -42,7 +42,7 @@ This must be the NameFragment as it is used the internal database too.
 
 #### Defined in
 
-[types/publication.d.ts:18](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L18)
+[types/publication.d.ts:19](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L19)
 
 ___
 
@@ -56,7 +56,7 @@ The Meps Language Id of this publication.
 
 #### Defined in
 
-[types/publication.d.ts:34](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L34)
+[types/publication.d.ts:35](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L35)
 
 ___
 
@@ -68,4 +68,4 @@ ___
 
 #### Defined in
 
-[types/publication.d.ts:28](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L28)
+[types/publication.d.ts:29](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L29)

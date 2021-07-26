@@ -22,7 +22,7 @@ The raw database columns when using a relation publications query.
 
 #### Defined in
 
-[types/database.d.ts:102](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L102)
+[types/database.d.ts:109](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L109)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:103](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L103)
+[types/database.d.ts:110](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L110)
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:101](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L101)
+[types/database.d.ts:108](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L108)

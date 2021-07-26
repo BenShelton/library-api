@@ -26,7 +26,7 @@ The English name for the language, e.g. `Spanish` for Spanish.
 
 #### Defined in
 
-[types/dto.d.ts:111](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L111)
+[types/dto.d.ts:115](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L115)
 
 ___
 
@@ -38,7 +38,7 @@ The Meps Language Id.
 
 #### Defined in
 
-[types/dto.d.ts:103](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L103)
+[types/dto.d.ts:107](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L107)
 
 ___
 
@@ -51,7 +51,7 @@ Sign languages do not use publications so are generally unsupported.
 
 #### Defined in
 
-[types/dto.d.ts:120](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L120)
+[types/dto.d.ts:124](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L124)
 
 ___
 
@@ -63,7 +63,7 @@ The unique language Symbol.
 
 #### Defined in
 
-[types/dto.d.ts:107](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L107)
+[types/dto.d.ts:111](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L111)
 
 ___
 
@@ -75,4 +75,4 @@ The language name as displayed in that language, e.g. `español` for Spanish.
 
 #### Defined in
 
-[types/dto.d.ts:115](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L115)
+[types/dto.d.ts:119](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L119)

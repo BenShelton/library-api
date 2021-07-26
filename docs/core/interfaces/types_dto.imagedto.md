@@ -12,6 +12,7 @@ The returned information when mapping raw image data.
 
 - [caption](types_dto.imagedto.md#caption)
 - [categoryType](types_dto.imagedto.md#categorytype)
+- [contentsPath](types_dto.imagedto.md#contentspath)
 - [filePath](types_dto.imagedto.md#filepath)
 - [filename](types_dto.imagedto.md#filename)
 - [id](types_dto.imagedto.md#id)
@@ -42,7 +43,19 @@ The internal category type. Known types are:
 
 #### Defined in
 
-[types/dto.d.ts:29](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L29)
+[types/dto.d.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L33)
+
+___
+
+### contentsPath
+
+• **contentsPath**: `string`
+
+The path to access the publication itself.
+
+#### Defined in
+
+[types/dto.d.ts:26](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L26)
 
 ___
 
@@ -90,4 +103,4 @@ The Meps Language Id of this image.
 
 #### Defined in
 
-[types/dto.d.ts:33](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L33)
+[types/dto.d.ts:37](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L37)

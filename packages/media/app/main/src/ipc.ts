@@ -118,11 +118,15 @@ export function initIPC (): void {
     const baseImages = await publication.getImages(args.date)
     const baseVideos = await publication.getVideos(args.date)
 
+    const IGNORE_RELATED = ['sjj', 'th']
     for (const rp of relatedPublications) {
-      const media = await db.getRelatedPublicationMedia(rp, DOWNLOAD_DIR, args.languageId)
-      if (media) {
-        baseImages.push(...media.images)
-        baseVideos.push(...media.videos)
+      const pb = await db.getPublicationByDocumentId(rp.id, DOWNLOAD_DIR, args.languageId)
+      if (pb && !IGNORE_RELATED.includes(pb.filename.split('_')[0])) {
+        const media = await pb.getMediaByDocumentId(rp)
+        if (media) {
+          baseImages.push(...media.images)
+          baseVideos.push(...media.videos)
+        }
       }
     }
 

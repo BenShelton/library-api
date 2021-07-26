@@ -118,9 +118,10 @@ export function initIPC (): void {
     const images = await Promise.all(baseImages.map(async (image) => {
       const srcURL = join(contentsPath, image.filePath)
       const src = await readFile(srcURL, { encoding: 'base64' })
+      const mimetype = image.filePath.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'
       return {
         ...image,
-        src: 'data:image/jpeg;base64,' + src,
+        src: `data:${mimetype};base64,${src}`,
         text: image.caption,
         downloaded: true
       }

@@ -24,6 +24,7 @@ Provides methods for interacting with a downloaded publication.
 
 - [getArticles](src.publication.md#getarticles)
 - [getImages](src.publication.md#getimages)
+- [getMediaByDocumentId](src.publication.md#getmediabydocumentid)
 - [getRelatedPublications](src.publication.md#getrelatedpublications)
 - [getVideos](src.publication.md#getvideos)
 
@@ -109,7 +110,7 @@ Returns raw database rows for all the articles in this publication.
 
 #### Defined in
 
-[src/classes/Publication.ts:118](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L118)
+[src/classes/Publication.ts:144](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L144)
 
 ___
 
@@ -138,7 +139,36 @@ An array of mapped images, the array will be empty if no images were found.
 
 #### Defined in
 
-[src/classes/Publication.ts:80](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L80)
+[src/classes/Publication.ts:106](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L106)
+
+___
+
+### getMediaByDocumentId
+
+▸ **getMediaByDocumentId**(`__namedParameters`): `Promise`<`Object`\>
+
+**`todo`** Also support begin and end paragraphs.
+
+Retrieves all the media for specified document (article) within a publication.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters` | `Object` |
+| `__namedParameters.beginParagraph?` | ``null`` \| `number` |
+| `__namedParameters.endParagraph?` | ``null`` \| `number` |
+| `__namedParameters.id` | `number` |
+
+#### Returns
+
+`Promise`<`Object`\>
+
+An array of mapped related publications, the array will be empty if none are found.
+
+#### Defined in
+
+[src/classes/Publication.ts:78](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L78)
 
 ___
 
@@ -146,7 +176,7 @@ ___
 
 ▸ **getRelatedPublications**(`date`): `Promise`<[RelatedPublicationDTO](../interfaces/types_dto.relatedpublicationdto.md)[]\>
 
-Retrieves all the related publications
+Retrieves all the related publications.
 
 #### Parameters
 
@@ -189,4 +219,4 @@ An array of mapped videos, the array will be empty if no videos were found.
 
 #### Defined in
 
-[src/classes/Publication.ts:101](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L101)
+[src/classes/Publication.ts:127](https://github.com/BenShelton/library-api/blob/master/packages/core/src/classes/Publication.ts#L127)

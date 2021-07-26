@@ -30,7 +30,7 @@ Either the `docID` or `pubSymbol` depending on the kind of media.
 
 #### Defined in
 
-[types/dto.d.ts:135](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L135)
+[types/dto.d.ts:139](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L139)
 
 ___
 
@@ -42,7 +42,7 @@ Duration in seconds. Also includes millisecond precision.
 
 #### Defined in
 
-[types/dto.d.ts:168](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L168)
+[types/dto.d.ts:172](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L172)
 
 ___
 
@@ -54,7 +54,7 @@ Either `'VIDEO'` or `'AUDIO'`.
 
 #### Defined in
 
-[types/dto.d.ts:156](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L156)
+[types/dto.d.ts:160](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L160)
 
 ___
 
@@ -66,7 +66,7 @@ A unique id for this item among all languages.
 
 #### Defined in
 
-[types/dto.d.ts:131](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L131)
+[types/dto.d.ts:135](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L135)
 
 ___
 
@@ -78,7 +78,7 @@ A URL of the highest quality image for this media.
 
 #### Defined in
 
-[types/dto.d.ts:172](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L172)
+[types/dto.d.ts:176](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L176)
 
 ___
 
@@ -90,7 +90,7 @@ A URL of the highest quality square image for this media.
 
 #### Defined in
 
-[types/dto.d.ts:176](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L176)
+[types/dto.d.ts:180](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L180)
 
 ___
 
@@ -111,7 +111,7 @@ detail.issueDate: undefined
 
 #### Defined in
 
-[types/dto.d.ts:152](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L152)
+[types/dto.d.ts:156](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L156)
 
 ___
 
@@ -123,7 +123,7 @@ The `primaryCategory` which correlates to `key` in other areas.
 
 #### Defined in
 
-[types/dto.d.ts:160](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L160)
+[types/dto.d.ts:164](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L164)
 
 ___
 
@@ -135,7 +135,7 @@ An id that can be used to identify the same item in a different language's media
 
 #### Defined in
 
-[types/dto.d.ts:127](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L127)
+[types/dto.d.ts:131](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L131)
 
 ___
 
@@ -147,7 +147,7 @@ The displayed title for this media.
 
 #### Defined in
 
-[types/dto.d.ts:164](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L164)
+[types/dto.d.ts:168](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L168)
 
 ___
 
@@ -159,4 +159,4 @@ The track number.
 
 #### Defined in
 
-[types/dto.d.ts:139](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L139)
+[types/dto.d.ts:143](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L143)

@@ -8,7 +8,7 @@ describe('Classes: Mapper', () => {
     describe('Methods', () => {
       describe('MapImage', () => {
         test('should return a mapped image', () => {
-          const mapper = new PublicationMapper({ filename: 'name' })
+          const mapper = new PublicationMapper({ filename: 'name', contentsPath: 'contents' })
           const result = mapper.MapImage({
             MultimediaId: 42,
             Caption: 'caption',
@@ -21,6 +21,7 @@ describe('Classes: Mapper', () => {
             filename: 'name',
             caption: 'caption',
             filePath: 'path',
+            contentsPath: 'contents',
             categoryType: 8,
             languageId: 0
           })
@@ -29,8 +30,8 @@ describe('Classes: Mapper', () => {
 
       describe('MapImages', () => {
         test('should return multiple mapped images', () => {
-          const mapper = new PublicationMapper({ filename: 'name' })
-          const mockImage: ImageDTO = { id: 'name#42', filename: 'name', caption: '', filePath: '', categoryType: 8, languageId: 1 }
+          const mapper = new PublicationMapper({ filename: 'name', contentsPath: 'contents' })
+          const mockImage: ImageDTO = { id: 'name#42', filename: 'name', caption: '', filePath: '', contentsPath: '', categoryType: 8, languageId: 1 }
           const spy = jest.spyOn(mapper, 'MapImage').mockReturnValue(mockImage)
           const mockImageRows: ImageRow[] = [
             { MultimediaId: 1, Caption: 'caption1', FilePath: 'path1', ContextTitle: 'title1', CategoryType: 8 },
@@ -45,7 +46,7 @@ describe('Classes: Mapper', () => {
 
       describe('MapVideo', () => {
         test('should return a mapped video (pub)', () => {
-          const mapper = new PublicationMapper({ filename: 'name', languageId: 1 })
+          const mapper = new PublicationMapper({ filename: 'name', contentsPath: 'contents', languageId: 1 })
           const result = mapper.MapVideo({
             MultimediaId: 42,
             IssueTagNumber: 1,
@@ -65,7 +66,7 @@ describe('Classes: Mapper', () => {
         })
 
         test('should return a mapped video (doc)', () => {
-          const mapper = new PublicationMapper({ filename: 'name' })
+          const mapper = new PublicationMapper({ filename: 'name', contentsPath: 'contents' })
           const result = mapper.MapVideo({
             MultimediaId: 42,
             IssueTagNumber: 1,
@@ -87,7 +88,7 @@ describe('Classes: Mapper', () => {
 
       describe('MapVideos', () => {
         test('should return multiple mapped videos', () => {
-          const mapper = new PublicationMapper({ filename: 'name' })
+          const mapper = new PublicationMapper({ filename: 'name', contentsPath: 'contents' })
           const mockVideo: VideoDTO = { id: 'name#42', filename: 'name', type: 'pub', doc: '', track: 0, issue: 0, languageId: 0 }
           const spy = jest.spyOn(mapper, 'MapVideo').mockReturnValue(mockVideo)
           const mockVideoRows: VideoRow[] = [

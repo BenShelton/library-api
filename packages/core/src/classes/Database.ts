@@ -9,7 +9,7 @@ import { checkExists } from '../utils'
 import { PUBLICATION_TYPES, SONG_PUBLICATION } from '../constants'
 
 import { MediaDetailsRow, PublicationRow } from '../../types/database'
-import { MediaDetailsDTO, VideoDTO } from '../../types/dto'
+import { ImageDTO, MediaDetailsDTO, RelatedPublicationDTO, VideoDTO } from '../../types/dto'
 import { PublicationType } from '../../types/publication'
 
 type QueryParams = string | string[] | Record<string, string>
@@ -99,6 +99,21 @@ export class CatalogDatabase extends Database {
     return this.getRows<PublicationRow>(query)
   }
 
+  private async _createPublication (row: PublicationRow, downloadDir: string, type: PublicationType, languageId = 0): Promise<Publication | null> {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const filename = row.NameFragment.split('/').pop()!.replace('.jwpub', '')
+    const path = join(downloadDir, filename)
+    const exists = await checkExists(path)
+    if (!exists) {
+      try {
+        await downloadPublication(row.NameFragment, path)
+      } catch {
+        return null
+      }
+    }
+    return new Publication({ filename, dir: downloadDir, type, languageId })
+  }
+
   /**
    * Searches the database for the specified publication based on a date.
    * If that publication is not yet downloaded, will download it to the specified directory.
@@ -126,14 +141,49 @@ export class CatalogDatabase extends Database {
     const result = await this.getRow<PublicationRow>(pubQuery)
     if (!result) return null
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const filename = result.NameFragment.split('/').pop()!.replace('.jwpub', '')
-    const path = join(downloadDir, filename)
-    const exists = await checkExists(path)
-    if (!exists) {
-      await downloadPublication(result.NameFragment, path)
-    }
-    return new Publication({ filename, dir: downloadDir, type, languageId })
+    return this._createPublication(result, downloadDir, type, languageId)
+  }
+
+  /**
+   * Searches the database for the specified publication based on a document id.
+   * If that publication is not yet downloaded, will download it to the specified directory.
+   *
+   * @param documentId The DocumentId (aka MepsDocumentId) to search for.
+   * @param downloadDir The directory to download the publication to if it does not exist.
+   * @param languageId The Meps Language Id to search for. Defaults to `0` (English).
+   *
+   * @returns A {@link Publication} class to help access the downloaded publication, or `null` if not found.
+   */
+  async getPublicationByDocumentId (documentId: number | string, downloadDir: string, languageId = 0): Promise<Publication | null> {
+    const query = `
+      SELECT DISTINCT pa.NameFragment AS NameFragment, p.PublicationTypeId AS PublicationTypeId, p.MepsLanguageId AS PubMepsLanguageId
+      FROM Publication AS p
+      INNER JOIN PublicationAsset AS pa ON p.Id = pa.PublicationId
+      INNER JOIN PublicationDocument AS pd ON p.Id = pd.PublicationId
+      WHERE pd.DocumentId = ${documentId} AND p.MepsLanguageId = ${languageId}`
+
+    const result = await this.getRow<PublicationRow>(query)
+    if (!result) return null
+
+    return this._createPublication(result, downloadDir, 'other', languageId)
+  }
+
+  /**
+   * A convenience method that gets a publication using {@link getPublicationByDocumentId} and returns the media with {@link getMediaByDocumentId}.
+   *
+   * @param relatedPublication The related publication.
+   * @param downloadDir The directory to download the publication to if it does not exist.
+   * @param languageId The Meps Language Id to search for. Defaults to `0` (English).
+   *
+   * @returns The media for a related publication, or `null` if the publication could not be found.
+   */
+  async getRelatedPublicationMedia (relatedPublication: RelatedPublicationDTO, downloadDir: string, languageId = 0): Promise<{ images: ImageDTO[], videos: VideoDTO[] } | null> {
+    const p = await this.getPublicationByDocumentId(relatedPublication.id, downloadDir, languageId)
+    if (!p) return null
+
+    const media = await p.getMediaByDocumentId(relatedPublication)
+
+    return media
   }
 
   /**

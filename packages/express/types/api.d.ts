@@ -91,4 +91,22 @@ export namespace Publication {
       }
     }
   }
+
+  export namespace RelatedMedia {
+    export interface Params {
+      type: PublicationType
+    }
+    export interface QueryParams {
+      date: string
+      languageId?: string
+    }
+    export interface Response {
+      message: {
+        media: {
+          images: ImageDTO[]
+          videos: VideoDTO[]
+        }
+      }
+    }
+  }
 }

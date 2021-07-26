@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/BenShelton/library-api/compare/v0.10.1...v0.11.0) (2021-07-26)
+
+
+### Bug Fixes
+
+* **core:** include DataType 3 as videos when extracting media ([5d1673f](https://github.com/BenShelton/library-api/commit/5d1673fc3ef8a9ab7ac230c8c8ccdf79d036bc98))
+
+
+### Features
+
+* **core:** add getRelatedPublications method on Publication, refactor other methods to share query ([44eb243](https://github.com/BenShelton/library-api/commit/44eb2435960646578665a1f8374712fabd58c2ee))
+* **core:** add methods to allow retrieving media from related publications ([55b04a6](https://github.com/BenShelton/library-api/commit/55b04a67b92a1e73a387eea720c905db69efba2c)), closes [#27](https://github.com/BenShelton/library-api/issues/27)
+
+
+### BREAKING CHANGES
+
+* **core:** publications that are not found will silently error
+
+
+
+
+
 # [0.10.0](https://github.com/BenShelton/library-api/compare/v0.9.1...v0.10.0) (2021-06-23)
 
 

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/BenShelton/library-api/compare/v0.10.1...v0.11.0) (2021-07-26)
+
+
+### Features
+
+* **media:** add more menu items ([b0c1675](https://github.com/BenShelton/library-api/commit/b0c1675c900c36bf51341794dc2819be0ba8c6f1))
+* **media:** add support for svg images within publications ([b116d15](https://github.com/BenShelton/library-api/commit/b116d15ed4e98a5f5479c264dcd5b6763def164f))
+* **media:** change product name in package.json ([658e585](https://github.com/BenShelton/library-api/commit/658e585ab20872f11b22b8ffc6814877089b4265))
+* **media:** forcefully delete old media catalogs on startup ([dcb6115](https://github.com/BenShelton/library-api/commit/dcb6115db0b6c8ae0fa13b4daf0b030612725229))
+* **media:** ignore related media from some publications ([81eebdc](https://github.com/BenShelton/library-api/commit/81eebdc3559318edc24485837c5eace681bc74a9))
+* **media:** include media from related publications too ([f692e24](https://github.com/BenShelton/library-api/commit/f692e2466670378072fc7049112ab38eda5864ac))
+
+
+### BREAKING CHANGES
+
+* **media:** the app data directory has changed so everything will need to be downloaded again,
+to remove the previous app data to save some disk space remove the `~/Library/Application
+Support/@library-api/media` directory
+
+
+
+
+
 ## [0.10.1](https://github.com/BenShelton/library-api/compare/v0.10.0...v0.10.1) (2021-07-17)
 
 

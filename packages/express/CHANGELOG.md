@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/BenShelton/library-api/compare/v0.10.1...v0.11.0) (2021-07-26)
+
+
+### Features
+
+* **express:** add endpoint for related publications ([fae1815](https://github.com/BenShelton/library-api/commit/fae18159a50f97f12dc12766820fe2e25ae86867))
+* **express:** add endpoint for retrieving related media ([a790166](https://github.com/BenShelton/library-api/commit/a7901667d312eb0defd9f34b0bf0af1d8b8a3565))
+
+
+
+
+
 # [0.10.0](https://github.com/BenShelton/library-api/compare/v0.9.1...v0.10.0) (2021-06-23)
 
 

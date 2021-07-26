@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/BenShelton/library-api/compare/v0.10.1...v0.11.0) (2021-07-26)
+
+
+### Bug Fixes
+
+* **core:** include DataType 3 as videos when extracting media ([5d1673f](https://github.com/BenShelton/library-api/commit/5d1673fc3ef8a9ab7ac230c8c8ccdf79d036bc98))
+
+
+### Features
+
+* **core:** add getRelatedPublications method on Publication, refactor other methods to share query ([44eb243](https://github.com/BenShelton/library-api/commit/44eb2435960646578665a1f8374712fabd58c2ee))
+* **core:** add methods to allow retrieving media from related publications ([55b04a6](https://github.com/BenShelton/library-api/commit/55b04a67b92a1e73a387eea720c905db69efba2c)), closes [#27](https://github.com/BenShelton/library-api/issues/27)
+* **express:** add endpoint for related publications ([fae1815](https://github.com/BenShelton/library-api/commit/fae18159a50f97f12dc12766820fe2e25ae86867))
+* **express:** add endpoint for retrieving related media ([a790166](https://github.com/BenShelton/library-api/commit/a7901667d312eb0defd9f34b0bf0af1d8b8a3565))
+* **media:** add more menu items ([b0c1675](https://github.com/BenShelton/library-api/commit/b0c1675c900c36bf51341794dc2819be0ba8c6f1))
+* **media:** add support for svg images within publications ([b116d15](https://github.com/BenShelton/library-api/commit/b116d15ed4e98a5f5479c264dcd5b6763def164f))
+* **media:** change product name in package.json ([658e585](https://github.com/BenShelton/library-api/commit/658e585ab20872f11b22b8ffc6814877089b4265))
+* **media:** forcefully delete old media catalogs on startup ([dcb6115](https://github.com/BenShelton/library-api/commit/dcb6115db0b6c8ae0fa13b4daf0b030612725229))
+* **media:** ignore related media from some publications ([81eebdc](https://github.com/BenShelton/library-api/commit/81eebdc3559318edc24485837c5eace681bc74a9))
+* **media:** include media from related publications too ([f692e24](https://github.com/BenShelton/library-api/commit/f692e2466670378072fc7049112ab38eda5864ac))
+
+
+### BREAKING CHANGES
+
+* **media:** the app data directory has changed so everything will need to be downloaded again,
+to remove the previous app data to save some disk space remove the `~/Library/Application
+Support/@library-api/media` directory
+* **core:** publications that are not found will silently error
+
+
+
+
+
 ## [0.10.1](https://github.com/BenShelton/library-api/compare/v0.10.0...v0.10.1) (2021-07-17)
 
 

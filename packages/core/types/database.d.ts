@@ -70,7 +70,7 @@ export type VideoRow = VideoRowPub | VideoRowDoc
  */
 export type DocumentMediaRow =
   | (ImageRow & { DataType: 0 })
-  | (VideoRow & { DataType: 2 })
+  | (VideoRow & { DataType: 2 | 3 })
 
 /**
  * The raw database columns when using an article query.

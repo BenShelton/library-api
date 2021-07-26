@@ -84,7 +84,7 @@ export class Publication {
       WHERE D.MepsDocumentId = ${id}`
     const rows = await this._database.getRows<DocumentMediaRow>(query)
     const images = this._mapper.MapImages(rows.filter(r => r.DataType === 0) as ImageRow[])
-    const videos = this._mapper.MapVideos(rows.filter(r => r.DataType === 2) as VideoRow[])
+    const videos = this._mapper.MapVideos(rows.filter(r => r.DataType !== 0) as VideoRow[])
     return {
       images,
       videos

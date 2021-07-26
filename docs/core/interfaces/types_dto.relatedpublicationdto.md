@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[types/dto.d.ts:208](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L208)
+[types/dto.d.ts:212](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L212)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[types/dto.d.ts:212](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L212)
+[types/dto.d.ts:216](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L216)
 
 ___
 
@@ -42,4 +42,4 @@ The Meps Document Id.
 
 #### Defined in
 
-[types/dto.d.ts:204](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L204)
+[types/dto.d.ts:208](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L208)

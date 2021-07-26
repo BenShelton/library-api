@@ -2,8 +2,9 @@
  * The types of publications that can be accessed.
  * - `wt`: Watchtower
  * - `oclm`: Our Christian Life & Ministry Workbook
+ * - `other`: Any other publication
  */
-export type PublicationType = 'wt' | 'oclm'
+export type PublicationType = 'wt' | 'oclm' | 'other'
 
 /**
  * Constructor params for {@link Publication} class.

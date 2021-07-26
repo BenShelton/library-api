@@ -22,7 +22,7 @@ The raw database columns when using an article query.
 
 #### Defined in
 
-[types/database.d.ts:73](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L73)
+[types/database.d.ts:80](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L80)
 
 ___
 
@@ -32,7 +32,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:72](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L72)
+[types/database.d.ts:79](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L79)
 
 ___
 
@@ -42,4 +42,4 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:74](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L74)
+[types/database.d.ts:81](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L81)

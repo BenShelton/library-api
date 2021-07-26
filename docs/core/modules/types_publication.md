@@ -16,12 +16,13 @@
 
 ### PublicationType
 
-Ƭ **PublicationType**: ``"wt"`` \| ``"oclm"``
+Ƭ **PublicationType**: ``"wt"`` \| ``"oclm"`` \| ``"other"``
 
 The types of publications that can be accessed.
 - `wt`: Watchtower
 - `oclm`: Our Christian Life & Ministry Workbook
+- `other`: Any other publication
 
 #### Defined in
 
-[types/publication.d.ts:6](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L6)
+[types/publication.d.ts:7](https://github.com/BenShelton/library-api/blob/master/packages/core/types/publication.d.ts#L7)

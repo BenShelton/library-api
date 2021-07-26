@@ -25,7 +25,7 @@ The returned information when mapping raw media details data.
 
 #### Defined in
 
-[types/dto.d.ts:76](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L76)
+[types/dto.d.ts:80](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L80)
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 #### Defined in
 
-[types/dto.d.ts:75](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L75)
+[types/dto.d.ts:79](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L79)
 
 ___
 
@@ -49,7 +49,7 @@ The height in pixels of the image.
 
 #### Defined in
 
-[types/dto.d.ts:88](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L88)
+[types/dto.d.ts:92](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L92)
 
 ___
 
@@ -61,7 +61,7 @@ A unique id not related to the database.
 
 #### Defined in
 
-[types/dto.d.ts:74](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L74)
+[types/dto.d.ts:78](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L78)
 
 ___
 
@@ -74,7 +74,7 @@ Can be used as a `src` for an `img` element or downloaded.
 
 #### Defined in
 
-[types/dto.d.ts:93](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L93)
+[types/dto.d.ts:97](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L97)
 
 ___
 
@@ -88,4 +88,4 @@ The width in pixels of the image.
 
 #### Defined in
 
-[types/dto.d.ts:82](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L82)
+[types/dto.d.ts:86](https://github.com/BenShelton/library-api/blob/master/packages/core/types/dto.d.ts#L86)

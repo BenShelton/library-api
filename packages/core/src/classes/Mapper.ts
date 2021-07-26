@@ -3,6 +3,7 @@ import { ImageDTO, LanguageDTO, MediaCatalogItemDTO, MediaDetailsDTO, RelatedPub
 
 interface PublicationMapperCtor {
   filename: string
+  contentsPath: string
   languageId?: number
 }
 
@@ -11,9 +12,11 @@ interface PublicationMapperCtor {
  */
 export class PublicationMapper {
   filename: string
+  contentsPath: string
   languageId: number
-  constructor ({ filename, languageId = 0 }: PublicationMapperCtor) {
+  constructor ({ filename, contentsPath, languageId = 0 }: PublicationMapperCtor) {
     this.filename = filename
+    this.contentsPath = contentsPath
     this.languageId = languageId
   }
 
@@ -32,6 +35,7 @@ export class PublicationMapper {
       filename: this.filename,
       caption: image.Caption,
       filePath: image.FilePath,
+      contentsPath: this.contentsPath,
       categoryType: image.CategoryType,
       languageId: this.languageId
     }

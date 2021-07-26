@@ -4,7 +4,7 @@ import { PublicationMapper } from './Mapper'
 import { Database } from './Database'
 import { PUBLICATION_CLASSES } from '../constants'
 
-import { ArticleRow, ImageRow, RelatedPublicationRow, VideoRow } from '../../types/database'
+import { ArticleRow, DocumentMediaRow, ImageRow, RelatedPublicationRow, VideoRow } from '../../types/database'
 import { ImageDTO, RelatedPublicationDTO, VideoDTO } from '../../types/dto'
 import { PublicationCtor, PublicationType } from '../../types/publication'
 
@@ -31,7 +31,7 @@ export class Publication {
     this.contentsPath = join(this.path, 'contents')
     const dbPath = join(this.contentsPath, this.filename + '.db')
     this._database = new Database(dbPath)
-    this._mapper = new PublicationMapper({ filename, languageId })
+    this._mapper = new PublicationMapper({ filename, languageId, contentsPath: this.contentsPath })
   }
 
   private _datedPublicationsQuery (date: string, documentJoin: string): string {
@@ -49,7 +49,7 @@ export class Publication {
   }
 
   /**
-   * Retrieves all the related publications
+   * Retrieves all the related publications.
    *
    * @param date The date to search for, must be formatted as `yyyy-mm-dd`.
    *
@@ -63,6 +63,32 @@ export class Publication {
       ${this._datedPublicationsQuery(date, 'D.DocumentId = DE.DocumentId')}`
     const rows = await this._database.getRows<RelatedPublicationRow>(query)
     return this._mapper.MapRelatedPublications(rows)
+  }
+
+  /**
+   * @todo Also support begin and end paragraphs.
+   *
+   * Retrieves all the media for specified document (article) within a publication.
+   *
+   * @param date The date to search for, must be formatted as `yyyy-mm-dd`.
+   *
+   * @returns An array of mapped related publications, the array will be empty if none are found.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async getMediaByDocumentId ({ id, beginParagraph, endParagraph }: { id: number, beginParagraph?: number | null, endParagraph?: number | null }): Promise<{ images: ImageDTO[], videos: VideoDTO[] }> {
+    const query = `
+      SELECT DISTINCT D.ContextTitle, M.Caption, M.FilePath, M.MultimediaId, M.CategoryType, M.KeySymbol, M.Track, M.IssueTagNumber, M.MepsDocumentId, M.MultimediaId, M.DataType
+      FROM Multimedia M
+      INNER JOIN DocumentMultimedia DM ON DM.MultimediaId = M.MultimediaId
+      INNER JOIN Document D on D.DocumentId = DM.DocumentId
+      WHERE D.MepsDocumentId = ${id}`
+    const rows = await this._database.getRows<DocumentMediaRow>(query)
+    const images = this._mapper.MapImages(rows.filter(r => r.DataType === 0) as ImageRow[])
+    const videos = this._mapper.MapVideos(rows.filter(r => r.DataType === 2) as VideoRow[])
+    return {
+      images,
+      videos
+    }
   }
 
   /**

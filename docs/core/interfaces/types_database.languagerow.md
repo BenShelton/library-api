@@ -33,7 +33,7 @@ The export can be found in `data/languages.json`.
 
 #### Defined in
 
-[types/database.d.ts:94](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L94)
+[types/database.d.ts:101](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L101)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:85](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L85)
+[types/database.d.ts:92](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L92)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:92](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L92)
+[types/database.d.ts:99](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L99)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:88](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L88)
+[types/database.d.ts:95](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L95)
 
 ___
 
@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:89](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L89)
+[types/database.d.ts:96](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L96)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:87](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L87)
+[types/database.d.ts:94](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L94)
 
 ___
 
@@ -93,7 +93,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:83](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L83)
+[types/database.d.ts:90](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L90)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:91](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L91)
+[types/database.d.ts:98](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L98)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:90](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L90)
+[types/database.d.ts:97](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L97)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:93](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L93)
+[types/database.d.ts:100](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L100)
 
 ___
 
@@ -133,7 +133,7 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:84](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L84)
+[types/database.d.ts:91](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L91)
 
 ___
 
@@ -143,4 +143,4 @@ ___
 
 #### Defined in
 
-[types/database.d.ts:86](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L86)
+[types/database.d.ts:93](https://github.com/BenShelton/library-api/blob/master/packages/core/types/database.d.ts#L93)

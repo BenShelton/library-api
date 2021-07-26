@@ -25,7 +25,7 @@
 
 ### DocumentMediaRow
 
-Ƭ **DocumentMediaRow**: [ImageRow](../interfaces/types_database.imagerow.md) & { `DataType`: ``0``  } \| [VideoRow](types_database.md#videorow) & { `DataType`: ``2``  }
+Ƭ **DocumentMediaRow**: [ImageRow](../interfaces/types_database.imagerow.md) & { `DataType`: ``0``  } \| [VideoRow](types_database.md#videorow) & { `DataType`: ``2`` \| ``3``  }
 
 Either an image or video row based on `DataType`.
 

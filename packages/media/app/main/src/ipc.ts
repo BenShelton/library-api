@@ -113,10 +113,21 @@ export function initIPC (): void {
     }
     if (!publication) return null
 
+    const relatedPublications = await publication.getRelatedPublications(args.date)
+
     const baseImages = await publication.getImages(args.date)
-    const { contentsPath } = publication
+    const baseVideos = await publication.getVideos(args.date)
+
+    for (const rp of relatedPublications) {
+      const media = await db.getRelatedPublicationMedia(rp, DOWNLOAD_DIR, args.languageId)
+      if (media) {
+        baseImages.push(...media.images)
+        baseVideos.push(...media.videos)
+      }
+    }
+
     const images = await Promise.all(baseImages.map(async (image) => {
-      const srcURL = join(contentsPath, image.filePath)
+      const srcURL = join(image.contentsPath, image.filePath)
       const src = await readFile(srcURL, { encoding: 'base64' })
       const mimetype = image.filePath.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'
       return {
@@ -127,7 +138,6 @@ export function initIPC (): void {
       }
     }))
 
-    const baseVideos = await publication.getVideos(args.date)
     const mediaCatalog = await getMediaCatalog(DOWNLOAD_DIR, args.languageId)
     try {
       const videos: IPCVideoDTO[] = await Promise.all(baseVideos.map(async (video) => {

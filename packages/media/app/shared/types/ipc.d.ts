@@ -99,3 +99,9 @@ export interface DisplayMedia extends Send {
 export interface DisplayClear extends Send {
   Args?: never
 }
+
+export interface VideoTime extends Send {
+  Args: {
+    time: string
+  }
+}

@@ -33,7 +33,8 @@ import {
   MediaVideo,
   PublicationMedia,
   SongDetails,
-  VideoDetails
+  VideoDetails,
+  VideoTime
 } from 'shared/types/ipc'
 
 function getVideoPaths (id: string): { imagePath: string, videoPath: string } {
@@ -232,5 +233,10 @@ export function initIPC (): void {
   ipcMain.on('media:clear', async () => {
     const displayWindow = await getDisplayWindow()
     displayWindow.webContents.send('display:clear')
+  })
+
+  ipcMain.on('video:time', async (_event, args: VideoTime['Args']) => {
+    const controlWindow = await getControlWindow()
+    controlWindow.webContents.send('video:time', args)
   })
 }

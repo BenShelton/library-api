@@ -16,12 +16,10 @@
         v-if="mediaType === 'image'"
         :src="src"
       >
-      <video
+      <ExternalVideo
         v-else-if="mediaType === 'video'"
         :key="src"
         :src="src"
-        autoplay
-        controls
       />
     </template>
   </div>
@@ -30,12 +28,17 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
+import ExternalVideo from '@/components/ExternalVideo.vue'
 import { imageExtensions, videoExtensions } from 'shared/src/extensions'
 
 import { DisplayMedia, DisplayClear } from 'shared/types/ipc'
 
 export default defineComponent({
   name: 'Display',
+
+  components: {
+    ExternalVideo
+  },
 
   setup () {
     const src = ref<string | null>(null)
